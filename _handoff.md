@@ -171,3 +171,17 @@ CSS: добавлены .tool .mark (квадрат-марка), .tool.live .tag
 Дальше по плану: лендинги Extract Text и Image Enhancer по образцу (тогда 2 «Coming» карточки станут живыми).
 
 ПУШ+ДЕПЛОЙ: 4086c4d запушен в Welders-don/devexthub-site, Pages-ребилд (201) докатился. https://www.devexthub.com/ отдаёт витрину (маркеры The lineup / Why Devexthub / tool live подтверждены на живом сайте, HTTP 200). ГЛАВНАЯ-ВИТРИНА LIVE.
+
+## UPDATE 2026-07-25 — ЛЕНДИНГ EXTRACT TEXT LIVE + SEO-заточка по Semrush
+- Страница /extract-text-from-image/ создана (движок как pdf/transcribe: styles.css, Umami, sticky, floating CTA,
+  UTM campaign=extract-text-from-image, reveal). Демо — CSS-мокап (.ox-* в styles.css: картинка с выделением → панель Extracted text + Copy all / Download .txt). CWS ID eeelkokigmnmogpibbdkjdplpfnobpjb. Privacy https://welders-don.github.io/extracttext-privacy/ (200).
+- Приватность честная: OCR локальный (ONNX-wasm на устройстве), картинки не грузятся; только анонимная стата. Модель тянется 1 раз с GitHub-CDN — юзер-данные не уходят.
+- На главной карточка Extract Text ожила (.tool.live), счётчик → 3 tools live, ссылка в футер/nav.
+- SEO: Денис пробил 4 сида в Semrush (скрины). Данные+стратегия в knowledge/seo-keywords-extract-text.md.
+  ВЫВОД: короткие головы-конвертеры KD 54-64 (старые OCR-сайты + Copyfish) — не берём. Целевая зона KD 27-40,
+  ~18K/мес: extract text from image (ядро) + how to copy/extract text from image/picture/screenshot + image to text app + best ocr extension for chrome. Синонимы image/picture/screenshot/photo равноправно, продукт назван «OCR Chrome extension».
+- Заточка внесена: meta desc, hero sub (picture/screenshot), фича «An OCR Chrome extension», +5 FAQ дословно под хвосты.
+- ЗАДЕПЛОЕНО: коммиты f76fff3 (страница) + 58c053f (seo) запушены, Pages ребилд докатился.
+  https://www.devexthub.com/extract-text-from-image/ = 200, маркеры подтверждены live.
+- ЗА ДЕНИСОМ: вписать Homepage URL https://www.devexthub.com/extract-text-from-image/ в CWS-листинг Extract Text (Additional fields) при след. заливке. Опц.: реальные промо-скрины → заменить CSS-мокап + og:image (как сделали для transcribe).
+- ОСТАЛОСЬ по хабу: лендинг Image Enhancer (последняя «Coming» карточка). Он на CWS-review (pkkccllbjokjgkffmjcjigfajhojjlmi) — делать когда пройдёт/будет ID стабилен.
