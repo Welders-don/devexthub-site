@@ -169,3 +169,5 @@ CSS: добавлены .tool .mark (квадрат-марка), .tool.live .tag
 
 ОСТАЛОСЬ: запушить в Pages (git push → авто-ребилд) — RED, жду ОК Дениса. После пуша www.devexthub.com/ станет витриной.
 Дальше по плану: лендинги Extract Text и Image Enhancer по образцу (тогда 2 «Coming» карточки станут живыми).
+
+ПУШ+ДЕПЛОЙ: 4086c4d запушен в Welders-don/devexthub-site, Pages-ребилд (201) докатился. https://www.devexthub.com/ отдаёт витрину (маркеры The lineup / Why Devexthub / tool live подтверждены на живом сайте, HTTP 200). ГЛАВНАЯ-ВИТРИНА LIVE.
