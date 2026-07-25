@@ -71,3 +71,56 @@ google image to text 390·49, how to get text from image 210·44, ai image to te
 
 TODO Денису: перебить "image to text" с Exclude keywords:
 text to image, add text, remove text, edit, alt text, put text, generator, prompt, diffusion, firefly, midjourney, meme, onto
+
+## Сид: "screenshot to text" (844 фразы, Total 10 580, avg KD 30 — но засорён)
+Мусор: "how to screenshot a text message" / "text messages" (это про скрин переписки, не OCR),
+"add text to screenshot" (редактирование), "uncover blacked out / hidden / blurred text" (деобфускация).
+Головы жёсткие:
+| Keyword | Volume | KD |
+|---|---|---|
+| screenshot to text | 1 900 | 64 (жёстко) |
+| screenshot to text converter | 480 | 64 (жёстко) |
+| convert screenshot to text | 210 | 47 |
+| screenshots to text | 140 | 49 |
+Наше проходимое (KD≤40):
+| how to copy text from screenshot | 170 | 27 |
+| how to copy text from a screenshot | 170 | 44 (мимо) |
+| screenshot to text chrome extension | 30 | n/a (точное попадание) |
+| how to copy text from screenshot on chromebook/windows | 40/30 | n/a |
+
+## Сид: "picture to text" (засорён text→picture и add/remove/put text)
+Головы жёсткие: picture to text 8 100·KD61, picture to text converter 9 900·KD63,
+convert picture to text 2 900·KD54, pictures to text 880·59, picture to text free 590·56.
+Наше проходимое (KD≤40):
+| Keyword | Volume | KD |
+|---|---|---|
+| how to copy text from a picture | 720 | 35 |
+| how to extract text from a picture | 390 | 34 |
+| google translate picture to text | 480 | 44 (мимо) |
+
+## Сид: "ocr chrome" (103 фразы, Total 1 140, avg KD 52) — extension-интент, install-ready
+Головы средне-жёсткие (держит Copyfish и др.):
+| ocr chrome extension | 140 | 55 |
+| chrome ocr / ocr extension chrome | 90 | 52-55 |
+Проходимое / целевое:
+| best ocr extension for chrome | 50 | 39 (гем: KD<40 + горячий интент) |
+| free ocr chrome extension, ocr for chrome, image to text ocr chrome extension | ~20 each | n/a (легко, но крохи) |
+Конкурент-бренд в выдаче: Copyfish.
+
+## ИТОГ / СТРАТЕГИЯ (по 4 сидам)
+Короткие головы-конвертеры (picture/image/screenshot to text converter, ocr chrome extension) = KD 54-64,
+держат старые OCR-сайты + Copyfish. Новым доменом НЕ берём.
+Наша адресуемая зона (KD 27-40, ~18K/мес суммарно) = экшн-хвосты:
+- extract text from image + тело кластера (KD 32-40) — ЯДРО, уже в H1/title.
+- how to copy text from image / picture / screenshot (KD 27-35) — сильнейшие, дословно в FAQ summary.
+- how to extract text from a picture (KD 34), how to copy text from image on pc/chromebook (KD 32).
+- image to text app (KD 33), google keep image to text (KD 31), free image to text converter (KD 40).
+- best ocr extension for chrome (KD 39) — вписать «OCR Chrome extension» в текст + FAQ.
+Синонимы гонять равноправно: image / picture / screenshot / photo. Явно назвать продукт «OCR Chrome extension».
+
+## Правки на страницу (план)
+1. Title/H1 — оставить "Extract text from image" (ядро), добавить синоним picture/screenshot в подзаголовок.
+2. Добавить в FAQ дословные вопросы: "How do I copy text from a picture?", "How to copy text from a screenshot?",
+   "Is there an OCR extension for Chrome?", "How to copy text from an image on PC/Chromebook?"
+3. Одна H2 или фича назвать "OCR Chrome extension" явно.
+4. В тексте фич добавить слово "picture" рядом с image/screenshot/photo.
