@@ -21,12 +21,13 @@ DNS-запись www в Dynadot. Ждём пропагацию, дальше п�
      excel→pdf сторона выведена наравне (title/hero/фичи/FAQ/alt).
 4. ПАМЯТЬ: регистратор/DNS домена = Dynadot (аккаунт DENIS TOROPOV). Записано в workspace/MEMORY.md.
 
-## DNS-статус (ВАЖНО — проверить в след. сессии)
+## DNS-статус — ГОТОВО (25.07)
 - Домен devexthub.com на Dynadot. Зарегистрирован 30.06.2026, продление 30.06.2027 (~$8.99/год).
 - apex devexthub.com → A 87.106.208.215 (IONOS, там API/VPN — НЕ трогать).
 - Поддомены api, transcribe → A 87.106.208.215 (рабочие, не трогать).
-- Денис ДОБАВИЛ 25.07: www → CNAME → welders-don.github.io (TTL 5 min). Account Lock был снят.
-- На момент хендоффа `dig www.devexthub.com` ещё пусто (пропагация). ПРОВЕРИТЬ первым делом.
+- www → CNAME → welders-don.github.io — ПРОПАГИРОВАЛСЯ.
+- CNAME-файл в репо (коммит 2ecc2ef), Pages принял домен, TLS approved (до 23.10.2026), Enforce HTTPS = ON.
+- https://www.devexthub.com/pdf-to-excel/ отдаёт 200 + валидный HTTPS. Работает.
 
 ## Следующий шаг (продолжить с этого)
 1. Проверить пропагацию: `dig +short CNAME www.devexthub.com @8.8.8.8` → должно отдать welders-don.github.io.
