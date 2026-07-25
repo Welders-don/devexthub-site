@@ -38,8 +38,16 @@ DNS-запись www в Dynadot. Ждём пропагацию, дальше п�
 3. Проверить https://www.devexthub.com/pdf-to-excel/ открывается с валидным TLS.
 4. CWS дашборд «Convert PDF to Excel» → Store listing → поле Website →
    `https://www.devexthub.com/pdf-to-excel/` (сейчас там голый api.devexthub.com — слитый DR92-бэклинк). За Денисом.
-5. ЭТАП 3 (отложен, ждёт «да» Дениса): поднять Umami на IONOS (Docker+Postgres+nginx-поддомен,
-   напр. stats.devexthub.com или :порт) → счётчик на лендинг. Расширений НЕ касается. GlitchTip НЕ ставить.
+5. ЭТАП 3 — ГОТОВО (25.07): Umami self-host на IONOS поднят и подключён к лендингам.
+   - Docker-стек /opt/umami (umami@3.2.0 + postgres:16 контейнер), слушает 127.0.0.1:3000.
+   - nginx /etc/nginx/sites-enabled/umami.conf: TLS-порт 8444, server_name api.devexthub.com
+     (переиспользован серт api.devexthub.com; 443 занят xray-VPN — не трогать).
+   - Дашборд: https://api.devexthub.com:8444  (логин admin, пароль в /opt/umami/ADMIN_CREDS.txt root:600).
+   - website_id = 9cd8ea39-4803-4558-82cb-4821a96e581d. Трекер-скрипт в index.html + pdf-to-excel/index.html
+     (data-domains ограничивает продом). Коммит 745658b.
+   - Проверено E2E: реальный Chrome-UA хит → событие в БД (events=1). Headless/curl umami режет как bot
+     (это норма). ufw неактивен, порт 8444 открыт снаружи, серт валиден до 23.10.2026.
+   - НЕТ авторизации доп.слоя на дашборде кроме логина umami — открыт наружу. Если надо, добавить IP-allow.
 6. ПОТОМ блог: 3 pillar-статьи (/blog/...) по кластерам из seo-keywords-pdf-to-excel.md:
    «How to convert Excel to PDF free (without losing formatting)», «How to convert a PDF table to Excel»,
    «Can ChatGPT convert PDF to Excel?». + статья «Insert PDF into Excel» (кластер ~3.6K, KD 30-33).
