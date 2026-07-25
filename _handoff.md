@@ -235,3 +235,19 @@ CSS: добавлены .tool .mark (квадрат-марка), .tool.live .tag
 ИТОГО блог: 4 Transcribe + 4 PDF = 8 статей.
 СЛЕДУЮЩЕЕ (по плану Дениса): off-page — по одному ссылки с трастовых сайтов (link building). Контент под них теперь стоит.
 Опц. ещё блог-темы: Extract Text (how to copy text from image/screenshot) и Image Enhancer (how to unblur/fix blurry) — если решим углублять эти два.
+
+## UPDATE 2026-07-25 — БЛОГ ЗАКРЫТ ПОЛНОСТЬЮ (15 статей, коммит a442403)
+Добавлены +7 статей той же болванкой (FAQ-schema, UTM, кросс-линковка внутри кластера, ссылка на лендинг + privacy в футере):
+Extract Text (store eeelkokigmnmogpibbdkjdplpfnobpjb, privacy welders-don.github.io/extracttext-privacy):
+  copy-text-from-an-image (джекпот 5400/KD21), copy-text-from-a-screenshot, extract-text-from-a-picture, convert-jpg-or-png-to-text.
+  Честно: отдаёт copy + .txt, БЕЗ Word/docx (проверено грепом).
+Image Enhancer (store pkkccllbjokjgkffmjcjigfajhojjlmi, privacy welders-don.github.io/image-enhancer-privacy):
+  unblur-a-picture, fix-a-blurry-photo (с «почему размыто»), make-an-image-higher-resolution (upscale).
+  Честно: enhance/unblur/sharpen/upscale, НЕ colorize/background/restore; «honest enhancement, not magic» (проверено грепом).
+ИТОГО блог: 4 Transcribe + 4 PDF + 4 Extract Text + 3 Image Enhancer = 15 статей, все 200.
+ВСЁ ПО КОНТЕНТУ ГОТОВО: витрина + 4 лендинга + 15 статей, всё в едином движке, Umami, UTM, FAQ-schema, кросс-линковка.
+
+## ЖДЁМ + СЛЕДУЮЩЕЕ (решено Денисом)
+Ждём когда CWS пропустит обновления (Homepage URL залистится → бэклинки с DR92 качнут домен). Как пройдёт —
+заходим на профильные/трастовые сайты ПО ОДНОМУ (link building, off-page). Контент под них уже стоит.
+Готовить: список площадок под каждое расширение (директории расширений, Product Hunt, профильные каталоги, гест-посты) + тексты.
