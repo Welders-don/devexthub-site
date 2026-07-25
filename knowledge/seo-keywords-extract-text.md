@@ -46,3 +46,28 @@
 - copy text from image
 - picture to text / photo to text
 - extension-интент: image to text chrome extension, screenshot to text extension, ocr chrome extension
+
+## Сид: "image to text" (232 фразы broad, Total 35 900 — ОБМАНЧИВ, сильно засорён)
+ВНИМАНИЕ: broad-match намешал чужую интентку. НЕ наше:
+- text→image генераторы AI-арта (firefly, midjourney, stable diffusion, deepai, "text to image generator", prompt)
+- редактирование картинки (add text / remove text / edit / put text on image, meme text)
+- alt text для картинок (accessibility)
+Total 35 900 использовать НЕЛЬЗЯ как объём кластера.
+
+Чистый OCR-интент (image→text) из этого экрана, KD≤40:
+| Keyword | Volume | KD |
+|---|---|---|
+| google keep image to text | 720 | 31 |
+| free image to text converter | 480 | 40 |
+| canva image to text converter | 480 | 37 |
+| how to copy text from image | 390 | 35 (и дубль 37) |
+| image to text app | 320 | 33 |
+| python ocr image to text | 260 | 33 |
+| how to copy text from image using pc | 210 | 32 |
+| image to text application | 210 | 36 |
+
+Высокий KD (мимо): how to grab text from image 590·45, google lens image to text 480·42,
+google image to text 390·49, how to get text from image 210·44, ai image to text generator pro 590·45.
+
+TODO Денису: перебить "image to text" с Exclude keywords:
+text to image, add text, remove text, edit, alt text, put text, generator, prompt, diffusion, firefly, midjourney, meme, onto
