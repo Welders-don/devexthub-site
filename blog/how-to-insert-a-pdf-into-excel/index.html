@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Insert a PDF into Excel (Two Ways) | Devexthub</title>
+<meta name="description" content="Two ways to put a PDF into Excel: embed it as an object, or extract its table into real cells. Here's how to do both, and which one you actually want.">
+<link rel="canonical" href="https://www.devexthub.com/blog/how-to-insert-a-pdf-into-excel/">
+<meta property="og:title" content="How to Insert a PDF into Excel (Two Ways)">
+<meta property="og:description" content="Embed a PDF as an object, or extract its table into real Excel cells. Here's how to do both and which one you want.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.devexthub.com/blog/how-to-insert-a-pdf-into-excel/">
+<link rel="stylesheet" href="../../styles.css">
+<script defer src="https://api.devexthub.com:8444/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-domains="www.devexthub.com,devexthub.com"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I insert a PDF into Excel?","acceptedAnswer":{"@type":"Answer","text":"Go to Insert then Object then Create from File, pick the PDF, and it embeds as an icon or preview in the sheet. If you actually want the PDF's numbers in cells, extract the table into Excel instead."}},
+{"@type":"Question","name":"How do I get a PDF's table into Excel cells, not just an icon?","acceptedAnswer":{"@type":"Answer","text":"Embedding a PDF as an object only shows a preview, you can't edit the figures. To get editable data, use a PDF to Excel tool that extracts the table into real cells."}},
+{"@type":"Question","name":"Why does my embedded PDF show as an icon in Excel?","acceptedAnswer":{"@type":"Answer","text":"That's how the Object method works, it attaches the file rather than importing its content. Untick Display as icon for a preview, or extract the table if you need the data."}}]}
+</script>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../../">All tools</a>
+      <a href="../">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <article class="section wrap post reveal">
+    <div class="breadcrumb"><a href="../../">Home</a> / <a href="../">Blog</a> / Insert PDF into Excel</div>
+    <h1>How to insert a PDF into Excel</h1>
+    <p class="post-meta">Convert PDF to Excel &middot; 4 min read</p>
+
+    <p class="lede">"Insert a PDF into Excel" can mean two different things, and the right method depends on which you want: attach the PDF file to the sheet, or get the PDF's numbers into cells you can edit. Here's both.</p>
+
+    <h2>Option 1: Embed the PDF as an object</h2>
+    <p>If you just want the PDF to travel with the workbook, say, attaching a receipt next to a row, embed it as an object:</p>
+    <ol>
+      <li>Click the cell where you want it, then go to <b>Insert &rarr; Object</b>.</li>
+      <li>Choose <b>Create from File</b> and browse to your PDF.</li>
+      <li>Tick <b>Display as icon</b> for a small file icon, or leave it unticked for a first-page preview.</li>
+      <li>Click OK. The PDF is now attached to the sheet.</li>
+    </ol>
+    <p>The catch: it's just a preview or an icon. You can't edit, sort or sum anything inside it, it's a file glued on top of the grid, not data.</p>
+
+    <h2>Option 2: Extract the table into real cells</h2>
+    <p>If what you actually want is the PDF's numbers <em>in</em> the spreadsheet, editable and ready to calculate, you need to extract the table, not embed the file.</p>
+    <p><a href="../../pdf-to-excel/">Convert PDF to Excel</a> is a free Chrome extension that does this in one click:</p>
+    <ol>
+      <li>Open the PDF and click the extension.</li>
+      <li>It rebuilds the table into an editable <b>.xlsx</b> or <b>CSV</b>, column by column.</li>
+      <li>Paste the result into your workbook. The numbers are real numbers you can sum.</li>
+    </ol>
+
+    <div class="post-cta">
+      <h3>Get the PDF's data into your sheet</h3>
+      <p>Editable cells, not an icon. Free, one click.</p>
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Add to Chrome &middot; free</a>
+    </div>
+
+    <h2>Which one do you want?</h2>
+    <ul>
+      <li><b>Keep the original file handy?</b> Embed it as an object (Option 1).</li>
+      <li><b>Work with the numbers?</b> Extract the table into cells (Option 2).</li>
+    </ul>
+    <p>Most people searching for this actually want Option 2, they have a table locked in a PDF and need it in Excel. See our full guide on <a href="../how-to-convert-a-pdf-table-to-excel/">converting a PDF table to Excel</a>.</p>
+
+    <div class="post-cta">
+      <h3>Turn a PDF table into editable data</h3>
+      <p>Rows, columns and totals intact. Free, no sign-up.</p>
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Add to Chrome &middot; free</a>
+    </div>
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../../">Devexthub</a>
+    <a href="../">Blog</a>
+    <a href="../../pdf-to-excel/">Convert PDF to Excel</a>
+    <a href="https://devexthub.com:8443/privacy">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var utm = "utm_source=devexthub_blog&utm_medium=referral&utm_campaign=insert-pdf-into-excel";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
