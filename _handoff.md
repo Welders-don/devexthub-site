@@ -202,3 +202,10 @@ CSS: добавлены .tool .mark (квадрат-марка), .tool.live .tag
 
 ## UPDATE 2026-07-25 — IE SEO развёрнут на unblur (задеплоено 96d561e)
 Денис пробил 2 сида (blurry + image enhance). blurry-кластер = ЗОЛОТО: ~118K, avg KD 28 (unblur/fix blurry/make clearer). image-enhance забрендован (Picsart/Photoshop/Canva), KD42 — вторым. Развёрнуто: title "Unblur & Fix Blurry Photos, free AI image enhancer for Chrome", meta/og на unblur+fix-blurry, +3 FAQ (fix blurry / less blurry / clean up old — честно без colorize). Данные knowledge/seo-keywords-image-enhancer.md. Live-проверено. НЕ пробито (опц.): upscale image / sharpen image / image enhancer chrome extension.
+
+## UPDATE 2026-07-25 — ДЕНИС ЗАКРЫЛ CWS-часть
+Денис: залил новый малый баннер Extract Text в CWS + вставил Homepage URL (www.devexthub.com/...) во ВСЕ листинги
+(pdf-to-excel, transcribe-video-to-text, extract-text-from-image, image-enhancer). Пункты «за Денисом в CWS» ЗАКРЫТЫ.
+Статус: ждём кто первый выйдет из review (IE v1.0.1, ET, PDF v1.0.5, Transcribe — у всех обновления в очереди).
+СЛЕДУЮЩИЙ ЭТАП (план Дениса): наполнять БЛОГ. Порядок: 1) Капитан/Transcribe — несколько статей, 2) PDF (может быстро выйти),
+3) потом off-page: по одному ссылки с трастовых сайтов (link building). Блог на том же静 Pages-сайте, /blog/.
