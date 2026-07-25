@@ -259,3 +259,11 @@ Image Enhancer (store pkkccllbjokjgkffmjcjigfajhojjlmi, privacy welders-don.gith
 - Категории площадок: каталоги расширений, профильные директории инструментов (OCR/PDF/transcription/photo), гест-посты, Q&A (Reddit/Quora — аккуратно), tool-listicles.
 - ВАЖНО про Product Hunt: PDF-to-Excel и Transcribe Video to Text УЖЕ БЫЛИ ЗАЛИСТ�ены на PH и прошли (PDF успешнее Transcribe). НЕ перезапускать эти два на PH. Extract Text и Image Enhancer на PH ещё НЕ были — их можно.
 - Контент под ссылки уже стоит (15 статей + 4 лендинга) — есть куда лить и на что ссылаться.
+
+## UPDATE 2026-07-25 — Umami дашборд закрыт basic-auth (nginx-слой)
+Денис попросил прикрыть открытый порт 8444. Сделано на IONOS (ssh root@127.0.0.1 passwordless):
+- nginx /etc/nginx/sites-enabled/umami.conf: добавлен auth_basic на location / (дашборд/логин), файл /etc/nginx/.umami_htpasswd (644, user=admin, apr1-hash).
+- КРИТИЧНО: /script.js и /api/send вынесены в отдельные location с `auth_basic off;` — иначе сбор статы с лендингов сломался бы. Проверено: дашборд без пароля 401, с паролем 200, /script.js 200, /api/send POST 400 (не 401 — сбор работает).
+- Креды basic-auth: /opt/umami/BASICAUTH_CREDS.txt на сервере (root:600). Логин самого Umami (admin) остался как был в /opt/umami/ADMIN_CREDS.txt.
+- Бэкап старого конфига: /root/umami.conf.bak-<ts>.
+- Если стата вдруг пропадёт после этого — первым делом проверить что /script.js и /api/send отдают не 401.
