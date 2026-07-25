@@ -93,3 +93,26 @@ Website-поле = Homepage URL в Additional fields (не отдельное «
   с HOME=.shots/chrome-home, флаги --headless=old --disable-crashpad --force-prefers-reduced-motion
   (reveal-блоки иначе прозрачные на статик-снимке). .shots/ в .gitignore.
 - Демо-картинка: assets/pdf-to-excel-demo.png (before/after инвойс→xlsx).
+
+## UPDATE 2026-07-25 (ночь) — лендинг Transcribe Video to Text ГОТОВ
+- Страница /transcribe-video-to-text/ создана по движку pdf-to-excel (общий styles.css, Umami-трекер,
+  sticky-шапка, плавающая кнопка, UTM store-ссылки, reveal). CWS ID mgblgaahjeahphiahfakjiabnheanbhj.
+  URL: https://www.devexthub.com/transcribe-video-to-text/  (это ссылка в CWS Homepage URL).
+- ВАЖНО про имя: внутреннее «Капитан/Capitan» НЕ светим. Изначально сделал путь /capitan/ — ПОФИКСИЛ
+  на /transcribe-video-to-text/. В контенте имени нет (везде «Transcribe Video to Text»).
+- Заточка под ключи (собраны в этой сессии, см. daily 2026-07-25): H1 «transcript of any video»,
+  title под youtube transcript + video to text, секция платформ (YouTube/Vimeo/TikTok/Loom/Coursera),
+  FAQ под вопросы (does youtube auto-transcribe, can chatgpt transcribe, how to transcribe).
+- Приватность ДВУХУРОВНЕВАЯ (правка Дениса): YouTube+Vimeo — субтитры тянутся В БРАУЗЕРЕ, ничего не
+  уходит; остальные площадки — AI-стрим третьей стороны, НЕ хранится, не продаётся. НЕ писать «local».
+- Цена: монетизации пока НЕТ ни в одном приложении. Написал просто «free to use», БЕЗ лимитов
+  (15/40 Денис не подтвердил). Платный план не упоминаем — введут, поправим одной строкой.
+- Демо: CSS-мокап (видео+панель транскрипта), без PNG. og:image пока нет (на CWS-ревью не влияет),
+  можно добавить позже.
+- Главная: карточка Video to Text с «Coming» → живая ссылка + «Available on Chrome», добавлена в nav.
+- Privacy-URL расширения: https://welders-don.github.io/transcribe-video-to-text-privacy/ (в футере).
+
+## ЗА ДЕНИСОМ по Капитану
+1. Залить в CWS Homepage URL: https://www.devexthub.com/transcribe-video-to-text/ → submit (ревью ~час).
+2. Позже: подтвердить лимиты free-tier если захотим вписать; og:image-картинку; блог-статьи под
+   платформенные ключи (transcribe tiktok video KD15, vimeo transcript generator KD20).
