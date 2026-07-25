@@ -124,3 +124,25 @@ convert picture to text 2 900·KD54, pictures to text 880·59, picture to text f
    "Is there an OCR extension for Chrome?", "How to copy text from an image on PC/Chromebook?"
 3. Одна H2 или фича назвать "OCR Chrome extension" явно.
 4. В тексте фич добавить слово "picture" рядом с image/screenshot/photo.
+
+## Сид: широкий "copy/extract text" (676 фраз, Total 145 270, avg KD 40) — ДЖЕКПОТ
+Лучшие находки (наш OCR-интент, KD низкий):
+| Keyword | Volume | KD |
+|---|---|---|
+| copy text from image | 5 400 | 21 |  ← ЛУЧШИЙ: объём почти как head, KD вдвое ниже
+| copy text from picture | 2 900 | 34 |
+| jpg to text free | 1 900 | 22 |
+| png to text | 1 800 | 31 |
+| copy image text | 880 | 30 |
+| copy text from image extension | 590 | 41 (наш точный тип) |
+| retrieve text from image | 590 | 38 |
+| scan text from image | 880 | 44 |
+| pull text from image | 720 | 44 |
+
+Кластер image→Word (НЕ берём — мы отдаём .txt/копирование, не .docx):
+image to word 1900·48, image to word converter 1800·30, convert image to word 1300·37,
+picture to word 1000·38, img to word 880·30. Переобещать Word-экспорт нельзя (это фича Video to Text).
+
+СМЕНА АКЦЕНТОВ: "copy text from image" (5400/KD21) поднять почти вровень с "extract text from image".
+Вписать в title + подзаголовок + trust. Добавить формат-угол jpg/png to text (принимаем PNG/JPG — честно).
+Бренд-имя расширения остаётся "Extract Text from Image" → H1 держим на extract, но copy идёт рядом.
