@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YouTube Transcript & Video to Text, free Chrome extension | Devexthub</title>
-<meta name="description" content="Get a YouTube transcript or turn any video into text in one click, right in your browser. Works on YouTube, TikTok, Vimeo, Loom and most sites. 50+ languages, copy or export, no sign-up.">
+<meta name="description" content="Get a YouTube transcript or turn any video into text in one click. Clean speaker-by-speaker layout with timestamps, export to Word, TXT, CSV or SRT. Works on YouTube, TikTok, Vimeo, Loom and most sites. 50+ languages, no sign-up.">
 <link rel="canonical" href="https://www.devexthub.com/transcribe-video-to-text/">
 <meta property="og:title" content="YouTube Transcript & Video to Text, free Chrome extension">
-<meta property="og:description" content="Transcribe any video to text in one click. YouTube, TikTok, Vimeo, Loom and more. 50+ languages, copy or export, no sign-up.">
+<meta property="og:description" content="Transcribe any video to text in one click. Clean speaker layout with timestamps, export to Word, TXT, CSV or SRT. YouTube, TikTok, Vimeo, Loom and more. 50+ languages, no sign-up.">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../styles.css">
 <script defer src="https://api.devexthub.com:8444/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-domains="www.devexthub.com,devexthub.com"></script>
@@ -28,7 +28,7 @@
 <main>
   <section class="hero wrap reveal">
     <h1>Get a transcript of<br>any video in one click</h1>
-    <p class="sub">Turn a YouTube video, TikTok, Vimeo, Loom or almost any recording into clean, searchable text, right in your browser. Copy it, search it, or export it. 50+ languages, no sign-up.</p>
+    <p class="sub">Turn a YouTube video, TikTok, Vimeo, Loom or almost any recording into clean text, laid out by speaker with timestamps. Export it to Word, TXT, CSV or SRT. 50+ languages, no sign-up.</p>
     <div class="cta-row">
       <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj">Add to Chrome &middot; free</a>
     </div>
@@ -43,13 +43,20 @@
       </div>
       <div class="cap-panel">
         <h4>Transcript</h4>
-        <div class="cap-line active w1"></div>
-        <div class="cap-line active w2"></div>
-        <div class="cap-line w3"></div>
-        <div class="cap-line w1"></div>
-        <div class="cap-line w4"></div>
-        <div class="cap-line w2"></div>
-        <div class="cap-line w3"></div>
+        <div class="cap-turn">
+          <div class="cap-meta"><span class="cap-spk">Speaker 1</span><span class="cap-ts">00:04</span></div>
+          <div class="cap-line active w1"></div>
+          <div class="cap-line active w2"></div>
+        </div>
+        <div class="cap-turn">
+          <div class="cap-meta"><span class="cap-spk s2">Speaker 2</span><span class="cap-ts">00:11</span></div>
+          <div class="cap-line w3"></div>
+          <div class="cap-line w4"></div>
+        </div>
+        <div class="cap-turn">
+          <div class="cap-meta"><span class="cap-spk">Speaker 1</span><span class="cap-ts">00:19</span></div>
+          <div class="cap-line w2"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -59,7 +66,7 @@
       <span class="trust-item"><b>One click</b> to transcript</span>
       <span class="trust-item"><b>50+</b> languages</span>
       <span class="trust-item"><b>No</b> account needed</span>
-      <span class="trust-item"><b>Copy or export</b> as text</span>
+      <span class="trust-item"><b>Export to</b> Word, TXT, SRT</span>
     </div>
   </section>
 
@@ -88,7 +95,7 @@
         <div class="card">
           <span class="step-num">3</span>
           <h3>Copy or export</h3>
-          <p>Get clean, readable text in the side panel. Search it, copy it, or export it as a text file, ready to use.</p>
+          <p>Get clean, readable text in the side panel, laid out by speaker. Export it as Word, TXT, CSV or SRT subtitles, ready to use.</p>
         </div>
       </div>
     </div>
@@ -115,6 +122,14 @@
       <p class="lead">Built to do one job well: get spoken words into text you can actually use.</p>
       <div class="grid3">
         <div class="card">
+          <h3>Export to Word, not just text</h3>
+          <p>Save a clean, formatted .docx Word document, or TXT, CSV or SRT subtitles. Most transcript tools stop at plain text, this one doesn't.</p>
+        </div>
+        <div class="card">
+          <h3>Laid out by speaker</h3>
+          <p>Every turn is labeled by speaker with a timestamp, so you get a readable script, not one jumbled block of text.</p>
+        </div>
+        <div class="card">
           <h3>YouTube transcript, instantly</h3>
           <p>Open a video, click once, get the full transcript. Works with and without auto-generated captions.</p>
         </div>
@@ -127,8 +142,8 @@
           <p>The AI handles accents, technical terms and fast speech across dozens of languages.</p>
         </div>
         <div class="card">
-          <h3>Search, copy, export</h3>
-          <p>Turn a recording into a document you can search through, copy quotes from, or save as text.</p>
+          <h3>Search &amp; copy</h3>
+          <p>Search through the transcript, copy the quotes you need, or grab the whole thing at once.</p>
         </div>
       </div>
     </div>
@@ -165,6 +180,14 @@
         <details>
           <summary>Can ChatGPT transcribe a YouTube video?</summary>
           <p>ChatGPT can't watch a video or capture its audio on its own. This extension does the transcription right in your browser, then you can paste that text into ChatGPT to summarize or analyze it.</p>
+        </details>
+        <details>
+          <summary>Can I export the transcript to Word?</summary>
+          <p>Yes. Save it as a formatted .docx Word document, or as TXT, CSV or SRT subtitles. Most transcription tools only hand you plain text, so this is one of the main reasons people switch.</p>
+        </details>
+        <details>
+          <summary>Does it separate speakers?</summary>
+          <p>Yes. The transcript is laid out speaker by speaker with timestamps, so it reads like a clean script instead of one long block of text.</p>
         </details>
         <details>
           <summary>Which platforms are supported?</summary>
