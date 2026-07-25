@@ -13,54 +13,73 @@
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<header class="site-head">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:0;">
+<header class="site-head sticky">
+  <div class="wrap headrow">
     <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
     <nav class="nav">
       <a href="../">All tools</a>
       <a href="#how">How it works</a>
-      <a href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Get it</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Add to Chrome</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <section class="hero wrap">
+  <section class="hero wrap reveal">
     <h1>Stop retyping tables<br>from PDFs</h1>
     <p class="sub">Convert any PDF into a clean, editable Excel sheet in one click. Rows, columns and totals kept exactly, numbers stay real numbers you can sum.</p>
     <div class="cta-row">
-      <a class="btn" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Add to Chrome &middot; free</a>
-      <a class="btn-ghost btn" href="#how">See how it works</a>
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Add to Chrome &middot; free</a>
     </div>
-    <p class="note">No sign-up. Runs in your browser. Works both ways: PDF to Excel and Excel to PDF.</p>
+    <p class="note">No sign-up &middot; runs in your browser &middot; works both ways: PDF to Excel and back</p>
   </section>
 
-  <section class="demo wrap">
-    <img src="../assets/pdf-to-excel-demo.png" alt="A PDF invoice converted into a clean Excel spreadsheet with the same rows and totals">
+  <section class="demo wrap reveal">
+    <img src="../assets/pdf-to-excel-demo.png" alt="A PDF invoice converted into a clean Excel spreadsheet with the same rows and totals" loading="lazy">
   </section>
 
-  <section class="section soft" id="how">
+  <section class="trust reveal">
+    <div class="wrap trust-row">
+      <span class="trust-item"><b>~3 sec</b> per conversion</span>
+      <span class="trust-item"><b>Local</b> parsing, no upload</span>
+      <span class="trust-item"><b>No</b> account needed</span>
+      <span class="trust-item"><b>Both ways</b> PDF &harr; Excel</span>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="problem">
+    <div class="wrap narrow">
+      <h2>Copy-pasting a PDF table never ends well</h2>
+      <p class="lead">Paste it into Excel and everything lands in one column. Numbers turn into text you can't sum. You end up rebuilding the whole table by hand. This does it in one click, with rows and columns where they belong.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
     <div class="wrap">
       <h2>How it works</h2>
-      <p class="lead">Three steps, a few seconds. Your files never leave your machine unless AI mode is used on a scan.</p>
+      <p class="lead">Three steps, a few seconds. Text PDFs never leave your machine.</p>
       <div class="grid3">
         <div class="card">
-          <h3>1. Open the PDF</h3>
+          <span class="step-num">1</span>
+          <h3>Open the PDF</h3>
           <p>Click the extension on any PDF: an invoice, a report, a bank statement.</p>
         </div>
         <div class="card">
-          <h3>2. Extract the tables</h3>
+          <span class="step-num">2</span>
+          <h3>Extract the tables</h3>
           <p>It reads the table structure and pulls every row and column into a spreadsheet.</p>
         </div>
         <div class="card">
-          <h3>3. Save as Excel</h3>
+          <span class="step-num">3</span>
+          <h3>Save as Excel</h3>
           <p>Download a clean .xlsx. Numbers stay numbers, totals stay totals, ready to edit.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section soft reveal">
     <div class="wrap">
       <h2>Why people use it</h2>
       <p class="lead">Built to do one job well, without the clutter of a full PDF suite.</p>
@@ -81,14 +100,56 @@
     </div>
   </section>
 
-  <section class="section soft">
+  <section class="section reveal" id="privacy">
+    <div class="wrap narrow privacy-box">
+      <h2>Your files stay yours</h2>
+      <p class="lead" style="margin-bottom:18px;">For a tool that reads invoices and bank statements, that is the whole point.</p>
+      <ul class="ticks">
+        <li>Text PDFs are parsed <b>locally in your browser</b>, nothing is uploaded.</li>
+        <li><b>No account, no email, no sign-up</b> to start converting.</li>
+        <li>AI mode (for scanned or image-only PDFs) is <b>opt-in</b>, you choose when to use it.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Is it free?</summary>
+          <p>Yes. Converting text-based PDFs to Excel is free with no sign-up. AI mode for scanned files is an optional paid add-on.</p>
+        </details>
+        <details>
+          <summary>Do my files get uploaded anywhere?</summary>
+          <p>Text-based PDFs are parsed locally in your browser and never leave your machine. Only if you turn on AI mode for a scanned file does that page get processed remotely.</p>
+        </details>
+        <details>
+          <summary>Which files does it handle?</summary>
+          <p>Invoices, bank statements, reports, price lists, any PDF with tables. It also converts the other way, Excel to PDF.</p>
+        </details>
+        <details>
+          <summary>Do I need an account?</summary>
+          <p>No. Install it and start converting. There is no login and no email required.</p>
+        </details>
+        <details>
+          <summary>Does it work on scanned PDFs?</summary>
+          <p>Yes, through AI mode, which reads photographed or image-only PDFs where there is no selectable text.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
     <div class="wrap" style="text-align:center;">
       <h2>Turn your next PDF into Excel</h2>
       <p class="lead" style="margin:0 auto 26px;">Free, one click, right inside Chrome.</p>
-      <a class="btn" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Add to Chrome &middot; free</a>
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Add to Chrome &middot; free</a>
     </div>
   </section>
 </main>
+
+<a class="sticky-cta store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf">Add to Chrome &middot; free</a>
 
 <footer class="site-foot">
   <div class="wrap">
@@ -98,5 +159,29 @@
     <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
   </div>
 </footer>
+
+<script>
+// Add UTM tags to every Chrome Web Store link so installs show up
+// as "devexthub_landing" in the CWS developer dashboard sources.
+(function () {
+  var utm = "utm_source=devexthub_landing&utm_medium=referral&utm_campaign=pdf-to-excel";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  // Reveal-on-scroll
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  // Show floating CTA once the hero button is scrolled out of view
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
 </body>
 </html>

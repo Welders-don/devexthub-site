@@ -33,6 +33,9 @@ a { color: var(--green-deep); }
   padding: 20px 0;
   border-bottom: 1px solid var(--line);
 }
+.site-head.sticky { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.92); backdrop-filter: saturate(180%) blur(8px); }
+.headrow { display: flex; align-items: center; justify-content: space-between; width: 100%; padding-left: 22px; padding-right: 22px; }
+.nav { display: flex; align-items: center; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); text-decoration: none; font-size: 18px; }
 .brand .dot { width: 22px; height: 22px; border-radius: 6px; background: var(--green); display: inline-block; }
 .nav a { color: var(--muted); text-decoration: none; font-size: 15px; margin-left: 18px; }
@@ -52,6 +55,20 @@ a { color: var(--green-deep); }
   border: 1px solid var(--line); padding: 13px 22px;
 }
 .btn-ghost:hover { background: var(--bg-soft); }
+.btn-sm { padding: 9px 16px; font-size: 15px; margin-left: 18px; }
+.btn-lg { padding: 16px 32px; font-size: 18px; box-shadow: 0 6px 18px rgba(22,136,74,.22); }
+.btn-lg:hover { box-shadow: 0 8px 22px rgba(15,107,57,.28); }
+
+/* sticky floating CTA (mobile + long scroll) */
+.sticky-cta {
+  position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+  z-index: 45; background: var(--green); color: #fff; text-decoration: none;
+  font-weight: 600; font-size: 16px; padding: 13px 26px; border-radius: 30px;
+  box-shadow: 0 8px 24px rgba(15,107,57,.32);
+  opacity: 0; pointer-events: none; transition: opacity .25s ease;
+}
+.sticky-cta.show { opacity: 1; pointer-events: auto; }
+.sticky-cta:hover { background: var(--green-deep); }
 
 /* hero */
 .hero { padding: 68px 0 40px; text-align: center; }
@@ -90,6 +107,54 @@ a { color: var(--green-deep); }
 .tool.soon { opacity: .72; }
 .tool.soon:hover { transform: none; border-color: var(--line); }
 
+/* trust strip */
+.trust { padding: 6px 0 46px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 12px 30px; justify-content: center; }
+.trust-item { color: var(--muted); font-size: 15px; }
+.trust-item b { color: var(--ink); }
+
+/* narrow text column */
+.narrow { max-width: 720px; }
+
+/* step numbers */
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--bg-soft); color: var(--green-deep);
+  font-weight: 700; font-size: 16px; margin-bottom: 10px;
+}
+
+/* privacy ticks */
+.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.ticks li { position: relative; padding-left: 30px; color: var(--muted); }
+.ticks li b { color: var(--ink); }
+.ticks li::before {
+  content: ""; position: absolute; left: 0; top: 6px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green);
+}
+.ticks li::after {
+  content: ""; position: absolute; left: 6px; top: 10px;
+  width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* FAQ */
+.faq { display: grid; gap: 12px; }
+.faq details {
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px 20px;
+}
+.faq summary { font-weight: 600; cursor: pointer; list-style: none; font-size: 16.5px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; float: right; color: var(--green); font-weight: 700; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { margin: 12px 0 0; color: var(--muted); font-size: 15.5px; }
+
+/* reveal on scroll */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
 /* footer */
 .site-foot { border-top: 1px solid var(--line); padding: 34px 0; color: var(--muted); font-size: 14px; }
 .site-foot a { color: var(--muted); text-decoration: none; margin-right: 16px; }
@@ -98,4 +163,11 @@ a { color: var(--green-deep); }
 @media (max-width: 760px) {
   .grid3, .tools { grid-template-columns: 1fr; }
   .hero { padding: 46px 0 26px; }
+  .nav a:not(.btn) { display: none; }
+  .btn-sm { margin-left: 0; }
+  .trust-row { gap: 10px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
