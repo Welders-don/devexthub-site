@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devexthub Blog, guides for browser tools that do one thing well</title>
+<meta name="description" content="Short, practical guides: how to transcribe videos, convert PDF to Excel, extract text from images and enhance photos, right in your browser.">
+<link rel="canonical" href="https://www.devexthub.com/blog/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8444/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-domains="www.devexthub.com,devexthub.com"></script>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="./">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap reveal" style="padding-bottom:20px;">
+    <h1>Guides &amp; how-tos</h1>
+    <p class="sub">Short, practical walkthroughs for getting a job done in your browser, no fluff.</p>
+  </section>
+
+  <section class="section wrap reveal" style="padding-top:10px;">
+    <div class="post-list">
+      <a class="post-card" href="how-to-get-a-youtube-transcript/">
+        <span class="k">Transcribe Video to Text</span>
+        <h3>How to get a YouTube transcript (free, in one click)</h3>
+        <p>Copy the full transcript of any YouTube video, with timestamps, and export it to Word or TXT, without leaving the page.</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a href="./">Blog</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
