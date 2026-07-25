@@ -116,3 +116,12 @@ Website-поле = Homepage URL в Additional fields (не отдельное «
 1. Залить в CWS Homepage URL: https://www.devexthub.com/transcribe-video-to-text/ → submit (ревью ~час).
 2. Позже: подтвердить лимиты free-tier если захотим вписать; og:image-картинку; блог-статьи под
    платформенные ключи (transcribe tiktok video KD15, vimeo transcript generator KD20).
+
+## UPDATE 2026-07-25 — добавлены УТП (правка Дениса)
+Ключевые отличия от конкурентов, вшиты в лендинг transcribe-video-to-text:
+- ЭКСПОРТ В WORD (.docx) — killer-фича, «мало кто из конкурентов делает». + TXT / CSV / SRT (субтитры).
+- РАСКЛАДКА ПО СПИКЕРАМ + таймкоды, без мешанины (диаризация) — читается как скрипт, не блоб текста.
+Отражено в: hero sub, trust-строке, шаге 3, отдельных фиче-картах (Export to Word / Laid out by speaker),
+FAQ (+2: «Can I export to Word?», «Does it separate speakers?»), meta description + og. Демо-мокап
+переделан на спикер-раскладку (Speaker 1/2 + таймкоды 00:04/00:11/00:19).
+ЖДЁМ от Дениса: 5 промо-картинок с CSV/примером → заменить CSS-мокап на реальный скрин + сделать og:image PNG.
