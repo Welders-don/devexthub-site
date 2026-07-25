@@ -189,6 +189,24 @@ a { color: var(--green-deep); }
 .pill .free{font-size:12px;color:#1a9d63;font-weight:700}
 @media(max-width:640px){.cap-demo{grid-template-columns:1fr}.cap-video{min-height:200px}}
 
+/* image-enhancer landing — before/after (blurry -> sharp) demo */
+.ie-demo{position:relative;max-width:760px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 64px rgba(20,40,30,.18);aspect-ratio:16/9}
+.ie-scene{position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 28% 34%, #ffd98a 0, transparent 26%),
+    radial-gradient(circle at 72% 62%, #7db4ff 0, transparent 32%),
+    radial-gradient(circle at 52% 78%, #6be0b0 0, transparent 30%),
+    linear-gradient(135deg,#243a5e 0%,#3f6098 100%);}
+.ie-scene::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.55) 1px, transparent 1.4px);
+  background-size:12px 12px;opacity:.5}
+.ie-blur{position:absolute;inset:0;clip-path:inset(0 50% 0 0)}
+.ie-blur .ie-scene{filter:blur(3.5px) saturate(.82) brightness(.96)}
+.ie-divide{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(2,20,12,.12)}
+.ie-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(2,20,12,.35);display:flex;align-items:center;justify-content:center;color:var(--green-deep);font-weight:800;font-size:15px}
+.ie-lbl{position:absolute;top:14px;font-size:12px;font-weight:800;letter-spacing:.4px;color:#fff;background:rgba(15,23,42,.55);padding:4px 11px;border-radius:20px;backdrop-filter:blur(3px)}
+.ie-lbl.b{left:14px}.ie-lbl.a{right:14px;background:rgba(22,136,74,.85)}
+
 /* extract-text landing — image→text demo mockup */
 .ox-demo{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(20,40,30,.16);border:1px solid var(--line);background:#fff}
 .ox-img{position:relative;background:linear-gradient(150deg,#eef5f0 0%,#dbece3 100%);min-height:290px;padding:26px 24px;display:flex;flex-direction:column;justify-content:center;gap:13px}
