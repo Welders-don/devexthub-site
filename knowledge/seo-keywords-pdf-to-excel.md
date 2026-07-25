@@ -13,6 +13,26 @@
 Ключи КЛАСТЕРИЗУЮТСЯ: одна статья ловит весь кластер (10-15 формулировок одного вопроса), а не по 390 за штуку. Одна pillar-статья = 1500-2000 показов.
 Направление excel→pdf стабильно легче (KD 50-56), чем pdf→excel (65+). Расширение умеет обе стороны — держать excel→pdf на лендинге наравне.
 
+## Обе стороны достижимой зоны (KD<50), объёмы US
+- pdf→excel seed: 247 ключей, 42,820 показов, Avg KD 37
+- excel→pdf seed: 233 ключа, 44,690 показов, Avg KD 37 (БОЛЬШЕ и легче — расширение умеет обе стороны, покрывать равнозначно)
+- Questions (how-to) зона: 79 вопросов, 17,840 показов, Avg KD 36 — чистое сырьё под блог
+
+## Находка: кластер "insert PDF into Excel" (~3,600, KD 30-33)
+Intent = встроить PDF объектом в ячейку (не конвертация), но объём большой и KD мягкий:
+- how to insert a pdf into excel — 1,300 / KD 33
+- how to insert pdf into excel — 1,000 / KD 30
+- how to insert pdf in excel — 880 / KD 31
+- how to add pdf to excel — 390 / KD 30
+Статья "Insert PDF into Excel" показывает оба пути (встроить объектом vs конвертировать в данные), мягко продаёт наш способ. Дешёвый вход.
+
+## excel→pdf core (лёгкие, KD 30-38)
+- excel to pdf — 1,800 / KD 38
+- xlsx to pdf — 1,000 / KD 38
+- how to save an excel file as a pdf — 1,000 / KD 31
+- convert xlsx to pdf — 720 / KD 35
+- save excel as pdf — 390 / KD 42
+
 ## CORE tool-ключи → в ЛЕНДИНГ (H1, подзаголовки, alt, meta)
 Коммерческий intent, низкий KD, ровно наша функция:
 - extract data from pdf to excel — 320 / KD 35
