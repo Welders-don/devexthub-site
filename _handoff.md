@@ -125,3 +125,14 @@ Website-поле = Homepage URL в Additional fields (не отдельное «
 FAQ (+2: «Can I export to Word?», «Does it separate speakers?»), meta description + og. Демо-мокап
 переделан на спикер-раскладку (Speaker 1/2 + таймкоды 00:04/00:11/00:19).
 ЖДЁМ от Дениса: 5 промо-картинок с CSV/примером → заменить CSS-мокап на реальный скрин + сделать og:image PNG.
+
+## UPDATE 2026-07-25 — реальные промо-скрины + СТРАНИЦА УШЛА НА РЕВЬЮ
+- Денис прислал 5 промо-баннеров (в .media проекта Devexthub-site). Поставлены на лендинг:
+  * assets/tvt-demo.jpg (YouTube+панель Transcribe, таймкоды, Export .txt) → hero demo, заменил CSS-мокап.
+  * assets/tvt-platforms.jpg (сетка 50+ платформ) → секция «Works where you watch» (под пиллами).
+  * assets/tvt-og.jpg (широкий баннер) → og:image + twitter:image (превью в соцсетях).
+  * assets/tvt-audio.jpg (Spotify/подкасты) → В ЗАПАСЕ, не вставлен (можно блок про аудио/AI).
+- CWS: Homepage URL с лендингом УЖЕ ОТПРАВЛЕН НА РЕВЬЮ Денисом (ревью Капитана ~час).
+- Видео для шортса на диске НЕ найдено (ни mp4/mov/webm нигде). Если нужно — пересобирать.
+- Мелкий TODO (некритично): в styles.css остались мёртвые .cap-* правила (демо-мокап заменён картинкой);
+  рядом живут .platforms/.pill — вычищать аккуратно, только .cap-* строки.
