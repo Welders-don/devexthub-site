@@ -189,6 +189,22 @@ a { color: var(--green-deep); }
 .pill .free{font-size:12px;color:#1a9d63;font-weight:700}
 @media(max-width:640px){.cap-demo{grid-template-columns:1fr}.cap-video{min-height:200px}}
 
+/* hub homepage — tool card mark + live dot */
+.tool .mark {
+  width: 42px; height: 42px; border-radius: 11px;
+  background: var(--bg-soft); color: var(--green-deep);
+  border: 1px solid var(--line);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 16px; letter-spacing: .02em;
+  margin-bottom: 4px;
+}
+.tool.live .tag::before {
+  content: ""; display: inline-block;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green); margin-right: 8px; vertical-align: 1px;
+}
+.tool.soon .mark { color: var(--muted); opacity: .8; }
+
 /* video-to-text: speaker turns in demo panel */
 .cap-turn{margin-bottom:15px}
 .cap-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
