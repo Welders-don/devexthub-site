@@ -154,3 +154,18 @@ FAQ (+2: «Can I export to Word?», «Does it separate speakers?»), meta descri
 - transcribe-video-to-text/ — ЖИВАЯ, на CWS-ревью (Homepage URL отправлен).
 - extract-text — НЕТ страницы (карточка «Coming»). CWS: Extracttext, у Дениса на заливку (см. его проект).
 - image-enhancer — НЕТ страницы (карточка «Coming»). CWS: на review (pkkccllbjokjgkffmjcjigfajhojjlmi).
+
+## UPDATE 2026-07-25 — ГЛАВНАЯ-ВИТРИНА ХАБА собрана (коммит 54fab91, локально, НЕ запушено)
+Переделал index.html из черновика в полноценную витрину «чудо-машины» на общем движке (styles.css):
+- Hero под всю линейку (H1 «Small browser tools that do one thing well» + подзаголовок convert/transcribe/extract/enhance), 2 CTA (See all tools #tools + Try PDF to Excel), note free/no-signup/browser.
+- Trust-полоса: 2 tools live · no sign-up · runs in your browser · free.
+- Showcase #tools: 4 карточки с марками XL/VT/TX/IE. Живые (pdf-to-excel/, transcribe-video-to-text/) — класс .tool.live с зелёным dot «Available on Chrome». Extract Text / Image Enhancer — .tool.soon «Coming soon».
+- Блок #why «Why Devexthub» (grid3): One job done right / Private by design / No sign-up no friction — общий клей линейки.
+- Hub-FAQ #faq (free? / данные? / аккаунт? / браузеры? / новые тулы?).
+- reveal-анимации + sticky-шапка + плавающая кнопка «See all tools» (#tools) + Umami-трекер.
+CSS: добавлены .tool .mark (квадрат-марка), .tool.live .tag::before (зелёный dot), .tool.soon .mark — в конце styles.css перед .cap-turn.
+Карточки ведут на ВНУТРЕННИЕ лендинги (не в CWS) → единая атрибуция через UTM самих лендингов, на хабе store-ссылок нет.
+Скриншот проверен: .shots/home.png — раскладка цельная, в фирменном зелёном.
+
+ОСТАЛОСЬ: запушить в Pages (git push → авто-ребилд) — RED, жду ОК Дениса. После пуша www.devexthub.com/ станет витриной.
+Дальше по плану: лендинги Extract Text и Image Enhancer по образцу (тогда 2 «Coming» карточки станут живыми).
