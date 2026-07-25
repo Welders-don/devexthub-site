@@ -40,3 +40,25 @@ Head "blurry"/"blur" 2 900·KD44 — можно не бояться, тело к
 3. Держать козырь против гигантов: в браузере, без загрузки, без ватермарка/лимита, free, no sign-up
    (ровно "ai image enhancer free no sign up").
 4. upscale/resolution оставить как вторую фичу (enhance image resolution — реальный ключ).
+
+## Сид: "sharpen image" (137 фраз, Total 38 370, avg KD 34) — БРЕНД-КОЛЛИЗИЯ
+Почти весь объём = розничный бренд "Sharper Image" (массажёры, compression boots, дроны, laser tag,
+bluetooth speaker, near me, store). НЕ наше. Total 38K использовать нельзя.
+Наши реальные (и слабые):
+| Keyword | Volume | KD |
+|---|---|---|
+| sharpen an image | 590 | 41 |
+| sharpen image ai | 320 | 46 |
+| how to sharpen a blurry image | 260 | 44 |
+| how to sharpen image in photoshop | 880 | 33 (но Photoshop-туториал) |
+Вывод: "sharpen" — плохой таргет (бренд + KD 41-46). Держать в копирайте ниже unblur/fix-blurry.
+
+## Сид: "increase image resolution" (5 фраз, Total 1 760, avg KD 34) — мелко + Photoshop
+how to increase resolution of image in photoshop 880·32, increase resolution of image photoshop 480·37,
+increase resolution of image in photoshop 260·30, how to increase jpeg image resolution 70·45,
+increase image resolution in photoshop 70·30. Почти всё Photoshop-специфично. Не наш трафик.
+
+## РЕСЁРЧ IE ЗАКРЫТ — финальный вывод
+Якорь = blurry/unblur (118K, KD28). enhance/sharpen/resolution — слабые/забрендованные, вторичны.
+Страница уже развёрнута на unblur/fix-blurry (title/meta/og/FAQ). Доп. правок НЕ требуется.
+Непробито: upscale image / image upscaler (заведомо жёсткие головы, тело — контентом/блогом позже).
