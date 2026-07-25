@@ -223,3 +223,15 @@ CSS: добавлены .tool .mark (квадрат-марка), .tool.live .tag
 - СЛЕДУЮЩЕЕ: PDF-кластер статьи (хвост жирнее). Идеи из seo-keywords-pdf-to-excel.md: "How to convert a PDF table to Excel",
   "How to convert Excel to PDF (without losing formatting)", "Can ChatGPT convert PDF to Excel?", "Insert PDF into Excel".
   Потом off-page ссылки с трастовых сайтов (последняя фаза, когда контент стоит).
+
+## UPDATE 2026-07-25 — +4 статьи PDF-to-Excel LIVE (блог = 8 статей)
+Коммит ac31b38. Store id PDF: hboeifcemhbamnoakkbalaemdleehfnf. Privacy: https://devexthub.com:8443/privacy. UTM campaign per article.
+Честно: текстовые PDF free, AI-режим сканов — платный opt-in; форматы Excel(.xlsx)/CSV + Excel→PDF. НЕ Word, НЕ Google Sheets (выкинуто).
+1. how-to-convert-a-pdf-table-to-excel (core: copy/extract table, keep numbers).
+2. how-to-convert-excel-to-pdf (pillar ~2000, without losing formatting + нативный способ через Excel).
+3. can-chatgpt-convert-pdf-to-excel (сравнительная: ChatGPT врёт с числами + приватность).
+4. how-to-insert-a-pdf-into-excel (кластер ~3600 KD30-33; честно 2 пути: embed object vs extract data).
+Все кросс-линкуются между собой и на лендинг /pdf-to-excel/. Проверено live 200, блог-индекс 8 карточек.
+ИТОГО блог: 4 Transcribe + 4 PDF = 8 статей.
+СЛЕДУЮЩЕЕ (по плану Дениса): off-page — по одному ссылки с трастовых сайтов (link building). Контент под них теперь стоит.
+Опц. ещё блог-темы: Extract Text (how to copy text from image/screenshot) и Image Enhancer (how to unblur/fix blurry) — если решим углублять эти два.
