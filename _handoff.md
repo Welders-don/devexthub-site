@@ -1,8 +1,32 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
-## Где остановились (2026-07-25)
-Лендинг PDF-to-Excel полностью переделан + заточен под SEO-ключи. Денис ТОЛЬКО ЧТО добавил
-DNS-запись www в Dynadot. Ждём пропагацию, дальше подключить к GitHub Pages и вписать в CWS.
+## Где остановились (2026-07-25, вечер)
+DNS + TLS www.devexthub.com живые, Umami-аналитика поднята на IONOS и подключена к лендингам,
+сделана новая Small promo tile для PDF-to-Excel. Ждём: Денис зальёт PDF-to-Excel v1.0.5 в CWS
+(аналитика оттока + новая плитка + Website-ссылка). Следующая задача — лендинг Капитана.
+
+## Сделано в этот заход (вечер 25.07)
+- DNS www пропагировался → CNAME подключён к Pages, TLS approved, Enforce HTTPS ON.
+  https://www.devexthub.com/pdf-to-excel/ = 200 + валидный HTTPS. (детали ниже в «DNS-статус»)
+- Umami self-host на IONOS поднят и E2E-проверен. (детали ниже в «ЭТАП 3»)
+- Новая Small promo tile 440x280 для PDF-to-Excel: PDF↔Excel визуал, двусторонняя жирная SVG-стрелка,
+  цветной диагональный градиент (синий→циан→зелёный), белый заголовок. Живёт в ДРУГОМ репо:
+  ~/projects/Pdftoexel/releases/promo/tile-440x280.png (+ исходник tile-440x280-v3.html), коммит ab301df.
+  Рендер-рецепт: headless=old, 2x в окно 440x420, потом ffmpeg crop 880x560 + scale 440x280 lanczos.
+  ВАЖНАЯ ГРАБЛЯ: chrome --headless=NEW клипает низ вьюпорта при window 440x280 (заголовок пропадал 6 раз) —
+  рендерить в ВЫСОКОЕ окно (420) и кропить ffmpeg. PIL/convert на машине НЕТ, только ffmpeg.
+
+## Обсудили (стратегия, решений по коду не приняли)
+- host_permissions: аудит манифестов — <all_urls> у Capitan, Extracttext, Ailegal; Pdftoexel только
+  api.devexthub.com/* (узко, ок); Imageenhancer без host. Вывод: НЕ раздавать <all_urls> впрок
+  (CWS тормозит/режектит неоправданные права — причина медленного ревью Капитана). Правильно —
+  optional_host_permissions + запрос в рантайме при первом использовании фичи (нет install-варнинга,
+  нет слепого update-промпта существующим). Возможный TODO: проверить, реально ли Extracttext/Ailegal
+  нужен <all_urls>, или это лишний груз.
+- Почему PDF-to-Excel ревьюится дольше Капитана: не аккаунт, а permissions/чувствительность (читает
+  файлы юзера + AI) → больше проверок Google. Это норма.
+- Website-поле в CWS (Homepage URL в блоке Additional fields) — просто ссылка, permissions/privacy
+  не меняет, тип расширения не трогает.
 
 ## Что сделано в эту сессию (2026-07-25)
 1. РЕСЁРЧ конверсионных лендингов молодых расширений (агент). Выжимка в knowledge проекта нет
@@ -30,15 +54,20 @@ DNS-запись www в Dynadot. Ждём пропагацию, дальше п�
 - https://www.devexthub.com/pdf-to-excel/ отдаёт 200 + валидный HTTPS. Работает.
 
 ## Следующий шаг (продолжить с этого)
-1. Проверить пропагацию: `dig +short CNAME www.devexthub.com @8.8.8.8` → должно отдать welders-don.github.io.
-2. Когда резолвится — подключить кастомный домен к GitHub Pages:
-   - вернуть файл CNAME: `mv CNAME.later CNAME` (в нём www.devexthub.com), git commit + push;
-   - ИЛИ через Pages API: PUT /repos/Welders-don/devexthub-site/pages c cname=www.devexthub.com.
-   - GitHub сам выпустит HTTPS (Enforce HTTPS) — подождать до часа.
-3. Проверить https://www.devexthub.com/pdf-to-excel/ открывается с валидным TLS.
-4. CWS дашборд «Convert PDF to Excel» → Store listing → поле Website →
-   `https://www.devexthub.com/pdf-to-excel/` (сейчас там голый api.devexthub.com — слитый DR92-бэклинк). За Денисом.
-5. ЭТАП 3 — ГОТОВО (25.07): Umami self-host на IONOS поднят и подключён к лендингам.
+1. ЗА ДЕНИСОМ — залить PDF-to-Excel v1.0.5 в CWS: cancel review 1.0.4 → upload zip
+   (~/projects/Pdftoexel/releases/Convert-PDF-to-Excel-1.0.5.zip) → в Store listing загрузить новую
+   Small promo tile (~/projects/Pdftoexel/releases/promo/tile-440x280.png) → вписать Homepage URL
+   `https://www.devexthub.com/pdf-to-excel/` (блок Additional fields) → submit.
+2. СЛЕДУЮЩАЯ ЗАДАЧА (агент) — лендинг Капитана на devexthub.com (страница /capitan/ по образцу
+   /pdf-to-excel/, с трекером Umami + ссылкой в CWS). Капитан ревьюится быстро → можно раскачивать
+   сразу, пока PDF догоняет. Заточить под SEO-ключи Капитана (screen recorder и т.п.).
+3. ПОТОМ блог: 3 pillar-статьи (см. п.«блог» ниже).
+
+--- УЖЕ СДЕЛАНО (для истории) ---
+DNS+Pages+TLS: см. секцию «DNS-статус — ГОТОВО» выше. Umami: см. «ЭТАП 3» ниже.
+Website-поле = Homepage URL в Additional fields (не отдельное «Website»).
+
+ЭТАП 3 — ГОТОВО (25.07): Umami self-host на IONOS поднят и подключён к лендингам.
    - Docker-стек /opt/umami (umami@3.2.0 + postgres:16 контейнер), слушает 127.0.0.1:3000.
    - nginx /etc/nginx/sites-enabled/umami.conf: TLS-порт 8444, server_name api.devexthub.com
      (переиспользован серт api.devexthub.com; 443 занят xray-VPN — не трогать).
