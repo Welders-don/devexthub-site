@@ -42,12 +42,15 @@ Intent = встроить PDF объектом в ячейку (не конве�
 - insert pdf in excel — 590 / KD 33
 - how to convert table in pdf to excel — 40 / KD 36
 
-## Смежные форматы (брать ТОЛЬКО если расширение умеет — уточнить у Дениса)
-- import pdf into excel — 720 / KD 31
-- convert word to excel — 1,300 / KD 31
+## Смежные форматы — РЕШЕНО (Денис 25.07): расширение умеет PDF↔Excel + CSV. НЕ Word, НЕ Sheets.
+БЕРЁМ (CSV):
 - how to convert pdf to csv — 590 / KD 32
 - pdf to csv — 390 / KD 37
-- convert pdf to sheets (Google Sheets) — 320 / KD 32
+НЕ БЕРЁМ (не умеет, не обещать):
+- convert word to excel — 1,300 / KD 31 — ВЫКИНУТО (нет Word)
+- convert excel to word / xls to word — ВЫКИНУТО
+- convert pdf to sheets (Google Sheets) — ВЫКИНУТО (натяжка через .xlsx)
+Формулировка на сайте: "Export to Excel or CSV".
 
 ## Блог pillar-статьи (how-to кластеры, KD 30-49)
 
