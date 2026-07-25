@@ -185,3 +185,6 @@ CSS: добавлены .tool .mark (квадрат-марка), .tool.live .tag
   https://www.devexthub.com/extract-text-from-image/ = 200, маркеры подтверждены live.
 - ЗА ДЕНИСОМ: вписать Homepage URL https://www.devexthub.com/extract-text-from-image/ в CWS-листинг Extract Text (Additional fields) при след. заливке. Опц.: реальные промо-скрины → заменить CSS-мокап + og:image (как сделали для transcribe).
 - ОСТАЛОСЬ по хабу: лендинг Image Enhancer (последняя «Coming» карточка). Он на CWS-review (pkkccllbjokjgkffmjcjigfajhojjlmi) — делать когда пройдёт/будет ID стабилен.
+
+## UPDATE 2026-07-25 — джекпот-ключ, смена акцентов (задеплоено b74df19)
+5-й сид (широкий copy/extract text, 145K) дал "copy text from image" 5400·KD21 — лучший ключ ресёрча (легче нашего head 9900·KD44). Плюс jpg to text free 1900·KD22, png to text 1800·KD31, copy text from picture 2900·KD34. Кластер image→Word НЕ берём (мы .txt/копирование, не .docx). Правки: title "Extract & Copy Text from Any Image", meta/og, hero sub ведёт с "Copy the text… JPG or PNG", +FAQ "How do I copy text from a JPG or PNG?". Live-проверено. Данные в knowledge/seo-keywords-extract-text.md.
