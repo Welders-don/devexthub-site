@@ -209,3 +209,17 @@ CSS: добавлены .tool .mark (квадрат-марка), .tool.live .tag
 Статус: ждём кто первый выйдет из review (IE v1.0.1, ET, PDF v1.0.5, Transcribe — у всех обновления в очереди).
 СЛЕДУЮЩИЙ ЭТАП (план Дениса): наполнять БЛОГ. Порядок: 1) Капитан/Transcribe — несколько статей, 2) PDF (может быстро выйти),
 3) потом off-page: по одному ссылки с трастовых сайтов (link building). Блог на том же静 Pages-сайте, /blog/.
+
+## UPDATE 2026-07-25 — БЛОГ запущен, 4 статьи Капитана LIVE
+- /blog/ создан (индекс + проза-стиль .post/.post-card/.post-cta/.breadcrumb в styles.css). Blog в nav+футер главной.
+- 4 статьи Transcribe Video to Text (болванка: breadcrumb, lede, «fastest way» шаги, 2 CTA-бокса, FAQPage schema, UTM campaign, кросс-линковка, ссылка на лендинг /transcribe-video-to-text/):
+  1. how-to-get-a-youtube-transcript (ключ 2400/KD29 + does youtube auto-transcribe + can chatgpt) — флагман.
+  2. how-to-transcribe-a-tiktok-video (transcribe tiktok 480/KD15).
+  3. how-to-get-a-vimeo-transcript (vimeo transcript 320/KD20).
+  4. can-chatgpt-transcribe-a-video (сравнительная, тёплый интент, линкует все 3).
+- Денис утвердил формат. Правка: TXT-формат вывода упоминать ЯВНО везде (Word/TXT/CSV/SRT) — расширение реально отдаёт TXT, было пропущено в одном буллете. Внесено в болванку.
+- Store id transcribe: mgblgaahjeahphiahfakjiabnheanbhj. UTM: utm_source=devexthub_blog.
+- ЗАДЕПЛОЕНО: коммиты 31601c8 (блог+1я) → bc67f9e (+3). Все 4 на www.devexthub.com/blog/*, проверено 200.
+- СЛЕДУЮЩЕЕ: PDF-кластер статьи (хвост жирнее). Идеи из seo-keywords-pdf-to-excel.md: "How to convert a PDF table to Excel",
+  "How to convert Excel to PDF (without losing formatting)", "Can ChatGPT convert PDF to Excel?", "Insert PDF into Excel".
+  Потом off-page ссылки с трастовых сайтов (последняя фаза, когда контент стоит).
