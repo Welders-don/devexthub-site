@@ -267,3 +267,26 @@ Image Enhancer (store pkkccllbjokjgkffmjcjigfajhojjlmi, privacy welders-don.gith
 - Креды basic-auth: /opt/umami/BASICAUTH_CREDS.txt на сервере (root:600). Логин самого Umami (admin) остался как был в /opt/umami/ADMIN_CREDS.txt.
 - Бэкап старого конфига: /root/umami.conf.bak-<ts>.
 - Если стата вдруг пропадёт после этого — первым делом проверить что /script.js и /api/send отдают не 401.
+
+## UPDATE 2026-07-26 — OFF-PAGE СТАРТ (Transcribe), аккаунт для сабмитов
+Off-page разморожена: все расширения кроме PDF опубликованы в CWS → Homepage URL залистились → можно линкбилдинг.
+Начали с Transcribe Video to Text.
+
+Готово (закоммичено):
+- offpage/transcribe-submission-texts.md — заявочные тексты (short/medium/long + Q&A), правило: ссылка на ЛЕНДИНГ не на CWS.
+- offpage/transcribe-directories.md — проверенный список 12 живых площадок + топ-5 + статус-трекер + listicle-outreach + что НЕ трогать.
+
+Топ-5 захода: 1.AlternativeTo (DR90,free,dofollow) 2.SaaSHub (DR79,free, верификация по домену) 3.Toolify.ai (DR77,free) 4.ToolPilot.ai (DR77,free) 5.There's An AI For That ($347,рефанд).
+
+РЕШЕНИЕ по аккаунту (важно): заводим ОДИН рабочий аккаунт на каждой площадке под email на домене — под ним все 5 расширений (не по email на продукт! несколько аккаунтов одного бренда = бан).
+Денис решил: завести бесплатную почту НА ДОМЕНЕ devexthub.com (трастовее gmail + бонус верификации SaaSHub).
+
+>>> ЗАВТРА (27.07): подсказать Денису КАК завести бесплатную почту на домене devexthub.com.
+    Варианты для ответа: Zoho Mail (free до 5 ящиков на своём домене, полноценный приём/отправка — лучший),
+    Cloudflare Email Routing / ImprovMX (бесплатный форвардинг на gmail, но без полноценной отправки).
+    Проверить где зарегистрирован/делегирован домен devexthub.com (DNS — Pages CNAME, но NS/почтовые записи где?) —
+    от этого зависит куда добавлять MX-записи. Дать пошагово. Денис заведёт ящик → бомбим все площадки.
+
+Механика захода (напомнить): playwright-браузер на сервере, куки Дениса ко мне не переедут. Значит либо
+креды рабочего аккаунта в /settings → я сабмичу сам, либо Денис сабмитит по готовому пакету. GitHub-логин
+отклонён — $GITHUB_TOKEN для браузерного OAuth не годится, а пароль от основного гита давать нельзя.
