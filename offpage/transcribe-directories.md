@@ -42,9 +42,9 @@ sonix.ai/resources, softwaretestinghelp.com/best-transcription-software, Lindy, 
 - [СТОП] ToolPilot.ai — free требует ОБРАТНУЮ ссылку (их бейдж на наш сайт) + очередь 90 дней + давал 429. Не размениваемся.
 - [ ] There's An AI For That (платно $347 — ждёт решения)
 
-## Следующие чистые free dofollow (второй эшелон, без reciprocal/оплаты — проверяем)
-Пробить submit-страницы на оплату/капчу/CF перед заходом (Денис регает сам):
-- AIxploria — https://www.aixploria.com/en/submit-ai-tool-or-feature-company/
-- OpenAIToolsHub — https://www.openaitoolshub.org/submit
-- The Next AI — https://www.thenextai.com/submit-ai-tool/
-- Dofollow.Tools — https://dofollow.tools/
+## Следующие чистые free dofollow (второй эшелон, без reciprocal/оплаты)
+Пробито с сервера 27.07 (нет Cloudflare):
+- [x] OpenAIToolsHub — DONE (27.07): засабмичено «Transcribe Video to Text», no signup required, contact team@devexthub.com, ревью 48ч → dofollow DR30. «Submission Received».
+- [ ] The Next AI — https://www.thenextai.com/submit-ai-tool/ — «Submit Free», форма через JS. СЛЕДУЮЩАЯ.
+- [ ] AIxploria — https://www.aixploria.com/en/submit-ai-tool-or-feature-company/ — ~975k визитов/мес (жирный трафик), форма многошаговая + платный upsell (брать FREE).
+- [ ] Dofollow.Tools — https://dofollow.tools/ — на главной формы нет, искать submit-путь.
