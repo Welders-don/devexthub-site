@@ -1,5 +1,27 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## UPDATE 2026-07-27 (вечер) — OFF-PAGE идёт, техника захода найдена
+### ГЛАВНОЕ: как заходим на площадки
+Автоматом с сервера НЕЛЬЗЯ — трастовые каталоги за Cloudflare (AlternativeTo, SaaSHub → «Just a moment», не снимается), ToolPilot даёт 429. Датацентр-IP = флаг №1. Креды в /settings (ALTERNATIVETO_*) для входа БЕСПОЛЕЗНЫ — режет по IP не по паролю.
+СХЕМА: Денис регается/сабмитит САМ со своего IP (капчу глазами), Пафнутий готовит ПАКЕТЫ текстов + пробивает площадки с сервера на предмет платно/капча/CF (chromium-1208 + playwright-core из npx-кэша, скрипты offpage/*.mjs; техника в memory/2026-07-27.md). Денис шлёт скрины форм → агент говорит что в какое поле.
+
+### СТАТУС off-page по Transcribe Video to Text (лендинг /transcribe-video-to-text/)
+- AlternativeTo — ЗАРЕГАН (team@devexthub.com, юзер Devexthub). Карантин 7 дней → сабмит ~3 авг.
+- SaaSHub — DONE: карточка «Transcribe Video to Text by Devexthub» (имя без «by Devexthub» было занято), pending approval + VERIFIED (клик по Verify сработал автоматом, домен совпал с team@). Dofollow стоит. Грабли в offpage/saashub-transcribe.md. ВАЖНО: SaaSHub привязан к домену — остальные 3 тула с devexthub.com отдельными карточками могут не влезть, решить при заходе.
+- OpenAIToolsHub — DONE: засабмичено, no-signup форма, ревью 48ч → dofollow DR30. «Submission Received».
+- Toolify — СТОП (стал платным $99). ToolPilot — СТОП (требует обратную ссылку + 90 дней).
+
+### ГДЕ ОСТАНОВИЛИСЬ (продолжить отсюда)
+Написал пакеты Extract Text (offpage/extract-text-submission-texts.md) и Image Enhancer (offpage/image-enhancer-submission-texts.md). Дал Денису поля под OpenAIToolsHub («Submit Another Tool» — площадка допускает несколько тулов). Денис ушёл на перерыв, НЕ дослал их. 
+СЛЕДУЮЩИЙ ШАГ: Денис дошлёт Extract Text + Image Enhancer на OpenAIToolsHub (поля готовы), потом те же 3 тула на The Next AI (thenextai.com/submit-ai-tool/, free, форма через JS — нужен скрин) и AIxploria (aixploria.com, ~975k визитов/мес, форма многошаговая, брать FREE не upsell). Транскрайб-тексты в offpage/transcribe-submission-texts.md.
+
+### РЕШЕНИЕ по стратегии (сегодня)
+- Несколько РАЗНЫХ тулов на одну площадку = ок (это разные продукты, не спам-клоны; OpenAIToolsHub сам зовёт «Submit Another Tool»). Пейсить по-человечески.
+- Правило «по одному расширению в день» оставляем ТОЛЬКО для трастовых аккаунтных площадок (AlternativeTo, SaaSHub).
+- Legal AI из off-page ВЫЧЕРКНУТ (paywall-провайдер в серой зоне). Идём по 4: Transcribe, Extract Text, Image Enhancer, PDF-to-Excel.
+- Спам в gmail от «промоутеров расширений» (ExtensionBooster, Taylor Ashley и пр.) — НЕ отвечать, НЕ покупать (линк-фермы, штраф домену). Это чёрный список.
+- PDF-to-Excel долго в CWS-ревью т.к. читает файлы юзера + AI = строгий data-handling тир (норма, не наша ошибка). Права и так узкие, ускорить нечем — ждать.
+
 ## Где остановились (2026-07-25, вечер)
 DNS + TLS www.devexthub.com живые, Umami-аналитика поднята на IONOS и подключена к лендингам,
 сделана новая Small promo tile для PDF-to-Excel. Ждём: Денис зальёт PDF-to-Excel v1.0.5 в CWS
