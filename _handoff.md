@@ -8,12 +8,12 @@
 ### СТАТУС off-page по Transcribe Video to Text (лендинг /transcribe-video-to-text/)
 - AlternativeTo — ЗАРЕГАН (team@devexthub.com, юзер Devexthub). Карантин 7 дней → сабмит ~3 авг.
 - SaaSHub — DONE: карточка «Transcribe Video to Text by Devexthub» (имя без «by Devexthub» было занято), pending approval + VERIFIED (клик по Verify сработал автоматом, домен совпал с team@). Dofollow стоит. Грабли в offpage/saashub-transcribe.md. ВАЖНО: SaaSHub привязан к домену — остальные 3 тула с devexthub.com отдельными карточками могут не влезть, решить при заходе.
-- OpenAIToolsHub — DONE: засабмичено, no-signup форма, ревью 48ч → dofollow DR30. «Submission Received».
+- OpenAIToolsHub — DONE: засабмичены ВСЕ 3 тула (Transcribe + Extract Text + Image Enhancer), no-signup форма, ревью 48ч → dofollow DR30 каждому.
 - Toolify — СТОП (стал платным $99). ToolPilot — СТОП (требует обратную ссылку + 90 дней).
 
 ### ГДЕ ОСТАНОВИЛИСЬ (продолжить отсюда)
-Написал пакеты Extract Text (offpage/extract-text-submission-texts.md) и Image Enhancer (offpage/image-enhancer-submission-texts.md). Дал Денису поля под OpenAIToolsHub («Submit Another Tool» — площадка допускает несколько тулов). Денис ушёл на перерыв, НЕ дослал их. 
-СЛЕДУЮЩИЙ ШАГ: Денис дошлёт Extract Text + Image Enhancer на OpenAIToolsHub (поля готовы), потом те же 3 тула на The Next AI (thenextai.com/submit-ai-tool/, free, форма через JS — нужен скрин) и AIxploria (aixploria.com, ~975k визитов/мес, форма многошаговая, брать FREE не upsell). Транскрайб-тексты в offpage/transcribe-submission-texts.md.
+Пакеты готовы по всем 3: Transcribe (offpage/transcribe-submission-texts.md), Extract Text (offpage/extract-text-submission-texts.md), Image Enhancer (offpage/image-enhancer-submission-texts.md). PDF-to-Excel пакета ещё НЕТ — написать когда дойдём.
+СЛЕДУЮЩИЙ ШАГ: AIxploria (aixploria.com/en/submit-ai-tool-or-feature-company/, ~975k визитов/мес, форма многошаговая, брать FREE не upsell) — залить те же 3 тула. Потом The Next AI (thenextai.com/submit-ai-tool/, free, форма через JS — нужен скрин формы). Денис шлёт скрин формы → агент даёт поля.
 
 ### РЕШЕНИЕ по стратегии (сегодня)
 - Несколько РАЗНЫХ тулов на одну площадку = ок (это разные продукты, не спам-клоны; OpenAIToolsHub сам зовёт «Submit Another Tool»). Пейсить по-человечески.

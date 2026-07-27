@@ -44,7 +44,7 @@ sonix.ai/resources, softwaretestinghelp.com/best-transcription-software, Lindy, 
 
 ## Следующие чистые free dofollow (второй эшелон, без reciprocal/оплаты)
 Пробито с сервера 27.07 (нет Cloudflare):
-- [x] OpenAIToolsHub — DONE (27.07): засабмичено «Transcribe Video to Text», no signup required, contact team@devexthub.com, ревью 48ч → dofollow DR30. «Submission Received».
+- [x] OpenAIToolsHub — DONE (27.07): засабмичены ВСЕ 3 тула (Transcribe + Extract Text + Image Enhancer), no signup, contact team@devexthub.com, ревью 48ч → dofollow DR30 каждому. Площадка сама зовёт «Submit Another Tool».
 - [ ] The Next AI — https://www.thenextai.com/submit-ai-tool/ — «Submit Free», форма через JS. СЛЕДУЮЩАЯ.
 - [ ] AIxploria — https://www.aixploria.com/en/submit-ai-tool-or-feature-company/ — ~975k визитов/мес (жирный трафик), форма многошаговая + платный upsell (брать FREE).
 - [ ] Dofollow.Tools — https://dofollow.tools/ — на главной формы нет, искать submit-путь.
