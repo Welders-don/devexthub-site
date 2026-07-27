@@ -36,8 +36,15 @@ sonix.ai/resources, softwaretestinghelp.com/best-transcription-software, Lindy, 
 - Product Hunt — Transcribe уже был, НЕ перезапускать.
 
 ## Статус (обновлять по мере захода)
-- [ ] AlternativeTo
-- [ ] SaaSHub
-- [ ] Toolify.ai
-- [ ] ToolPilot.ai
-- [ ] There's An AI For That (платно — ждёт решения)
+- [~] AlternativeTo — ЗАРЕГАН (team@devexthub.com, юзер Devexthub). Карантин 7 дней: сабмит ~3 авг.
+- [x] SaaSHub — DONE (27.07): «Transcribe Video to Text by Devexthub», pending approval + VERIFIED + dofollow. См. saashub-transcribe.md.
+- [СТОП] Toolify.ai — стал ПЛАТНЫМ ($99 за сабмит, бесплатной очереди больше нет). Пропущено.
+- [СТОП] ToolPilot.ai — free требует ОБРАТНУЮ ссылку (их бейдж на наш сайт) + очередь 90 дней + давал 429. Не размениваемся.
+- [ ] There's An AI For That (платно $347 — ждёт решения)
+
+## Следующие чистые free dofollow (второй эшелон, без reciprocal/оплаты — проверяем)
+Пробить submit-страницы на оплату/капчу/CF перед заходом (Денис регает сам):
+- AIxploria — https://www.aixploria.com/en/submit-ai-tool-or-feature-company/
+- OpenAIToolsHub — https://www.openaitoolshub.org/submit
+- The Next AI — https://www.thenextai.com/submit-ai-tool/
+- Dofollow.Tools — https://dofollow.tools/
