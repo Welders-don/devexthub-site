@@ -3,7 +3,9 @@
 ## СТАТУС (27.07)
 ЗАСАБМИЧЕНО Денисом. Карточка: saashub.com/manage/devexthub. Итоговое имя (SaaSHub требует уникальное; «Transcribe Video to Text» было занято) = **Transcribe Video to Text by Devexthub**. Статус: Pending approval (Free, до 32 дней). Dofollow-ссылка на лендинг стоит в поле URL.
 ГРАБЛИ SaaSHub: (1) продукт называется по ДОМЕНУ (devexthub.com → «Devexthub»), имя меняется только через «suggest changes» (модерация). (2) Поле Categories в suggest-changes принимает только точные имена из справочника, иначе молча откатывает — категории править на вкладке Categories management-страницы. (3) Description-поле есть только на Details/suggest-changes, не на первом submit-экране.
-ОСТАЛОСЬ (опц.): Verify (подтверждение владения devexthub.com → бейдж + показ на страницах Otter/Rev/HappyScribe); добавить категории Transcription/AI Tools на вкладке Categories.
+VERIFIED ✓ (27.07): клик по Verify сработал автоматом — залогинен под team@devexthub.com, домен совпал с лендингом. Бейдж есть, будет показываться на страницах конкурентов. После верификации редиректит на игру «SaaSHub Experts» (голосование за чужие продукты) — игнор, к нам не относится.
+ОСТАЛОСЬ (опц., мелочь): добавить категории Transcription/AI Tools на вкладке Categories management-страницы.
+ИТОГ: SaaSHub DONE (submitted + verified + dofollow-ссылка).
 ВАЖНО на будущее: SaaSHub привязан к домену — остальные 3 тула с того же devexthub.com отдельными карточками могут не влезть (1 домен = 1 продукт). Решить при заходе на них.
 
 ---
