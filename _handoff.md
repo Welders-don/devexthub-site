@@ -1,5 +1,41 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## UPDATE 2026-07-28 (вечер-2) — БЛОГ УГЛУБЛЁН, +8 статей LIVE (26 всего)
+### Терминология «фаз» была кривая — исправлена
+Слово «Фаза» гуляло в двух смыслах и путало. Теперь так:
+- «Базовый блог» = 15 статей (закрыт 25.07, по всем 4 продуктам основной кластер).
+- «Углубление» = добор хвостовых ключей по каждому продукту. НЕ старт с нуля.
+
+### Сделано (задепл. + live, коммиты cdd9b36→4267279, запушены)
+Блог 18 → 26 статей. +8 углублённых, все HTTP 200 на www.devexthub.com/blog/*, болванка та же
+(FAQ-schema, UTM свой campaign, кросс-линковка внутри кластера, ссылка на лендинг+privacy):
+- PDF-to-Excel (+2): how-to-convert-a-scanned-pdf-to-excel (OCR/AI-режим, синергия с Extract Text),
+  smallpdf-alternative-for-pdf-to-excel (конкурент-ключ, нижняя воронка).
+- Extract Text (+2): how-to-copy-text-from-an-image-on-pc (device-хвост PC/Chromebook KD32),
+  best-ocr-chrome-extension (честный гайд «на что смотреть» + наш продукт + Copyfish, НЕ фейк-топ).
+- Image Enhancer (+2): how-to-make-a-blurry-picture-clear (blurry-кластер),
+  how-to-unblur-a-photo-on-iphone (device-хвост; ЧЕСТНО: расширение десктопное, iPhone-фото через AirDrop/iCloud на комп).
+- Transcribe (+2): how-to-transcribe-song-lyrics-from-a-video (transcribe song lyrics 260/KD22; честно про пение хуже речи),
+  how-to-transcribe-a-video-on-iphone (device-хвост; честно: Live Captions/Voice Memos не дают транскрипт, делать в Chrome на компе).
+- sitemap.xml 24 → 32 URL (все 8 добавлены, XML валиден).
+ГРАБЛЯ-принцип для будущих iPhone/device-статей: расширения работают ТОЛЬКО в десктоп-Chrome —
+в тексте прямо объяснять обходной путь (перенос на комп), не делать вид что ставится на телефон.
+
+### АНАЛИТИКА — по факту пусто (проверено live 28.07)
+Вытащил Umami за 30 дней (ssh root@127.0.0.1 → локальный umami 127.0.0.1:3000, минуя nginx basic-auth):
+pageviews=1, visitors=1, referrers=[] — тот 1 хит = наш же E2E-тест 25.07. Живого трафика НЕТ.
+Причина: домен молодой, органика не запущена (sitemap в GSC не подан), из CWS-листингов на сайт пока не кликают.
+ВЫВОД Денису озвучен: аналитика будет пустой пока не появится входящий трафик; чтобы 0 сдвинулся —
+нужно (1) органика (пуш live СДЕЛАН + sitemap в GSC — за Денисом), (2) off-page ссылки (идут).
+Рецепт запроса Umami-статистики: см. daily 2026-07-28 (логин в локальный umami, wid=9cd8ea39-..., /api/websites/{wid}/stats).
+
+### СЛЕДУЮЩИЙ ШАГ (29.07+) — без изменений, приоритет №1
+- ГЛАВНОЕ SEO: подать sitemap в Google Search Console (https://www.devexthub.com/sitemap.xml).
+  Денис делает сам (можно с телефона: search.google.com/search-console). Если домен не верифицирован в GSC —
+  сначала верификация (DNS-запись на Dynadot или HTML-файл в репо — если попросит, помогу с TXT-записью/файлом).
+- SaaSHub: досабмитить Extract Text + Image Enhancer (по одному в день). AlternativeTo Transcribe ~3 авг.
+- Контент можно ещё углублять по остальным продуктам, но приоритет теперь off-page + GSC (контента много, трафика ноль).
+
 ## UPDATE 2026-07-28 — PDF-to-Excel прошёл CWS, off-page по нему пошёл
 ### ГЛАВНОЕ: PDF-to-Excel ЖИВОЙ в CWS → 4/4 расширений с официальным store-линком
 Теперь все 4 (Transcribe, Extract Text, Image Enhancer, PDF-to-Excel) можно сабмитить на площадки.
