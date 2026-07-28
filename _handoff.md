@@ -17,13 +17,23 @@
 - SaaSHub — Transcribe: дозаполнили Competitors (Otter.ai, Rev, Happy Scribe, Sonix — что нашлось в базе)
   + залили логотип Capitan/extension-src/icons/icon128.png (раньше карточку кинули без лого).
 
+### Контент + техническое SEO (вечер 28.07, ЗАЛИТО В ПРОД)
+- 3 статьи PDF-to-Excel (блог 15→18), все проверены HTTP 200: how-to-convert-pdf-to-csv,
+  how-to-save-an-excel-file-as-pdf, how-to-convert-pdf-to-excel-on-mac (Фаза 1 контент-плана закрыта).
+- sitemap.xml (24 стр) + robots.txt — раньше НЕ было. Запушено (490aa43), Pages пересобрал.
+- ГРАБЛЯ sitemap: namespace = http://www.sitemaps.org/... (с «s»), не sitemap.org, иначе Google отбивает.
+
 ### СЛЕДУЮЩИЙ ШАГ (завтра, 29.07+)
+- ГЛАВНОЕ SEO: скормить sitemap в Google Search Console (добавить https://www.devexthub.com/sitemap.xml
+  в Sitemaps). Если домен не верифицирован в GSC — сначала верифицировать (DNS на Dynadot или HTML-файл в репо).
 - SaaSHub: досабмитить Extract Text + Image Enhancer (правило «по одному в день» на трастовых аккаунтных
   площадках — сегодня уже был PDF, растянуть). Логотипы: Extracttext иконка + Imageenhancer store-icon.
   Competitors из их пакетов offpage/*-submission-texts.md.
 - The Next AI (thenextai.com/submit-ai-tool/) — free, форма через JS, нужен скрин формы от Дениса.
 - AIxploria (aixploria.com/en/submit-ai-tool-or-feature-company/) — free, многошаговая, брать FREE не upsell.
 - AlternativeTo — Transcribe сабмит ~3 авг (карантин аккаунта). Остальные по одному в день после.
+- Semrush (Денис из БРАУЗЕРА, не сервер): english long-tail сверх карт + разведка DE-рынка (pdf in excel umwandeln).
+- Контент Фаза 2: Scanned PDF to Excel (синергия с Extract Text), Smallpdf-alternative. + Фаза-1 по 3 др. продуктам.
 
 ## UPDATE 2026-07-27 (вечер) — OFF-PAGE идёт, техника захода найдена
 ### ГЛАВНОЕ: как заходим на площадки
