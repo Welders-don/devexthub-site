@@ -1,0 +1,36 @@
+THE NEXT AI — Submit AI Tool — Extract Text from Image
+Таб: Free Basic (НЕ Featured $199)
+================================================================
+
+Tool Name:
+Extract Text from Image
+
+Website URL:
+https://www.devexthub.com/extract-text-from-image/?utm_source=thenextai&utm_medium=directory&utm_campaign=offpage_extracttext
+
+Category:
+Productivity  (если есть OCR или Utilities — бери их)
+
+Pricing Model:
+Free
+
+Short Description (<=120 симв):
+Extract and copy text from any image or screenshot in one click. On-device OCR, export to TXT, no sign-up. Free.
+
+Full Description:
+Extract Text from Image is a free OCR Chrome extension that pulls the text out of any image, screenshot or photo in one click. The OCR runs on your device, so your images are never uploaded. Copy the text or download it as TXT. Works with JPG, PNG and screenshots, supports many languages, and needs no account. Free.
+
+Logo URL:
+https://www.devexthub.com/assets/extract-text-icon-128.png
+
+Your Email:
+team@devexthub.com
+
+Tags:
+ocr, extract text, image to text, screenshot to text, copy text from image, chrome extension
+
+Quick check (7 + 8):
+15
+
+================================================================
+Кнопка: Submit Free Listing
