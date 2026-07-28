@@ -1,5 +1,30 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## UPDATE 2026-07-28 — PDF-to-Excel прошёл CWS, off-page по нему пошёл
+### ГЛАВНОЕ: PDF-to-Excel ЖИВОЙ в CWS → 4/4 расширений с официальным store-линком
+Теперь все 4 (Transcribe, Extract Text, Image Enhancer, PDF-to-Excel) можно сабмитить на площадки.
+
+### Сделано сегодня
+- Написан пакет текстов PDF-to-Excel: offpage/pdf-to-excel-submission-texts.md (по образцу остальных).
+- Сверены ВСЕ 4 CWS-ID против первоисточника (хендоффы проектов), все верны:
+  PDF-to-Excel = hboeifcemhbamnoakkbalaemdleehfnf (НЕ bhaeff... — то конкурент-двойник 10k/1.9),
+  Extract Text = eeelkokigmnmogpibbdkjdplpfnobpjb, Image Enhancer = pkkccllbjokjgkffmjcjigfajhojjlmi
+  (НЕ fcded... — то локальный тест-профиль), Transcribe/Capitan = mgblgaahjeahphiahfakjiabnheanbhj.
+- OpenAIToolsHub — PDF-to-Excel засабмичен 4-м тулом (теперь там все 4). No-signup, ревью 48ч.
+- SaaSHub — PDF-to-Excel: карточка «Convert PDF to Excel» создана (имя прошло без «by Devexthub»),
+  VERIFIED (домен совпал с team@), Pricing (Free=Yes, Trial=No, Paid=No), Competitors, логотип залит.
+  Логотип брали: Pdftoexel/releases/promo/store-icon-128.png.
+- SaaSHub — Transcribe: дозаполнили Competitors (Otter.ai, Rev, Happy Scribe, Sonix — что нашлось в базе)
+  + залили логотип Capitan/extension-src/icons/icon128.png (раньше карточку кинули без лого).
+
+### СЛЕДУЮЩИЙ ШАГ (завтра, 29.07+)
+- SaaSHub: досабмитить Extract Text + Image Enhancer (правило «по одному в день» на трастовых аккаунтных
+  площадках — сегодня уже был PDF, растянуть). Логотипы: Extracttext иконка + Imageenhancer store-icon.
+  Competitors из их пакетов offpage/*-submission-texts.md.
+- The Next AI (thenextai.com/submit-ai-tool/) — free, форма через JS, нужен скрин формы от Дениса.
+- AIxploria (aixploria.com/en/submit-ai-tool-or-feature-company/) — free, многошаговая, брать FREE не upsell.
+- AlternativeTo — Transcribe сабмит ~3 авг (карантин аккаунта). Остальные по одному в день после.
+
 ## UPDATE 2026-07-27 (вечер) — OFF-PAGE идёт, техника захода найдена
 ### ГЛАВНОЕ: как заходим на площадки
 Автоматом с сервера НЕЛЬЗЯ — трастовые каталоги за Cloudflare (AlternativeTo, SaaSHub → «Just a moment», не снимается), ToolPilot даёт 429. Датацентр-IP = флаг №1. Креды в /settings (ALTERNATIVETO_*) для входа БЕСПОЛЕЗНЫ — режет по IP не по паролю.
