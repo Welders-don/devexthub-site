@@ -1,3 +1,6 @@
 .shots/
 .browser-profile/
 .shots/
+releases/shorts/*.mp4
+releases/shorts/*.pcm
+releases/shorts/*.wav
