@@ -21,8 +21,8 @@
 | SaaSHub | ~79 | ✅ | ✅ | ⬜ | ⬜ | PDF+TVT verified (домен совпал). ET+IE НЕ загнаны. ⏳ площадка заморожена на 30 дн (до ~кон.авг). Правило «1 домен=1 продукт» может мешать |
 | The Next AI | — | ✅ | ✅ | ✅ | ✅ | ВСЕ 4 залиты 30.07 (Денис, free basic dofollow). No-signup → повторную заливку не проверить, дубли не страшны. Поля всех 4 в offpage |
 | AlternativeTo | ~90 | ⬜ | ⏳ | ⬜ | ⬜ | зареган team@, карантin 7 дн → сабмит TVT открывается ~3 авг, остальные враздрай после |
-| MarketingDB | ~60 | ⬜ | ⬜ | ⬜ | ⬜ | free, dofollow, есть категория Chrome Extension. Пакет готов (free-directories-pack.md). Денис заливает сам — НЕ подтверждено |
-| SubmitAiTools | — | ⬜ | ⬜ | ⬜ | ⬜ | free, капча клик-по-цвету. Пакет готов. Денис заливает сам — НЕ подтверждено |
+| MarketingDB | ~59 | 🚫 | 🚫 | 🚫 | 🚫 | УСЛОВИЯ ИСПОРТИЛИСЬ (скрин 30.07): free = NOFOLLOW + обязательный бейдж (reciprocal) — не берём. Dofollow только Premium $13 one-time (+ блог-статья, рассылка, X). $13 = на решение Дениса, деньги |
+| SubmitAiTools | — | ⬜ | ⬜ | ⬜ | ⬜ | free, за human-verification. Условия dofollow/бейдж с сервера НЕ пробить — Денису проверить глазами перед заливкой |
 
 ## Product Hunt (отдельно, не directory)
 - PDF — ✅ был на PH, прошёл (успешнее TVT). НЕ перезапускать.
@@ -40,7 +40,13 @@
 - ExtensionLaunch — Chrome-каталог, free ЕСТЬ но требует публичный Facebook-пост (делистят если снять). Условно, если Денис готов на FB-пост.
 
 ## Что догнать (открытые хвосты)
-1. MarketingDB + SubmitAiTools: залить все 4 (пакет готов, free, без карантина) — СЛЕДУЮЩЕЕ.
+1. SubmitAiTools: Денис проверить условия глазами (dofollow?/бейдж?) → если чисто, залить 4.
 2. SaaSHub: ET+IE после разморозки (~кон.авг).
 3. AlternativeTo: TVT с 3 авг, потом остальные враздрай.
 4. Product Hunt: ET + IE (не были).
+5. (опц., деньги) MarketingDB Premium $13 one-time — dofollow DR59 + блог-статья + рассылка. Решение Дениса.
+
+## Урок 30.07
+Рынок free-каталогов испортился: MarketingDB free стал nofollow+badge, TheSaaSDir закрыл free,
+Futurepedia платно. Перед тем как гнать Дениса на площадку — ПЕРЕПРОВЕРЯТЬ условия (они меняются).
+Живой чистый dofollow-канал на сегодня: The Next AI (free basic) + OpenAIToolsHub + SaaSHub.
