@@ -1,5 +1,14 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## UPDATE 2026-07-30 (вечер) — SaaSHub ЗАКРЫТ по всем 4
+- SaaSHub: ET + IE залиты (free) → ВСЕ 4 продукта VERIFIED (PDF, TVT, ET, IE). Площадка закрыта полностью. Реестр offpage/BACKLINKS-LEDGER.md обновлён, коммиты 993a414 + f9d70f3.
+- РАЗБОР «заморозки»: это НЕ 30 календарных дней. SaaSHub держит лимит на кол-во продуктов на ревью одновременно; слот освобождается когда предыдущий проходит ревью. TVT прошёл ревью 30.07 → слот открылся → сразу загнали ET, потом IE. Правило «1 домен=1 продукт» на деле не срабатывает — разные лендинги идут как разные продукты.
+- ГРАБЛЯ имени: голое «Extract Text from Image» на SaaSHub было занято (already taken) → брендировать «... by Devexthub» (как TVT). ET залит как «Extract Text by Devexthub», IE сразу «Image Enhancer by Devexthub».
+- Submission Type ВСЕГДА Free (не Priority+ $75 — это только ускорение очереди + бейдж, для бэклинка смысла нет).
+- Логотипы для SaaSHub брали из assets/: extract-text-icon-128.png, image-enhancer-icon-128.png (128×128, их минимум 60px хватает).
+- Мелкий хвост (некритично): у ET/IE на SaaSHub можно дозаполнить Release Date (первый день месяца выхода в CWS) — на бэклинк не влияет.
+- СЛЕДУЮЩЕЕ off-page: AlternativeTo — TVT выходит из карантина ~3 авг, дальше остальные враздрай.
+
 ## UPDATE 2026-07-30 — Featured badge, off-page The Next AI, единый реестр
 - ЕДИНЫЙ РЕЕСТР off-page теперь в offpage/BACKLINKS-LEDGER.md (площадка×продукт, статусы). ВЕСТИ его, не размазывать.
 - The Next AI (thenextai.com) — ВСЕ 4 залиты (free basic = рабочий dofollow, СТОП с неё снят). OpenAIToolsHub — все 4 (было). SaaSHub — PDF+TVT (ET+IE ждут разморозки ~кон.авг). AlternativeTo — TVT с 3 авг.
