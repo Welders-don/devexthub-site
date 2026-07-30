@@ -9,8 +9,11 @@ Email: team@devexthub.com. Можно лить все 4 тула пачкой (�
 3. (опц., с бейджем) Twelve.tools — https://twelve.tools/submit — free = 1 dofollow, НО требует их бэклинк
    в футере нашего сайта. Брать только если готов повесить бейдж. Иначе пропустить.
 
-НЕ трогать (reciprocal-бейдж или платно): findly.tools, Turbo0, Wired Business, The Next AI ($199),
+НЕ трогать (reciprocal-бейдж или платно): findly.tools, Turbo0, Wired Business,
 AIxploria (платно), Toolify ($99), ToolPilot (бейдж+90дней).
+The Next AI: free basic РАБОТАЕТ (dofollow, $199 = опция сверх, не обяз.) — см. BACKLINKS-LEDGER.md.
+
+ВЕСЬ учёт off-page — в BACKLINKS-LEDGER.md (единый реестр площадка×продукт).
 
 ================================================================
 ## 1) Convert PDF to Excel
