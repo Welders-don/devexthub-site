@@ -19,7 +19,7 @@
 |---|---|---|---|---|---|---|
 | OpenAIToolsHub | ~30 | ✅ | ✅ | ✅ | ✅ | все 4. TVT+ET+IE 27.07, PDF догнан 4-м 28.07. no-signup, contact team@ |
 | SaaSHub | ~79 | ✅ | ✅ | ⬜ | ⬜ | PDF+TVT verified (домен совпал). ET+IE НЕ загнаны. ⏳ площадка заморожена на 30 дн (до ~кон.авг). Правило «1 домен=1 продукт» может мешать |
-| The Next AI | — | ✅ | 📝 | 📝 | ⬜ | free basic = permanent DOFOLLOW (скрин 30.07, НЕ обманка). PDF залит (память Дениса). Поля TVT+ET готовы (thenextai-*-fields.txt) — заливка НЕ подтверждена, ПРОВЕРИТЬ в аккаунте. IE поля не готовили |
+| The Next AI | — | ✅ | ✅ | ✅ | ✅ | ВСЕ 4 залиты 30.07 (Денис, free basic dofollow). No-signup → повторную заливку не проверить, дубли не страшны. Поля всех 4 в offpage |
 | AlternativeTo | ~90 | ⬜ | ⏳ | ⬜ | ⬜ | зареган team@, карантin 7 дн → сабмит TVT открывается ~3 авг, остальные враздрай после |
 | MarketingDB | ~60 | ⬜ | ⬜ | ⬜ | ⬜ | free, dofollow, есть категория Chrome Extension. Пакет готов (free-directories-pack.md). Денис заливает сам — НЕ подтверждено |
 | SubmitAiTools | — | ⬜ | ⬜ | ⬜ | ⬜ | free, капча клик-по-цвету. Пакет готов. Денис заливает сам — НЕ подтверждено |
@@ -40,8 +40,7 @@
 - ExtensionLaunch — Chrome-каталог, free ЕСТЬ но требует публичный Facebook-пост (делистят если снять). Условно, если Денис готов на FB-пост.
 
 ## Что догнать (открытые хвосты)
-1. The Next AI: подтвердить TVT+ET (проверить аккаунт thenextai), догнать IE. — free dofollow, быстрый выигрыш.
+1. MarketingDB + SubmitAiTools: залить все 4 (пакет готов, free, без карантина) — СЛЕДУЮЩЕЕ.
 2. SaaSHub: ET+IE после разморозки (~кон.авг).
 3. AlternativeTo: TVT с 3 авг, потом остальные враздрай.
-4. MarketingDB + SubmitAiTools: залить все 4 (пакет готов).
-5. Product Hunt: ET + IE (не были).
+4. Product Hunt: ET + IE (не были).
