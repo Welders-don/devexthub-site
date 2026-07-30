@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { overflow:hidden; }
+  body {
+    width:1400px; height:560px;
+    font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    background:
+      radial-gradient(680px 460px at 92% 8%, rgba(33,163,102,0.18), transparent 60%),
+      radial-gradient(560px 420px at 4% 96%, rgba(16,120,74,0.10), transparent 60%),
+      linear-gradient(135deg,#0f1c17 0%,#12251c 55%,#123024 100%);
+    color:#fff;
+    display:flex; align-items:center;
+    padding:0 70px;
+  }
+  .wrap { display:flex; align-items:center; gap:56px; width:100%; }
+  .left { flex:0 0 560px; }
+  .right { flex:1; display:flex; align-items:center; justify-content:center; }
+
+  .brand { display:flex; align-items:center; gap:16px; margin-bottom:30px; }
+  .logo { width:44px; height:44px; border-radius:11px; background:#21a366;
+          display:flex; align-items:center; justify-content:center;
+          font-size:24px; font-weight:800; color:#fff; box-shadow:0 8px 22px rgba(33,163,102,0.4); }
+  .aa { font-size:30px; font-weight:800; letter-spacing:.5px; color:#e8f5ec; }
+
+  h1 { font-size:60px; line-height:1.05; font-weight:800; letter-spacing:-1px; }
+  h1 span { color:#34d17e; }
+  .sub { margin-top:22px; font-size:25px; line-height:1.4; color:#a9c4b6; font-weight:500; max-width:600px; }
+  .chips { margin-top:34px; display:flex; gap:14px; }
+  .chip { font-size:20px; font-weight:600; color:#d7f0e2; padding:11px 20px; border-radius:999px;
+          background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); }
+  .chip.g { color:#7ee7ad; border-color:rgba(52,209,126,0.4); background:rgba(52,209,126,0.10); }
+
+  .flow { display:flex; align-items:center; gap:28px; }
+  /* PDF doc */
+  .pdf { width:230px; height:300px; border-radius:18px; position:relative;
+         background:#f4f6ff; color:#0f1530; padding:26px 22px;
+         box-shadow:0 24px 60px rgba(0,0,0,0.45); }
+  .pdf .tag { position:absolute; top:20px; right:-14px; background:#e2453d; color:#fff;
+              font-size:15px; font-weight:800; letter-spacing:1px; padding:7px 12px; border-radius:7px;
+              box-shadow:0 8px 18px rgba(226,69,61,0.4); }
+  .pdf .h { font-size:14px; font-weight:800; color:#8a93b5; letter-spacing:1.5px; margin-bottom:18px; }
+  .pdf .row { display:flex; gap:8px; margin-bottom:13px; }
+  .pdf .row b { height:13px; border-radius:6px; background:#dfe4f4; display:block; }
+  .pdf .row b.a{ flex:2; background:#c9d2ee } .pdf .row b.s{ flex:1 }
+
+  .arrow { display:flex; flex-direction:column; align-items:center; color:#34d17e; }
+  .arrow .a { font-size:56px; line-height:1; font-weight:300; }
+
+  /* excel grid */
+  .xls { width:300px; height:300px; border-radius:18px; overflow:hidden;
+         background:#fff; box-shadow:0 24px 60px rgba(0,0,0,0.45);
+         display:flex; flex-direction:column; }
+  .xls .top { height:40px; background:#21a366; display:flex; align-items:center; padding:0 16px;
+              color:#fff; font-size:16px; font-weight:800; letter-spacing:.5px; gap:8px; }
+  .xls .grid { flex:1; display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:1fr; }
+  .xls .grid div { border-right:1px solid #e5e9f0; border-bottom:1px solid #e5e9f0;
+                   display:flex; align-items:center; justify-content:center;
+                   font-size:15px; font-weight:600; color:#3a4468; }
+  .xls .grid div.hd { background:#eaf6ef; color:#1c7a4d; font-weight:800; }
+  .xls .grid div.n { color:#21a366; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left">
+      <div class="brand">
+        <div class="logo">X</div>
+        <div class="aa">PDF&#8594;Excel</div>
+      </div>
+      <h1>Convert PDF<br>to <span>Excel</span></h1>
+      <div class="sub">Turn PDF tables into clean spreadsheets in one click. No retyping.</div>
+      <div class="chips">
+        <div class="chip g">Invoices</div>
+        <div class="chip">CSV export</div>
+        <div class="chip">AI mode</div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="flow">
+        <div class="pdf">
+          <div class="tag">PDF</div>
+          <div class="h">INVOICE</div>
+          <div class="row"><b class="a"></b><b class="s"></b></div>
+          <div class="row"><b class="a"></b><b class="s"></b></div>
+          <div class="row"><b class="a"></b><b class="s"></b></div>
+          <div class="row"><b class="a"></b><b class="s"></b></div>
+          <div class="row"><b class="a"></b><b class="s"></b></div>
+        </div>
+        <div class="arrow"><div class="a">&#8594;</div></div>
+        <div class="xls">
+          <div class="top">&#9636; Sheet1.xlsx</div>
+          <div class="grid">
+            <div class="hd">Item</div><div class="hd">Qty</div><div class="hd">Price</div><div class="hd">Sum</div>
+            <div>A-1</div><div class="n">2</div><div class="n">40</div><div class="n">80</div>
+            <div>B-7</div><div class="n">5</div><div class="n">12</div><div class="n">60</div>
+            <div>C-3</div><div class="n">1</div><div class="n">99</div><div class="n">99</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

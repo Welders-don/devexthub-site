@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { overflow:hidden; }
+  body {
+    width:1400px; height:560px;
+    font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    background:
+      radial-gradient(680px 460px at 92% 8%, rgba(6,182,212,0.20), transparent 60%),
+      radial-gradient(560px 420px at 4% 96%, rgba(14,165,233,0.12), transparent 60%),
+      linear-gradient(135deg,#0c1c22 0%,#0f2530 55%,#103038 100%);
+    color:#fff;
+    display:flex; align-items:center;
+    padding:0 70px;
+  }
+  .wrap { display:flex; align-items:center; gap:56px; width:100%; }
+  .left { flex:0 0 540px; }
+  .right { flex:1; display:flex; align-items:center; justify-content:center; }
+
+  .brand { display:flex; align-items:center; gap:16px; margin-bottom:30px; }
+  .logo { width:44px; height:44px; border-radius:11px;
+          background:linear-gradient(135deg,#06b6d4,#0ea5e9);
+          display:flex; align-items:center; justify-content:center;
+          font-size:26px; font-weight:800; color:#fff; box-shadow:0 8px 22px rgba(6,182,212,0.45); }
+  .aa { font-size:30px; font-weight:800; letter-spacing:.5px; color:#e6f7fb; }
+
+  h1 { font-size:60px; line-height:1.05; font-weight:800; letter-spacing:-1px; }
+  h1 span { color:#22d3ee; }
+  .sub { margin-top:22px; font-size:25px; line-height:1.4; color:#a4c3cc; font-weight:500; max-width:580px; }
+  .chips { margin-top:34px; display:flex; gap:14px; }
+  .chip { font-size:20px; font-weight:600; color:#d3f2f8; padding:11px 20px; border-radius:999px;
+          background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); }
+  .chip.g { color:#67e8f9; border-color:rgba(34,211,238,0.4); background:rgba(6,182,212,0.12); }
+
+  /* before/after */
+  .ba { width:440px; height:340px; border-radius:20px; position:relative; overflow:hidden;
+        box-shadow:0 24px 60px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.10); }
+  .ba .half { position:absolute; top:0; bottom:0; width:100%;
+              background-image:url('cand_1015.jpg'); background-size:150% auto; background-position:center; }
+  .ba .before { left:0; clip-path:inset(0 50% 0 0);
+                filter:blur(3px) saturate(0.6) brightness(0.9) contrast(0.85); }
+  .ba .after  { left:0; clip-path:inset(0 0 0 50%);
+                filter:saturate(1.25) contrast(1.12) brightness(1.05); }
+  .ba .divider { position:absolute; top:0; bottom:0; left:50%; width:3px;
+                 background:#fff; transform:translateX(-50%); box-shadow:0 0 12px rgba(0,0,0,0.5); }
+  .ba .knob { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+              width:46px; height:46px; border-radius:50%; background:#fff;
+              display:flex; align-items:center; justify-content:center;
+              box-shadow:0 6px 18px rgba(0,0,0,0.4); color:#0891b2; font-size:22px; font-weight:800; }
+  .ba .lbl { position:absolute; bottom:16px; font-size:15px; font-weight:800; letter-spacing:1px;
+             color:#fff; padding:6px 12px; border-radius:8px; background:rgba(0,0,0,0.45); }
+  .ba .lbl.b { left:16px; } .ba .lbl.a { right:16px; background:rgba(6,182,212,0.75); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left">
+      <div class="brand">
+        <div class="logo">&#10022;</div>
+        <div class="aa">Image Enhancer</div>
+      </div>
+      <h1>Enhance<br><span>Any Photo</span></h1>
+      <div class="sub">Unblur, sharpen and upscale photos in one click. On&#8209;device AI, no upload.</div>
+      <div class="chips">
+        <div class="chip g">Unblur</div>
+        <div class="chip">Upscale</div>
+        <div class="chip">No watermark</div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="ba">
+        <div class="half before"></div>
+        <div class="half after"></div>
+        <div class="divider"></div>
+        <div class="knob">&#8596;</div>
+        <div class="lbl b">BEFORE</div>
+        <div class="lbl a">AFTER</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
