@@ -1,5 +1,16 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## UPDATE 2026-07-30 — Featured badge, off-page The Next AI, единый реестр
+- ЕДИНЫЙ РЕЕСТР off-page теперь в offpage/BACKLINKS-LEDGER.md (площадка×продукт, статусы). ВЕСТИ его, не размазывать.
+- The Next AI (thenextai.com) — ВСЕ 4 залиты (free basic = рабочий dofollow, СТОП с неё снят). OpenAIToolsHub — все 4 (было). SaaSHub — PDF+TVT (ET+IE ждут разморозки ~кон.авг). AlternativeTo — TVT с 3 авг.
+- MarketingDB free ИСПОРТИЛСЯ (nofollow+badge); dofollow только Premium $13/one-time — на решение Дениса (совет: взять только PDF, ему нужен вес). SubmitAiTools — Денису проверить условия глазами (за капчей).
+- FEATURED BADGE: Transcribe ПОДАН 30.07 на ревью (правильная форма после провала «не туда»). Гайд подачи (где форма, все поля, готовые тексты по 4 расширениям, ID+URL) → workspace/knowledge/cws-featured-badge-guide.md. PDF/ET/IE — ещё не подавали, тексты готовы.
+- ИНДЕКСАЦИЯ GSC: главная+TVT+ET+IE индексируются; PDF-лендинг упорно «Discovered - not indexed». Причина НЕ баг (canonical/noindex/ссылки чисты) а конкурентность темы «pdf to excel». Лечится ссылками на /pdf-to-excel/ + Request Indexing + время. CWS-карточка PDF индексируется отдельно (домен Google) — установки идут через магазин, лендинг их не блокирует.
+- YouTube шорт PDF: ссылка положена в коммент (кликабельна без verify). Закреп требует verify телефона — забили (не нужно при 0 комментов).
+- Осталось: 2я пачка URL на Request Indexing (~20 статей); off-page хвосты в реестре.
+
+
+
 ## UPDATE 2026-07-29 (вечер) — ВИДЕО-ШОРТС конвейер + новые free-директории
 ### ГЛАВНОЕ: первый шорт PDF-to-Excel собран и ЗАЛИТ на YouTube
 - Файл: releases/shorts/pdf-to-excel-short-v5-voice.mp4 (16.8с, вертикаль 1080x1920, голос).
