@@ -65,3 +65,25 @@ Free Convert PDF to Excel extension: https://www.devexthub.com/pdf-to-excel/
 0:00 Why CSV
 0:15 Extracting the table
 0:35 Exporting clean CSV
+
+## Ролик 4 — ключ: excel to pdf (жирный, обратное направление)
+ПРОВЕРИТЬ перед записью: расширение реально делает Excel→PDF вживую (v1.0.2, ревью ~28.07).
+Title:
+How to Convert Excel to PDF for Free (Keep Formatting)
+
+Description:
+Need to send a spreadsheet as a clean PDF that looks right on any device? This guide shows how to convert an Excel file to PDF for free, right in your browser, without installing Office or uploading your file to a random site.
+
+You'll see how to:
+- Turn an .xlsx or .csv into a shareable PDF
+- Keep tables, columns and formatting intact
+- Fit wide sheets neatly onto the page
+- Save the PDF straight to your device
+
+Everything runs in your browser, so your data stays private. No login, no size limit, no subscription.
+
+Free extension: https://www.devexthub.com/pdf-to-excel/
+
+0:00 Why Excel to PDF
+0:15 Converting the file
+0:35 Saving your PDF
