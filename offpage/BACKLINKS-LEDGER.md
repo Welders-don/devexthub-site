@@ -44,7 +44,7 @@
 - TheSaaSDir — free-приём закрыт + бейдж; paid $19.
 - findly.tools, Turbo0, Wired Business, AIxploria — reciprocal-бейдж или платно.
 - There's An AI For That — платно $347.
-- ExtensionLaunch — Chrome-каталог, free ЕСТЬ но требует публичный Facebook-пост (делистят если снять). Условно, если Денис готов на FB-пост.
+- ExtensionLaunch — ОТБРОШЕНО 31.07 (проверено в flow + pricing). Free = NOFOLLOW + обязательный публичный FB-пост со ссылкой на пост (делистят если пост снять/скрыть) + 7 дн очереди. Dofollow только платно ($9-29 one-time). Nofollow за вечный FB-пост не окупается; платить за нишевый каталог смысла нет при живых бесплатных dofollow (The Next AI/OpenAIToolsHub/SaaSHub) + PH. Денис отказался. PDF в форму завёл но публиковать не стал.
 
 ## Что догнать (открытые хвосты)
 1. SubmitAiTools: Денис проверить условия глазами (dofollow?/бейдж?) → если чисто, залить 4.
