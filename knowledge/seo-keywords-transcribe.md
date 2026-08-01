@@ -46,11 +46,29 @@
 - transcribe google meet / teams recording
 - interview: сид "interview to text" ПУСТОЙ (01.08) — попадает в академ. цитирование (cite in-text, MLA/APA),
   Total всего 2480. Наше «transcribe interview audio to text» 40/46 — крохи + audio-файл (парковка).
-  Правильный перепрогон: "interview transcription" (но интервью чаще диктофон = файл, fit слабый). Не приоритет.
+  Правильный перепрогон "interview transcription" СДЕЛАН 01.08 — см. ниже, ядро есть но узкое.
 - lecture: сид "lecture to text" ПУСТОЙ (01.08) — тот же капкан цитирования (cite a lecture in text, MLA/APA/Chicago),
   Total 2020. Наше «transcribe lectures to text free» 30/30, «lecture to text ai» 50/56 — крохи. Не приоритет.
 - ЗАКОНОМЕРНОСТЬ: сид «[X] to text» где X=академ.сущность (interview/lecture) падает в in-text citation, не транскрипцию. Не пробивать.
-- ИТОГ Transcribe-добора 01.08: живы 2 кластера (Zoom recording, Podcast). interview/lecture — мимо.
+- ИТОГ Transcribe-добора 01.08: живы 2 кластера (Zoom recording, Podcast) + узкое ядро interview (ниже). lecture — мимо.
+
+## ПРОБИТО 01.08 — Interview (сид "interview transcript/transcription", 184 фразы, Total 21 870, Avg KD 21)
+Правильный сид (в отличие от "interview to text" = цитирование). Транскрипция реальная, KD низкий. НО 2 оговорки:
+1. Половина сида INFORMATIONAL — «образец оформления» (interview transcript example/format/template/sample/apa),
+   в установку не конвертит. Плюс новостной мусор (trump/biden/kamala interview transcript).
+2. PRODUCT-FIT слабый: интервью чаще диктофон = аудиофайл, расширение файлы НЕ грузит. Наш кусок = интервью-ВИДЕО
+   в браузере (YouTube-интервью, запись Zoom).
+Узкое ядро (интент «как/чем транскрибировать», KD низкий, ~1000 показов):
+| Keyword | Volume | KD |
+|---|---|---|
+| interview transcription software | 260 | 18 |
+| how to transcribe an interview | 260 | 33 |
+| fast interview transcription methods | 210 | 22 |
+| transcribing interviews | 140 | 27 |
+| transcribe interview | 110 | 20 |
+| how to transcribe interviews | 90 | 26 |
+→ Максимум ОДНА device-честная статья «How to transcribe an interview» (видео на YouTube/Zoom → расширением;
+   диктофонная запись → другой путь). Отдельный лендинг НЕ делать (file-mismatch). Приоритет ниже Zoom/Podcast.
 Фильтр Exclude в Semrush: free download, app, software download, api, python.
 База US, KD ≤ 40. Как придут скрины — вписать сюда в эту секцию.
 
