@@ -518,3 +518,12 @@ Off-page идёт по 4 расширениям: PDF-to-Excel, Transcribe, Extra
 - Живой sitemap на домене СЕЙЧАС = 32 URL, все 8 PDF там есть (curl проверен). Файл корректен, проблема в кэше GSC.
 ФИКС (Денису в GSC): Sitemaps → проверить Discovered URLs (если 23 или дата чтения до апдейта — подтверждение) → Remove sitemap.xml → Submit заново. Форсит перечитку, статус сменится unknown→discovered. Дальше уже краулинг-бюджет/дубли = off-page.
 УРОК: «crawled-not-indexed» (лендинг: Google знает, но не в индексе — дубли/бюджет) ≠ «unknown to Google» (8 статей: не обнаружены — Google не перечитал новый sitemap). Разные статусы, разные причины. Не мешать в кучу.
+
+## UPDATE 2026-08-01 (2) — ДИАГНОЗ ПОДТВЕРЖДЁН и УТОЧНЁН: sitemap ни при чём, причина = off-page
+Прошлый UPDATE (совет «переподать sitemap») ОТМЕНЁН. Скрины GSC показали:
+- Sitemaps: /sitemap.xml Submitted Jul 29, Last read Aug 1 (сегодня), Status Success, Discovered pages 32. Google уже перечитал, все 32 URL известны. Переподавать НЕЧЕГО.
+- URL Inspection по excel-to-pdf: статус «Discovered — currently not indexed». Discovery: Sitemaps=sitemap.xml (найдена!), Referring page=/blog/ + sitemap. Crawl всё N/A (обнаружил, но не крауллил).
+- «unknown to Google» на скрине smallpdf ранее = устаревший кэш URL Inspection, а не реальный статус.
+ИТОГ (железно): sitemap отработал, довёл 8 PDF-статей до «discovered». Google их ЗНАЕТ, но не тратит краулинг-бюджет — молодой домен + самая задублированная тема (PDF→Excel). Техника исчерпана.
+РЫЧАГ = OFF-PAGE (входящие ссылки). Бэклинки поднимут бюджет → Google докраулит висящие. Request Indexing разово можно, но на молодом домене почти не тянет — не ставка.
+Три статуса не путать: unknown to Google (не обнаружен) → discovered-not-indexed (обнаружен, бюджет/дубли = off-page) → crawled-not-indexed (обошёл, не взял = дубли/качество). Наши 8 PDF = средний.
