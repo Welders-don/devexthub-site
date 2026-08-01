@@ -44,6 +44,9 @@
 - podcast to text / transcribe podcast
 - lecture to text / transcribe lecture
 - transcribe google meet / teams recording
+- interview: сид "interview to text" ПУСТОЙ (01.08) — попадает в академ. цитирование (cite in-text, MLA/APA),
+  Total всего 2480. Наше «transcribe interview audio to text» 40/46 — крохи + audio-файл (парковка).
+  Правильный перепрогон: "interview transcription" (но интервью чаще диктофон = файл, fit слабый). Не приоритет.
 Фильтр Exclude в Semrush: free download, app, software download, api, python.
 База US, KD ≤ 40. Как придут скрины — вписать сюда в эту секцию.
 
