@@ -1,5 +1,26 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## UPDATE 2026-08-01 (вечер) — CUSTOM GPTs КАНАЛ РАЗВЁРНУТ (18 ботов live) + завтра РОЛИКИ
+### Где остановились
+Канал Custom GPTs (плейбук Captain Builders) полностью развёрнут. Денис вручную создал и опубликовал 18 public-ботов в GPT Store по нашим драфтам. Дальше — короткие ролики (за это завтра).
+
+### Что сделано (18/18 live, коммиты 1f97339 → c5ebcef)
+- Драфты по 4 продуктам: `offpage/custom-gpts-{pdf,transcribe,extract-text,image-enhancer}-drafts.md` (Name/Description/Instructions + conversation starters, product-honest, ключи из seo-keywords-*.md).
+- Опубликовано: PDF 5 (convert / csv / tables / bank-statement-джекпот / excel→pdf) · TVT 5 (video / meeting-recording / podcast / interview / subtitle-SRT) · ET 4 (image / screenshot / jpg-png / photo) · IE 4 (unblur / upscale / fix-blurry / sharpen).
+- Аккаунт публикации: ChatGPT Plus «Isla Morris / paramannap618» (НЕ личный Дениса — под ботами висит имя владельца аккаунта).
+- Домен devexthub.com подтверждён в builder profile (TXT `openai-domain-verification=dv-pWT0RN29IlKJpZQLxaSwjWC4` в Dynadot apex, рядом со старым SPF — не трогать).
+
+### ГРАБЛИ (важно, для будущих партий ботов)
+1. Билдер ChatGPT плодит ДУБЛИ при повторном клике «Создать» — жать ОДИН раз; лишние чистить chatgpt.com/gpts/mine (… → Удалить).
+2. Публикацию «Все» РЕЖЕТ, если в НАЗВАНИИ чужой товарный знак (YouTube/Zoom/Spotify/TikTok/Vimeo). Домен-верификация НЕ разблокирует чужой бренд (авторизует только СВОЙ). Фикс: имя нейтральное (YouTube→Video Transcript Helper, Zoom→Meeting Recording Transcript Assistant), бренды — только примерами ВНУТРИ Instructions. PDF/Excel/CSV/OCR/image/photo проходят как есть.
+3. Ценность канала = referral-трафик (ссылка на лендинг в Instructions) + 18 индексируемых страниц GPT Store + присутствие в AI-поиске. Ссылка домена в профиле = nofollow, DR не качает. НЕ ждать ссылочного веса.
+
+### Следующий шаг
+- ЗАВТРА (02.08): РОЛИКИ. Приоритет — сценарий 30-сек тир-листа под Transcribe (формат Дмитрия, S-tier browser-extension vs mobile/сайты), потом PDF-to-Excel. Конвейер шортов: releases/shorts/build_short.sh (Денис шлёт экранку ссылкой на Google Drive). Тему math НЕ брать. Детали формата — workspace/memory/2026-07-31.md.
+- Через 1-2 нед: проверить Umami/GSC — идёт ли referral с chatgpt.com + индексируются ли страницы ботов. Ноль за месяц → канал не развивать.
+- Прочее off-page (AlternativeTo ~3 авг, реестр BACKLINKS-LEDGER.md) — по расписанию.
+
+
 ## UPDATE 2026-08-01 — SEO-ДОБОР дальних хвостов (Денис прогнал Semrush из браузера, скрины → карты knowledge/)
 Задача: пока есть доступ к Semrush, добрать длинные хвосты со слабым KD про запас под будущий контент.
 Свёл + разложил в knowledge/seo-keywords-*.md. Коммиты 190ffe0→54622d2 (9 шт).
