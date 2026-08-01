@@ -39,7 +39,8 @@
 - ДРАФТЫ ГОТОВЫ (name/description/instructions, product-honest, по ключам из seo-keywords-*.md):
   PDF `offpage/custom-gpts-pdf-drafts.md` (5) · TVT `offpage/custom-gpts-transcribe-drafts.md` (5) ·
   ET `offpage/custom-gpts-extract-text-drafts.md` (4) · IE `offpage/custom-gpts-image-enhancer-drafts.md` (4).
-- Статус публикации: PDF ⬜ · TVT ⬜ · ET ⬜ · IE ⬜ (тексты готовы, не опубликованы). Решение о старте ($20/мес ChatGPT Plus + номер + карта) за Денисом.
+- Статус публикации: PDF ✅ 5 live (01.08, аккаунт ChatGPT Plus «Isla Morris/paramannap618») · TVT 🟡 в процессе · ET ⬜ · IE ⬜.
+  ГРАБЛЯ: билдер плодит дубли при повторном клике «Создать» — жать ОДИН раз, лишние чистить в chatgpt.com/gpts/mine (…→Удалить). Домен-верификацию в builder profile забили (необяз., nofollow, слабый вес). Вес идёт от индексируемой публичной страницы бота + ссылки в Instructions.
 
 ## 🚫 Отброшенные площадки (не тратить время)
 - Toolify.ai — стал платным $99.
