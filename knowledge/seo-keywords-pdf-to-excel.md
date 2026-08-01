@@ -118,6 +118,19 @@ Intent = встроить PDF объектом в ячейку (не конве�
 2. Bank statement как use-case на ЛЕНДИНГ /pdf-to-excel/ («Turn bank statements into Excel») — коммерч. интент, лучшая конверсия.
 3. Дозаточить существующую how-to-convert-pdf-to-csv под подкластер B.
 
+## ПРОБИТО 01.08 — сид "extract table from pdf" (108 фраз @KD≤40, Total 18 520, Avg KD 27)
+Это ЯДРО продукта, которое УЖЕ покрыто на старте (лендинг + статьи «PDF table to Excel», «Insert PDF into Excel»).
+Сид подтверждает/укрепляет — цифры живые — но большого нового кластера НЕ даёт. Треть сида — не наше:
+- ОТСЕЧЬ python/код: python pdf parser 320/39, extract table from pdf python 110/20, pdfplumber, parse table from pdf,
+  pdf scraper — разработчики ищут библиотеку, мы no-code. Exclude: python, java, parser, scraper, maven, pdfplumber.
+- ОТСЕЧЬ бренд Tabula: tabula 5400/35, what is tabula, tabula login/online/java — navigational к конкретному open-source
+  desktop-тулу, новым доменом не перебить. Exclude: tabula.
+НОВАЯ под-тема «import» (не convert/insert), ~900 показов, интент Power Query (Excel→Get Data→From PDF, кривой на сканах):
+| how to import pdf into excel | 590 | 26 |
+| how to import a pdf into excel | 260 | 21 |
+| import pdf table into excel | 50 | 27 |
+→ Одна статья «How to import a PDF into Excel» (нативный Power Query vs наш способ, честно). Не приоритет vs bank statement.
+
 ## Каждая статья заканчивается CTA «Add to Chrome». Воронка: Google-вопрос → статья → установка.
 
 ## TODO
