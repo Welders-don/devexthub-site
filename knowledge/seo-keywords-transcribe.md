@@ -47,6 +47,10 @@
 - interview: сид "interview to text" ПУСТОЙ (01.08) — попадает в академ. цитирование (cite in-text, MLA/APA),
   Total всего 2480. Наше «transcribe interview audio to text» 40/46 — крохи + audio-файл (парковка).
   Правильный перепрогон: "interview transcription" (но интервью чаще диктофон = файл, fit слабый). Не приоритет.
+- lecture: сид "lecture to text" ПУСТОЙ (01.08) — тот же капкан цитирования (cite a lecture in text, MLA/APA/Chicago),
+  Total 2020. Наше «transcribe lectures to text free» 30/30, «lecture to text ai» 50/56 — крохи. Не приоритет.
+- ЗАКОНОМЕРНОСТЬ: сид «[X] to text» где X=академ.сущность (interview/lecture) падает в in-text citation, не транскрипцию. Не пробивать.
+- ИТОГ Transcribe-добора 01.08: живы 2 кластера (Zoom recording, Podcast). interview/lecture — мимо.
 Фильтр Exclude в Semrush: free download, app, software download, api, python.
 База US, KD ≤ 40. Как придут скрины — вписать сюда в эту секцию.
 
