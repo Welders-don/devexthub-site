@@ -46,3 +46,33 @@
 - transcribe google meet / teams recording
 Фильтр Exclude в Semrush: free download, app, software download, api, python.
 База US, KD ≤ 40. Как придут скрины — вписать сюда в эту секцию.
+
+## ПРОБИТО 01.08 — Zoom-кластер (сид "zoom transcription", Broad, 279 фраз, Total 19 710, Avg KD 30)
+Наша тема (Zoom recording играет в браузере). PRODUCT-FIT: таргет = Zoom cloud RECORDING (проигрывается
+в браузере → расширение снимает транскрипт), НЕ live-встреча в десктоп-клиенте Zoom (туда не лезем).
+Статью писать под «transcript from a Zoom recording», честно, не под live-митинг.
+
+Целевая зона KD≤29 (для нашего домена):
+| Keyword | Volume | KD |
+|---|---|---|
+| how to get transcript from zoom recording | 260 | 25 |
+| how to transcribe zoom meetings | 260 | 27 |
+| zoom live transcription | 260 | 25 |
+| zoom chat transcript | 260 | 20 |
+| for zoom how to see the transcription of a meeting | 260 | 25 |
+| how to stop transcription in zoom | 210 | 24 |
+| can zoom transcribe a recorded meeting | 170 | 28 |
+| transcribe zoom recording to text free | 170 | 26 |
+| live transcript extension | 170 | 33 | ← прямой extension-интент, наш тип
+| zoom ai translation | 170 | 23 |
+| zoom transcription feature | 170 | 23 |
+| how to get zoom transcript | 140 | 28 |
+| how to get zoom transcript after meeting | 140 | 24 |
+| how to transcribe a zoom meeting | 140 | 26 |
+| zoom meeting transcript | 140 | 27 |
+| download zoom transcript | 110 | 23 |
+| how to download transcript from zoom | 110 | 24 |
+| how to enable transcription in zoom | 110 | 23 |
+Головы (мимо, для справки): zoom transcription 1900/35, zoom transcript 590/33, transcribe meetings 140/66,
+how to get transcription in zoom without recording 110/78.
+→ КАНДИДАТ ПОД СТАТЬЮ: «How to get a transcript from a Zoom recording» — ловит кластер ~2000 показов, KD 23-30.
