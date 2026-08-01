@@ -1,5 +1,32 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## UPDATE 2026-08-01 — SEO-ДОБОР дальних хвостов (Денис прогнал Semrush из браузера, скрины → карты knowledge/)
+Задача: пока есть доступ к Semrush, добрать длинные хвосты со слабым KD про запас под будущий контент.
+Свёл + разложил в knowledge/seo-keywords-*.md. Коммиты 190ffe0→54622d2 (9 шт).
+
+СНАЧАЛА исправлена грабля: карты ключей Transcribe НЕ БЫЛО отдельным файлом (лежала размазанной по daily+handoff) —
+агент из-за этого решил «ключей нет». СОЗДАН knowledge/seo-keywords-transcribe.md (свёл ключи 25.07 + новый добор).
+Ключи Transcribe РЕАЛЬНО были собраны 25.07, по ним 4 статьи+лендинг — ничего не выдумано.
+
+РЕЗУЛЬТАТ по 4 продуктам (детали и цифры — в картах knowledge/):
+- Transcribe: ЖИВЫ 2 новых кластера — Zoom recording (KD23-30) + Podcast Spotify/SoundCloud/Apple (KD12-35).
+  Interview — узкое ядро how-to-transcribe на 1 device-честную статью (file-mismatch). МИМО: interview/lecture
+  «to text» = академ.цитирование (не транскрипция); audio/mp4-to-text = парковка (загрузка файла, расширение только браузер).
+- PDF: ДЖЕКПОТ «bank statement → excel» (~4000 показов, KD5-27, платящий интент, идеальный fit) — НОВАЯ вертикаль,
+  у нас не покрыта. + под-тема «import PDF into Excel» (~900, Power Query). ПУСТО: invoice (Total240, идёт через
+  QuickBooks). extract-table сид = ядро уже покрыто на старте (отсёк python/tabula — не наша аудитория).
+- Extract Text: закрыт ранее (4 сида, вся зона KD27-40), добирать нечего — подтвердил Денис.
+- Image Enhancer: СТОП. old-photo/restore НЕ БРАТЬ (продукт локальный без AI-реставрации — переобещание, вред домену).
+  unblur-ядро (вкл. iphone) взято раньше; iphone-сид перепроверен 01.08 — флагман «how to unblur a photo on iphone»
+  590/31 уже покрыт статьёй (28.07), новых кластеров нет. Добор IE закрыт.
+
+ГОТОВЫЕ killer-темы под будущие статьи (с цифрами в картах): «How to convert a bank statement PDF to Excel»,
+«How to transcribe a Zoom recording», «How to transcribe a podcast (Spotify/Apple/SoundCloud)».
+Плюс: bank statement как use-case на ЛЕНДИНГ /pdf-to-excel/ («Turn bank statements into Excel») — коммерч.конверсия.
+
+УРОКИ: (1) сид «[X] to text» где X=академ.сущность (interview/lecture) падает в in-text citation, не транскрипцию —
+не пробивать. (2) Product-honesty: не гнать SEO-трафик на то что продукт не тянет (restore old photo) — злой юзер+вред домену.
+
 ## UPDATE 2026-07-30 (вечер) — SaaSHub ЗАКРЫТ по всем 4
 - SaaSHub: ET + IE залиты (free) → ВСЕ 4 продукта VERIFIED (PDF, TVT, ET, IE). Площадка закрыта полностью. Реестр offpage/BACKLINKS-LEDGER.md обновлён, коммиты 993a414 + f9d70f3.
 - РАЗБОР «заморозки»: это НЕ 30 календарных дней. SaaSHub держит лимит на кол-во продуктов на ревью одновременно; слот освобождается когда предыдущий проходит ревью. TVT прошёл ревью 30.07 → слот открылся → сразу загнали ET, потом IE. Правило «1 домен=1 продукт» на деле не срабатывает — разные лендинги идут как разные продукты.
