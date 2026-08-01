@@ -78,6 +78,44 @@ Intent = встроить PDF объектом в ячейку (не конве�
 ### Pillar 3: "Can ChatGPT convert PDF to Excel?" (30 / KD 31, трендовая сравнительная)
 Показать что ChatGPT врёт с таблицами, расширение — нет. Формат X vs Y заходит.
 
+## ПРОБИТО 01.08 — ВЕРТИКАЛЬ «Bank statement → Excel» (ДЖЕКПОТ, сид "bank statement to excel / pdf to csv")
+Сид: 104 фразы, Total 25 310, Avg KD 20. Платящий интент (бухгалтеры, малый бизнес), идеальный product-fit
+(расширение конвертит PDF-таблицу в Excel/CSV, bank statement = чистая таблица в PDF). Лучший добор за 01.08.
+
+### Подкластер A: bank statement → excel (НОВОЕ, у нас НЕ покрыто, KD 5-27 — очень мягко, ~4000 показов)
+| Keyword | Volume | KD |
+|---|---|---|
+| bank statement to excel | 1 300 | 24 |
+| bank statement to excel software | 1 000 | 10 |
+| bank statement to excel converter online free | 480 | 16 |
+| convert bank statement to excel | 390 | 33 |
+| bank statement to csv | 390 | 5 |
+| convert bank statement pdf to excel | 210 | 21 |
+| convert bank statements to excel | 210 | 33 |
+| bank statement csv to excel | 170 | 8 |
+| bank statement pdf to excel | 140 | 27 |
+| how to convert bank statement to excel | 70 | 10 |
+| how to convert bank statements into excel | 70 | 22 |
+| ocr bank statements to excel | 40 | 11 |
+| how to export bank statement to excel | 30 | 17 |
+
+### Подкластер B: pdf to csv (наш формат — расширение отдаёт CSV, KD 28-33, ~9000 показов)
+| pdf to csv | 3 600 | 32 |
+| convert pdf to csv | 2 400 | 33 |
+| pdf to csv converter | 1 900 | 28 |
+| how to convert pdf to csv | 590 | 32 |
+| pdf to csv format | 590 | 28 |
+| convert pdf to csv free | 320 | 29 |
+→ Статья how-to-convert-pdf-to-csv УЖЕ есть (28.07) — дозаточить под эти формулировки (converter/how to/free).
+
+### ОТСЕЧЬ (не наш формат): "bank statement to tally xml" 480/24 и семейство — индийский бухучёт Tally, tally-формат не отдаём.
+### Бренды-конкуренты в выдаче (ниша живая/монетизируемая): financefileconverter, bankstatementconverter.
+
+### ДЕЙСТВИЯ:
+1. НОВАЯ статья «How to convert a bank statement PDF to Excel» — ловит подкластер A (KD 5-27). Killer-тема.
+2. Bank statement как use-case на ЛЕНДИНГ /pdf-to-excel/ («Turn bank statements into Excel») — коммерч. интент, лучшая конверсия.
+3. Дозаточить существующую how-to-convert-pdf-to-csv под подкластер B.
+
 ## Каждая статья заканчивается CTA «Add to Chrome». Воронка: Google-вопрос → статья → установка.
 
 ## TODO
