@@ -76,3 +76,29 @@
 Головы (мимо, для справки): zoom transcription 1900/35, zoom transcript 590/33, transcribe meetings 140/66,
 how to get transcription in zoom without recording 110/78.
 → КАНДИДАТ ПОД СТАТЬЮ: «How to get a transcript from a Zoom recording» — ловит кластер ~2000 показов, KD 23-30.
+
+## ПРОБИТО 01.08 — Podcast-кластер (сид "podcast transcript", Broad, 462 фразы, Total 34 250, Avg KD 32)
+Наша тема (подкаст играет в браузере: Spotify web / SoundCloud web / Apple Podcasts web → расширение снимает транскрипт).
+ЗАСОР сида (отсечь): генерация подкастов из текста — turn notes into podcast, podcast generator, text to podcast,
+make a podcast from notes; бренды-тулзы — podify ai, podscribe, podqueue, podcast reader. Обратный интент, НЕ наше.
+Exclude при перепрогоне: generator, generate, notes into, make, feed, create, text to podcast.
+
+Целевая зона (транскрипция, KD≤35, точный product-fit):
+| Keyword | Volume | KD |
+|---|---|---|
+| podcast transcription service | 390 | 18 |
+| transcribe podcast | 480 | 30 |
+| spotify podcast transcript | 480 | 35 |
+| spotify podcast to transcript | 210 | 24 |
+| transcribe podcast to text | 170 | 27 |
+| transcribe podcasts | 170 | 30 |
+| podcast transcription services | 170 | 16 |
+| transcript generator for apple podcasts | 140 | 26 |
+| podcast transcription software | 90 | 21 |
+| transcribe spotify podcast | 90 | 15 |
+| transcribe soundcloud to text | 90 | 12 | ← SoundCloud web = браузер, точный fit
+| spotify to text | 90 | 18 |
+| spotify podcast transcripts | 90 | 19 |
+| how to get a transcript of a podcast | 90 | n/a |
+→ КАНДИДАТ ПОД СТАТЬЮ: «How to transcribe a podcast (Spotify, Apple Podcasts, SoundCloud)» — весь кластер, KD 12-35.
+   Три платформы играют в браузере → честный fit, без переобещаний.
