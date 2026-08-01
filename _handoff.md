@@ -508,3 +508,13 @@ Off-page идёт по 4 расширениям: PDF-to-Excel, Transcribe, Extra
 1. Денис дорегистрируется на AlternativeTo, кладёт креды в /settings.
 2. За неделю прогрева (до открытия сабмита) АГЕНТ собирает заявочные пакеты по 4 расширениям по образцу offpage/transcribe-submission-texts.md (у Transcribe уже есть). Нужны: PDF-to-Excel, Extract Text, Image Enhancer.
 3. ~3 авг — первый сабмит (Transcribe) на AlternativeTo, пройти весь путь, потом остальные враздрай.
+
+## UPDATE 2026-08-01 — ДИАГНОЗ непроиндексированного PDF-кластера (Google не перечитал sitemap)
+Денис прислал 2 скрина GSC. Разобрали корень, ВАЖНО не путать впредь:
+- НЕ «sitemap не подан». Sitemap подан, статус approve — но по СТАРОЙ версии.
+- Хронология (git, всё 28.07): коммит 490aa43 = первый sitemap 23 URL; коммит 4267279 = +8 PDF-статей (26→32 URL, среди них smallpdf, pdf-to-csv, save-excel-as-pdf, pdf-to-excel-on-mac, insert-pdf, excel-to-pdf, pdf-table, chatgpt-convert).
+- Google прочитал ПЕРВУЮ версию (23 URL): туда вошли transcribe/extract/enhancer + PDF-лендинг + scanned-pdf-to-excel → всё это в индексе.
+- 8 добранных PDF-статей попали во ВТОРУЮ версию того же дня. Google карту с тех пор НЕ перечитал → для них статус «URL unknown to Google / No referring sitemaps detected / Crawl N/A».
+- Живой sitemap на домене СЕЙЧАС = 32 URL, все 8 PDF там есть (curl проверен). Файл корректен, проблема в кэше GSC.
+ФИКС (Денису в GSC): Sitemaps → проверить Discovered URLs (если 23 или дата чтения до апдейта — подтверждение) → Remove sitemap.xml → Submit заново. Форсит перечитку, статус сменится unknown→discovered. Дальше уже краулинг-бюджет/дубли = off-page.
+УРОК: «crawled-not-indexed» (лендинг: Google знает, но не в индексе — дубли/бюджет) ≠ «unknown to Google» (8 статей: не обнаружены — Google не перечитал новый sitemap). Разные статусы, разные причины. Не мешать в кучу.
