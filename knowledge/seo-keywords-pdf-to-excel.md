@@ -108,6 +108,8 @@ Intent = встроить PDF объектом в ячейку (не конве�
 | convert pdf to csv free | 320 | 29 |
 → Статья how-to-convert-pdf-to-csv УЖЕ есть (28.07) — дозаточить под эти формулировки (converter/how to/free).
 
+### ПУСТО (01.08): сид "invoice pdf to excel" — 42 фразы, Total 240, KD n/a. Дохлая. Инвойсы бизнес гонит через
+### QuickBooks/Bill.com/авто-OCR, руками не гуглят (в отличие от bank statement — физлица/мелкие бухгалтеры). Не пробивать.
 ### ОТСЕЧЬ (не наш формат): "bank statement to tally xml" 480/24 и семейство — индийский бухучёт Tally, tally-формат не отдаём.
 ### Бренды-конкуренты в выдаче (ниша живая/монетизируемая): financefileconverter, bankstatementconverter.
 
