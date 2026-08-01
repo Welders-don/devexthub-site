@@ -39,8 +39,10 @@
 - ДРАФТЫ ГОТОВЫ (name/description/instructions, product-honest, по ключам из seo-keywords-*.md):
   PDF `offpage/custom-gpts-pdf-drafts.md` (5) · TVT `offpage/custom-gpts-transcribe-drafts.md` (5) ·
   ET `offpage/custom-gpts-extract-text-drafts.md` (4) · IE `offpage/custom-gpts-image-enhancer-drafts.md` (4).
-- Статус публикации: PDF ✅ 5 live (01.08, аккаунт ChatGPT Plus «Isla Morris/paramannap618») · TVT 🟡 в процессе · ET ⬜ · IE ⬜.
-  ГРАБЛЯ: билдер плодит дубли при повторном клике «Создать» — жать ОДИН раз, лишние чистить в chatgpt.com/gpts/mine (…→Удалить). Домен-верификацию в builder profile забили (необяз., nofollow, слабый вес). Вес идёт от индексируемой публичной страницы бота + ссылки в Instructions.
+- Статус публикации: PDF ✅ 5 live · TVT ✅ 5 live (нейтральные имена) · ET 🟡 в процессе · IE ⬜. Аккаунт ChatGPT Plus «Isla Morris/paramannap618».
+  ГРАБЛЯ 1: билдер плодит дубли при повторном клике «Создать» — жать ОДИН раз, лишние чистить в chatgpt.com/gpts/mine (…→Удалить).
+  ГРАБЛЯ 2 (важно): OpenAI РЕЖЕТ публикацию «Все» если в НАЗВАНИИ чужой товарный знак (YouTube/Zoom/Spotify/TikTok/Vimeo). Домен-верификация НЕ помогает (авторизует только СВОЙ бренд devexthub.com, не чужой). Фикс: имя нейтральное, бренды — только как примеры ВНУТРИ Instructions (там не триггерит). TVT переименован: YouTube→Video Transcript Helper, Zoom→Meeting Recording Transcript Assistant, +Podcast/Interview/Subtitle-SRT. PDF/Excel/CSV/OCR/image/photo — НЕ бренды, проходят как есть.
+  Домен devexthub.com в builder profile ПОДТВЕРЖДЁН (TXT в Dynadot apex, dv-pWT0RN29...) — оставлен, вес слабый nofollow. Основной вес = индексируемая публичная страница бота + ссылка в Instructions.
 
 ## 🚫 Отброшенные площадки (не тратить время)
 - Toolify.ai — стал платным $99.
