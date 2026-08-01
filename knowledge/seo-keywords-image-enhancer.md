@@ -58,6 +58,11 @@ how to increase resolution of image in photoshop 880·32, increase resolution of
 increase resolution of image in photoshop 260·30, how to increase jpeg image resolution 70·45,
 increase image resolution in photoshop 70·30. Почти всё Photoshop-специфично. Не наш трафик.
 
+## СТОП по добору (Денис, 01.08): old photo / restore old photo НЕ БРАТЬ.
+Продукт = локальная обработка в браузере (unblur/sharpen/upscale), AI-реставрация НЕ подключена. Убитое старое
+фото не вытянуть (нужна генеративка, которой нет). Гнать трафик на «restore/enhance old photo» = переобещание,
+отказы, вред домену. Сценарные хвосты old-photo/restore — мимо навсегда, не пробивать. Добор IE закрыт.
+
 ## РЕСЁРЧ IE ЗАКРЫТ — финальный вывод
 Якорь = blurry/unblur (118K, KD28). enhance/sharpen/resolution — слабые/забрендованные, вторичны.
 Страница уже развёрнута на unblur/fix-blurry (title/meta/og/FAQ). Доп. правок НЕ требуется.
