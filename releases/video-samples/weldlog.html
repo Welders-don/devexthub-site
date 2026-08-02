@@ -4,46 +4,25 @@
   @page { size: A4; margin: 14mm; }
   * { box-sizing: border-box; }
   body { font-family: "Helvetica Neue", Arial, sans-serif; color:#111; margin:0; padding:26px 30px; }
-  .hdr { display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #111; padding-bottom:10px; }
-  .hdr h1 { font-size:20px; margin:0 0 4px; letter-spacing:.5px; }
-  .hdr .sub { font-size:11px; color:#333; }
-  .meta { width:100%; margin:14px 0 10px; font-size:11px; border-collapse:collapse; }
-  .meta td { padding:3px 8px; }
-  .meta .k { color:#555; width:90px; }
-  .meta .v { font-weight:600; border-bottom:1px solid #999; }
-  table.log { width:100%; border-collapse:collapse; font-size:11px; margin-top:6px; }
-  table.log th { background:#1f2d3d; color:#fff; padding:6px 5px; text-align:left; font-weight:600; }
-  table.log td { border:1px solid #b9b9b9; padding:5px 5px; }
-  table.log tr:nth-child(even) td { background:#f4f6f8; }
-  .pass { color:#0a7d24; font-weight:700; }
-  .fail { color:#b00020; font-weight:700; }
-  .foot { margin-top:16px; font-size:11px; display:flex; justify-content:space-between; }
-  .sign { border-top:1px solid #111; padding-top:4px; width:200px; text-align:center; color:#333; }
+  h1 { font-size:19px; margin:0 0 2px; letter-spacing:.5px; }
+  .sub { font-size:11px; color:#333; margin-bottom:14px; }
+  table { width:100%; border-collapse:collapse; font-size:11px; }
+  th, td { border:1px solid #b9b9b9; padding:5px 6px; text-align:left; }
+  thead th { background:#1f2d3d; color:#fff; font-weight:600; }
+  .meta { margin-bottom:16px; }
+  .meta td.k { background:#eef1f4; color:#333; font-weight:600; width:14%; }
+  tbody tr:nth-child(even) td { background:#f4f6f8; }
+  .b { font-weight:700; }
+  .summary { margin-top:14px; font-size:11px; }
 </style></head>
 <body>
-  <div class="hdr">
-    <div>
-      <h1>WELD INSPECTION REPORT</h1>
-      <div class="sub">Visual & NDT Examination Log — per EN ISO 5817 / AWS D1.1</div>
-    </div>
-    <div class="sub" style="text-align:right">
-      Report No. <b>WIR-2026-0418</b><br>Page 1 of 1
-    </div>
-  </div>
+  <h1>WELD INSPECTION REPORT — WIR-2026-0418</h1>
+  <div class="sub">Visual &amp; NDT Examination Log — per EN ISO 5817 Level B / AWS D1.1</div>
 
   <table class="meta">
-    <tr>
-      <td class="k">Project</td><td class="v">Pipe Rack Module B-12</td>
-      <td class="k">Client</td><td class="v">NorthSteel Fabrication</td>
-    </tr>
-    <tr>
-      <td class="k">Location</td><td class="v">Bay 4, Workshop</td>
-      <td class="k">Inspector</td><td class="v">D. Weld, CSWIP 3.1</td>
-    </tr>
-    <tr>
-      <td class="k">Date</td><td class="v">14 Apr 2026</td>
-      <td class="k">Standard</td><td class="v">EN ISO 5817 Level B</td>
-    </tr>
+    <tr><td class="k">Project</td><td>Pipe Rack Module B-12</td><td class="k">Client</td><td>NorthSteel Fabrication</td></tr>
+    <tr><td class="k">Location</td><td>Bay 4, Workshop</td><td class="k">Inspector</td><td>D. Weld, CSWIP 3.1</td></tr>
+    <tr><td class="k">Date</td><td>14 Apr 2026</td><td class="k">Standard</td><td>EN ISO 5817 Level B</td></tr>
   </table>
 
   <table class="log">
@@ -52,26 +31,20 @@
       <th>Material</th><th>Thk (mm)</th><th>Position</th><th>NDT</th><th>Defect</th><th>Result</th>
     </tr></thead>
     <tbody>
-      <tr><td>J-101</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>2G</td><td>VT+PT</td><td>None</td><td class="pass">ACC</td></tr>
-      <tr><td>J-102</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>6G</td><td>RT</td><td>Porosity</td><td class="fail">REJ</td></tr>
-      <tr><td>J-103</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>3G</td><td>VT+MT</td><td>None</td><td class="pass">ACC</td></tr>
-      <tr><td>J-104</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>4G</td><td>UT</td><td>Undercut</td><td class="fail">REJ</td></tr>
-      <tr><td>J-105</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>1G</td><td>VT</td><td>None</td><td class="pass">ACC</td></tr>
-      <tr><td>J-106</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>2F</td><td>VT+MT</td><td>None</td><td class="pass">ACC</td></tr>
-      <tr><td>J-107</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>4.0</td><td>5G</td><td>RT</td><td>Lack of fusion</td><td class="fail">REJ</td></tr>
-      <tr><td>J-108</td><td>WPS-045</td><td>W-118</td><td>GMAW</td><td>S355</td><td>8.0</td><td>2G</td><td>VT+PT</td><td>None</td><td class="pass">ACC</td></tr>
-      <tr><td>J-109</td><td>WPS-045</td><td>W-118</td><td>GMAW</td><td>S355</td><td>8.0</td><td>3G</td><td>UT</td><td>None</td><td class="pass">ACC</td></tr>
-      <tr><td>J-110</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>4G</td><td>VT</td><td>Spatter</td><td class="pass">ACC</td></tr>
-      <tr><td>J-111</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>1G</td><td>RT</td><td>Slag incl.</td><td class="fail">REJ</td></tr>
-      <tr><td>J-112</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>6G</td><td>VT+PT</td><td>None</td><td class="pass">ACC</td></tr>
+      <tr><td>J-101</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>2G</td><td>VT+PT</td><td>None</td><td class="b">ACC</td></tr>
+      <tr><td>J-102</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>6G</td><td>RT</td><td>Porosity</td><td class="b">REJ</td></tr>
+      <tr><td>J-103</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>3G</td><td>VT+MT</td><td>None</td><td class="b">ACC</td></tr>
+      <tr><td>J-104</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>4G</td><td>UT</td><td>Undercut</td><td class="b">REJ</td></tr>
+      <tr><td>J-105</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>1G</td><td>VT</td><td>None</td><td class="b">ACC</td></tr>
+      <tr><td>J-106</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>2F</td><td>VT+MT</td><td>None</td><td class="b">ACC</td></tr>
+      <tr><td>J-107</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>4.0</td><td>5G</td><td>RT</td><td>Lack of fusion</td><td class="b">REJ</td></tr>
+      <tr><td>J-108</td><td>WPS-045</td><td>W-118</td><td>GMAW</td><td>S355</td><td>8.0</td><td>2G</td><td>VT+PT</td><td>None</td><td class="b">ACC</td></tr>
+      <tr><td>J-109</td><td>WPS-045</td><td>W-118</td><td>GMAW</td><td>S355</td><td>8.0</td><td>3G</td><td>UT</td><td>None</td><td class="b">ACC</td></tr>
+      <tr><td>J-110</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>4G</td><td>VT</td><td>Spatter</td><td class="b">ACC</td></tr>
+      <tr><td>J-111</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>1G</td><td>RT</td><td>Slag incl.</td><td class="b">REJ</td></tr>
+      <tr><td>J-112</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>6G</td><td>VT+PT</td><td>None</td><td class="b">ACC</td></tr>
     </tbody>
   </table>
 
-  <div class="foot">
-    <div>Total joints: 12 &nbsp;·&nbsp; Accepted: 8 &nbsp;·&nbsp; Rejected: 4 &nbsp;·&nbsp; Repair rate: 33%</div>
-  </div>
-  <div class="foot">
-    <div class="sign">Inspector signature</div>
-    <div class="sign">QA/QC Manager</div>
-  </div>
+  <div class="summary">Total joints: 12 &nbsp;·&nbsp; Accepted: 8 &nbsp;·&nbsp; Rejected: 4 &nbsp;·&nbsp; Repair rate: 33%</div>
 </body></html>
