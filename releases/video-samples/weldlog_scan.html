@@ -1,0 +1,79 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; }
+  html,body { margin:0; }
+  body { background:#d9d7d2; padding:40px; font-family:"Helvetica Neue",Arial,sans-serif; }
+  /* the photocopied sheet */
+  .sheet {
+    position:relative; width:820px; margin:0 auto; background:#f3f1ea; color:#20201d;
+    padding:34px 38px; transform:rotate(-1.3deg); box-shadow:0 6px 22px rgba(0,0,0,.28);
+    filter:grayscale(1) contrast(1.18) brightness(.98);
+  }
+  /* scan grain / dirt overlay */
+  .sheet::after {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.14;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+    mix-blend-mode:multiply;
+  }
+  /* uneven toner: darker at one edge */
+  .sheet::before {
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(105deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 80%, rgba(0,0,0,.08) 100%);
+  }
+  .hdr { display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #20201d; padding-bottom:10px; }
+  .hdr h1 { font-size:19px; margin:0 0 4px; letter-spacing:.4px; }
+  .hdr .sub { font-size:10.5px; color:#333; }
+  .meta { width:100%; margin:13px 0 9px; font-size:10.5px; border-collapse:collapse; }
+  .meta td { padding:3px 8px; }
+  .meta .k { color:#444; width:82px; }
+  .meta .v { font-weight:600; border-bottom:1px solid #555; }
+  table.log { width:100%; border-collapse:collapse; font-size:10.5px; margin-top:6px; }
+  table.log th { background:#2b2b2b; color:#f3f1ea; padding:6px 5px; text-align:left; font-weight:600; }
+  table.log td { border:1px solid #6f6f6f; padding:5px 5px; }
+  table.log tr:nth-child(even) td { background:#e7e5de; }
+  .b { font-weight:700; }
+  .foot { margin-top:15px; font-size:10.5px; display:flex; justify-content:space-between; }
+  .sign { border-top:1px solid #20201d; padding-top:4px; width:190px; text-align:center; color:#333; }
+  .stamp {
+    position:absolute; top:120px; right:60px; transform:rotate(-14deg);
+    border:3px solid #7a1f1f; color:#7a1f1f; opacity:.5; padding:4px 14px;
+    font-weight:800; font-size:26px; letter-spacing:3px; border-radius:6px;
+  }
+</style></head>
+<body>
+  <div class="sheet">
+    <div class="stamp">COPY</div>
+    <div class="hdr">
+      <div>
+        <h1>WELD INSPECTION REPORT</h1>
+        <div class="sub">Visual &amp; NDT Examination Log — per EN ISO 5817 / AWS D1.1</div>
+      </div>
+      <div class="sub" style="text-align:right">Report No. <b>WIR-2026-0418</b><br>Page 1 of 1</div>
+    </div>
+    <table class="meta">
+      <tr><td class="k">Project</td><td class="v">Pipe Rack Module B-12</td><td class="k">Client</td><td class="v">NorthSteel Fabrication</td></tr>
+      <tr><td class="k">Location</td><td class="v">Bay 4, Workshop</td><td class="k">Inspector</td><td class="v">D. Weld, CSWIP 3.1</td></tr>
+      <tr><td class="k">Date</td><td class="v">14 Apr 2026</td><td class="k">Standard</td><td class="v">EN ISO 5817 Level B</td></tr>
+    </table>
+    <table class="log">
+      <thead><tr><th>Joint No.</th><th>WPS No.</th><th>Welder ID</th><th>Process</th><th>Material</th><th>Thk (mm)</th><th>Position</th><th>NDT</th><th>Defect</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>J-101</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>2G</td><td>VT+PT</td><td>None</td><td class="b">ACC</td></tr>
+        <tr><td>J-102</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>6G</td><td>RT</td><td>Porosity</td><td class="b">REJ</td></tr>
+        <tr><td>J-103</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>3G</td><td>VT+MT</td><td>None</td><td class="b">ACC</td></tr>
+        <tr><td>J-104</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>4G</td><td>UT</td><td>Undercut</td><td class="b">REJ</td></tr>
+        <tr><td>J-105</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>1G</td><td>VT</td><td>None</td><td class="b">ACC</td></tr>
+        <tr><td>J-106</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>2F</td><td>VT+MT</td><td>None</td><td class="b">ACC</td></tr>
+        <tr><td>J-107</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>4.0</td><td>5G</td><td>RT</td><td>Lack of fusion</td><td class="b">REJ</td></tr>
+        <tr><td>J-108</td><td>WPS-045</td><td>W-118</td><td>GMAW</td><td>S355</td><td>8.0</td><td>2G</td><td>VT+PT</td><td>None</td><td class="b">ACC</td></tr>
+        <tr><td>J-109</td><td>WPS-045</td><td>W-118</td><td>GMAW</td><td>S355</td><td>8.0</td><td>3G</td><td>UT</td><td>None</td><td class="b">ACC</td></tr>
+        <tr><td>J-110</td><td>WPS-022</td><td>W-115</td><td>SMAW</td><td>S355</td><td>12.0</td><td>4G</td><td>VT</td><td>Spatter</td><td class="b">ACC</td></tr>
+        <tr><td>J-111</td><td>WPS-031</td><td>W-340</td><td>FCAW</td><td>S275</td><td>10.0</td><td>1G</td><td>RT</td><td>Slag incl.</td><td class="b">REJ</td></tr>
+        <tr><td>J-112</td><td>WPS-014</td><td>W-207</td><td>GTAW</td><td>316L</td><td>6.0</td><td>6G</td><td>VT+PT</td><td>None</td><td class="b">ACC</td></tr>
+      </tbody>
+    </table>
+    <div class="foot"><div>Total joints: 12 · Accepted: 8 · Rejected: 4 · Repair rate: 33%</div></div>
+    <div class="foot"><div class="sign">Inspector signature</div><div class="sign">QA/QC Manager</div></div>
+  </div>
+</body></html>
