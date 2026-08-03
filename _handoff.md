@@ -1,5 +1,18 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## UPDATE 2026-08-03 (вечер) — ШОРТС v4 (PDF) LIVE; Startup Stash оказался ПЛАТНЫМ (отброшен)
+### Где остановились
+Шортс залит. Off-page на сегодня закрыт — Startup Stash сдох как площадка.
+### Что сделано
+- **Шортс v4 (PDF) ОПУБЛИКОВАН** на YouTube (Денис с компа, Studio). Title «Convert a scanned PDF to Excel — no retyping #Shorts», описание с мостом на длинный youtu.be/I_7uDO1Qtfc + теги pdf-to-excel кластера, Not made for kids, Public. Проверка YT: нарушений нет. Закреп-коммент со ссылкой на длинный добавлен. ФАЙЛ: releases/video-samples/pdf-short-v4.mp4.
+  - **ГРАБЛЯ**: «Добавить похожее видео» (Related video в Studio, мост шортс→длинный) НЕДОСТУПНО для молодого канала — YT: «вскоре сможете связывать Shorts». Верификация НЕ помогает, это про возраст/активность канала. Мост держится на ссылке в ОПИСАНИИ (внутренняя youtu.be кликабельна без verify) + закреп-коммент. Related сам откроется позже.
+- **Startup Stash — ОТБРОШЕН (платный развод)**. Форма free = обманка: подали PDF+ET (typeform, Productivity, advertise=No, Devexthub/Team), сразу пришло письмо «Next Steps» — листинг ПЛАТНЫЙ (Basic $199/год, Premium $399/год). НЕ платим, IE+TVT не лили. Ledger: Startup Stash 🚫. УРОК: «free» по виду формы ≠ free, проверять что реально листят без денег.
+- **Спам-письма (игнор)**: InsightScout (insightscout.co) — холодный лид-скаутинг SaaS, платно, Reddit-канал у нас мёртв → чёрный список. Future Tools welcome-newsletter от Matt Wolfe на team@ — легит автоответ, подтверждает что сабмит дошёл (не действие).
+### Следующий шаг
+1. Через 2-3 дня — следующий шортс с этой же PDF-записи (НЕ в один день; хуки «нельзя выделить скан»/«AI за секунды»). Монтаж на Пафнутии.
+2. Off-page: AlternativeTo PDF (1/день, из карантина), Product Hunt ET+IE (не были). Живые free dofollow: The Next AI / OpenAIToolsHub / SaaSHub.
+3. Через 1-2 нед: цифры длинного+шортса (просмотры/досмотр) в YT Studio + референс-трафик в Umami/GSC.
+
 ## UPDATE 2026-08-03 (день) — OFF-PAGE: Future Tools 4/4 + AlternativeTo TVT поданы; разведка директорий
 ### Где остановились
 Отработали off-page по расписанию. Вечером — залить шортс v4 (PDF) на YouTube. Формы AlternativeTo длинные, Денис заполнял по моим копи-блокам.
