@@ -51,6 +51,7 @@
 - Toolify.ai — стал платным $99.
 - ToolPilot.ai — free требует обратный бейдж на наш сайт + очередь 90 дн + 429.
 - Futurepedia — платно $247 / $497, free нет.
+- TopAI.tools — ОТБРОШЕНО 03.08. Только платно: Fast Track $47 one-time / Featured $229. Free-опции нет.
 - TheSaaSDir — free-приём закрыт + бейдж; paid $19.
 - findly.tools, Turbo0, Wired Business, AIxploria — reciprocal-бейдж или платно.
 - There's An AI For That — платно $347.
