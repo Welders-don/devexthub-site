@@ -20,6 +20,7 @@
 | OpenAIToolsHub | ~30 | ✅ | ✅ | ✅ | ✅ | все 4. TVT+ET+IE 27.07, PDF догнан 4-м 28.07. no-signup, contact team@ |
 | SaaSHub | ~79 | ✅ | ✅ | ✅ | ✅ | ВСЕ 4 залиты. ET+IE 30.07 free, имена брендированы «... by Devexthub» (голое «Extract Text from Image» было занято). ET+IE оба VERIFIED. «Заморозка» = лимит N продуктов на ревью одновременно, освобождается когда предыдущий проходит, НЕ по календарю |
 | The Next AI | — | ✅ | ✅ | ✅ | ✅ | ВСЕ 4 залиты 30.07 (Денис, free basic dofollow). No-signup → повторную заливку не проверить, дубли не страшны. Поля всех 4 в offpage |
+| Future Tools | ~72 | 🟡 | 🟡 | 🟡 | 🟡 | ВСЕ 4 поданы 03.08 (Денис, free, ревью вручную Matt Wolfe). Капча пройдена. Category: PDF/ET=Productivity, IE/TVT=по дропдауну. Ждёт аппрува. Пакет offpage/futuretools-pack.md. Dofollow подтвердится при листинге |
 | AlternativeTo | ~90 | ⬜ | ⏳ | ⬜ | ⬜ | зареган team@, карантin 7 дн → сабмит TVT открывается ~3 авг, остальные враздрай после |
 | MarketingDB | ~59 | 🚫 | 🚫 | 🚫 | 🚫 | УСЛОВИЯ ИСПОРТИЛИСЬ (скрин 30.07): free = NOFOLLOW + обязательный бейдж (reciprocal) — не берём. Dofollow только Premium $13 one-time (+ блог-статья, рассылка, X). $13 = на решение Дениса, деньги |
 | SubmitAiTools | — | ⬜ | ⬜ | ⬜ | ⬜ | free, за human-verification. Условия dofollow/бейдж с сервера НЕ пробить — Денису проверить глазами перед заливкой |
