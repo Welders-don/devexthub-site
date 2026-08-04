@@ -10,7 +10,7 @@
 
 ## На чём работает (статика/генератор, где хостинг — GitHub Pages, репо, домен+TLS)
 - Чистая статика: HTML + styles.css, БЕЗ генератора. Файл `.nojekyll` (сборка Jekyll отключена).
-- Хостинг: <b>GitHub Pages</b> (НЕ IONOS). Репо: github.com/Welders-don/devexthub-site, ветка master.
+- Хостинг: <b>GitHub Pages</b> (НЕ IONOS). Репо: github.com/Welders-don/devexthub-site, ветка <b>main</b> (04.08 сверено: origin default = main, master в репо нет; прежняя запись «master» была неверна).
 - `CNAME` = www.devexthub.com. TLS выдаёт Pages. Живой с TLS с 25.07.2026.
 - DNS: регистратор Dynadot (аккаунт Denis Toropov). apex → 87.106.208.215 (IONOS), www CNAME → welders-don.github.io.
 - Грабля Dynadot: включён Account Lock — пока не снять, DNS не редактируется.
@@ -32,7 +32,7 @@
 - Медиа/баннеры: `assets/`, `.media/`, `releases/` (в т.ч. `releases/marquee/` — баннеры 1400x560 под CWS featured).
 
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
-- Деплой = `git push origin master` → GitHub Pages пересобирает автоматически. Отдельного билд-шага нет.
+- Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
 - CNAME-файл трогать осторожно: его перезапись ломает привязку www→Pages.
 - Домен devexthub.com — НЕ путать с чужим devxhub.com (на Cloudflare).
