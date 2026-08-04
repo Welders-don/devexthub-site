@@ -309,10 +309,8 @@ a { color: var(--green-deep); }
 /* ===== pdf-to-excel hero — tinted band + vivid before/after spreadsheet ===== */
 .hero-band{
   background:
-    radial-gradient(760px 340px at 8% -6%, #9fe0b9 0%, rgba(159,224,185,0) 56%),
-    radial-gradient(720px 380px at 94% 2%, #a5d0f4 0%, rgba(165,208,244,0) 54%),
-    radial-gradient(1000px 580px at 50% 130%, #c4ebd4 0%, rgba(196,235,212,0) 60%),
-    linear-gradient(180deg,#daeee2 0%, #f6faf6 74%);
+    radial-gradient(900px 380px at 12% -8%, #7fd6a3 0%, rgba(127,214,163,0) 55%),
+    linear-gradient(180deg,#c7ecd6 0%, #eef8f1 70%, #ffffff 100%);
   border-bottom:1px solid var(--line);
 }
 .hero-band .hero{padding-top:52px;}
