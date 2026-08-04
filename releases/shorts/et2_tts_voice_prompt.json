@@ -1,0 +1,4 @@
+{
+  "contents":[{"parts":[{"text":"Say in an upbeat, confident narrator voice: Text stuck inside a Google image? You cannot select it. Copy the image, paste it into Extract Text, and get clean editable text. Free on Chrome."}]}],
+  "generationConfig":{"responseModalities":["AUDIO"],"speechConfig":{"voiceConfig":{"prebuiltVoiceConfig":{"voiceName":"Puck"}}}}
+}
