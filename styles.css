@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;600&family=Instrument+Serif:ital@0;1&display=swap');
 
 :root {
   --green: #16884a;
@@ -12,6 +12,7 @@
   --radius: 14px;
   --maxw: 1080px;
   --font: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --shadow-card: 0 1px 2px rgba(20,30,25,.04), 0 8px 24px rgba(20,40,30,.06);
   --shadow-lift: 0 2px 4px rgba(20,30,25,.05), 0 18px 40px rgba(20,40,30,.10);
@@ -82,7 +83,7 @@ a { color: var(--green-deep); }
 
 /* hero */
 .hero { padding: 68px 0 40px; text-align: center; }
-.hero h1 { font-size: clamp(36px, 5.6vw, 60px); line-height: 1.04; margin: 0 0 18px; letter-spacing: -0.035em; font-weight: 700; }
+.hero h1 { font-family: var(--serif); font-size: clamp(42px, 6.4vw, 68px); line-height: 1.02; margin: 0 0 18px; letter-spacing: -0.015em; font-weight: 400; }
 .hero .arrow { color: var(--green); }
 .hero p.sub { font-size: clamp(17px, 2.4vw, 21px); color: var(--muted); max-width: 620px; margin: 0 auto 30px; }
 .hero .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
@@ -95,7 +96,7 @@ a { color: var(--green-deep); }
 /* feature row */
 .section { padding: 56px 0; }
 .section.soft { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.section h2 { font-size: clamp(26px, 3.8vw, 40px); margin: 0 0 10px; letter-spacing: -0.025em; font-weight: 700; line-height: 1.1; }
+.section h2 { font-family: var(--serif); font-size: clamp(29px, 4.2vw, 46px); margin: 0 0 10px; letter-spacing: -0.01em; font-weight: 400; line-height: 1.06; }
 .section .lead { color: var(--muted); margin: 0 0 34px; max-width: 620px; font-size: 17.5px; }
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .grid2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -164,8 +165,10 @@ a { color: var(--green-deep); }
 .faq { display: grid; gap: 12px; }
 .faq details {
   background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 16px 20px;
+  padding: 16px 20px; transition: border-color .15s ease, box-shadow .15s ease;
 }
+.faq details:hover { border-color: #cfe6d9; }
+.faq details[open] { border-color: #cfe6d9; box-shadow: var(--shadow-card); }
 .faq summary { font-weight: 600; cursor: pointer; list-style: none; font-size: 16.5px; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; float: right; color: var(--green); font-weight: 700; }
@@ -306,10 +309,10 @@ a { color: var(--green-deep); }
 /* ===== pdf-to-excel hero — tinted band + vivid before/after spreadsheet ===== */
 .hero-band{
   background:
-    radial-gradient(720px 320px at 12% 0%, #bfe9cf 0%, rgba(191,233,207,0) 60%),
-    radial-gradient(700px 340px at 90% 8%, #c3e0f7 0%, rgba(195,224,247,0) 58%),
-    radial-gradient(900px 520px at 50% 122%, #d8f0e2 0%, rgba(216,240,226,0) 60%),
-    linear-gradient(180deg,#e3f2ea 0%, #f4faf6 100%);
+    radial-gradient(760px 340px at 8% -6%, #9fe0b9 0%, rgba(159,224,185,0) 56%),
+    radial-gradient(720px 380px at 94% 2%, #a5d0f4 0%, rgba(165,208,244,0) 54%),
+    radial-gradient(1000px 580px at 50% 130%, #c4ebd4 0%, rgba(196,235,212,0) 60%),
+    linear-gradient(180deg,#daeee2 0%, #f6faf6 74%);
   border-bottom:1px solid var(--line);
 }
 .hero-band .hero{padding-top:52px;}
@@ -370,6 +373,8 @@ a { color: var(--green-deep); }
 .px-pdf-tbl .r{display:grid;grid-template-columns:1.5fr .5fr .8fr .9fr;font-size:12px;color:#333;padding:6px 2px;border-bottom:1px solid #eeeeee;}
 .px-pdf-tbl .r span:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;}
 .px-pdf-tbl .r.tot{font-weight:800;border-bottom:0;color:#1a1a1a;}
+.px-pdf-tbl .r.hd{font-weight:700;color:#6a726c;border-bottom:1px solid #e6e6e6;}
+.px-pdf-tbl .r.hd span:first-child{text-align:left;}
 
 /* right card as a real Excel sheet — column letters + row numbers */
 .px-xls{display:grid;grid-template-columns:32px 1.4fr .58fr .78fr .9fr;
@@ -382,3 +387,5 @@ a { color: var(--green-deep); }
   background:#eef3f0;color:#8aa596;font-weight:700;text-align:center;font-size:11px;padding:5px 4px;}
 .px-xls .xls-hd{background:#eafaf1;font-weight:700;color:var(--green-deep);}
 .px-xls .gt{background:#f3f9f5;font-weight:800;}
+.px-xls .xls-title{grid-column:span 4;font-weight:800;color:#1a1a1a;}
+.px-xls .xls-sub{grid-column:span 4;color:#8a8a8a;font-size:11.5px;}
