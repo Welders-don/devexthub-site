@@ -28,9 +28,9 @@ card () {
 }
 
 card  "Extract Text from Image"  "Turn any picture into editable text"   2.5  0
-mkc   demo.mp4  93.0 4.5 "crop=1320:743:360:210"   "1   Upload a file"                1
-mkc   demo2.mp4 15.0 6.5 "crop=1920:875:0:160"     "2   Or paste with Ctrl + V"       2
-mkc   demo.mp4   9.5 4.0 "crop=1600:855:285:170"   "3   Or grab it off your screen"   3
+mkc   demo.mp4   5.5 7.0 "crop=1920:875:0:160"     "1   Draw a box on your screen"    1
+mkc   demo2.mp4 17.0 7.0 "crop=1920:875:0:160"     "2   Or paste any image (Ctrl+V)"  2
+mkc   demo.mp4  49.5 7.0 "crop=1920:875:0:160"     "3   Or upload a file"             3
 card  "Free on Chrome"  "www.devexthub.com/extract-text-from-image"  3.0  4
 
 for n in 0 1 2 3 4; do echo "file 'L_${n}.mp4'" >> concatL.txt; done

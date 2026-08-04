@@ -1,4 +1,4 @@
 {
-  "contents":[{"parts":[{"text":"Say in an upbeat, confident narrator voice: Extract Text from Image turns any picture into text you can actually edit. Upload a file, and it reads the text for you. Or copy any image and paste it in with Control V. Or grab text right off your screen. Clean, editable text every time. Free, right in Chrome."}]}],
+  "contents":[{"parts":[{"text":"Say in an upbeat, confident narrator voice: Extract Text from Image pulls real, editable text out of any picture, right in your browser. The best part: just draw a box around any text on your screen, and it reads it for you instantly. You can also copy an image from the web and paste it straight in with Control V. Or upload a file from your computer, like a scan or a photo. Either way, you get clean text you can copy or download in one click. Completely free on Chrome."}]}],
   "generationConfig":{"responseModalities":["AUDIO"],"speechConfig":{"voiceConfig":{"prebuiltVoiceConfig":{"voiceName":"Puck"}}}}
 }
