@@ -1,0 +1,4 @@
+{
+  "contents":[{"parts":[{"text":"Say in an upbeat, confident narrator voice: Extract Text from Image turns any picture into text you can actually edit. Upload a file, and it reads the text for you. Or copy any image and paste it in with Control V. Or grab text right off your screen. Clean, editable text every time. Free, right in Chrome."}]}],
+  "generationConfig":{"responseModalities":["AUDIO"],"speechConfig":{"voiceConfig":{"prebuiltVoiceConfig":{"voiceName":"Puck"}}}}
+}
