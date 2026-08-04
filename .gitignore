@@ -4,3 +4,6 @@
 releases/shorts/*.mp4
 releases/shorts/*.pcm
 releases/shorts/*.wav
+.shots/redesign/chrome-home/
+.shots/redesign/_pdf_render.html
+.shots/chrome-home/
