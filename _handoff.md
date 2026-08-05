@@ -1,5 +1,15 @@
 # Handoff — Devexthub site (сайт-хаб линейки расширений)
 
+## СЕССИЯ 2026-08-05 (вечер-2) — Official URL/плашка РАЗБЛОКИРОВАНА (IE+PDF поданы) + первые показы GSC
+### Что сделано
+- Разблокировано поле Official URL (плашка «by domain») для IE и PDF-to-Excel — БЕЗ доменной почты. Причина была: издатель CWS mattpolans@gmail.com не владелец devexthub.com в GSC; домен верифицирован под telesinimarco@gmail.com (Marco). Фикс: в GSC под Marco добавил mattpolans делегированным Owner (Manage property owners → Add owner). Домен подтянулся в дропдаун → оба листинга (IE, PDF) поданы на ревью с плашкой.
+- ПОПРАВКА к прошлым записям: Official URL/плашка = делегированный GSC-владелец под аккаунтом издателя, НЕ почта team@. Zoho-ящик для этого поля не нужен. Детали + шаги: knowledge/cws-listing-domain-fields.md (блок «ПОПРАВКА 05.08»).
+- Featured badge PDF/IE упирался в это же поле → теперь можно подавать после аппрува плашки.
+- GSC первые показы (раньше ноль): 1.25K impressions / 0 clicks / поз.~62 за 3 мес (данные с 29.07). Блог тащит показы (ET-статьи: copy-text-from-image 248, jpg/png-to-text 234, best-ocr 226), лендинги слабее. PDF-кластер в топ не пробился. Рычаг подъёма = ссылки + время. Точка отсчёта в workspace/memory/2026-08-05.md.
+### Следующий шаг
+- После аппрува плашки IE/PDF — подать Featured badge на оба (тексты готовы, cws-featured-badge-guide.md).
+- Замер GSC показов/позиции через 1-2 нед.
+
 ## СЕССИЯ 2026-08-05 — AlternativeTo: Image Enhancer ПОДАН (читать первым)
 
 ### Где остановились
