@@ -14,7 +14,7 @@ mkclip () {
     scale=1000:1330:force_original_aspect_ratio=decrease,
     pad=1080:1920:(ow-iw)/2:300:color=${BG},
     drawtext=fontfile=${F}:text='${top}':fontcolor=white:fontsize=60:box=1:boxcolor=black@0.55:boxborderw=20:x=(w-tw)/2:y=150,
-    drawtext=fontfile=${F}:text='${bottom}':fontcolor=white:fontsize=50:box=1:boxcolor=${botcol}:boxborderw=22:x=(w-tw)/2:y=1650
+    drawtext=fontfile=${F}:text='${bottom}':fontcolor=white:fontsize=50:box=1:boxcolor=${botcol}:boxborderw=22:x=(w-tw)/2:y=1300
   " -r 30 -c:v libx264 -preset medium -crf 20 -pix_fmt yuv420p "clip_${n}.mp4"
 }
 
