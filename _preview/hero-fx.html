@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hero FX preview — Devexthub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;600;700&family=Geist+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+  /* --- токены из styles.css (1:1) --- */
+  :root{
+    --green:#16884a; --green-deep:#0f6b39; --ink:#191d1a; --ink-soft:#3a423d;
+    --muted:#6a726c; --line:#e8e7e1; --bg:#ffffff; --bg-soft:#f7f7f3;
+    --font:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+    --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .hero{padding:96px 0 60px;text-align:center}
+  .hero h1{font-family:var(--serif);font-size:clamp(42px,6.4vw,68px);line-height:1.02;
+    margin:0 0 18px;letter-spacing:-0.015em;font-weight:400}
+  .hero .arrow{color:var(--green)}
+  .hero .sub{max-width:640px;margin:0 auto 26px;color:var(--ink-soft);font-size:19px;line-height:1.5}
+  .btn{display:inline-block;border-radius:12px;font-weight:600;text-decoration:none}
+  .btn-lg{padding:16px 32px;font-size:18px;background:var(--green);color:#fff;
+    box-shadow:0 6px 18px rgba(22,136,74,.22)}
+  .note{color:var(--muted);font-size:14px;margin-top:16px;font-family:var(--mono)}
+  .tag{display:inline-block;font-family:var(--mono);font-weight:600;font-size:13px;
+    color:var(--green-deep);background:var(--bg-soft);border:1px solid var(--line);
+    padding:6px 14px;border-radius:30px;margin-bottom:22px}
+
+  /* ================== ЭФФЕКТ 1: пословный ревил заголовка ================== */
+  /* каждая строка — маска (overflow:hidden), слова всплывают из-за неё со сдвигом */
+  .fx-line{display:block;overflow:hidden}
+  .fx-w{display:inline-block;transform:translateY(105%);
+    animation:fxRise .72s cubic-bezier(.2,.75,.2,1) forwards;
+    animation-delay:calc(var(--i)*70ms)}
+  @keyframes fxRise{to{transform:translateY(0)}}
+
+  /* ================== ЭФФЕКТ 2: медленный sheen по кнопке ================== */
+  .btn-lg{position:relative;overflow:hidden;isolation:isolate}
+  .btn-lg::after{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);
+    transform:translateX(-120%);
+    animation:fxSheen 4.5s ease-in-out 1.2s infinite}
+  @keyframes fxSheen{0%{transform:translateX(-120%)}
+    22%,100%{transform:translateX(120%)}}
+
+  @media (prefers-reduced-motion:reduce){
+    .fx-w{transform:none;animation:none}
+    .btn-lg::after{animation:none;display:none}
+  }
+</style>
+</head>
+<body>
+  <section class="hero wrap">
+    <span class="tag">CSS-only · no React · no canvas</span>
+    <h1>
+      <span class="fx-line">
+        <span class="fx-w" style="--i:0">Get</span>
+        <span class="fx-w" style="--i:1">a</span>
+        <span class="fx-w" style="--i:2">transcript</span>
+        <span class="fx-w" style="--i:3">of</span>
+      </span>
+      <span class="fx-line">
+        <span class="fx-w" style="--i:4">any</span>
+        <span class="fx-w" style="--i:5">video</span>
+        <span class="fx-w" style="--i:6">in</span>
+        <span class="fx-w arrow" style="--i:7">one&nbsp;click</span>
+      </span>
+    </h1>
+    <p class="sub">Turn a YouTube video, TikTok, Vimeo, Loom or almost any recording into clean text, laid out by speaker with timestamps. Export it to Word, TXT or SRT. 50+ languages, no sign-up.</p>
+    <a class="btn btn-lg" href="#">Add to Chrome · free</a>
+    <p class="note">No sign-up · runs in your browser · YouTube transcripts are unlimited and free</p>
+  </section>
+
+  <p style="text-align:center;color:#6a726c;font-size:13px;font-family:monospace;padding:40px">
+    ↑ обнови страницу, чтобы пересмотреть ревил · sheen по кнопке идёт по кругу
+  </p>
+</body>
+</html>
