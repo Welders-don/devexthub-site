@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#16884a;--green-deep:#0f6b39;--ink:#191d1a;--muted:#6a726c;--line:#e8e7e1;--bg:#ffffff;--soft:#f7f7f3}
+  *{box-sizing:border-box;margin:0}
+  body{font-family:"Geist",sans-serif;color:var(--ink);background:var(--bg);padding:56px 60px}
+  h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:40px;margin-bottom:6px}
+  .subtitle{color:var(--muted);font-size:16px;margin-bottom:44px}
+  .row{display:grid;grid-template-columns:150px 300px 1fr;align-items:center;gap:40px;
+       padding:34px 0;border-top:1px solid var(--line)}
+  .sq{width:104px;height:104px;border-radius:26px;background:var(--green);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 10px 26px rgba(22,136,74,.22)}
+  .wordmark{display:flex;align-items:center;gap:12px}
+  .wordmark .mini{width:34px;height:34px;border-radius:9px;background:var(--green);
+      display:flex;align-items:center;justify-content:center}
+  .wordmark .txt{font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .meta .label{font-size:19px;font-weight:700;margin-bottom:4px}
+  .meta .note{color:var(--muted);font-size:15px;line-height:1.45;max-width:440px}
+  .tiny-row{display:flex;align-items:center;gap:14px;margin-top:14px}
+  .tiny{width:28px;height:28px;border-radius:8px;background:var(--green);
+        display:flex;align-items:center;justify-content:center}
+  .tiny.xs{width:18px;height:18px;border-radius:5px}
+  .tiny-cap{font-size:13px;color:var(--muted);font-family:"Geist Mono",monospace}
+  svg{display:block}
+</style></head>
+<body>
+  <h2>Devexthub — 3 направления знака</h2>
+  <div class="subtitle">Один цвет (#16884a), squircle как у продуктовых иконок · проверка на 28px и 18px</div>
+
+  <!-- Concept 1: hub-node -->
+  <div class="row">
+    <div class="sq">
+      <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+        <line x1="50" y1="50" x2="24" y2="24" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="76" y2="24" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="24" y2="76" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="76" y2="76" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="24" cy="24" r="8" fill="#fff"/><circle cx="76" cy="24" r="8" fill="#fff"/>
+        <circle cx="24" cy="76" r="8" fill="#fff"/><circle cx="76" cy="76" r="8" fill="#fff"/>
+        <circle cx="50" cy="50" r="13" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="wordmark">
+      <div class="mini"><svg width="20" height="20" viewBox="0 0 100 100" fill="none">
+        <line x1="50" y1="50" x2="26" y2="26" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="74" y2="26" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="26" y2="74" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <line x1="50" y1="50" x2="74" y2="74" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="26" cy="26" r="9" fill="#fff"/><circle cx="74" cy="26" r="9" fill="#fff"/>
+        <circle cx="26" cy="74" r="9" fill="#fff"/><circle cx="74" cy="74" r="9" fill="#fff"/>
+        <circle cx="50" cy="50" r="15" fill="#fff"/></svg></div>
+      <span class="txt">Devexthub</span>
+    </div>
+    <div class="meta">
+      <div class="label">1 · Хаб-узел</div>
+      <div class="note">Центр + узлы = хаб, из которого растут маленькие инструменты. Буквальный смысл имени, читается в самом мелком размере.</div>
+    </div>
+  </div>
+
+  <!-- Concept 2: monogram dx -->
+  <div class="row">
+    <div class="sq"><span style="color:#fff;font-size:54px;font-weight:800;letter-spacing:-.04em">dx</span></div>
+    <div class="wordmark">
+      <div class="mini"><span style="color:#fff;font-size:17px;font-weight:800;letter-spacing:-.04em">dx</span></div>
+      <span class="txt">Devexthub</span>
+    </div>
+    <div class="meta">
+      <div class="label">2 · Монограмма «dx»</div>
+      <div class="note">Devext(hub) → dx. В той же squircle-форме, что 4 продукта — знак хаба выглядит как пятый брат в семье. Максимально просто и магазинно.</div>
+    </div>
+  </div>
+
+  <!-- Concept 3: chevron -->
+  <div class="row">
+    <div class="sq">
+      <svg width="62" height="62" viewBox="0 0 100 100" fill="none">
+        <path d="M40 26 L20 50 L40 74" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M60 26 L80 50 L60 74" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="7" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="wordmark">
+      <div class="mini"><svg width="21" height="21" viewBox="0 0 100 100" fill="none">
+        <path d="M40 26 L20 50 L40 74" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M60 26 L80 50 L60 74" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="8" fill="#fff"/></svg></div>
+      <span class="txt">Devexthub</span>
+    </div>
+    <div class="meta">
+      <div class="label">3 · Чеврон ‹ • ›</div>
+      <div class="note">Скобки-чевроны = код/расширения, точка в центре = узел-хаб. Намёк на dev. Минус: dev-мотив чуть более «общий».</div>
+    </div>
+  </div>
+
+  <!-- tiny legibility strip -->
+  <div class="row" style="grid-template-columns:1fr">
+    <div>
+      <div class="label" style="font-size:16px;font-weight:700;margin-bottom:12px">Проверка мелких размеров (фавикон / тулбар)</div>
+      <div class="tiny-row">
+        <div class="tiny"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><line x1="50" y1="50" x2="26" y2="26" stroke="#fff" stroke-width="9" stroke-linecap="round"/><line x1="50" y1="50" x2="74" y2="26" stroke="#fff" stroke-width="9" stroke-linecap="round"/><line x1="50" y1="50" x2="26" y2="74" stroke="#fff" stroke-width="9" stroke-linecap="round"/><line x1="50" y1="50" x2="74" y2="74" stroke="#fff" stroke-width="9" stroke-linecap="round"/><circle cx="26" cy="26" r="10" fill="#fff"/><circle cx="74" cy="26" r="10" fill="#fff"/><circle cx="26" cy="74" r="10" fill="#fff"/><circle cx="74" cy="74" r="10" fill="#fff"/><circle cx="50" cy="50" r="16" fill="#fff"/></svg></div>
+        <div class="tiny"><span style="color:#fff;font-size:15px;font-weight:800;letter-spacing:-.04em">dx</span></div>
+        <div class="tiny"><svg width="19" height="19" viewBox="0 0 100 100" fill="none"><path d="M40 26 L20 50 L40 74" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 26 L80 50 L60 74" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="50" r="8" fill="#fff"/></svg></div>
+        <span class="tiny-cap">28px →</span>
+        <div class="tiny xs"><svg width="12" height="12" viewBox="0 0 100 100" fill="none"><line x1="50" y1="50" x2="26" y2="26" stroke="#fff" stroke-width="11" stroke-linecap="round"/><line x1="50" y1="50" x2="74" y2="26" stroke="#fff" stroke-width="11" stroke-linecap="round"/><line x1="50" y1="50" x2="26" y2="74" stroke="#fff" stroke-width="11" stroke-linecap="round"/><line x1="50" y1="50" x2="74" y2="74" stroke="#fff" stroke-width="11" stroke-linecap="round"/><circle cx="26" cy="26" r="11" fill="#fff"/><circle cx="74" cy="26" r="11" fill="#fff"/><circle cx="26" cy="74" r="11" fill="#fff"/><circle cx="74" cy="74" r="11" fill="#fff"/><circle cx="50" cy="50" r="17" fill="#fff"/></svg></div>
+        <div class="tiny xs"><span style="color:#fff;font-size:10px;font-weight:800;letter-spacing:-.05em">dx</span></div>
+        <div class="tiny xs"><svg width="12" height="12" viewBox="0 0 100 100" fill="none"><path d="M40 26 L20 50 L40 74" stroke="#fff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 26 L80 50 L60 74" stroke="#fff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="tiny-cap">18px</span>
+      </div>
+    </div>
+  </div>
+</body></html>
