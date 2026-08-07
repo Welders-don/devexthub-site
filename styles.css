@@ -317,6 +317,7 @@ a { color: var(--green-deep); }
   background: var(--green); margin-right: 8px; vertical-align: 1px;
 }
 .tool.soon .mark { color: var(--muted); opacity: .8; }
+.tool img.mark { border: none; background: transparent; object-fit: cover; }
 
 /* video-to-text: speaker turns in demo panel */
 .cap-turn{margin-bottom:15px}
