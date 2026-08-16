@@ -55,3 +55,14 @@
 ## ЗАВТРА 17.08 — первым делом
 Transcribe-лонг `releases/transcribe-anchor/tr-anchor-final.mp4` (34с) аппрувнут, заливает Денис завтра.
 ПЕРЕД ЗАЛИВКОЙ написать ему: title + описание + теги + текст закреп-коммента (ключ youtube transcript generator free 2400/KD29, ссылка = лендинг /transcribe-video-to-text). Детали в releases/transcribe-anchor/_handoff.md.
+
+## 16.08 (вечер) — GSC-срез + 3 статьи best-*-chrome-extension ВЫЛОЖЕНЫ
+Повод: GSC Performance экспорт 16.08 (данные 27.07-14.08). Разбор → ~/workspace/knowledge/gsc-devexthub-search-2026-08-16.md.
+Вывод: домен ранжируется ТОЛЬКО на запросах со словом extension/chrome/chromebook (поз 10-15), общие ключи (jpg to text) — поз 87, мусор. Образец окупаемости = best-ocr-chrome-extension (608 показов, поз 36.5).
+Написаны и ЗАЛИТЫ (push 7416a17, все три отдают 200):
+- /blog/best-video-transcript-chrome-extension/
+- /blog/best-image-enhancer-chrome-extension/
+- /blog/best-pdf-to-excel-chrome-extension/
+Формат по образцу best-ocr: критерии выбора → наш продукт по шагам → CTA с UTM → честный блок про конкурентов → перелинковка на свои how-to. FAQPage JSON-LD на каждой. Карточки в blog/index.html + 3 записи в sitemap.
+Честность (специально): в Transcribe-статье НЕ обещаю приватность (не-YouTube идёт через облако), в Enhancer-статье прямо сказано что безнадёжный расфокус не восстановить.
+Следующий замер отдачи — через 2-3 недели по GSC (позиции этих 3 URL + показы по extension-ключам).
