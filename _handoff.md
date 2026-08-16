@@ -1,27 +1,27 @@
-# Handoff — Devexthub site
+# Handoff 2026-08-16
 
-## СЕССИЯ 2026-08-07 (продолжение) — Product Hunt лонч Extract Text from Image
-### Где остановились
-Полностью настроили и ЗАПЛАНИРОВАЛИ лонч Extract Text на PH. Ждём старта.
+## План на завтра (16→17.08)
+Возвращаемся к Transcribe Video to Text (Capitan). Делаем ДЛИННЫЙ ролик по одному из готовых кластеров, потом shorts из того же материала.
+- Кластеры уже собраны (5 блог-статей в Devexthub-site/blog/, НОВЫЙ ресёрч НЕ нужен):
+  1. can-chatgpt-transcribe-a-video
+  2. how-to-transcribe-a-tiktok-video
+  3. how-to-transcribe-a-video-on-iphone
+  4. how-to-transcribe-a-zoom-recording
+  5. how-to-transcribe-song-lyrics-from-a-video
+- Ядро длинного ролика — берём широкий кластер (TikTok или iPhone), если по нему норм. Финальный выбор кластера подтвердит Денис завтра.
+- Ротация контента (задал Денис 16.08): Transcribe → PDF-to-Excel → Extract Text по кругу, каждый продукт = пара «длинный ролик + shorts». Заливает Денис сам, я готовлю ролик + тексты (title/описание из ключей/теги/закреп).
 
-### Лонч — факты
-- Дата/время: **Fri Aug 7, 12:01 AM PT = 15:01 Китая**, полное 24-ч окно. post_id=**1216993**, slug **extract-text-from-image**.
-- Ссылка лонча: https://www.producthunt.com/products/extract-text-from-image
-- Аккаунт: **Denis @welders_don**, solo maker ("I worked on this product" = Hunter+Maker).
-- Product URL в карточке = лендинг https://www.devexthub.com/extract-text-from-image/ (+UTM).
-- Tagline: "Copy text from any image or screenshot in one click". Description — meta-строка лендинга (оставили).
-- Галерея: **видео** (слот 1, Денис залил ФАЙЛОМ — YouTube-ссылку PH отверг invalid) + 3 карточки 2540x1520 + thumbnail-240.png. Всё в `releases/ph-extracttext/` (card-1-photo, card-2-select, card-3-private; сборка src/build_cards.py → chrome-headless-shell).
-- Shoutouts: Claude (alt Cursor), GitHub (alt GitLab). Pricing Free, Bootstrapped, team 1.
-- Featured-badge (light) вшит в hero лендинга (commit ae755c5), post-embed карточка в блог how-to-extract-text-from-a-picture (33df7b8), статус в offpage (cfa42f2). Всё запушено в main, live.
+## Статус на сегодня
+- Image Enhancer шорт Enhance — ГОТОВ и ЗАЛИТ на YouTube (@NicholaChaus). Файл releases/ie-anchor/shorts/short_enhance_v1.mp4.
+- TTS-движок: Gemini Puck (~0.25 цента/ролик, проверено). Бесплатный запас Edge-TTS (venv /home/client/projects/edge-tts-venv). Тайминги сабов через Groq STT, НЕ Deepgram (риск гранта).
+- Хвост: 2 шорта IE (Upscale 4x, Unblur) не сделаны — не срочно, дрипать позже.
 
-### Следующий шаг
-- **Таймер `ph-vote-collect-extracttext` сработает в 15:10 Китая (07:10 UTC)** — я проверю что лонч поднялся и дам Денису 2 готовых текста: (1) LinkedIn-сообщение людям за кого голосовал раньше (ответная услуга), (2) текст для Telegram-чата взаимных голосований. Оба — копипаст-блоки, без тире/хайпа.
-- После суток: зафиксировать позицию. Топ дня → разблокируется social-proof badge (доп. плашка на сайт).
+## ПРАВИЛО (Денис требует, 16.08) — отвечать ИЗ ФАКТОВ, не из головы
+Как только речь о проекте / нюансах / «что у нас было, что собрано, что поменялось» — СНАЧАЛА лезу в память проекта и файлы, СВЕРЯЮСЬ, и отвечаю фактами. Денис НЕ обязан помнить сколько ключей/кластеров собрано — это моя работа держать и доставать. Не выдумывать «нужен новый ресёрч» и т.п. когда всё уже лежит в проекте. Не гонять его перепроверять зафиксированное.
 
-### Контекст / грабли
-- Первую версию галереи (2 сырых кадра одной сцены) Денис забраковал — переделал на дизайн-карточки бренда с РАЗНЫМИ сценами. Урок: не лепить одинаковое.
-- Рендер карточек: только chrome-headless-shell (полный chrome падает SIGTRAP), профиль в /tmp, --allow-file-access-from-files для локальных картинок.
-- Детали лонча продублированы в `offpage/product-hunt-extract-text.md` и `memory/2026-08-07.md`.
-
-## Параллельно (не трогали сегодня, из прошлой сессии)
-- Бренд-знак Devexthub — ждёт выбора Дениса (рекомендация E). См. `_preview/logo-hub-v2.html`, PROJECT.md.
+## 16.08 (вечер) — Transcribe заход утверждён
+- Денис согласовал сценарий: широкий ролик «How to get a transcript of any YouTube video — free, in Chrome» под ключ youtube transcript generator free (2400/KD29) + how to get a youtube transcript. Старый ролик Transcribe признан неудачным («мутный»), новый = замена по факту.
+- Внутрь широкого — вставка 10с про Auto-detect языков (идея Дениса про «экзотический язык» отклонена как тема ролика: нулевой англоспрос, языкового кластера в ресёрче нет; берём как фичу-вставку).
+- ФАКТ ИЗ КОДА (sidepanel.js:268-271): чип Language показывается ТОЛЬКО на Deepgram-пути — `isDeepgramPlatform = !info.isYouTube && !captionTracks?.length`. На YouTube чипа НЕТ. → языковой блок снимать на НЕ-YouTube видео БЕЗ субтитров.
+- Ждём футаж OBS от Дениса (2 блока + дропдаун языков крупно). Монтаж/озвучка/тексты — мои.
+- Шорт IE Enhance: 28 просмотров за ~3-4 часа (воскресенье, Азия-обед). Для сравнения PDF-шорт v4 = 544/сутки.
