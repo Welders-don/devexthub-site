@@ -66,3 +66,27 @@ Transcribe-лонг `releases/transcribe-anchor/tr-anchor-final.mp4` (34с) ап
 Формат по образцу best-ocr: критерии выбора → наш продукт по шагам → CTA с UTM → честный блок про конкурентов → перелинковка на свои how-to. FAQPage JSON-LD на каждой. Карточки в blog/index.html + 3 записи в sitemap.
 Честность (специально): в Transcribe-статье НЕ обещаю приватность (не-YouTube идёт через облако), в Enhancer-статье прямо сказано что безнадёжный расфокус не восстановить.
 Следующий замер отдачи — через 2-3 недели по GSC (позиции этих 3 URL + показы по extension-ключам).
+
+
+# ============ ИТОГ ДНЯ 16.08.2026 ============
+
+## Что закрыто сегодня
+1. Transcribe якорный лонг СОБРАН И АППРУВНУТ: releases/transcribe-anchor/tr-anchor-final.mp4 (34с, 1080p, −14 LUFS). Футаж от Дениса (Claude Code туториал 35:18), голос Gemini Puck, сабы Groq. Скрипт сборки build_transcribe_anchor.sh, детали и грабли — releases/transcribe-anchor/_handoff.md.
+2. GSC Performance разобран (данные 27.07-14.08) → ~/workspace/knowledge/gsc-devexthub-search-2026-08-16.md. Главное: домен ранжируется ТОЛЬКО на extension/chrome/chromebook-запросах (поз 10-15), общие ключи поз 80-90 = мусор.
+3. Написаны и ЗАЛИТЫ 4 статьи (все отдают 200):
+   - /blog/best-video-transcript-chrome-extension/
+   - /blog/best-image-enhancer-chrome-extension/
+   - /blog/best-pdf-to-excel-chrome-extension/
+   - /blog/how-to-copy-text-from-an-image-on-a-chromebook/ (ключ уже на поз 9.7 БЕЗ статьи, лучшая позиция сайта)
+4. Построен кросс-кластерный мост: 4 контекстные ссылки из сильных ET-страниц в висящий PDF-кластер + ссылка с PC-статьи на Chromebook-статью.
+5. Таймер: weekly GSC-срез, понедельник 11:00 Китая (id gsc-devexthub-weekly, ~/.iia/schedules.json).
+
+## ЗАВТРА 17.08 — единственная горящая задача
+Перед заливкой ролика написать Денису: title + описание + теги + текст закреп-коммента.
+Ключ: youtube transcript generator free (2400/KD29) + how to get a youtube transcript. Ссылка везде = лендинг https://www.devexthub.com/transcribe-video-to-text (НЕ CWS). Напомнить про закреп-коммент (в описании ссылка не кликается, время-гейт канала). Тексты в <code>-блоках, без тире.
+
+## Отложенные хвосты (НЕ горит)
+- Шорты из Transcribe-футажа (языки / экспорт в Word / 35 мин → текст) — следующий оборот круга.
+- Хвост IE: шорты Upscale 4x и Unblur, голос-тексты готовы в releases/ie-anchor/_handoff.md.
+- Через 2-4 недели проверить: вышел ли PDF-кластер из «Discovered, currently not indexed» после моста, и попали ли 4 новые статьи в индекс. Если PDF не сдвинулся — замораживаем кластер, дело во внешних ссылках.
+- ВАЖНО не забыть: перелинковка НЕ объясняет разрыв PDF/ET (посчитано, плотность у PDF даже выше). Не повторять вывод «нашли причину».
