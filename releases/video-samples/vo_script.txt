@@ -1,0 +1,4 @@
+Got a scanned weld report and need it in Excel? Copying it by hand takes forever.
+Just drop the PDF into the Convert PDF to Excel extension.
+Its AI reads the scanned table for you. No retyping, no manual cleanup.
+One click, and you get a clean spreadsheet, rows and columns intact. Free, right in your browser.

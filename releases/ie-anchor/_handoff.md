@@ -9,8 +9,18 @@
 - Пайплайн сборки лонга: `releases/ie-anchor/build_ie_anchor.sh` (карточки+сегменты+титры), голос `voice.wav`, сабы `subs.srt`, иконка `icon.png` (= Imageenhancer/extension/icons/icon128.png, синий sparkle).
 - Карта проекта поправлена: лендинг ЕСТЬ (был записан как «нет»).
 
-## Следующий шаг (ШОРТЫ)
-Нарезать 3 вертикальных (1080x1920) шорта из `releases/ie-anchor/src7.mp4` — по одному режиму:
+## Статус шортов (обновл. 16.08)
+- Шорт A — Enhance (кофе): ГОТОВ и ЗАЛИТ на YouTube (@NicholaChaus). Файл `shorts/short_enhance_v1.mp4`, сборка `shorts/build_short_enhance.sh`. Голос Gemini Puck, тайминги сабов через Groq STT (НЕ Deepgram — риск гранта), loudnorm −14.
+- Шорт B — Upscale 4x (девушка, src7 32-40): НЕ сделан.
+- Шорт C — Unblur (водопад, src7 68-74): НЕ сделан.
+- ВНИМАНИЕ: 16.08 Денис задал новую ротацию контента (Transcribe→PDF→ExtractText по кругу, пара лонг+shorts). Шорты B/C = хвост, дрипать враздрай ИЛИ отложить. Уточнить у Дениса перед тем как делать.
+
+## Рецепт шорта (рабочий, из шорта A)
+1. Голос: Gemini TTS `gemini-2.5-flash-preview-tts` voice Puck (~0.25 цента/ролик). Бесплатный запас — Edge-TTS venv `/home/client/projects/edge-tts-venv` (en-US-GuyNeural).
+2. Тайминги пословных сабов: Groq STT `whisper-large-v3`, `response_format=verbose_json` + `timestamp_granularities[]=word`, ключ $GROQ_VOICE_API_KEY. НЕ Deepgram.
+3. Сборка: интро-карточка → реролл (crop карточки before/after, замедлить) → энд-карточка с URL лендинга. Сабы 2 слова заглавными, MarginV=90 (safe-zone). loudnorm `releases/shorts/loudnorm_voice.sh`.
+
+## (архив) исходный план 3 шортов
 - Шорт A — Enhance (кофе, src7 0.4-3.0, растянуть)
 - Шорт B — Upscale 4x (девушка, src7 32-40)
 - Шорт C — Unblur (водопад, src7 68-74)

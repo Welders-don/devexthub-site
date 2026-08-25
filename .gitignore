@@ -7,3 +7,28 @@ releases/shorts/*.wav
 .shots/redesign/chrome-home/
 .shots/redesign/_pdf_render.html
 .shots/chrome-home/
+releases/pdf-anchor2/src/
+releases/pdf-anchor2/seg_*.mp4
+releases/pdf-anchor2/*.pcm
+releases/pdf-anchor2/*.wav
+releases/pdf-anchor2/pdf-anchor-mute.mp4
+releases/pdf-anchor2/pdf-anchor-subs.mp4
+releases/pdf-anchor2/short/seg_*.mp4
+releases/pdf-anchor2/short/*.pcm
+releases/pdf-anchor2/short/*.wav
+releases/pdf-anchor2/short/pdf-short-mute.mp4
+releases/et-anchor2/src/*.mp4
+
+# Видео-сырьё и промежуточные рендеры не пушим: репо = GitHub Pages, всё в нём
+# раздаётся ПУБЛИЧНО по URL сайта (проверено: /releases/video-samples/*.mp4 отдаёт 200).
+# В src/ лежит НЕОБРЕЗАННАЯ запись экрана с личными данными. Готовые ролики живут на YouTube.
+releases/**/*.mp4
+releases/**/*.pcm
+releases/**/*.wav
+releases/**/*.mp3
+releases/**/src/
+releases/**/short_frames/
+releases/**/chk/
+releases/**/tts*.json
+releases/**/*_resp.json
+releases/**/frames/*.png

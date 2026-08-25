@@ -1,0 +1,88 @@
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, png_pipe, from 'excel_result.png':
+  Duration: N/A, bitrate: N/A
+  Stream #0:0: Video: png, rgb24(pc, gbr/bt709/bt709), 1920x1080 [SAR 1:1 DAR 16:9], 25 fps, 25 tbr, 25 tbn
+Input #1, png_pipe, from 'weldlog_scan.png':
+  Duration: N/A, bitrate: N/A
+  Stream #1:0: Video: png, rgb24(pc, gbr/unknown/unknown), 900x1180, 25 fps, 25 tbr, 25 tbn
+[s16le @ 0x621c3cdf82c0] Estimating duration from bitrate, this may be inaccurate
+[aist#2:0/pcm_s16le @ 0x621c3cde7140] Guessed Channel Layout: mono
+Input #2, s16le, from 'vo_teaser.pcm':
+  Duration: 00:00:08.28, bitrate: 384 kb/s
+  Stream #2:0: Audio: pcm_s16le, 24000 Hz, 1 channels, s16, 384 kb/s
+Stream mapping:
+  Stream #0:0 (png) -> crop:default
+  Stream #1:0 (png) -> scale:default
+  Stream #2:0 (pcm_s16le) -> adelay:default
+  drawtext:default -> Stream #0:0 (libx264)
+  apad:default -> Stream #0:1 (aac)
+Press [q] to stop, [?] for help
+[libx264 @ 0x621c3cebfb00] using SAR=1/1
+[libx264 @ 0x621c3cebfb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x621c3cebfb00] profile Constrained Baseline, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x621c3cebfb00] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=0 ref=1 deblock=0:0:0 analyse=0:0 me=dia subme=0 psy=1 psy_rd=1.00:0.00 mixed_ref=0 me_range=16 chroma_me=1 trellis=0 8x8dct=0 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=0 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=0 weightp=0 keyint=250 keyint_min=25 scenecut=0 intra_refresh=0 rc=crf mbtree=0 crf=22.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=0
+[aac @ 0x621c3cec15c0] Too many bits 6826.666667 > 6144 per frame requested, clamping to max
+Output #0, mp4, to 'pdf-short-v2.mp4':
+  Metadata:
+    encoder         : Lavf60.16.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 1080x1920 [SAR 1:1 DAR 9:16], q=2-31, 25 fps, 12800 tbn
+    Metadata:
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 24000 Hz, mono, fltp, 144 kb/s
+    Metadata:
+      encoder         : Lavc60.31.102 aac
+frame=    0 fps=0.0 q=0.0 size=       0kB time=-00:00:00.04 bitrate=  -0.0kbits/s speed=N/A    frame=    5 fps=0.0 q=13.0 size=       0kB time=00:00:00.25 bitrate=   1.5kbits/s speed=0.441x    frame=   14 fps= 13 q=11.0 size=     256kB time=00:00:00.64 bitrate=3277.4kbits/s speed=0.589x    frame=   25 fps= 16 q=17.0 size=     256kB time=00:00:01.06 bitrate=1966.4kbits/s speed=0.671x    frame=   35 fps= 17 q=11.0 size=     512kB time=00:00:01.45 bitrate=2891.6kbits/s speed=0.693x    frame=   45 fps= 17 q=11.0 size=     512kB time=00:00:01.83 bitrate=2286.3kbits/s speed=0.708x    frame=   54 fps= 17 q=11.0 size=     512kB time=00:00:02.21 bitrate=1890.6kbits/s speed=0.716x    frame=   65 fps= 18 q=11.0 size=     768kB time=00:00:02.60 bitrate=2417.5kbits/s speed=0.723x    frame=   74 fps= 18 q=11.0 size=     768kB time=00:00:03.02 bitrate=2077.0kbits/s speed=0.727x    frame=   84 fps= 18 q=11.0 size=     768kB time=00:00:03.41 bitrate=1843.3kbits/s speed=0.73x    frame=   94 fps= 18 q=12.0 size=    1024kB time=00:00:03.79 bitrate=2209.2kbits/s speed=0.732x    frame=  104 fps= 18 q=11.0 size=    1024kB time=00:00:04.22 bitrate=1986.0kbits/s speed=0.741x    frame=  114 fps= 18 q=11.0 size=    1024kB time=00:00:04.60 bitrate=1820.5kbits/s speed=0.735x    frame=  123 fps= 18 q=11.0 size=    1280kB time=00:00:04.99 bitrate=2100.6kbits/s speed=0.738x    frame=  133 fps= 18 q=11.0 size=    1280kB time=00:00:05.37 bitrate=1950.5kbits/s speed=0.739x    frame=  143 fps= 18 q=11.0 size=    1280kB time=00:00:05.71 bitrate=1834.1kbits/s speed=0.735x    frame=  152 fps= 18 q=11.0 size=    1536kB time=00:00:06.14 bitrate=2048.1kbits/s speed=0.741x    frame=  162 fps= 18 q=11.0 size=    1536kB time=00:00:06.48 bitrate=1940.3kbits/s speed=0.737x    frame=  171 fps= 18 q=11.0 size=    1536kB time=00:00:06.91 bitrate=1820.5kbits/s speed=0.743x    frame=  180 fps= 18 q=11.0 size=    1792kB time=00:00:07.25 bitrate=2024.0kbits/s speed=0.74x    frame=  189 fps= 18 q=11.0 size=    1792kB time=00:00:07.59 bitrate=1933.0kbits/s speed=0.732x    frame=  199 fps= 18 q=11.0 size=    1792kB time=00:00:08.02 bitrate=1830.2kbits/s speed=0.737x    frame=  208 fps= 18 q=11.0 size=    2048kB time=00:00:08.36 bitrate=2006.2kbits/s speed=0.734x    frame=  218 fps= 18 q=11.0 size=    2048kB time=00:00:08.87 bitrate=1890.5kbits/s speed=0.746x    frame=  228 fps= 18 q=11.0 size=    2048kB time=00:00:09.38 bitrate=1787.4kbits/s speed=0.757x    frame=  238 fps= 18 q=11.0 size=    2048kB time=00:00:09.72 bitrate=1724.7kbits/s speed=0.754x    [out#0/mp4 @ 0x621c3cebe9c0] video:2293kB audio:109kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.227801%
+frame=  250 fps= 19 q=-1.0 Lsize=    2407kB time=00:00:09.98 bitrate=1975.3kbits/s speed=0.745x    
+[libx264 @ 0x621c3cebfb00] frame I:1     Avg QP:19.00  size:178069
+[libx264 @ 0x621c3cebfb00] frame P:249   Avg QP:11.33  size:  8714
+[libx264 @ 0x621c3cebfb00] mb I  I16..4: 100.0%  0.0%  0.0%
+[libx264 @ 0x621c3cebfb00] mb P  I16..4: 14.4%  0.0%  0.0%  P16..4: 18.2%  0.0%  0.0%  0.0%  0.0%    skip:67.4%
+[libx264 @ 0x621c3cebfb00] coded y,uvDC,uvAC intra: 1.1% 3.9% 2.5% inter: 7.8% 2.3% 0.1%
+[libx264 @ 0x621c3cebfb00] i16 v,h,dc,p: 98%  2%  0%  0%
+[libx264 @ 0x621c3cebfb00] i8c dc,h,v,p: 15% 84%  1%  0%
+[libx264 @ 0x621c3cebfb00] kb/s:1878.26
+[aac @ 0x621c3cec15c0] Qavg: 65464.461
+	Command being timed: "ffmpeg -y -loop 1 -t 10 -i excel_result.png -loop 1 -t 10 -i weldlog_scan.png -f s16le -ar 24000 -ac 1 -i vo_teaser.pcm -filter_complex 
+[0:v]crop=1055:760:835:95,scale=1080:960:force_original_aspect_ratio=increase,crop=1080:960,setsar=1[top];
+[1:v]scale=1080:960:force_original_aspect_ratio=increase,crop=1080:960,setsar=1[bot];
+[top][bot]vstack[stack];
+[stack]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CLEAN EXCEL':fontsize=44:fontcolor=white:box=1:boxcolor=0x1a7d3a@0.9:boxborderw=14:x=40:y=40,
+drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='SCANNED PDF':fontsize=44:fontcolor=white:box=1:boxcolor=black@0.75:boxborderw=14:x=40:y=1000,
+drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:textfile=hook_s.txt:fontsize=56:fontcolor=white:box=1:boxcolor=black@0.55:boxborderw=20:x=(w-text_w)/2:y=210:enable='between(t,0,3.5)',
+drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:textfile=cta_s.txt:fontsize=50:fontcolor=yellow:box=1:boxcolor=black@0.7:boxborderw=20:x=(w-text_w)/2:y=1730:enable='gt(t,1)'[v];
+[2:a]adelay=400|400,apad[a]
+ -map [v] -map [a] -t 10 -c:v libx264 -preset ultrafast -crf 22 -pix_fmt yuv420p -c:a aac -b:a 160k pdf-short-v2.mp4"
+	User time (seconds): 10.39
+	System time (seconds): 0.21
+	Percent of CPU this job got: 78%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.60
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 179252
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 37865
+	Voluntary context switches: 6708
+	Involuntary context switches: 7273
+	Swaps: 0
+	File system inputs: 664
+	File system outputs: 4832
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
