@@ -15,9 +15,9 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What is the best image enhancer extension for Chrome?","acceptedAnswer":{"@type":"Answer","text":"The best one for most people runs the AI on your own device, handles both unblurring and upscaling, adds no watermark and needs no account. Image Enhancer does this. Most other options in the store are wrappers that open a website and upload your picture."}},
-{"@type":"Question","name":"Is there a free image upscaler Chrome extension without a watermark?","acceptedAnswer":{"@type":"Answer","text":"Yes. Image Enhancer is free, adds no watermark and has no sign-up. It upscales up to four times and sharpens out-of-focus shots in the browser."}},
+{"@type":"Question","name":"Is there a free image upscaler Chrome extension without a watermark?","acceptedAnswer":{"@type":"Answer","text":"Yes. Image Enhancer is free, adds no watermark and has no sign-up. It upscales up to four times and cleans up compression artefacts in the browser."}},
 {"@type":"Question","name":"Does an image enhancer extension upload my photos?","acceptedAnswer":{"@type":"Answer","text":"Many do, because the actual processing happens on the vendor's server. An on-device one, like Image Enhancer, runs the model locally, so the photo never leaves your computer."}},
-{"@type":"Question","name":"Can a Chrome extension really unblur a photo?","acceptedAnswer":{"@type":"Answer","text":"It can recover edge detail and remove noise or compression artefacts, which is what most blurry screenshots and low-resolution photos need. It cannot invent detail that was never captured, so a severely out-of-focus shot improves but does not become a sharp one."}}]}
+{"@type":"Question","name":"Can a Chrome extension really unblur a photo?","acceptedAnswer":{"@type":"Answer","text":"It can recover edge detail and remove noise or compression artefacts, which is what most blurry screenshots and low-resolution photos need. It cannot invent detail that was never captured, so an out-of-focus shot or a scanned film photo does not improve in any meaningful way."}}]}
 </script>
 </head>
 <body>
@@ -44,8 +44,8 @@
     <ul>
       <li><b>On-device or upload.</b> A lot of extensions are a button that opens a website and uploads your file. If the picture is a document, an ID or a family photo, that matters.</li>
       <li><b>No watermark, no credits.</b> The common pattern is three free images, then a stamp across the result or a paywall.</li>
-      <li><b>Enhance and upscale, not one trick.</b> Removing noise is a different job from adding resolution. You want both, plus sharpening for out-of-focus shots.</li>
-      <li><b>Honest about limits.</b> Anything promising to turn a hopeless blur into a sharp photo is selling. Detail that was never captured cannot be recovered.</li>
+      <li><b>Enhance and upscale, not one trick.</b> Removing compression artefacts is a different job from adding resolution. You want both.</li>
+      <li><b>Honest about limits.</b> Anything promising to fix an out-of-focus shot or a scanned film photo is selling. Detail that was never captured cannot be recovered, and a tool that claims otherwise is drawing pixels rather than restoring them.</li>
       <li><b>Straight download.</b> The result should land in your downloads folder, not in an account gallery.</li>
     </ul>
 
@@ -53,7 +53,7 @@
     <p><a href="../../image-enhancer/">Image Enhancer</a> is a free Chrome extension built around those points. The AI model runs on your device, so the photo is never uploaded. It sharpens, removes noise and compression artefacts, and upscales up to four times. No account, no watermark, no size gate.</p>
     <ol>
       <li>Add the extension to Chrome.</li>
-      <li>Open it and drop in a JPG or PNG, a screenshot or an old scan.</li>
+      <li>Open it and drop in a JPG or PNG, a thumbnail, a screenshot or a picture that arrived compressed.</li>
       <li>Pick Enhance, Upscale or Unblur. The model runs locally.</li>
       <li>Compare before and after, then download the result.</li>
     </ol>
