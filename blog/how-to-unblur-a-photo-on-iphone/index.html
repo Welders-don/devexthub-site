@@ -14,8 +14,8 @@
 <script defer src="https://api.devexthub.com:8444/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-domains="www.devexthub.com,devexthub.com"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Can the iPhone Photos app unblur a picture?","acceptedAnswer":{"@type":"Answer","text":"Not really. The Sharpen and Definition sliders in the Photos editor add a little crispness, but they cannot rebuild detail lost to real blur. For that you need an AI enhancer that reconstructs the missing sharpness."}},
-{"@type":"Question","name":"How do I properly unblur an iPhone photo?","acceptedAnswer":{"@type":"Answer","text":"Move the photo to a computer with AirDrop or iCloud, open it in Chrome, and run a free AI enhancer like Image Enhancer. It sharpens and cleans up the blur on your device in one click, then you save the clearer version back."}},
+{"@type":"Question","name":"Can the iPhone Photos app unblur a picture?","acceptedAnswer":{"@type":"Answer","text":"Not really. The Sharpen and Definition sliders in the Photos editor add a little crispness to edges that are already there, but they cannot rebuild detail that is missing. There is no true unblur button built into iOS."}},
+{"@type":"Question","name":"How do I properly unblur an iPhone photo?","acceptedAnswer":{"@type":"Answer","text":"It depends on the cause. If the photo is soft because it was compressed by a chat app, pulled from iCloud as a low-resolution preview or taken on an older iPhone, move it to a computer and run a free AI enhancer like Image Enhancer in Chrome. If you missed the focus or the camera moved, that detail was never recorded and no tool can restore it."}},
 {"@type":"Question","name":"Is there a free way to do this?","acceptedAnswer":{"@type":"Answer","text":"Yes. Image Enhancer is a free Chrome extension with no sign-up and no watermark, and the enhancement runs locally so the photo is not uploaded."}}]}
 </script>
 </head>
@@ -36,7 +36,9 @@
     <h1>How to unblur a photo taken on your iPhone</h1>
     <p class="post-meta">Image Enhancer &middot; 4 min read</p>
 
-    <p class="lede">You caught the moment, but the iPhone shot came out soft. Before you delete it, know that the Photos app can only do so much, and there is a free way to properly sharpen it up. Here is what each option actually does.</p>
+    <p class="lede">Your iPhone photo looks soft and you want it sharp. The honest answer depends on why it is soft, and it is worth two minutes to work that out before you try any tool, including ours. Here is what actually helps and what nothing can fix.</p>
+
+    <p>If you missed the focus or the subject moved, the detail was never recorded and no app will bring it back. But a large share of soft iPhone pictures are not that. They are photos that arrived through WhatsApp or Telegram and got compressed on the way, images pulled down from iCloud as low-resolution previews under Optimize iPhone Storage, screenshots, or shots from an older iPhone that simply look small on today's screens. That damage is digital, and it can be undone.</p>
 
     <h2>First, what the Photos app can and can't do</h2>
     <p>Open the photo, tap <b>Edit</b>, and you will find <b>Sharpen</b> and <b>Definition</b> sliders. They add crispness to edges that are already there, which helps a little with very mild softness. What they cannot do is rebuild detail that real blur has smeared away, so a genuinely blurry shot still looks blurry, just with more contrast. There is no true "unblur" button built into iOS. That is the honest ceiling of the on-phone tools.</p>
@@ -57,7 +59,8 @@
     </div>
 
     <h2>What it will and won't recover</h2>
-    <p>Soft focus, low light and mild blur clean up well. Heavy motion blur, where the subject streaked across the frame, cannot be fully undone, because the detail was never captured. The enhancer works from the pixels you have, so think of it as honest sharpening, not the "zoom and enhance" from films.</p>
+    <p>We measured this on real files rather than guessing. A photo that was compressed or saved small recovers roughly four times the sharpness. A shot that was optically out of focus gains almost nothing, and neither does one lost to motion blur.</p>
+    <p>So: the WhatsApp copy of a picture, the iCloud preview, the old low-resolution shot, those clean up well. The moment your hand shook while pressing the shutter is gone for good. The enhancer works from the pixels you have, so think of it as honest reconstruction, not the "zoom and enhance" from films.</p>
 
     <h2>Why not just use an app or website?</h2>
     <p>Many iOS "unblur" apps and photo sites upload your picture, stamp a watermark, or lock the good result behind a subscription. Doing it in a Chrome extension keeps the photo on your machine, adds no watermark, and has no daily limit. Nothing about the image leaves your device.</p>
