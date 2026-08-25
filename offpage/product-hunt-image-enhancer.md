@@ -1,40 +1,44 @@
 # Product Hunt — Image Enhancer (пакет полей, ДАТА НЕ НАЗНАЧЕНА)
 
-Продукт: Chrome extension, локальный AI-апскейл/расшумление фото (Real-ESRGAN general x4v3, WebGPU→wasm)
+Продукт: Chrome extension, локальный AI-апскейл (Real-ESRGAN general x4v3, WebGPU→wasm)
 Лендинг: https://www.devexthub.com/image-enhancer/?utm_source=producthunt&utm_medium=launch&utm_campaign=ph_imageenhancer
 CWS: https://chromewebstore.google.com/detail/image-enhancer/pkkccllbjokjgkffmjcjigfajhojjlmi
 Аккаунт запуска: прогретый ЛИЧНЫЙ аккаунт Дениса @welders_don (solo maker = Hunter+Maker).
 День: ПЯТНИЦА (PRODUCT-HUNT-RULES.md). Ближайшие: 28.08 · 04.09.
 
-## 🔴 ГЛАВНОЕ ПЕРЕД ЗАПУСКОМ — позиционирование, а не тексты
-Известный корень оттока (разбор 24.08, Imageenhancer/_handoff.md): продукт обещает «улучшить
-что угодно» и первым делом получает НОРМАЛЬНЫЕ телефонные фото, где улучшать нечего.
-Real-ESRGAN general x4v3 восстанавливает УБИТОЕ: мелкое, пережатое, размытое, старое.
-Юзер с хорошим снимком ждёт две минуты, не видит разницы, сносит. Денис прошёл сам: «я бы снёс».
+## 🔴 ПОЗИЦИОНИРОВАНИЕ — читать до правки любых текстов
+Зона продукта задана ЗАМЕРОМ, не догадкой: `Imageenhancer/knowledge/model-limits-analog-vs-digital.md`.
+Резкость до/после на одном фото, три вида порчи:
+- цифра (ужато + JPEG q30) → **x4.07** ✅
+- аналог, оптический расфокус → x1.31 ❌
+- аналог, зерно плёнки → **x0.11** ❌ (модель стирает фактуру, фото становится пластиковым)
 
-Для PH это не мелочь: лонч одноразовый, перезапустить нельзя (в ledger по PDF/TVT прямо «НЕ
-перезапускать»), а комментарии «не вижу разницы» останутся под постом навсегда и сожгут
-network, который копили тремя лончами.
+**ПРОДУКТ = увеличить маленькую ЦИФРОВУЮ картинку.** Миниатюры, товарные фото под требования
+маркетплейса, аватарки, картинки из мессенджеров и с веба, пережатые скриншоты.
 
-→ Поэтому весь пакет ниже написан как **restore старых/убитых фото**, а НЕ как «AI enhancer».
-Правильная аудитория отсекается на входе, до установки. Это же черновик того, как надо
-переписать лендинг и CWS-описание.
+ЗАПРЕЩЁННЫЕ обещания (модель их не выполняет):
+- «restore old photos», «фото с плёнки», «фотография бабушки» — аналог не тянет, замер B/C
+- «улучшить любое фото» — хорошее современное фото улучшать нечем, это корень оттока (19.08)
+- remove background, colorize, реставрация лиц
+
+История: 25.08 Пафнутий предложил развернуть питч в «restore старых фото» — Денис отверг сразу
+(«у аналоговой фотографии нет цифровых следов, цепляться не за что»), замер подтвердил численно.
 
 ## Name
 Image Enhancer
 
-## Tagline (51/60)
-Unblur and upscale old photos without uploading them
+## Tagline (47/60)
+Upscale low-res images 4x right in your browser
 
 Запасные:
-- Fix old, small and blurry photos right in your browser (54)
-- Restore pixelated photos locally, no upload, no sign-up (55)
+- Make small images big without turning them to mush (50)
+- Enlarge thumbnails and product photos 4x, no upload (51)
 
 ## Description (PH-короткая)
-Image Enhancer brings back detail in photos that are already damaged: old scans, small or heavily
-compressed images, screenshots that went blurry. The AI model runs entirely in your browser, so
-your photos never leave your device. Upscale up to 4x, or just clean up noise and JPEG artifacts.
-Free, no account, no watermark.
+Image Enhancer takes small, low-resolution images and enlarges them up to 4x without the usual
+mush. Thumbnails, product shots that are too small for a marketplace listing, avatars, images
+saved from chats or the web, over-compressed screenshots. The AI model runs entirely inside your
+browser, so nothing is uploaded anywhere. Free, no account, no watermark.
 
 ## Topics (3)
 Photo Editing · Chrome Extensions · Design Tools
@@ -46,53 +50,56 @@ Photo Editing · Chrome Extensions · Design Tools
 ## First maker comment (от лица Дениса — ВЫЧИТАТЬ, звучит ли его словами)
 Hey Product Hunt
 
-I had a folder of old family photos, scanned years ago at a terrible resolution. Every tool I found
-wanted an upload, an account, or left a watermark on the result. Sending family photos to someone
-else's server to fix them felt wrong.
+This started with a boring problem. I had product images that were too small for the listing
+requirements, and every upscaler I tried wanted an upload, an account, or stamped a watermark on
+the result.
 
 So I built Image Enhancer. It runs the AI model inside your browser, on your own machine. Nothing
-is uploaded anywhere, and it works offline once the model is cached.
+is uploaded anywhere, and once the model is cached it works offline.
 
-One honest thing, because I think it matters more than a feature list: this is for photos that are
-already damaged. Old scans, small images, heavy JPEG compression, mild blur. If you feed it a good
-photo from a modern phone, you will not see much difference, because there is nothing to recover.
-It rebuilds lost detail, it does not invent a better picture.
+Two honest notes, because I would rather you install it for the right reason:
 
-It is free, there is no sign-up and no watermark. If you have an old photo lying around, that is
-the one to try it on. I would love to hear what it did or did not manage to fix.
+It works on small digital images. Thumbnails, product photos, avatars, pictures saved from chats,
+screenshots that got compressed into mush. I measured it: on that kind of input it recovers about
+4x the sharpness.
+
+It will not fix a scanned film photo or an out-of-focus shot. I measured that too, and the gain
+was almost nothing. There is no detail left in those files to recover, and anything that claims
+otherwise is inventing pixels. Different problem, different model.
+
+Free, no sign-up, no watermark. If you have a tiny image you need bigger, that is the one to try.
 
 ## Честность (что НЕ обещать)
-- НЕ делает: remove background, colorize, реставрацию лиц (face restore), полную реставрацию.
-- На хорошем современном фото разницы почти нет — так и написано в maker-комменте.
-- Вход ≤4 МП; более крупные ужимаются перед обработкой (app.js:239) — юзер получит файл меньше
-  оригинала. ⚠️ ЭТО ЖИВОЙ ХВОСТ, на PH про размер лучше не обещать ничего.
-- Скорость: ~2 мин на WebGPU (после фикса NCHW), 8+ мин на wasm-фолбэке. Не заявлять «instant».
+- НЕ делает: аналог/плёнку, расфокус, remove background, colorize, face restore.
+- Вход ≤4 МП; крупнее ужимается перед обработкой (app.js:239) — юзер получит файл меньше
+  оригинала. ⚠️ ЖИВОЙ ХВОСТ, про размер на PH не обещать ничего.
+- Скорость: ~2 мин на WebGPU, 8+ мин на wasm-фолбэке. Не заявлять «instant».
 
 ## Галерея 1270x760 (СТАТУС: НЕ собрана)
-Есть в наличии:
-- assets/ie-screenshot-ui.png · assets/ie-upscale-demo.png · assets/image-enhancer-icon-128.png
-  (⚠️ assets/ie-sample.jpg — сырой демо-исходник, В ГАЛЕРЕЮ НЕ БРАТЬ, грабля из AlternativeTo)
-- Imageenhancer/releases/banners/ — 440x280 промо-баннеры CWS, под PH размер не тот
-План слайдов (под новое позиционирование):
-1. before/after на СТАРОМ скане (не на хорошем фото) — главный слайд
-2. before/after на мелком/пережатом изображении
+Главный слайд — before/after на МАЛЕНЬКОЙ ЦИФРОВОЙ картинке, не на старом скане.
+Готовый материал замера: `Imageenhancer/releases/analog-test/A-digital-jpeg-in.png` / `-out.png`.
+План слайдов:
+1. before/after: миниатюра → 4x (главный)
+2. сценарий «товарное фото не проходит по размеру» → после
 3. карточка «runs in your browser, nothing uploaded»
 4. карточка «free, no sign-up, no watermark»
-Нужен thumbnail 240x240 из иконки.
+Ассеты: assets/ie-screenshot-ui.png, assets/ie-upscale-demo.png, assets/image-enhancer-icon-128.png
+(⚠️ assets/ie-sample.jpg — сырой демо-исходник, В ГАЛЕРЕЮ НЕ БРАТЬ). Нужен thumbnail 240x240.
 
 ## Shoutouts
-Claude (alt Cursor), GitHub (alt GitLab). Pricing Free, Bootstrapped. — как на ET-лонче.
+Claude (alt Cursor), GitHub (alt GitLab). Pricing Free, Bootstrapped — как на ET-лонче.
 
 ## ОТКРЫТО (за Денисом)
-1. **Решение по дате** — см. риск ниже.
+1. Решение по дате — см. риск ниже.
 2. Вычитка first maker-коммента.
-3. Рендер галереи (нужны before/after на реально убитых фото — у Дениса есть старые сканы?).
+3. Рендер галереи.
 
 ## РИСК ПО ДАТЕ (мнение Пафнутия, 25.08)
-Против запуска 28.08: позиционирование в CWS и на лендинге ВСЁ ЕЩЁ старое («улучшить что
-угодно»). Лонч приведёт людей на карточку, которая обещает не то → тот же отток, но публично.
-Плюс продукт в режиме ожидания до ~31.08 (копим чистую органику после отключения Google Ads
-23.08), и v1.0.6 ещё ждёт аппрува.
+Против 28.08: лендинг и CWS-описание ВСЁ ЕЩЁ обещают «улучшить что угодно». Лонч приведёт людей
+на карточку, которая обещает не то → тот же отток, но публично и навсегда под постом. Выстрел
+одноразовый (в ledger по PDF/TVT прямо «НЕ перезапускать»), сожжём network от трёх лончей.
+Плюс продукт в паузе до ~31.08 (копим чистую органику после отключения Google Ads 23.08),
+v1.0.6 ждёт аппрува.
 
-Предложение: сперва переписать лендинг + CWS-описание под restore-позиционирование (текст, не
-код — день работы), потом лонч 04.09 или позже. Выстрел один, лучше не спешить.
+Предложение: сперва переписать лендинг + CWS-описание под upscale-позиционирование (текст, не
+код), потом лонч 04.09 или позже.
