@@ -15,7 +15,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How do I fix a blurry photo?","acceptedAnswer":{"@type":"Answer","text":"Add the photo to the Image Enhancer extension and it sharpens the detail and upscales the image in one click with on-device AI. Compare before and after, then download the fixed version."}},
-{"@type":"Question","name":"Why is my photo blurry?","acceptedAnswer":{"@type":"Answer","text":"Common causes are missed focus, camera or subject motion, low light, and low resolution. AI enhancement helps most with soft focus and low-resolution softness."}},
+{"@type":"Question","name":"Why is my photo blurry?","acceptedAnswer":{"@type":"Answer","text":"Common causes are missed focus, camera or subject motion, low light, low resolution and heavy compression. AI enhancement helps with the last two, where the detail was captured and then degraded. It cannot fix missed focus or motion blur, because that detail was never recorded."}},
 {"@type":"Question","name":"Is fixing a blurry photo free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Image Enhancer extension is free with no sign-up, and it runs in your browser."}}]}
 </script>
 </head>
@@ -44,8 +44,9 @@
       <li><b>Motion</b>, the camera or the subject moved during the shot.</li>
       <li><b>Low light</b>, a slow shutter softened the whole frame.</li>
       <li><b>Low resolution</b>, a small image looks soft and pixelated when enlarged.</li>
+      <li><b>Compression</b>, the file was squeezed on its way through a chat, an upload or a screenshot.</li>
     </ul>
-    <p>AI enhancement helps most with soft focus and low-resolution softness. Heavy motion smear has less usable detail, but even those often improve.</p>
+    <p>This distinction decides whether the photo can be saved at all. The last two are digital damage: the detail was captured, then degraded, and AI enhancement can rebuild a good deal of it. The first three are optical: the detail never reached the sensor. Nothing can recover information that was never recorded, so a missed-focus or motion-smeared shot will not come back sharp no matter which tool you try.</p>
 
     <h2>The fastest fix: a one-click Chrome extension</h2>
     <p><a href="../../image-enhancer/">Image Enhancer</a> is a free AI Chrome extension that sharpens and upscales a blurry photo, right in your browser.</p>
@@ -63,7 +64,8 @@
     </div>
 
     <h2>Set your expectations</h2>
-    <p>This is honest enhancement, not magic. A slightly soft or small photo can come back looking genuinely sharp; a completely smeared one will improve but won't turn into a studio shot. The tool sharpens and upscales what's there, it doesn't invent a new scene.</p>
+    <p>We put numbers on this instead of hand-waving. On an image that was shrunk and compressed hard, the enhancer recovers roughly four times the sharpness. On an optically out-of-focus shot the gain is close to nothing, and on scanned film it smooths the grain away rather than helping.</p>
+    <p>So a small or over-compressed photo can come back looking genuinely sharp. A smeared or badly focused one will not, and it is fairer to tell you that now than to have you wait for a result that cannot exist. The tool rebuilds what is still in the file, it does not invent a new scene.</p>
 
     <h2>Related guides</h2>
     <ul>

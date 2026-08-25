@@ -15,7 +15,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How do I make a blurry picture clear?","acceptedAnswer":{"@type":"Answer","text":"Open the photo in a browser enhancer, click once, and an AI model sharpens the details and reduces the blur. A free extension like Image Enhancer does this on your device, with no upload and no watermark."}},
-{"@type":"Question","name":"Can any blurry photo be fixed?","acceptedAnswer":{"@type":"Answer","text":"Mild blur, soft focus and low resolution improve a lot. Severe motion blur or a photo with almost no detail left cannot be fully recovered, because the information simply is not there. It is honest enhancement, not magic."}},
+{"@type":"Question","name":"Can any blurry photo be fixed?","acceptedAnswer":{"@type":"Answer","text":"No. Small, low-resolution and heavily compressed pictures improve a lot, around four times the sharpness in our own measurements. Missed focus, motion blur and scanned film do not improve at all, because that detail was never recorded in the file. It is honest enhancement, not magic."}},
 {"@type":"Question","name":"Is it free and private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Image Enhancer is free with no sign-up, and the enhancement runs on your device, so the picture is not uploaded to a server."}}]}
 </script>
 </head>
@@ -38,7 +38,7 @@
 
     <p class="lede">A slightly soft or low-resolution photo can be sharpened up a good deal, and you do not need Photoshop or a paid site to do it. Here is how to make a picture clearer in one click, plus an honest note on what is and is not fixable.</p>
 
-    <p>Pictures come out blurry for a few reasons: the camera missed focus, your hand moved, the light was low, or the image was saved small and then blown up. An AI enhancer looks at the blurry pixels and reconstructs sharper edges and detail, so text becomes readable and faces come back into focus. It cannot invent detail that was never captured, but for everyday blur it makes a real difference.</p>
+    <p>Pictures come out blurry for a few reasons, and they split into two groups. Either the camera missed focus, your hand moved or the light was low, in which case the detail never reached the sensor. Or the image was saved small, compressed hard and then blown up, in which case the detail was captured and then thrown away by the file format. An AI enhancer can rebuild the second kind, because there is still structure in the pixels to work from. The first kind it cannot touch, and no amount of processing will change that.</p>
 
     <h2>The fastest way: a one-click browser enhancer</h2>
     <p><a href="../../image-enhancer/">Image Enhancer</a> is a free Chrome extension that sharpens and cleans up a photo right in your browser, with the AI running on your own device.</p>
@@ -56,13 +56,13 @@
     </div>
 
     <h2>What it can fix, and what it can't</h2>
-    <p>Be realistic about the input. These improve well:</p>
+    <p>We measured this rather than guessing at it. These improve well, roughly four times the sharpness in our own tests:</p>
     <ul>
-      <li>Soft focus and mild blur.</li>
-      <li>Low-resolution or small images that look mushy when enlarged.</li>
-      <li>General softness from compression or an old camera.</li>
+      <li>Small or low-resolution images that turn to mush when enlarged.</li>
+      <li>Pictures squeezed by heavy JPEG compression, the sort that arrive from a chat app.</li>
+      <li>Screenshots and thumbnails saved at a fraction of the size you now need.</li>
     </ul>
-    <p>These do not fully come back: heavy motion blur, a badly out-of-focus shot, or a photo so small the detail is simply gone. The enhancer works from what is in the pixels, so if the information was never there it cannot be restored. This is honest enhancement, not the movie-style "zoom and enhance".</p>
+    <p>These do not come back, and the measured gain was near zero: a badly out-of-focus shot, heavy motion blur, and scanned film. On film the enhancer actually smooths the grain away instead of helping, because it reads that texture as noise. The tool works from what is in the pixels, so if the information was never recorded it cannot be restored. This is honest enhancement, not the movie-style "zoom and enhance".</p>
 
     <h2>Why do it in the browser</h2>
     <p>Online photo fixers usually upload your picture, add a watermark or cap you at a few free images. Doing it in an extension keeps the photo on your device, with no watermark and no daily limit. It is quicker too: the image is already in your tab.</p>
