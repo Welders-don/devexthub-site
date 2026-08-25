@@ -5,7 +5,7 @@ https://www.devexthub.com/transcribe-video-to-text/  (+ UTM)
 CWS (где просят official store link): chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj
 
 ## ТОП-5 в первую очередь (траст/усилие)
-1. AlternativeTo — DR~90, FREE, dofollow. Категория transcription. Нужен аккаунт (Google/GitHub/email).
+1. AlternativeTo — DR~90, FREE, NOFOLLOW (проверено в коде 06.08, не dofollow как ошибочно писалось в июле). Категория transcription. Нужен аккаунт (Google/GitHub/email).
    Submit: иконка юзера → "Suggest new application".
 2. SaaSHub — DR~79, FREE, dofollow. Верификация по email на домене продукта усиливает вес.
    Submit: https://www.saashub.com/submit
