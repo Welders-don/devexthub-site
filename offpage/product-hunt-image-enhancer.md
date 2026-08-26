@@ -1,10 +1,15 @@
-# Product Hunt — Image Enhancer (пакет полей, ДАТА НЕ НАЗНАЧЕНА)
+# Product Hunt — Image Enhancer (пакет полей, ЗАПУСК ПТ 28.08.2026)
 
 Продукт: Chrome extension, локальный AI-апскейл (Real-ESRGAN general x4v3, WebGPU→wasm)
 Лендинг: https://www.devexthub.com/image-enhancer/?utm_source=producthunt&utm_medium=launch&utm_campaign=ph_imageenhancer
 CWS: https://chromewebstore.google.com/detail/image-enhancer/pkkccllbjokjgkffmjcjigfajhojjlmi
 Аккаунт запуска: прогретый ЛИЧНЫЙ аккаунт Дениса @welders_don (solo maker = Hunter+Maker).
-День: ПЯТНИЦА (PRODUCT-HUNT-RULES.md). Ближайшие: 28.08 · 04.09.
+День: ПЯТНИЦА (PRODUCT-HUNT-RULES.md). **ДАТА НАЗНАЧЕНА ДЕНИСОМ 26.08 → пятница 28.08.2026.**
+Риск по дате, который я поднимал 25.08, снят наполовину: лендинг вычищен 25.08 (коммит 828c30d
+в Devexthub-site), v1.0.6 в CWS live. ОСТАЁТСЯ: CWS-описание не переписано (решение 25.08 не
+трогать до следующей заливки) — с PH человек уйдёт на чистый лендинг, но по кнопке Install
+попадёт в карточку со старыми формулировками. Плюс лонч ломает чистоту замера органики после
+отключения Google Ads 23.08: органику считать по 27.08 включительно, дальше разрыв.
 
 ## 🔴 ПОЗИЦИОНИРОВАНИЕ — читать до правки любых текстов
 Зона продукта задана ЗАМЕРОМ, не догадкой: `Imageenhancer/knowledge/model-limits-analog-vs-digital.md`.
@@ -27,10 +32,10 @@ CWS: https://chromewebstore.google.com/detail/image-enhancer/pkkccllbjokjgkffmjc
 ## Name
 Image Enhancer
 
-## Tagline (47/60)
+## Tagline (47/60) — ВЫБРАН 26.08
 Upscale low-res images 4x right in your browser
 
-Запасные:
+Запасные (не пошли):
 - Make small images big without turning them to mush (50)
 - Enlarge thumbnails and product photos 4x, no upload (51)
 
@@ -75,31 +80,37 @@ Free, no sign-up, no watermark. If you have a tiny image you need bigger, that i
   оригинала. ⚠️ ЖИВОЙ ХВОСТ, про размер на PH не обещать ничего.
 - Скорость: ~2 мин на WebGPU, 8+ мин на wasm-фолбэке. Не заявлять «instant».
 
-## Галерея 1270x760 (СТАТУС: НЕ собрана)
-Главный слайд — before/after на МАЛЕНЬКОЙ ЦИФРОВОЙ картинке, не на старом скане.
-Готовый материал замера: `Imageenhancer/releases/analog-test/A-digital-jpeg-in.png` / `-out.png`.
-План слайдов:
-1. before/after: миниатюра → 4x (главный)
-2. сценарий «товарное фото не проходит по размеру» → после
-3. карточка «runs in your browser, nothing uploaded»
-4. карточка «free, no sign-up, no watermark»
-Ассеты: assets/ie-screenshot-ui.png, assets/ie-upscale-demo.png, assets/image-enhancer-icon-128.png
-(⚠️ assets/ie-sample.jpg — сырой демо-исходник, В ГАЛЕРЕЮ НЕ БРАТЬ). Нужен thumbnail 240x240.
+## Галерея 1270x760 (СТАТУС: СОБРАНА 26.08)
+Файлы: `Imageenhancer/releases/ph-gallery/` (коммит 0d98a9b), рендер-скрипт `spike/gallery-ph.mjs`
+(headless chrome CDP :9222, пересобрать = `node spike/gallery-ph.mjs` из корня Imageenhancer).
+1. `ph-1-before-after.png` — реальный before/after, ОДИН И ТОТ ЖЕ кроп-регион в обеих панелях
+2. `ph-2-scale.png` — что значит 4x: вложенный кадр ровно 1/4 линейного размера + 4 сценария
+3. `ph-3-on-device.png` — ничего не грузится + честно про «пара минут на картинку»
+4. `ph-4-free.png` — free / no sign-up / no watermark + стек модели
+Thumbnail: `ph-thumbnail-240.png`.
+
+⚠️ **Материал замера A-digital-jpeg (256×256, JPEG q30) в галерею НЕ ГОДИТСЯ** — проверено
+глазами 26.08. Метрика x4.07 честная, но визуально выход восковый: модель стирает фактуру и
+дорисовывает. Метрика меряет градиенты, зритель видит пластик. Взят `testdata/degraded_squirrel.jpg`
+(400×267) → `testdata/enhanced_squirrel_check.jpg` (1600×1068): умеренно ужатый исходник, реальный
+прогон, кромки и складки читаются. ВЫВОД ДЛЯ БУДУЩИХ ПРОМО: демо-материал = умеренно ужатое,
+НЕ убитое в хлам.
+
+⚠️ `assets/ie-screenshot-ui.png` В ГАЛЕРЕЮ НЕ БРАТЬ: демо на еже мыльное И виден блок
+«Cloud AI / Face Restore (Soon)» — облачный режим не реализован (этап 5), face restore в
+запрещённых обещаниях. `assets/ie-sample.jpg` — сырой исходник, тоже не брать.
+`assets/ie-upscale-demo.png` — before там симулирован CSS-блюром, для PH не годится.
 
 ## Shoutouts
 Claude (alt Cursor), GitHub (alt GitLab). Pricing Free, Bootstrapped — как на ET-лонче.
 
-## ОТКРЫТО (за Денисом)
-1. Решение по дате — см. риск ниже.
-2. Вычитка first maker-коммента.
-3. Рендер галереи.
+## ОТКРЫТО (за Денисом) — на 26.08
+1. ~~Решение по дате~~ → 28.08, назначено.
+2. **Вычитка first maker-коммента** — единственный блокер на Денисе.
+3. ~~Рендер галереи~~ → собрана.
 
-## РИСК ПО ДАТЕ (мнение Пафнутия, 25.08)
-Против 28.08: лендинг и CWS-описание ВСЁ ЕЩЁ обещают «улучшить что угодно». Лонч приведёт людей
-на карточку, которая обещает не то → тот же отток, но публично и навсегда под постом. Выстрел
-одноразовый (в ledger по PDF/TVT прямо «НЕ перезапускать»), сожжём network от трёх лончей.
-Плюс продукт в паузе до ~31.08 (копим чистую органику после отключения Google Ads 23.08),
-v1.0.6 ждёт аппрува.
-
-Предложение: сперва переписать лендинг + CWS-описание под upscale-позиционирование (текст, не
-код), потом лонч 04.09 или позже.
+## История решения по дате
+25.08 Пафнутий был против 28.08: лендинг и CWS-описание обещали «улучшить что угодно», лонч привёл
+бы людей на карточку с чужим обещанием, а выстрел одноразовый (в ledger по PDF/TVT прямо «НЕ
+перезапускать»). 25.08 лендинг вычищен, v1.0.6 вышла live → 26.08 Денис назначил 28.08.
+Остаточный риск (CWS-описание, разрыв в замере органики) описан в шапке.
