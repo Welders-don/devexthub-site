@@ -18,7 +18,7 @@ start working.
 
 Runs in Chrome, no login and no upload to a random website.
 
-Free extension: www.devexthub.com/pdf-to-excel
+Free extension: https://www.devexthub.com/pdf-to-excel/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_long2
 
 #bankstatement #excel #pdftoexcel #chromeextension #spreadsheets
 
@@ -28,7 +28,7 @@ bank statement to csv, pdf to excel, convert pdf to excel free, pdf to csv, bank
 extract table from pdf, chrome extension, no retyping, bookkeeping
 
 ## Закреп-коммент (публиковать сразу после заливки)
-Free Chrome extension used in this video: https://www.devexthub.com/pdf-to-excel/
+Free Chrome extension used in this video: https://www.devexthub.com/pdf-to-excel/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_long2
 Works with .xlsx and .csv, and your file never leaves the browser for regular PDFs.
 
 ## Заметки

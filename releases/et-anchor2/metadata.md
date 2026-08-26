@@ -16,7 +16,7 @@ the image is never uploaded to a server. Copy it, or download a clean .txt file.
 
 Works on screenshots, photos, slides, infographics and scanned pages, in dozens of languages.
 
-Get it free: https://www.devexthub.com/extract-text-from-image/
+Get it free: https://www.devexthub.com/extract-text-from-image/?utm_source=youtube&utm_medium=video&utm_campaign=extracttext&utm_content=et_long2
 
 #copytextfromimage #ocr #chromeextension #imagetotext #productivity
 
@@ -27,6 +27,16 @@ screenshot to text, ocr chrome extension, free ocr, copy text from screenshot
 ## Закреп-коммент
 Free Chrome extension, no signup:
 https://chromewebstore.google.com/detail/eeelkokigmnmogpibbdkjdplpfnobpjb
+
+How it works, with examples:
+https://www.devexthub.com/extract-text-from-image/?utm_source=youtube&utm_medium=video&utm_campaign=extracttext&utm_content=et_long2
+
+ПОЧЕМУ ДВЕ ССЫЛКИ (правило 26.08): закреп-коммент — ЕДИНСТВЕННАЯ внешняя ссылка, которая
+реально кликается (описание под время-гейтом канала). Ссылка на CWS в Umami не видна вообще:
+Chrome Web Store не наш домен, трекера там нет. Без строки на лендинг с UTM отдача ролика
+не измерима в принципе.
+UTM utm_content = СЛАГ ролика (et_long2), не YouTube-ID: слаг известен до заливки,
+Денису ничего подставлять руками не нужно.
 
 ## Подсказка (Card)
 Ставить на предыдущий ET-ролик (тот, что залит 04.08, «три метода ввода»). Его YouTube-ID

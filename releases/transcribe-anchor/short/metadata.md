@@ -17,7 +17,7 @@ A 35 minute tutorial turns into full text in one click. Timestamps included, swi
 
 YouTube transcripts are unlimited and free. Works with Vimeo and any video on the page too.
 
-Free Chrome extension: https://www.devexthub.com/transcribe-video-to-text/
+Free Chrome extension: https://www.devexthub.com/transcribe-video-to-text/?utm_source=youtube&utm_medium=video&utm_campaign=transcribe&utm_content=tr_short1
 
 #shorts #youtubetranscript #chromeextension #transcription #studytips
 ```
@@ -29,7 +29,7 @@ youtube transcript, youtube transcript generator, transcribe video to text, vide
 
 ## Закреп-коммент (обязательно — единственный кликающий путь НАРУЖУ, на лендинг)
 ```
-Free on Chrome → https://www.devexthub.com/transcribe-video-to-text/
+Free on Chrome → https://www.devexthub.com/transcribe-video-to-text/?utm_source=youtube&utm_medium=video&utm_campaign=transcribe&utm_content=tr_short1
 Full 35 min walkthrough → https://youtu.be/Gv99xOSFys8
 ```
 

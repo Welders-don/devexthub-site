@@ -35,7 +35,7 @@
 ## Метаданные лонга (для описания залитого ролика — вставить Денису)
 Title: Free AI Image Upscaler & Unblur in Chrome — Images Never Leave Your Device
 Description: см. ниже. Ссылка = www.devexthub.com/image-enhancer/ (ЛЕНДИНГ, не CWS).
-Закреп-коммент (кликабельная ссылка): https://www.devexthub.com/image-enhancer/
+Закреп-коммент (кликабельная ссылка): https://www.devexthub.com/image-enhancer/?utm_source=youtube&utm_medium=video&utm_campaign=imageenhancer&utm_content=ie_long1
 ВАЖНО: ссылка в описании некликабельна (время-гейт канала) → закрепить коммент со ссылкой.
 
 Description для вставки:
@@ -43,7 +43,7 @@ Turn blurry, low-res photos into sharp, high-res images right inside Chrome. Ima
 Enhance — remove noise and JPEG artifacts
 Upscale 2x / 4x — increase resolution
 Unblur — sharpen out-of-focus shots
-Get it: www.devexthub.com/image-enhancer/
+Get it: https://www.devexthub.com/image-enhancer/?utm_source=youtube&utm_medium=video&utm_campaign=imageenhancer&utm_content=ie_long1
 #imageenhancer #upscale #aiupscaler #unblur #chromeextension #photoediting
 
 ## Формат/техники шортов (из workspace/knowledge/shorts-video-use-techniques.md)

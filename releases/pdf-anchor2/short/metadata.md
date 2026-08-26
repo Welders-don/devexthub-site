@@ -22,7 +22,7 @@ bank statement to excel, pdf to excel, convert bank statement to excel, pdf to c
 spreadsheet, bookkeeping
 
 ## Закреп-коммент
-Free Chrome extension: https://www.devexthub.com/pdf-to-excel/
+Free Chrome extension: https://www.devexthub.com/pdf-to-excel/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_short1
 
 ## При заливке
 - Поле Related video (связать с лонгом) у молодого канала может быть недоступно — тогда мост держится
