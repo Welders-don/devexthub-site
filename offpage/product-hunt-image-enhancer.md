@@ -65,14 +65,24 @@ is uploaded anywhere, and once the model is cached it works offline.
 Two honest notes, because I would rather you install it for the right reason:
 
 It works on small digital images. Thumbnails, product photos, avatars, pictures saved from chats,
-screenshots that got compressed into mush. I measured it: on that kind of input it recovers about
-4x the sharpness.
+screenshots that got compressed into mush. I measured it against a plain resize of the same file,
+and the result comes out about twice as sharp.
 
 It will not fix a scanned film photo or an out-of-focus shot. I measured that too, and the gain
 was almost nothing. There is no detail left in those files to recover, and anything that claims
 otherwise is inventing pixels. Different problem, different model.
 
 Free, no sign-up, no watermark. If you have a tiny image you need bigger, that is the one to try.
+
+## Цифры, которые можно называть публично (замер 26.08, `spike/measure-gallery-pair.mjs`)
+На паре ИЗ ГАЛЕРЕИ (400×267 → 1600×1068), variance of Laplacian, выход нормализован к входу:
+- резкость входа 817.8 · выход модели 1050.6 (**x1.28** к входу) · bicubic-ресайз 492.8 (x0.60)
+- **модель против простого ресайза = x2.13** ← ЭТУ цифру можно называть
+
+🔴 **«x4 резкости» из `analog-vs-digital.mjs` НА PH НЕ НАЗЫВАТЬ.** Она получена на кейсе A
+(256×256, JPEG q30) и относится к другой картинке. Ловушка метрики: чем сильнее убит вход, тем
+ниже база и тем КРАСИВЕЕ множитель, при этом выход визуально хуже (восковый). Цифра и картинка
+должны быть с одного файла. «4x» в тэглайне = про РАЗМЕР (апскейл), это корректно.
 
 ## Честность (что НЕ обещать)
 - НЕ делает: аналог/плёнку, расфокус, remove background, colorize, face restore.
