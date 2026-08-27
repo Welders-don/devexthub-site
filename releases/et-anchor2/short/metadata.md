@@ -8,15 +8,28 @@
 `releases/shorts/et-shorts-metadata.md`). Здесь: текст сидит в картинке на живой веб-странице,
 мышь его не выделяет, обвод рамкой прямо поверх страницы.
 
-## Title
-Text you can't select? Copy it anyway #Shorts
+## Title (макс 100 симв, КЛЮЧ В НАЧАЛЕ)
+Copy text from an image on a website (free Chrome extension) #shorts
+
+Ключ: **copy text from image** 5400/мес, KD 21 (`knowledge/seo-keywords-extract-text.md`,
+сид «широкий copy/extract text»). Тот же ключ, что у лонга захода №2 — по образцу PDF-захода,
+где шорт брал ключ своего лонга («Bank statement PDF to Excel in one click»).
+Хвост «on a website» разводит с шортом захода №1 («Copy text from any photo in one click»),
+чтобы два своих ролика не бодались одним запросом.
+
+МОЙ ФАКАП 27.08, зафиксирован: первая версия титула была «Text you can't select? Copy it anyway»
+— хук без единого ключа из файла ресёрча, придуман мимо процесса. Денис поймал.
+Правило: title берётся из `knowledge/seo-keywords-*.md`, ключ в НАЧАЛЕ строки. Хук живёт
+в первой строке тела описания, а не в титуле.
 
 ## Описание
 Full tutorial: https://youtu.be/YBuAdO9E4cU
 
 The words are right there but the cursor just drags the picture around. That text is an image.
-Extract Text from Image reads it right on your device and gives you real, selectable text.
-Free Chrome extension, no signup, nothing uploaded to a server.
+
+Here is how to copy text from an image on any website in one click. Extract Text from Image reads
+it right on your device and gives you real, selectable text. Free Chrome extension, no signup,
+nothing uploaded to a server.
 
 Get it free: https://www.devexthub.com/extract-text-from-image/?utm_source=youtube&utm_medium=video&utm_campaign=extracttext&utm_content=et_short2
 
