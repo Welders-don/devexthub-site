@@ -15,7 +15,7 @@ const SIZES = [
   { size: 180, src: 'assets/logo-mark.svg', out: 'assets/logo-mark-180.png' },
   { size: 128, src: 'assets/logo-mark.svg', out: 'assets/logo-mark-128.png' },
   { size: 48, src: 'assets/logo-mark.svg', out: 'assets/logo-mark-48.png' },
-  { size: 32, src: 'assets/logo-mark-small.svg', out: 'assets/logo-mark-32.png' },
+  { size: 32, src: 'assets/logo-mark.svg', out: 'assets/logo-mark-32.png' },
   { size: 16, src: 'assets/logo-mark-small.svg', out: 'assets/logo-mark-16.png' },
 ];
 
