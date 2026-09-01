@@ -26,8 +26,18 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - Дашборд: https://api.devexthub.com:8444 — за basic-auth.
   - Basic-auth креды: `/opt/umami/BASICAUTH_CREDS.txt`
   - Логин в сам Umami: `/opt/umami/ADMIN_CREDS.txt`
-- Трекер вшит в лендинги: `https://api.devexthub.com:8444/script.js`,
+- 🟢 <b>Трекер (АКТУАЛЬНО с 01.09.2026): `https://api.devexthub.com:8443/u/script.js`</b>
+  + `data-host-url="https://api.devexthub.com:8443/u"`,
   data-website-id `9cd8ea39-4803-4558-82cb-4821a96e581d`, data-domains www.devexthub.com,devexthub.com.
+  Вшит в 38 HTML (коммит 6f5c359, на Pages раскатан и проверен живьём).
+  <b>Старый адрес `:8444/script.js` НЕ РАБОТАЕТ у клиентов</b> — порт закрыт файрволом IONOS (ниже).
+  Как устроено: `location /u/` в `sites-enabled/pdfex-api.conf` (вхост api.devexthub.com:8443)
+  проксирует на `127.0.0.1:3000/`. Почему не отдельный вхост: на 8443 имя `api.devexthub.com`
+  уже занято бэкендом PDF-to-Excel, второй такой же вхост nginx игнорирует
+  (`conflicting server name ... ignored`) — проверено, так делать нельзя.
+  Бэкап до правки: `/etc/nginx/pdfex-api.conf.bak-umami-1788242811`.
+  Грабля при тестах: Umami отдаёт `{"beep":"boop"}` и НЕ пишет событие, если у запроса нет
+  браузерного User-Agent — curl без `-H "User-Agent: Mozilla/..."` даёт ложный «не работает».
 - АГЕНТУ UMAMI ДОСТУПНА, не разводить руками и не просить у Дениса ключи (facepalm 26.08):
   Umami слушает `127.0.0.1:3000` на том же IONOS, где сидит агент. Креды root-only →
   читать через ssh root@127.0.0.1 (пароль `$SERVER_IONOS_PASS`, pexpect, PubkeyAuthentication=no,
