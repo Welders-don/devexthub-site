@@ -1,2 +1,12 @@
 src/
 frames/
+work/
+voices/
+seg_*.mp4
+chk_*.png
+fin*.png
+*contact*.png
+menu_chk.png
+tr2-anchor-mute.mp4
+tr2-anchor-sub.mp4
+concat.txt
