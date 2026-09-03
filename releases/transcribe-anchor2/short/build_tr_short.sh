@@ -14,6 +14,10 @@ rm -f seg_*.mp4 concat.txt
 # из САЙДПАНЕЛИ (там шрифт крупный), а Word-страницу показываем целиком как ОБРАЗ документа,
 # читать её зритель не должен.
 
+# ХВОСТ ТИШИНЫ. Голос Fenrir 12.81с + adelay 0.3 = кончается на 13.11с. Видео должно быть
+# ~14.6с, иначе после последнего слова ролик идёт молча 4 секунды (поймал Денис 03.09).
+# Правило: после конца озвучки оставлять не больше ~1.5с — ровно на энд-карточку.
+
 # drawtext молча ест текст на : , % ' — экранируем в хелпере, а не руками в фильтре
 esc () { printf '%s' "$1" | sed -e "s/\\\\/\\\\\\\\/g" -e "s/:/\\\\:/g" -e "s/,/\\\\,/g" -e "s/'/\\\\\\\\\\\\'/g" -e "s/%/\\\\%/g"; }
 
@@ -47,14 +51,14 @@ endcard () {
 }
 
 #      START  DUR   CROP                      TOP                            BOTTOM                          BOTCOL      N
-mkclip  90.0  3.00  "crop=456:600:1464:380"   "Every word of the podcast"    "speakers and timestamps"       "${PU}@0.9" 0
-mkclip   6.8  2.00  "crop=456:420:1464:126"   "One click in your browser"    ""                              ""          1
+mkclip  90.0  2.20  "crop=456:600:1464:380"   "Every word of the podcast"    "speakers and timestamps"       "${PU}@0.9" 0
+mkclip   6.8  1.60  "crop=456:420:1464:126"   "One click in your browser"    ""                              ""          1
 mkclip   9.6  1.40  "crop=456:400:1464:200"   "Press Transcribe"             ""                              ""          2
-mkclip  45.0  2.60  "crop=456:490:1464:520"   "It writes as the episode plays" ""                            ""          3
-mkclip  76.0  2.20  "crop=456:520:1464:290"   "Who said what, and when"      ""                              ""          4
+mkclip  45.0  2.20  "crop=456:490:1464:520"   "It writes as the episode plays" ""                            ""          3
+mkclip  76.0  1.80  "crop=456:520:1464:290"   "Who said what, and when"      ""                              ""          4
 mkclip  89.0  1.60  "crop=456:300:1464:600"   "Export to Word"               ""                              ""          5
-mkclip 104.0  2.40  "crop=1030:800:436:130"   "Your episode, as a document"  "Full tutorial on my channel ->" "${PU}@0.9" 6
-endcard 2.20 7
+mkclip 104.0  2.00  "crop=1030:800:436:130"   "Your episode, as a document"  "Full tutorial on my channel ->" "${PU}@0.9" 6
+endcard 1.80 7
 
 for n in 0 1 2 3 4 5 6 7; do echo "file 'seg_${n}.mp4'" >> concat.txt; done
 ffmpeg -hide_banner -loglevel error -y -f concat -safe 0 -i concat.txt -c copy tr-short-mute.mp4
