@@ -5,7 +5,7 @@
 (рядом в кластере: `transcribe podcast to text` 170/27, `podcast transcription service` 390/18,
 `transcript generator for apple podcasts` 140/26). Ключ стоит В НАЧАЛЕ титула.
 
-## Title (98 симв)
+## Title (90 симв)
 ```
 Transcribe a Podcast to Text - Free Chrome Extension (Apple Podcasts, Spotify, SoundCloud)
 ```
