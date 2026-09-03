@@ -88,7 +88,10 @@ card () {
     " -r 30 -c:v libx264 -preset medium -crf 21 -pix_fmt yuv420p -video_track_timescale 30000 "seg_$4.mp4"
 }
 
-card  "Transcribe a Podcast" "Free Chrome extension, no upload"  2.0 00
+# Стартовая карточка несёт ПОЛНОЕ ИМЯ РАСШИРЕНИЯ, а не задачу (поправка Дениса 03.09):
+# рядом с эмблемой «Transcribe a Podcast» читалось как название продукта, а искать по нему
+# в сторе нечего. Задача ушла во вторую строку и в озвучку.
+card  "Transcribe Video to Text" "Turn a podcast into text, free in Chrome"  2.0 00
 wide   0.6  3.0 "An episode you need in text"            01
 menu   3.6  1.6 "Click the extension in your toolbar"    02
 ptop   6.6  2.8 "Press Transcribe, then play"            03

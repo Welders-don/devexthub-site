@@ -43,7 +43,7 @@ Full written guide with the Spotify and SoundCloud steps: https://www.devexthub.
 ```
 
 ## Структура ролика (26.4с)
-карточка 2.0с (эмблема + «Transcribe a Podcast») → WIDE «An episode you need in text» 3.0 →
+карточка 2.0с (эмблема + «Transcribe Video to Text» / «Turn a podcast into text, free in Chrome») → WIDE «An episode you need in text» 3.0 →
 MENU «Click the extension in your toolbar» 1.6 → PTOP «Press Transcribe, then play» 2.8 →
 PTEXT «The text is written as it plays» 3.2 → PSCROLL «Speakers and timestamps, automatic» 3.4 →
 PEXP «Copy it, or export to Word» 2.6 → WORD «Your episode, as a document» 4.6 →
@@ -61,3 +61,8 @@ PEXP «Copy it, or export to Word» 2.6 → WORD «Your episode, as a document»
   ленту с плашкой «ЗАЩИЩЕННЫЙ ПРОСМОТР». Масштаб 1040 (не 1360) — иначе документ занимает всю
   высоту и титру негде встать, не задевая сабы.
 - Таскбар Windows (Яндекс, раскладка РУС) начинается на y=1032, WIDE режем по 1010.
+- **СТАРТОВАЯ КАРТОЧКА НЕСЁТ ПОЛНОЕ ИМЯ РАСШИРЕНИЯ** (поправка Дениса 03.09). Первая сборка
+  ставила рядом с эмблемой «Transcribe a Podcast» — читалось как название продукта, а искать
+  по нему в сторе нечего, настоящее имя всплывало только в энд-карточке на 23-й секунде.
+  Правило шире одного ролика: у стартовой карточки первая строка = имя продукта, задача уходит
+  во вторую строку и в озвучку.
