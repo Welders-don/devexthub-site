@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Transcribe Video to Text | Devexthub</title>
+<meta name="description" content="Privacy policy for the Transcribe Video to Text Chrome extension: what data is collected, how it is used, stored and shared.">
+<link rel="canonical" href="https://www.devexthub.com/privacy-policy/">
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .legal { max-width: 760px; margin: 40px auto; padding: 0 22px; line-height: 1.7; }
+  .legal h1 { font-size: 1.8em; margin-bottom: 4px; }
+  .legal h2 { font-size: 1.1em; margin-top: 32px; }
+  .legal p, .legal li { font-size: 0.97em; }
+  .legal .meta { color: #888; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="../transcribe-video-to-text/">Transcribe Video to Text</a>
+    </nav>
+  </div>
+</header>
+
+<main class="legal">
+  <h1>Privacy Policy</h1>
+  <p class="meta">Extension: Transcribe Video to Text<br>Last updated: July 5, 2026</p>
+
+  <h2>1. Overview</h2>
+  <p>Transcribe Video to Text is a Chrome browser extension that transcribes and summarizes audio and video content. This privacy policy describes what data we collect, how we use it, how it is stored, and with whom it is shared.</p>
+
+  <h2>2. Data We Collect</h2>
+  <ul>
+    <li><b>Audio data:</b> When native subtitles are unavailable, audio from the active browser tab is temporarily captured and sent to a third-party transcription service for processing. Audio is not stored on our servers.</li>
+    <li><b>Usage token:</b> A randomly generated UUID is created and stored locally in your browser. It is sent to our backend server with each request to track your usage credits. It is not linked to any personal identity.</li>
+    <li><b>Browser fingerprint:</b> A hash derived from browser properties (language, screen resolution, timezone) is generated locally and sent to our backend to detect abuse and enforce fair usage limits.</li>
+    <li><b>Video metadata and subtitle text (YouTube):</b> When a YouTube video has caption tracks, subtitles are fetched directly from YouTube. The video URL, language, duration, and subtitle text are also sent to our backend for usage accounting.</li>
+    <li><b>Video metadata (other platforms):</b> For non-YouTube videos, the video URL and platform type are sent to our backend as part of the transcription request.</li>
+    <li><b>Anonymous interaction events:</b> Aggregate, non-personal events about how the extension is used &mdash; for example that a transcription started, an export happened, or a tab capture failed, along with technical context such as the export format or failure reason. These contain no transcript text, no full page URLs, and no personal identifiers, and are tied only to your anonymous usage token. They are used solely to diagnose problems and improve the extension.</li>
+    <li><b>Shared post URL (optional):</b> If you choose to participate in the &quot;Get more free minutes&quot; program, the public URL of the social media post you submit is sent to our backend and stored to verify the share and prevent duplicate claims. Participation is entirely optional. The URL is not used for any other purpose and is not linked to any personal identity.</li>
+    <li><b>IP address (on uninstall):</b> When the extension is uninstalled, your IP address is sent to our backend server and logged, to detect abnormal uninstall spikes (e.g. a broken release) and understand aggregate usage. It is not linked to your identity and is not shared with third parties.</li>
+    <li><b>Uninstall feedback (optional):</b> After the above, you are redirected to a voluntary feedback survey hosted on Google Forms. Participation is entirely optional and governed by Google&apos;s Privacy Policy.</li>
+  </ul>
+
+  <h2>3. How We Use Your Data</h2>
+  <ul>
+    <li>Audio data is used solely to generate a text transcription. It is not used for any other purpose.</li>
+    <li>Usage token is used to track and enforce your monthly transcription credit limit.</li>
+    <li>Browser fingerprint is used only to detect abuse and prevent credit limit bypass. It is never used for advertising, profiling, or tracking.</li>
+    <li>Video metadata and subtitle text are used to record credit consumption and provide transcription history within the extension.</li>
+    <li>Shared post URL is used only to verify your participation in the optional share program and to grant the corresponding usage limit boost.</li>
+    <li>Interaction events are used only in aggregate to understand where the extension succeeds or fails and to prioritize improvements. They are never used for advertising, profiling, or cross-site tracking.</li>
+    <li>We do not use any collected data for advertising, behavioral tracking, or sale to third parties.</li>
+  </ul>
+
+  <h2>4. Data Storage and Retention</h2>
+  <ul>
+    <li><b>Local storage:</b> Your usage token, credit balance, and session state are stored in your browser using Chrome local storage. This data stays on your device.</li>
+    <li><b>Our backend server:</b> Usage records (video URL, language, duration, subtitle text for YouTube) are stored to enforce usage limits and retained for 30 days. Feedback messages are stored for up to 30 days to process your request. Uninstall IP logs are retained for 30 days. Shared post URLs from the optional share program are retained to prevent duplicate claims.</li>
+    <li><b>Audio:</b> Audio is transmitted to the transcription provider and is not retained on our servers after processing is complete.</li>
+  </ul>
+
+  <h2>5. Data Sharing</h2>
+  <p>We share user data only as necessary to provide the transcription service:</p>
+  <ul>
+    <li><a href="https://deepgram.com/privacy" target="_blank" rel="noopener">Deepgram</a> &mdash; primary transcription provider. Audio is transmitted to Deepgram solely to generate a transcript.</li>
+    <li><a href="https://www.speechmatics.com/privacy-policy" target="_blank" rel="noopener">Speechmatics</a> &mdash; fallback transcription provider, used automatically if Deepgram is temporarily unavailable.</li>
+    <li><b>Google Forms</b> &mdash; if you complete the optional uninstall feedback survey, your responses are submitted to Google and governed by Google&apos;s privacy policy.</li>
+  </ul>
+  <p>We do not sell, rent, or share user data with any other third parties, advertising networks, or data brokers.</p>
+
+  <h2>6. Permissions</h2>
+  <ul>
+    <li><b>tabCapture / offscreen:</b> To capture tab audio for transcription when native subtitles are unavailable.</li>
+    <li><b>activeTab:</b> To read the current page URL, video metadata, and caption track information.</li>
+    <li><b>scripting:</b> To detect media and extract subtitle tracks from embedded video players (e.g. Vimeo iframes).</li>
+    <li><b>storage:</b> To store your usage token, credit balance, and transcription state locally.</li>
+    <li><b>sidePanel:</b> To display the transcription interface.</li>
+    <li><b>webNavigation:</b> To detect page navigation and reset transcription state.</li>
+  </ul>
+
+  <h2>7. Data Security</h2>
+  <p>All data is transmitted over encrypted HTTPS/WSS connections. Audio is not retained after transcription is complete. Usage tokens and fingerprint hashes do not contain personally identifiable information.</p>
+
+  <h2>8. Your Rights</h2>
+  <p>Since we do not collect personally identifiable information, clearing your browser storage removes all locally stored data. For any data requests, contact us at the address below.</p>
+
+  <h2>9. Contact</h2>
+  <p>Questions about this privacy policy or data requests: <a href="mailto:telesinimarco@gmail.com">telesinimarco@gmail.com</a></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj">Chrome Web Store</a>
+    <span style="display:block;margin-top:12px;">&copy; 2026 Devexthub. Browser tools that do one thing well.</span>
+  </div>
+</footer>
+</body>
+</html>
