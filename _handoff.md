@@ -1,3 +1,37 @@
+# Handoff 2026-09-07 — заход PDF #3 собран (лонг залит + шорт готов), первый срез Umami
+
+## Где остановились
+Заход PDF #3 (smallpdf alternative) собран целиком. Лонг ЗАЛИТ Денисом = youtu.be/lpsqHo6DUGk.
+Шорт собран, заливка ЗАВТРА (08.09). Отдельно: снят первый реальный срез трафика Umami.
+
+## Что сделано
+1. PDF-лонг №3: `releases/pdf-anchor3/pdf-anchor3-final.mp4` (28.65с, Puck, сабы Groq).
+   Угол = smallpdf alternative на РЕАЛЬНОМ футаже Дениса: smallpdf грузит bank statement →
+   Done → стена «Pay Pro or wait 12h», наш демо на том же файле без пейволла.
+   ЗАЛИТ = youtu.be/lpsqHo6DUGk (UTM pdf_long3).
+2. PDF-шорт №3: `releases/pdf-anchor3/pdf-short3-final.mp4` (11.7с, вертикаль, Fenrir,
+   без караоке). Дуга: стена оплаты → наш демо. UTM pdf_short3. НЕ залит (завтра).
+3. Метаданные обоих (title/desc/теги/закреп) в `releases/pdf-anchor3/metadata.md`.
+4. Первый срез Umami (01.09–07.09): `~/workspace/knowledge/umami-devexthub-baseline-2026-09-07.md`.
+
+## Следующий шаг
+Завтра 08.09: Денис заливает ШОРТ (закреп-коммент = мост на лонг youtu.be/lpsqHo6DUGk,
+на youtube.com). Плюс закреп-коммент к ЛОНГУ на статью smallpdf-alternative.
+Потом по ротации → Extract Text (заход №2 лонг, последний был 26.08 = самый старый в круге).
+
+## Контекст (PDF #3 + Umami)
+- Правило демо PDF→Excel: показывать ТОЛЬКО таблицу (bank statement). На CV/прозе
+  в одну ячейку сливаются ВСЕ конвертеры (проверено на живых файлах smallpdf 07.09).
+- smallpdf: расширение в Chrome = витрина (PDF→Excel нет, гонит на сайт); веб конвертит,
+  но download за Pro/12ч. Наш козырь — конверсия + скачивание прямо в браузере.
+- Umami: данные валидны ТОЛЬКО с 01.09 (трекер был слеп до этого). 26 сессий/7дней;
+  источники CWS 7 / Google 4 / AlternativeTo 1 / PH 1 / direct 17 (завышен заходами
+  Дениса, IP-исключений нет). Объём мал, но каналы живые. Следующий замер ~14.09.
+  Доступ: ssh root@$SERVER_IONOS_IP → docker exec umami-db-1 psql -U umami -d umami, website_event.
+- Ротация лонгов по датам: ExtractText 26.08 < IE 31.08 < Transcribe 03.09 < PDF 07.09.
+
+---
+
 # Handoff 2026-09-01 — аналитика была слепа полтора месяца, починена; GSC-срез; IE-шорт закрыт
 
 ## Где остановились
