@@ -29,3 +29,22 @@ pdf to excel chrome, bank statement to excel, pdf to xlsx, no paywall pdf conver
 ## Закреплённый комментарий (ставить на youtube.com, НЕ в Studio)
 Free, no paywall, no sign-up. Add to Chrome:
 https://www.devexthub.com/blog/smallpdf-alternative-for-pdf-to-excel/?utm_source=youtube&utm_medium=video&utm_campaign=pdf_long3
+
+---
+
+# ШОРТ к лонгу №3
+
+Файл: `pdf-short3-final.mp4` (11.7с, 1080x1920, голос Fenrir, без караоке-сабов)
+UTM: pdf_short3
+
+## Title (Shorts)
+Smallpdf makes you pay to download? Try this #shorts
+
+## Описание
+Smallpdf converts your PDF to Excel, then blocks the download unless you go Pro or wait
+about 12 hours. This free Chrome extension does it right in your browser, no paywall.
+Add to Chrome: https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf
+#pdftoexcel #smallpdf #chromeextension #excel
+
+## Закреп-коммент шорта (мост на лонг, ставить на youtube.com)
+Full version: https://youtu.be/lpsqHo6DUGk
