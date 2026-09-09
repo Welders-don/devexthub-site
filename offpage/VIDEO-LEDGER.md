@@ -1,36 +1,45 @@
 # VIDEO LEDGER — единый реестр YouTube-роликов (девекстхаб)
 
-Собран 09.09.2026 из разбросанных `releases/*/metadata.md` + `_handoff.md`. Вести ЗДЕСЬ после каждой заливки.
-Канал: @NicholaChaus. 4 продукта: PDF · TVT (transcribe) · ET (extract text) · IE (image enhancer).
-Формат ротации: на продукт делаем ЗАХОД = лонг + шорт-мост на этот лонг. Ротация по продукту, кто дольше всех без свежего лонга.
+Источник истины: YouTube Data API по каналу @NicholaChaus (channelId UCjPKVtLH8DD-hgSbYzl3SIw).
+Последняя сверка с API: 09.09.2026. Все ролики — формат Shorts (<60с). «Лонг» у нас = 25-35с (развёрнутый), «шорт» = 11-17с (хук). Оба на вкладке Shorts.
+Вести ЗДЕСЬ. При сомнении — пересверить через API (playlistId uploads = UUjPKVtLH8DD-hgSbYzl3SIw), не по обрывкам в metadata.
 
-Легенда: 🟢 залит live · ⬜ не залит / URL не зафиксирован
+Всего: 19 роликов · 1921 просмотр (на 09.09.2026).
 
-## Лонги
+## Все ролики (свежие сверху, views на 09.09)
 
-| Продукт | Заход | URL | Дата | Голос | UTM | Заметка |
-|---|---|---|---|---|---|---|
-| ET  | #1 | https://youtu.be/G8w0kwg5Glc | 04.08 | — | — | «How to Extract Text from Any…», ID добыт задним числом 26.08 |
-| PDF | #2 | https://youtu.be/TToK2n9zb-U | 22.08 | — | — | подсказка на 00:24 → PDF-лонг #1, закреп стоит |
-| ET  | #2 | https://youtu.be/YBuAdO9E4cU | 26.08 | Kore | et_long2 | UTM utm_content = слаг ролика |
-| TVT | #2 | https://youtu.be/i-4eQkuy6Bk | ~26.08 | Puck | tr_long2 | подсказка на 0:20 → лонг #1 Gv99xOSFys8 |
-| TVT | #1 | https://youtu.be/Gv99xOSFys8 | 17.08 | — | — | 35-мин walkthrough, база мостов TVT |
-| IE  | #1 | https://youtu.be/QtE2CfgRJHo | 13.08 | — | — | Public, НЕ перезаливать (решение Дениса) |
-| IE  | #2 | https://youtu.be/dLNv9FL7DTA | 31.08 | — | — | перезалит (старый удалён) |
-| PDF | #3 | https://youtu.be/lpsqHo6DUGk | 07.09 | Puck | pdf_long3 | smallpdf alternative, сабы Groq |
+| Дата | Продукт | Тип | Views | ID | Название |
+|---|---|---|---|---|---|
+| 09.09 | PDF | шорт | 3   | WpX9jkQjVX8 | Smallpdf makes you pay to download? Try this |
+| 07.09 | PDF | лонг | 2   | lpsqHo6DUGk | Free Smallpdf Alternative for PDF to Excel |
+| 03.09 | TVT | лонг | 5   | i-4eQkuy6Bk | Transcribe a Podcast to Text |
+| 01.09 | IE  | шорт | 61  | OuDq1EyaBgo | Enhance image resolution in Chrome |
+| 31.08 | IE  | лонг | 35  | dLNv9FL7DTA | Enhance image resolution — free AI, no upload |
+| 27.08 | ET  | шорт | 137 | evGF5JxPbFc | Copy text from an image on a website |
+| 26.08 | ET  | лонг | 43  | YBuAdO9E4cU | How to Copy Text From an Image in Chrome |
+| 25.08 | PDF | шорт | 311 | 1ntwjh9Q2ng | Bank statement PDF to Excel in one click |
+| 22.08 | PDF | лонг | 12  | TToK2n9zb-U | How to Convert a Bank Statement PDF to Excel |
+| 20.08 | TVT | шорт | 217 | o4_9YZLv7Lo | Get a YouTube transcript in 1 click |
+| 17.08 | TVT | лонг | 66  | Gv99xOSFys8 | Free YouTube Transcript Generator in Chrome |
+| 16.08 | IE  | шорт | 83  | EQdCMQYBb5o | Unblur & Enhance Any Photo Free — On-Device AI |
+| 13.08 | IE  | лонг | 102 | QtE2CfgRJHo | Free AI Image Upscaler & Unblur in Chrome |
+| 05.08 | ET  | шорт | 34  | 7um6pb1H4jo | Copy text from any photo in one click |
+| 04.08 | ET  | лонг | 19  | G8w0kwg5Glc | How to Extract Text from Any Image |
+| 03.08 | PDF | шорт | 708 | a0KIAtDSc6U | Convert a scanned PDF to Excel — no retyping |
+| 02.08 | PDF | лонг | 21  | I_7uDO1Qtfc | How to Convert a Scanned PDF to Excel |
+| 29.07 | PDF | шорт | 47  | 11PxS-ZZN4c | Convert PDF to Excel in Chrome — Free, No Upload |
+| 18.06 | TVT | лонг | 15  | JOEiN8qOTpA | How to Transcribe Any Video to Text in Seconds |
 
-## Шорты
+URL любого: `https://youtu.be/<ID>` (или `youtube.com/shorts/<ID>`).
 
-| Продукт | Заход | URL | Дата | Голос | UTM | Мост на лонг |
-|---|---|---|---|---|---|---|
-| PDF | #2 | https://youtube.com/shorts/1ntwjh9Q2ng | 25.08 | Fenrir | — | TToK2n9zb-U |
-| ET  | #2 | https://youtube.com/shorts/evGF5JxPbFc | 27.08 | Fenrir | — | YBuAdO9E4cU |
-| IE  | #2 | https://youtube.com/shorts/OuDq1EyaBgo | 01.09 | Fenrir | — | dLNv9FL7DTA |
-| PDF | #3 | https://youtube.com/shorts/WpX9jkQjVX8 | 09.09 | Fenrir | pdf_short3 | lpsqHo6DUGk |
+## Раскладка по продуктам
+- **PDF** — 7 роликов, лидер канала (708 + 311 + 47…). Топ = scanned PDF to Excel (a0KIAtDSc6U, 708).
+- **TVT** — 4. Сильный: YouTube transcript 1 click (o4_9YZLv7Lo, 217).
+- **IE** — 4. Ровно: 102 / 83 / 61 / 35.
+- **ET** — 4. Пик: copy text from image (evGF5JxPbFc, 137).
 
-## Пробелы (URL не зафиксирован / ролик не залит)
-- TVT шорт #1 и #2 — собраны (`transcribe-anchor/short`, `transcribe-anchor2/short`), но live-URL самого шорта в памяти НЕТ (в metadata только ссылка-мост на лонг). Проверить в Studio.
-- ET шорт #1 — не зафиксирован.
-- IE шорт #1 — по `ie-anchor` шорты начаты, не доделаны (споткнулись на голосах). Заход #2 закрыт шортом OuDq1EyaBgo.
-- PDF лонг #1 и шорт #1 — ID не зафиксирован (заход #1, самый ранний).
-- UTM на роликах до PDF #3 в основном НЕ проставлялись (грабля, отмечено в handoff 26.08).
+## Заметки
+- Свежие 4 ролика (сент: WpX9jkQjVX8/lpsqHo6DUGk/i-4eQkuy6Bk) — 2-5 просмотров, не раскочегарились, судить рано.
+- UTM проставлялись НЕ на всех (грабля, отмечена в handoff 26.08). С PDF #3 (pdf_long3/pdf_short3) — ставим.
+- Голоса: лонги ранние — Puck/Kore, шорты — Fenrir. Детали сборки каждого — в `releases/<product>-anchor*/`.
+- Метрику вести отсюда, пересверять числа через API, а не переписывать вручную.
