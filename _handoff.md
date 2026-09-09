@@ -1,8 +1,49 @@
-# Handoff 2026-09-07 — заход PDF #3 собран (лонг залит + шорт готов), первый срез Umami
+# Handoff 2026-09-09 — PDF-шорт #3 залит; собран единый VIDEO-LEDGER по API; ExtensionLaunch отбит
+
+## Где остановились (09.09)
+Денис залил PDF-шорт #3 = youtube.com/shorts/WpX9jkQjVX8. По ходу выяснилось, что учёт
+роликов размазан по 10+ metadata и единого списка нет — собрал `offpage/VIDEO-LEDGER.md`.
+Сначала налажал (насчитал 12 роликов по обрывкам файлов), Денис поймал по скрину Studio →
+пересобрал реестр из ИСТИНЫ (YouTube Data API): 19 роликов, все Shorts, 1921 просмотр.
+
+## Следующий шаг (09.09)
+1. Денис ставит закреп-коммент на шорт WpX9jkQjVX8 = мост `Full version: https://youtu.be/lpsqHo6DUGk` (на youtube.com, НЕ в Studio).
+2. По ротации следующий заход = Extract Text (лонг ET последний 26.08, самый старый в круге). См. releases/et-anchor2.
+3. Метрику видео впредь сверять через API (см. VIDEO-LEDGER шапку), не собирать по metadata.
+
+## VIDEO-LEDGER (собран 09.09, offpage/VIDEO-LEDGER.md)
+Источник истины = YouTube API, канал @NicholaChaus (UCjPKVtLH8DD-hgSbYzl3SIw, uploads UUjPKVtLH8DD-hgSbYzl3SIw, ключ YOUTUBE_API_KEY).
+19 роликов, все формат Shorts (<60с): наши «лонги» 25-35с, «шорты» 11-17с. Суммарно 1921 просмотр.
+Топ: a0KIAtDSc6U scanned-PDF-to-Excel 708 · 1ntwjh9Q2ng bank-statement 311 · o4_9YZLv7Lo yt-transcript 217 · evGF5JxPbFc copy-text-image 137.
+Раскладка: PDF 7 (лидер) · TVT 4 · IE 4 · ET 4. Свежие сент-ролики 2-5 просмотров, судить рано.
+
+## ExtensionLaunch — повторный отказ (09.09)
+Прислал нурчер «Your page is still unclaimed» по ET + флоу публикации. Площадка УЖЕ отброшена 31.07:
+free = обязательный публичный FB-пост со ссылкой (делистят если снять) + upsell $9/$29/$79. Reciprocal → не берём.
+Нюанс проверки: ссылка на CWS на СТРАНИЦЕ продукта = dofollow, на главной = nofollow. На вывод не влияет. Запись обновлена в BACKLINKS-LEDGER стр.62.
+
+---
+
+# Handoff 2026-09-08 — GSC + Coverage срез разобран; хвост YouTube PDF #3 висит
 
 ## Где остановились
+Разобрал два свежих экспорта GSC от Дениса (Performance + Coverage за 08.09).
+Вывод: за неделю ничего не сдвинулось, картина согласованная. Детали — memory/2026-09-08.md.
+YouTube-хвост с 07.09 (шорт PDF #3 + закреп-комменты) — статус неизвестен, ждёт Дениса.
+
+## GSC срез 08.09 (итог)
+Performance (3 мес): 3 клика за 3 месяца, как и 01.09. Показы 6253→6909. Средняя поз ~62,
+CTR 0.04%. Провал графика 1-5.09 (показы 24-56/день, поз 17-28) = АРТЕФАКТ лага GSC, не падение.
+Клики по 1 шт у 3 страниц: transcribe-video-to-text (63.3), copy-text-on-pc (35.1),
+image-enhancer (23.3, улучш). Единственные реальные click-шансы (у стр.1):
+image enhancer chrome extension поз 9 · ocr chrome extension поз 17.9 · ocr extension chrome поз 25.
+Coverage: индекс замер на 25 стр с 18.08 (3 недели без движения), «не в индексе» 10→14.
+Из них 9 Crawled-not-indexed + 4 Discovered-not-indexed = вердикт Google «слишком слабо».
+Оба среза → один рычаг: ВХОДЯЩИЕ ССЫЛКИ. Request Indexing не поможет (Google уже отказал).
+
+## Прошлое «Где остановились» (PDF #3, 07.09)
 Заход PDF #3 (smallpdf alternative) собран целиком. Лонг ЗАЛИТ Денисом = youtu.be/lpsqHo6DUGk.
-Шорт собран, заливка ЗАВТРА (08.09). Отдельно: снят первый реальный срез трафика Umami.
+Шорт собран, заливка была намечена на 08.09.
 
 ## Что сделано
 1. PDF-лонг №3: `releases/pdf-anchor3/pdf-anchor3-final.mp4` (28.65с, Puck, сабы Groq).
