@@ -36,6 +36,7 @@ https://www.devexthub.com/blog/smallpdf-alternative-for-pdf-to-excel/?utm_source
 
 Файл: `pdf-short3-final.mp4` (11.7с, 1080x1920, голос Fenrir, без караоке-сабов)
 UTM: pdf_short3
+🟢 ЗАЛИТ 09.09.2026: https://youtube.com/shorts/WpX9jkQjVX8
 
 ## Title (Shorts)
 Smallpdf makes you pay to download? Try this #shorts
