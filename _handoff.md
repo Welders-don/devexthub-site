@@ -1,3 +1,34 @@
+# Handoff 2026-09-13 — GSC-автоматизация: скрипты вытащены, ждём решения Дениса по auth
+
+## Где остановились (13.09)
+Денис кинул github.com/nowork-studio/notfair-plugin (маркетинг-плагин, 45 скиллов + MCP).
+Разобрали. Ставить плагин/MCP НЕ надо: MCP = их SaaS `https://notfair.co/api/mcp/notfair`,
+OAuth-брокер — токены и данные GSC/GA4 живут на ИХ серверах. Скиллы дублируют уже
+установленные (ai-seo, seo-audit, analytics). Доп. находка: в репу залит весь исходник
+их закрытого веб-приложения (Next.js, схема БД, шифрование секретов) под папкой notfair/.
+
+## Что сделано
+Вытащил из репо автономные GSC-скрипты в `~/workspace/tools/gsc/` (закоммичено,
+`0689107`): analyze_gsc.py, show_gsc.py, list_gsc_sites.py, url_inspection.py + _gcloud.py,
+_uid.py + README. Данные идут Google→машина напрямую, notfair.co в цепочке НЕТ.
+pip-зависимостей ноль (чистый stdlib urllib). Scope только webmasters.readonly (чтение).
+
+## Блокер / Следующий шаг
+Скрипты берут токен через `gcloud auth application-default print-access-token`.
+На машине gcloud НЕ установлен, ADC-авторизации нет → скрипты пустые.
+Денис думает над путём auth (ответа пока нет):
+- Путь A (рекомендован): поставить gcloud SDK (~200МБ) + один интерактивный логин
+  `gcloud auth application-default login --no-launch-browser --scopes=...webmasters.readonly`
+  (даёт URL → Денис авторизует в браузере → кидает код в чат). Дальше агент гоняет
+  срез сам, headless, refresh-токен лежит локально. ~15 мин настройки.
+- Путь B: service account + JSON-ключ + добавить SA email в GSC как пользователя.
+  Полностью headless, но больше ручных шагов Дениса в GCP-консоли, надо переписать
+  get_access_token под SA.
+Установка gcloud = установка софта → жду явного ОК Дениса, сам не ставил.
+Зачем вообще: автоматизировать GSC-срез (PDF-кластер, Капитан), который сейчас снимается руками.
+
+---
+
 # Handoff 2026-09-09 — PDF-шорт #3 залит; собран единый VIDEO-LEDGER по API; ExtensionLaunch отбит
 
 ## Где остановились (09.09)
