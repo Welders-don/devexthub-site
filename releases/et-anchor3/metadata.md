@@ -1,8 +1,8 @@
 # Метаданные — ET-лонг #3 «jpg to text free»
 
-**СТАТУС:** СОБРАН 14.09 (`et-anchor3-final.mp4`, 27.05с, 1920x1080, голос Kore, караоке-сабы Groq), ждём заливку Дениса. ЗАЛИТ: _(YouTube-ID вписать сразу после заливки)_.
+**СТАТУС:** ЗАЛИТ 14.09 = **https://youtu.be/I1E3OQ7vhmU** (`et-anchor3-final.mp4`, 27.05с, 1920x1080, голос Kore, караоке-сабы Groq).
 Ключ: **jpg to text free** — 1 900/мес, KD 22. Голос **Kore** (как #2). UTM content: **et_long3**.
-Предыдущие ET-лонги: #1 04.08 = youtu.be/G8w0kwg5Glc, #2 26.08 = youtu.be/YBuAdO9E4cU.
+Предыдущие ET-лонги: #1 04.08 = youtu.be/G8w0kwg5Glc, #2 26.08 = youtu.be/YBuAdO9E4cU, #3 14.09 = youtu.be/I1E3OQ7vhmU.
 
 ## Title
 JPG to Text, Free: Copy the Words From Any Image (Chrome)
