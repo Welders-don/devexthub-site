@@ -1,3 +1,36 @@
+# Handoff 2026-09-14 — YouTube: каркас ET-лонга #3 (jpg to text free), ждём футаж
+
+## Где остановились (14.09)
+Ротация: следующий по кругу — Extract Text. Собрал каркас ЛОНГА захода #3 под ключ
+**jpg to text free** (1900/мес, KD22). Ждём футаж от Дениса — придёт, режу лонг+шорт.
+
+## Что сделано (14.09)
+- Сверился: оба прежних ET-захода закрыты — #1 04.08 (extract-text, youtu.be/G8w0kwg5Glc),
+  #2 26.08 (copy-text-from-image, youtu.be/YBuAdO9E4cU). Метка «заход №2» в MEMORY устарела,
+  это #3. Ключи из `knowledge/seo-keywords-extract-text.md` (НЕ Semrush — цифры лежат в файле;
+  я сперва сморозил «цифр нет», Денис поймал).
+- Ключ: **jpg to text free** 1900/KD22 — низший KD из неснятых, угол «формат файла», не
+  пересекается с #1/#2. Фолбэк — copy text from picture 2900/KD34. «Screenshot» отверг (мелко).
+- Каркас `releases/et-anchor3/`: gen_jpg.sh + demo-invoice.jpg (англ. счёт NORTHGATE SUPPLIES
+  с цифрами, ffmpeg drawtext, проверен глазами), SHOOT.md, metadata.md (title/desc/tags/
+  UTM et_long3/закреп/раскадровка). 2 коммита в main (каркас + снимок ротации), НЕ пушил.
+- Демо-jpg отправлен Денису файлом. Снимок ротации обновлён в `~/workspace/knowledge/youtube-channel-warmup.md`.
+
+## Следующий шаг (14.09)
+Придёт футаж (~40-60с, флоу Upload File на demo-invoice.jpg) → в `releases/et-anchor3/src/`
+(.gitignore) → сборка по образцу `releases/et-anchor2/build_et_anchor.sh`: нарезка → титры →
+голос Kore → сабы Groq → loudnorm → лонг; затем шорт на Fenrir из того же футажа.
+
+## Контекст 14.09 (грабли, не переоткрывать)
+- Флоу #3 = **Upload File**, НЕ захват экрана. Кнопка «Choose file» → системный файл-диалог
+  (попап переживает). ПЕРЕТАСКИВАНИЕ из Проводника НЕ снимать — blur закроет попап (popup.js:162).
+- Капкан file:///restricted_page тут НЕ касается (бьёт только по обводу экрана).
+- Голоса: Kore = ET-лонги, Fenrir = шорты. Puck — лонги ДРУГИХ продуктов, для ET не трогаем.
+- Card нового ролика → на предыдущий ET-лонг YBuAdO9E4cU. UTM utm_content = слаг (et_long3).
+- Демо-материал генерим САМИ, Дениса искать не гоняем; русский документ в кадр не годится.
+
+---
+
 # Handoff 2026-09-13 — GSC-автоматизация: скрипты вытащены, ждём решения Дениса по auth
 
 ## Где остановились (13.09)
