@@ -16,5 +16,8 @@ Get it free: https://www.devexthub.com/extract-text-from-image/?utm_source=youtu
 ## Теги
 jpg to text, jpg to text free, image to text, extract text from image, copy text from image, ocr chrome extension, free ocr
 
-## Закреп-коммент (мост на лонг)
+## Закреп-коммент
 Full version: https://youtu.be/I1E3OQ7vhmU
+
+How it works, with examples:
+https://www.devexthub.com/extract-text-from-image/?utm_source=youtube&utm_medium=video&utm_campaign=extracttext&utm_content=et_short3
