@@ -22,7 +22,7 @@ async function makePage(browser, { authed = true, locale } = {}) {
     if (url.includes('/session')) return json(200, { ok: true, transcription_id: 41 });
     if (url.includes('/me')) {
       if (!authed) return json(401, { error: 'No session' });
-      return json(200, { transcriptions: TRANSCRIPTS, summaries_used: 2, gate_after: 3, signed_in: false, retention_days: 90 });
+      return json(200, { transcriptions: TRANSCRIPTS, summaries_used: 2, gate_after: 3, signed_in: false, retention_days: 30, retention_signed_in: 90 });
     }
     if (url.includes('/transcriptions/')) {
       const id = Number(url.split('/').pop());
@@ -103,7 +103,7 @@ const browser = await chromium.launch({
   await page.waitForSelector('.gate');
   const gate = await page.textContent('.gate');
   check('гейт показывается вместо саммари', gate.includes('free summaries'));
-  check('гейт говорит про 90 дней', gate.includes('90 days'));
+  check('гейт обещает 90 дней вместо 30', gate.includes('90 days') && gate.includes('30'));
   await page.close();
 }
 
@@ -128,6 +128,17 @@ const browser = await chromium.launch({
   const hasBtn = await page.$('button:has-text("Summarize")');
   check('готовое саммари показано сразу', (await page.textContent('.summary')).includes('Existing summary'));
   check('кнопки Summarize у него нет', !hasBtn);
+  await page.close();
+}
+
+// 6b. summary=1 из панели — саммари считается само, без нажатия
+{
+  summaryMode = 'ok';
+  const page = await makePage(browser);
+  await page.goto(BASE + '?state=tick&summary=1', { waitUntil: 'networkidle' });
+  await page.waitForSelector('.summary', { timeout: 5000 });
+  check('summary=1 запускает саммари сам', (await page.textContent('.summary')).includes('Fresh summary'));
+  check('адрес очищен и от summary', !page.url().includes('summary='));
   await page.close();
 }
 

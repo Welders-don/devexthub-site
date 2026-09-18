@@ -13,7 +13,7 @@
     retention: document.getElementById('retention'),
   };
 
-  var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null, days: 90 };
+  var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null, days: 30, daysSignedIn: 90 };
   var t = window.I18N.t;
 
   function api(path, opts) {
@@ -187,7 +187,7 @@
     var b = document.createElement('b');
     b.textContent = t('gate_title', { n: state.gateAfter });
     var p = document.createElement('div');
-    p.textContent = t('gate_body', { days: state.days });
+    p.textContent = t('gate_body', { days: state.daysSignedIn || 90 });
     box.appendChild(b);
     box.appendChild(p);
     return box;
@@ -243,7 +243,7 @@
 
   /* ---------- вход ---------- */
 
-  function loadMe(openId) {
+  function loadMe(openId, auto) {
     return api('/me')
       .then(function (r) {
         if (r.status === 401) { show('empty'); return null; }
@@ -256,13 +256,15 @@
         state.gateAfter = data.gate_after || 3;
         state.used = data.summaries_used || 0;
         state.signedIn = !!data.signed_in;
-        state.days = data.retention_days || 90;
+        state.days = data.retention_days || 30;
+        state.daysSignedIn = data.retention_signed_in || 90;
         el.retention.textContent = t('retention', { n: state.days });
+        if (!state.signedIn) el.retention.title = t('retention_hint', { n: state.daysSignedIn });
         show('app');
         renderList();
 
         var first = openId || (state.items[0] && state.items[0].id);
-        if (first) open(first, !!openId);
+        if (first) open(first, auto === true);
       })
       .catch(function () { show('empty'); });
   }
@@ -273,11 +275,12 @@
     var q = new URLSearchParams(location.search);
     var nonce = q.get('state');
     var wanted = Number(q.get('t')) || null;
+    var auto = q.get('summary') === '1'; // из панели нажали Summary — считаем сразу
 
     // билет из адреса убираем сразу, чтобы он не оседал в истории и реферерах
-    if (nonce || wanted) history.replaceState(null, '', location.pathname);
+    if (nonce || wanted || auto) history.replaceState(null, '', location.pathname);
 
-    if (!nonce) return loadMe(wanted);
+    if (!nonce) return loadMe(wanted, auto);
 
     api('/session', {
       method: 'POST',
@@ -285,8 +288,8 @@
       body: JSON.stringify({ nonce: nonce }),
     })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-      .then(function (data) { return loadMe(wanted || data.transcription_id || null); })
-      .catch(function () { return loadMe(wanted); });
+      .then(function (data) { return loadMe(wanted || data.transcription_id || null, auto); })
+      .catch(function () { return loadMe(wanted, auto); });
   }
 
   start();
