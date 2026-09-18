@@ -97,6 +97,29 @@ The Next AI (DR неизвестен, вероятно низкий). Всё. О
 - Новые блог-статьи «под ключ» — потолок = ещё одна страница на 60-й позиции
   ([[gsc-devexthub-search-2026-08-25]]: в коридоре позиций 20-35 при 5+ показах НОЛЬ запросов)
 
+## SaaSHub competitor-notice — механика (18.09.2026)
+Письмо 14.09 «new competitor notice»: кто-то добавил PDFtoGrid.online конкурентом нашего
+Convert PDF to Excel. Денис нажал YES → SaaSHub разместил нас на странице альтернатив PDFtoGrid
+как verified competitor + предложил оставить комментарий на comparison-странице от имени Devexthub.
+
+Вывод по механике: **согласие требуется только от того, кого показывают**. Владельца чужого
+продукта SaaSHub не спрашивает → мы можем сами добавлять себя в конкуренты к кому хотим
+(кнопка «Select more competitors»). Барьера и чужого апрува нет.
+
+⚠️ ЦЕННОСТЬ ЗДЕСЬ — НЕ БЭКЛИНК. Страницы альтернатив ссылаются на нашу КАРТОЧКУ внутри
+saashub.com, а не на devexthub.com. Это внутренние показы/трафик площадки, SEO-веса домену
+не даёт. Не записывать в доноры повторно — SaaSHub уже посчитан один раз (строка выше).
+
+Наша карточка проверена 18.09: https://www.saashub.com/convert-pdf-to-excel — «Officially
+verified», описание наше («Convert PDF or CSV in one click, and Excel back to PDF...»),
+сайт ведёт на https://www.devexthub.com/pdf-to-excel/, категории Productivity / PDF Converter /
+Chrome Extensions / AI Tools / AI. На нашей странице альтернатив 14 продуктов.
+
+Цели для «Select more competitors» (проверено 18.09, у всех списки по 14):
+Smallpdf · PDF Tables · Tabula (нас там НЕТ) · Able2Extract Professional · Adobe Export PDF ·
+Icecream PDF Converter / Aiseesoft. PDFtoExcel.com — возможно уже листимся, проверять на месте.
+Разбор самого PDFtoGrid.online: `~/projects/Pdftoexel/memory/competitor_pdftogrid.md`.
+
 ## Урок 30.07
 Рынок free-каталогов испортился: MarketingDB free стал nofollow+badge, TheSaaSDir закрыл free,
 Futurepedia платно. Перед тем как гнать Дениса на площадку — ПЕРЕПРОВЕРЯТЬ условия (они меняются).
