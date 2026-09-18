@@ -1,3 +1,40 @@
+# Handoff 2026-09-18 — SaaSHub competitor notice + разбор PDFtoGrid.online
+
+## Где остановились (18.09)
+Прилетело письмо SaaSHub от 14.09 «new competitor notice»: кто-то добавил
+**PDFtoGrid.online** конкурентом нашего Convert PDF to Excel. Денис нажал **YES** —
+нас разместили на странице альтернатив PDFtoGrid как verified competitor.
+Дальше SaaSHub предложил оставить комментарий на comparison-странице от имени Devexthub;
+текст под вставку я выдал в чат (англ., 5 предложений, без наездов на конкурента).
+
+## Следующий шаг
+1. Вставить выданный комментарий на comparison-странице PDFtoGrid × Convert PDF to Excel
+   и нажать Post (если ещё не сделано).
+2. Кнопка **«Select more competitors»** — добавить себя в конкуренты к:
+   Smallpdf · PDF Tables · Tabula (нас там НЕТ, проверено) · Able2Extract Professional ·
+   Adobe Export PDF · Icecream PDF Converter/Aiseesoft. PDFtoExcel.com — проверить на месте,
+   возможно уже листимся. Согласие владельца чужого продукта НЕ требуется — барьера нет.
+3. Ничего в продукте не менять. Разморозку продвижения из-за конкурента НЕ поднимать.
+
+## Контекст
+- ⚠️ Ценность competitor-механики = внутренние показы saashub.com, **НЕ бэклинк**:
+  страницы альтернатив ведут на нашу карточку внутри SaaSHub, а не на devexthub.com.
+  SaaSHub как донор уже посчитан один раз, второй раз в реестр не писать.
+- Наша карточка проверена 18.09: https://www.saashub.com/convert-pdf-to-excel — «Officially
+  verified», описание наше, сайт → https://www.devexthub.com/pdf-to-excel/. Альтернатив 14.
+- **Разбор PDFtoGrid.online** (полный) — `~/projects/Pdftoexel/memory/competitor_pdftogrid.md`,
+  коммит cb396ce. Кратко: сайт (не расширение), залит 13.09 из тиражируемого шаблона
+  (в robots.txt осталась строка «Replace pdftogrid.online throughout before deploying»),
+  монетизация AdSense, LiteSpeed. Клиентский парсинг по позициям символов, **сканы не берёт
+  вообще** (нет OCR — требует внешний OCR заранее), Excel→PDF нет. Сильнее нас двумя вещами:
+  не надо ставить расширение и нет лимитов страниц. Единственное реальное пересечение — SEO:
+  15 страниц ровно по нашему недописанному кластеру (bank-statement, invoice, receipt,
+  scanned, pdf-to-csv, google-sheets, multi-page, price-list, purchase-order, financial-report).
+  Ранжирование не проверялось, thin-content риск высокий.
+- Механика записана в `offpage/BACKLINKS-LEDGER.md` (коммит d61e61d).
+
+---
+
 # Handoff 2026-09-15 — YouTube: заход ET #3 ЗАКРЫТ (лонг+шорт залиты)
 
 ## Где остановились (15.09)
