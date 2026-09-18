@@ -13,7 +13,8 @@
     retention: document.getElementById('retention'),
   };
 
-  var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null, days: 30, daysSignedIn: 90 };
+  var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null, days: 30, daysSignedIn: 90,
+                quota: 6, windowUsed: 0, nextReset: null };
   var t = window.I18N.t;
 
   function api(path, opts) {
@@ -121,6 +122,10 @@
       sumBtn.className = 'btn small';
       sumBtn.type = 'button';
       sumBtn.textContent = t('summarize');
+      var badge = document.createElement('span');
+      badge.className = 'beta';
+      badge.textContent = t('beta');
+      sumBtn.appendChild(badge);
       sumBtn.addEventListener('click', function () { summarize(data.id); });
       actions.appendChild(sumBtn);
     }
@@ -166,7 +171,10 @@
       body: JSON.stringify({ transcription_id: id }),
     })
       .then(function (r) {
-        if (r.status === 402) return r.json().then(function () { throw 'GATE'; });
+        if (r.status === 402) return r.json().then(function (d) {
+          if (d && d.next_reset) state.nextReset = d.next_reset;
+          throw (d && d.error === 'QUOTA') ? 'QUOTA' : 'GATE';
+        });
         if (!r.ok) throw 'FAIL';
         return r.json();
       })
@@ -177,7 +185,10 @@
         if (item) { item.has_summary = true; renderList(); }
       })
       .catch(function (why) {
-        el.detail.replaceChild(why === 'GATE' ? gateBlock() : failBlock(), placeholder);
+        el.detail.replaceChild(
+          why === 'GATE' ? gateBlock() : why === 'QUOTA' ? quotaBlock() : failBlock(),
+          placeholder
+        );
       });
   }
 
@@ -191,6 +202,23 @@
     box.appendChild(b);
     box.appendChild(p);
     return box;
+  }
+
+  function quotaBlock() {
+    var box = document.createElement('div');
+    box.className = 'gate';
+    var b = document.createElement('b');
+    b.textContent = t('quota_title', { n: state.quota });
+    var p = document.createElement('div');
+    p.textContent = t('quota_body', { date: fmtDay(state.nextReset) });
+    box.appendChild(b);
+    box.appendChild(p);
+    return box;
+  }
+
+  function fmtDay(iso) {
+    if (!iso) return '—';
+    return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
   }
 
   function failBlock() {
@@ -258,7 +286,13 @@
         state.signedIn = !!data.signed_in;
         state.days = data.retention_days || 30;
         state.daysSignedIn = data.retention_signed_in || 90;
-        el.retention.textContent = t('retention', { n: state.days });
+        state.quota = data.signed_quota || 6;
+        state.windowUsed = data.window_used || 0;
+        state.nextReset = data.next_reset || null;
+        el.retention.textContent = state.signedIn
+          ? t('retention', { n: state.days }) + ' · ' +
+            t('quota_left', { n: Math.max(0, state.quota - state.windowUsed), total: state.quota })
+          : t('retention', { n: state.days });
         if (!state.signedIn) el.retention.title = t('retention_hint', { n: state.daysSignedIn });
         show('app');
         renderList();

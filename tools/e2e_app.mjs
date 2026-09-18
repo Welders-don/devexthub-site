@@ -12,6 +12,7 @@ const TRANSCRIPTS = [
 ];
 
 let summaryMode = 'ok';
+let meOverride = null;
 
 async function makePage(browser, { authed = true, locale } = {}) {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, locale });
@@ -22,7 +23,7 @@ async function makePage(browser, { authed = true, locale } = {}) {
     if (url.includes('/session')) return json(200, { ok: true, transcription_id: 41 });
     if (url.includes('/me')) {
       if (!authed) return json(401, { error: 'No session' });
-      return json(200, { transcriptions: TRANSCRIPTS, summaries_used: 2, gate_after: 3, signed_in: false, retention_days: 30, retention_signed_in: 90 });
+      return json(200, Object.assign({ transcriptions: TRANSCRIPTS, summaries_used: 2, gate_after: 3, signed_in: false, retention_days: 30, retention_signed_in: 90, signed_quota: 6, window_days: 14, window_used: 0, next_reset: null }, meOverride || {}));
     }
     if (url.includes('/transcriptions/')) {
       const id = Number(url.split('/').pop());
@@ -35,6 +36,7 @@ async function makePage(browser, { authed = true, locale } = {}) {
     }
     if (url.includes('/summary')) {
       if (summaryMode === 'gate') return json(402, { error: 'GATE', summaries_used: 3 });
+      if (summaryMode === 'quota') return json(402, { error: 'QUOTA', quota: 6, window_days: 14, next_reset: '2026-10-02T00:00:00Z' });
       if (summaryMode === 'fail') return json(502, { error: 'SUMMARY_FAILED' });
       return json(200, { summary: 'Fresh summary: watering kills most plants.', cached: false });
     }
@@ -140,6 +142,37 @@ const browser = await chromium.launch({
   check('summary=1 запускает саммари сам', (await page.textContent('.summary')).includes('Fresh summary'));
   check('адрес очищен и от summary', !page.url().includes('summary='));
   await page.close();
+}
+
+// 6c. Кнопка саммари помечена beta
+{
+  summaryMode = 'ok';
+  meOverride = null;
+  const page = await makePage(browser);
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  check('на кнопке саммари стоит пометка beta', (await page.textContent('button:has-text("Summarize") .beta')).trim().toLowerCase() === 'beta');
+  await page.close();
+}
+
+// 6d. Вошедший видит остаток квоты, при исчерпании — экран с датой сброса
+{
+  summaryMode = 'quota';
+  meOverride = { signed_in: true, retention_days: 90, window_used: 6, next_reset: '2026-10-02T00:00:00Z' };
+  const page = await makePage(browser);
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  const head = await page.textContent('#retention');
+  check('в шапке виден остаток квоты', head.includes('0 of 6'), head.trim());
+  await page.click('button:has-text("Summarize")');
+  await page.waitForSelector('.gate');
+  const box = await page.textContent('.gate');
+  check('экран квоты вместо саммари', box.includes('summaries for this period'));
+  check('в экране квоты есть дата разблокировки', /Oct\s*2/.test(box), box.slice(0, 120));
+  check('в экране квоты сказано про beta', box.toLowerCase().includes('beta'));
+  await page.close();
+  meOverride = null;
+  summaryMode = 'ok';
 }
 
 // 7. Язык интерфейса берётся из браузера
