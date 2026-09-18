@@ -13,8 +13,8 @@ const TRANSCRIPTS = [
 
 let summaryMode = 'ok';
 
-async function makePage(browser, { authed = true } = {}) {
-  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+async function makePage(browser, { authed = true, locale } = {}) {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, locale });
   await page.route(API, async (route) => {
     const url = route.request().url();
     const json = (status, body) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) });
@@ -128,6 +128,28 @@ const browser = await chromium.launch({
   const hasBtn = await page.$('button:has-text("Summarize")');
   check('готовое саммари показано сразу', (await page.textContent('.summary')).includes('Existing summary'));
   check('кнопки Summarize у него нет', !hasBtn);
+  await page.close();
+}
+
+// 7. Язык интерфейса берётся из браузера
+for (const [locale, marker, key] of [['ru-RU', 'Ваши транскрипты', 'ru'], ['pt-BR', 'Suas transcrições', 'pt'], ['zh-CN', '你的转录', 'zh'], ['ar-EG', 'تفريغاتك النصية', 'ar']]) {
+  const page = await makePage(browser, { locale });
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  const h1 = await page.textContent('#app h1');
+  const lang = await page.getAttribute('html', 'lang');
+  check(`интерфейс на ${key}`, h1.trim() === marker, h1.trim());
+  check(`html lang=${key}`, lang === key, String(lang));
+  if (key === 'ar') check('арабский разворачивается справа налево', (await page.getAttribute('html', 'dir')) === 'rtl');
+  await page.close();
+}
+
+// 8. Неизвестный язык падает на английский
+{
+  const page = await makePage(browser, { locale: 'sv-SE' });
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  check('незнакомый язык → английский', (await page.textContent('#app h1')).trim() === 'Your transcripts');
   await page.close();
 }
 

@@ -6,11 +6,12 @@
 <link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your transcripts — Devexthub</title>
+<title data-i18n="title">Your transcripts — Devexthub</title>
 <meta name="description" content="Your transcripts and summaries from the Transcribe Video to Text extension.">
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="app.css">
+<script src="i18n.js"></script>
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
 </head>
 <body>
@@ -29,24 +30,24 @@
 
   <!-- грузимся -->
   <div id="loading" class="app-state">
-    <p class="muted">Loading your transcripts…</p>
+    <p class="muted" data-i18n="loading">Loading your transcripts…</p>
   </div>
 
   <!-- сессии нет: страница открывается сама по себе, без редиректа на логин -->
   <div id="empty" class="app-state hidden">
-    <h1>Your transcripts live here</h1>
-    <p class="lead">This page shows the transcripts you made with the <b>Transcribe Video to Text</b> extension — with summaries, the full text and downloads in any format.</p>
-    <p>Open it from the extension panel: press <b>Summary</b> or <b>History</b> and this page opens with your own transcripts.</p>
+    <h1 data-i18n="empty_h1">Your transcripts live here</h1>
+    <p class="lead" data-i18n-html="empty_lead">This page shows the transcripts you made with the <b>Transcribe Video to Text</b> extension — with summaries, the full text and downloads in any format.</p>
+    <p data-i18n-html="empty_how">Open it from the extension panel: press <b>Summary</b> or <b>History</b> and this page opens with your own transcripts.</p>
     <p class="cta-row">
-      <a class="btn" href="https://chromewebstore.google.com/detail/transcribe-video-to-text/gkbpjhnldeahifpfbihdcpmkcfomabkg" target="_blank" rel="noopener">Get the extension</a>
-      <a class="btn ghost" href="/transcribe-video-to-text/">How it works</a>
+      <a class="btn" href="https://chromewebstore.google.com/detail/transcribe-video-to-text/gkbpjhnldeahifpfbihdcpmkcfomabkg" target="_blank" rel="noopener" data-i18n="cta_install">Get the extension</a>
+      <a class="btn ghost" href="/transcribe-video-to-text/" data-i18n="cta_how">How it works</a>
     </p>
   </div>
 
   <!-- рабочий вид -->
   <div id="app" class="hidden">
     <div class="app-head">
-      <h1>Your transcripts</h1>
+      <h1 data-i18n="app_h1">Your transcripts</h1>
       <span class="muted" id="retention"></span>
     </div>
 
@@ -54,7 +55,7 @@
       <aside class="app-list" id="list"></aside>
 
       <section class="app-main" id="detail">
-        <p class="muted">Pick a transcript on the left.</p>
+        <p class="muted" data-i18n="pick">Pick a transcript on the left.</p>
       </section>
     </div>
   </div>

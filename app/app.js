@@ -13,7 +13,8 @@
     retention: document.getElementById('retention'),
   };
 
-  var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null };
+  var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null, days: 90 };
+  var t = window.I18N.t;
 
   function api(path, opts) {
     return fetch(API + path, Object.assign({ credentials: 'include' }, opts || {}));
@@ -33,7 +34,7 @@
 
   function fmtDur(sec) {
     if (!sec) return '';
-    return Math.round(sec / 60) + ' min';
+    return t('minutes', { n: Math.round(sec / 60) });
   }
 
   /* ---------- список ---------- */
@@ -44,7 +45,7 @@
       var p = document.createElement('p');
       p.className = 'muted';
       p.style.padding = '16px';
-      p.textContent = 'No transcripts yet. Make one in the extension and it shows up here.';
+      p.textContent = t('list_empty');
       el.list.appendChild(p);
       return;
     }
@@ -59,7 +60,7 @@
       var left = document.createElement('span');
       left.textContent = (it.platform || 'other') + ' · ' + fmtDate(it.created_at);
       var right = document.createElement('span');
-      right.textContent = it.has_summary ? '✓ summary' : fmtDur(it.duration_sec);
+      right.textContent = it.has_summary ? t('has_summary') : fmtDur(it.duration_sec);
       if (it.has_summary) right.className = 'dot-sum';
       meta.appendChild(left);
       meta.appendChild(right);
@@ -83,7 +84,7 @@
     el.detail.textContent = '';
     var wait = document.createElement('p');
     wait.className = 'muted';
-    wait.textContent = 'Loading…';
+    wait.textContent = t('loading_short');
     el.detail.appendChild(wait);
 
     api('/transcriptions/' + id)
@@ -96,7 +97,7 @@
         el.detail.textContent = '';
         var p = document.createElement('p');
         p.className = 'err';
-        p.textContent = 'Could not load this transcript.';
+        p.textContent = t('load_fail');
         el.detail.appendChild(p);
       });
   }
@@ -119,7 +120,7 @@
       var sumBtn = document.createElement('button');
       sumBtn.className = 'btn small';
       sumBtn.type = 'button';
-      sumBtn.textContent = 'Summarize';
+      sumBtn.textContent = t('summarize');
       sumBtn.addEventListener('click', function () { summarize(data.id); });
       actions.appendChild(sumBtn);
     }
@@ -143,7 +144,7 @@
     var box = document.createElement('div');
     box.className = 'summary';
     var h = document.createElement('h3');
-    h.textContent = 'Summary';
+    h.textContent = t('summary_title');
     var p = document.createElement('div');
     p.textContent = text;
     box.appendChild(h);
@@ -156,7 +157,7 @@
   function summarize(id) {
     var placeholder = document.createElement('div');
     placeholder.className = 'summary';
-    placeholder.textContent = 'Summarizing…';
+    placeholder.textContent = t('summarizing');
     el.detail.insertBefore(placeholder, el.detail.children[1] || null);
 
     api('/summary', {
@@ -184,10 +185,9 @@
     var box = document.createElement('div');
     box.className = 'gate';
     var b = document.createElement('b');
-    b.textContent = 'You used your ' + state.gateAfter + ' free summaries';
+    b.textContent = t('gate_title', { n: state.gateAfter });
     var p = document.createElement('div');
-    p.textContent = 'Signing in with Google unlocks more — it is coming in the next update. ' +
-                    'Your transcripts and summaries stay here for 90 days either way.';
+    p.textContent = t('gate_body', { days: state.days });
     box.appendChild(b);
     box.appendChild(p);
     return box;
@@ -196,7 +196,7 @@
   function failBlock() {
     var p = document.createElement('div');
     p.className = 'summary err';
-    p.textContent = 'Summary failed. Try again in a moment.';
+    p.textContent = t('summary_fail');
     return p;
   }
 
@@ -218,7 +218,7 @@
     if (kind === 'doc') {
       // .doc как HTML-обёртка — так же, как делает панель расширения
       var esc = document.createElement('div');
-      esc.textContent = (data.summary_text ? 'Summary\n' + data.summary_text + '\n\n' : '') + (data.transcript_text || '');
+      esc.textContent = (data.summary_text ? t('summary_title') + '\n' + data.summary_text + '\n\n' : '') + (data.transcript_text || '');
       blob = new Blob(
         ['<html xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"></head><body><pre>' +
          esc.innerHTML + '</pre></body></html>'],
@@ -227,7 +227,7 @@
       name += '.doc';
     } else {
       blob = new Blob(
-        [(data.summary_text ? 'SUMMARY\n' + data.summary_text + '\n\n---\n\n' : '') + (data.transcript_text || '')],
+        [(data.summary_text ? t('summary_title').toUpperCase() + '\n' + data.summary_text + '\n\n---\n\n' : '') + (data.transcript_text || '')],
         { type: 'text/plain;charset=utf-8' }
       );
       name += '.txt';
@@ -256,7 +256,8 @@
         state.gateAfter = data.gate_after || 3;
         state.used = data.summaries_used || 0;
         state.signedIn = !!data.signed_in;
-        el.retention.textContent = 'Kept for ' + (data.retention_days || 90) + ' days';
+        state.days = data.retention_days || 90;
+        el.retention.textContent = t('retention', { n: state.days });
         show('app');
         renderList();
 
@@ -267,6 +268,8 @@
   }
 
   function start() {
+    window.I18N.apply();
+    document.title = t('title');
     var q = new URLSearchParams(location.search);
     var nonce = q.get('state');
     var wanted = Number(q.get('t')) || null;
