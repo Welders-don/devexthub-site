@@ -163,11 +163,12 @@ const browser = await chromium.launch({
   await page.goto(BASE, { waitUntil: 'networkidle' });
   await page.waitForSelector('.transcript');
   const head = await page.textContent('#retention');
-  check('в шапке виден остаток квоты', head.includes('0 of 6'), head.trim());
+  check('в шапке НЕТ счётчика остатка (обжигались на счётчике транскрипций)', !/\d+\s*(of|из)\s*\d+/.test(head), head.trim());
   await page.click('button:has-text("Summarize")');
   await page.waitForSelector('.gate');
   const box = await page.textContent('.gate');
-  check('экран квоты вместо саммари', box.includes('summaries for this period'));
+  check('экран квоты вместо саммари', box.includes('Summaries for this period are used up'));
+  check('в экране квоты нет числа использованных', !/\b\d+\s+summaries\b/.test(box));
   check('в экране квоты есть дата разблокировки', /Oct\s*2/.test(box), box.slice(0, 120));
   check('в экране квоты сказано про beta', box.toLowerCase().includes('beta'));
   await page.close();

@@ -208,7 +208,7 @@
     var box = document.createElement('div');
     box.className = 'gate';
     var b = document.createElement('b');
-    b.textContent = t('quota_title', { n: state.quota });
+    b.textContent = t('quota_title');
     var p = document.createElement('div');
     p.textContent = t('quota_body', { date: fmtDay(state.nextReset) });
     box.appendChild(b);
@@ -289,10 +289,7 @@
         state.quota = data.signed_quota || 6;
         state.windowUsed = data.window_used || 0;
         state.nextReset = data.next_reset || null;
-        el.retention.textContent = state.signedIn
-          ? t('retention', { n: state.days }) + ' · ' +
-            t('quota_left', { n: Math.max(0, state.quota - state.windowUsed), total: state.quota })
-          : t('retention', { n: state.days });
+        el.retention.textContent = t('retention', { n: state.days });
         if (!state.signedIn) el.retention.title = t('retention_hint', { n: state.daysSignedIn });
         show('app');
         renderList();
