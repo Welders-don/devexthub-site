@@ -124,3 +124,38 @@ Icecream PDF Converter / Aiseesoft. PDFtoExcel.com — возможно уже �
 Рынок free-каталогов испортился: MarketingDB free стал nofollow+badge, TheSaaSDir закрыл free,
 Futurepedia платно. Перед тем как гнать Дениса на площадку — ПЕРЕПРОВЕРЯТЬ условия (они меняются).
 Живой чистый dofollow-канал на сегодня: The Next AI (free basic) + OpenAIToolsHub + SaaSHub.
+
+## SaaSHub «Select more competitors» — карта целей по всем 4 продуктам (проверено 18.09.2026)
+
+Метод: тянул страницы `saashub.com/<slug>-alternatives` и искал в тексте «Devexthub».
+Наши слаги: Transcribe = `/devexthub` · PDF = `/convert-pdf-to-excel` ·
+Extract Text = `/extract-text-by-devexthub` · Image Enhancer = `/image-enhancer-by-devexthub`.
+⚠️ `/extract-text-from-image` — ЧУЖОЙ продукт (голое имя было занято), не путать с нашим.
+
+Напоминание: ценность = внутренние показы SaaSHub, НЕ бэклинк (см. секцию выше).
+
+### Extract Text — уже листимся на 6, свободно 10
+ЕСТЬ: copyfish · project-naptha · tesseract · onlineocr-net · freeocr · ocr-space
+НЕТ (по убыванию близости интента):
+screen-ocr · capture2text · browserocr · picture-to-text-converter · textgrabber ·
+i2ocr · gimagereader · prizmo · abbyy-finereader (29 соседей) · adobe-acrobat-dc (29 соседей)
+
+### Image Enhancer — уже листимся на 4, свободно 4
+ЕСТЬ: waifu2x · upscayl · final2x · remini
+НЕТ: topaz-gigapixel (27) · magnific (29) · real-esrgan (17) · upscal-app (16)
+Слаги без страниц: lets-enhance-io, bigjpg-com, img-upscaler — искать другие написания.
+
+### Transcribe — 🔴 НЕ ЛИСТИМСЯ НИГДЕ (0 из 11 проверенных)
+Самый большой незанятый кусок и самая жирная ниша. Цели:
+turboscribe (29) · happyscribe (29) · notta-ai (28) · sonix-ai (29) · otter-ai (28) ·
+descript (29) · rev-com (28) · trint (29)
+Ниже приоритет (интент «запись встреч», не «расшифруй видео»): fireflies-ai · tl-dv · fathom
+
+### PDF to Excel — цели выписаны выше (секция от 18.09)
+Smallpdf · PDF Tables · Tabula · Able2Extract Professional · Adobe Export PDF ·
+Icecream PDF Converter / Aiseesoft
+
+### Риск, который не проверен
+Добавление себя в конкуренты не требует чужого апрува, но требует ли модерации SaaSHub —
+НЕ проверено. Осторожная тактика: начинать с близких по интенту (браузерные, бесплатные,
+on-device), а не с Adobe/ABBYY/Otter, чтобы не словить отклонение пачкой.
