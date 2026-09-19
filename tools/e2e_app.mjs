@@ -480,6 +480,9 @@ for (const mode of ['ok', 'noaccount']) {
     await page.waitForSelector('#signinEmptyMsg:not(.hidden)', { timeout: 5000 }).catch(() => {});
     const msg = await page.textContent('#signinEmptyMsg');
     check('незнакомому аккаунту объясняют, а не молчат', /No transcripts for this account/i.test(msg), msg.slice(0, 50));
+    // человек ничего не сломал — он здесь впервые, красный цвет тут лишняя тревога
+    const cls = await page.getAttribute('#signinEmptyMsg', 'class');
+    check('сообщение нейтральное, не красное', cls.includes('muted') && !cls.includes('err'), cls);
   }
   await page.close();
 }

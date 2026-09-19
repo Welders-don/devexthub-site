@@ -476,8 +476,11 @@
       .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status === 404 ? 'NO_ACCOUNT' : 'FAIL'); })
       .then(function () { show('loading'); loadMe(); })
       .catch(function (why) {
-        el.signinEmptyMsg.textContent = t(why === 'NO_ACCOUNT' ? 'login_no_account' : 'sign_in_fail');
-        el.signinEmptyMsg.classList.remove('hidden');
+        // «мы тебя не знаем» — не ошибка человека, он просто здесь впервые: красный тут
+        // лишняя тревога (Денис, 19.09). Красным остаётся только настоящий сбой входа.
+        var unknown = why === 'NO_ACCOUNT';
+        el.signinEmptyMsg.textContent = t(unknown ? 'login_no_account' : 'sign_in_fail');
+        el.signinEmptyMsg.className = unknown ? 'muted' : 'err';
       });
   }
 
