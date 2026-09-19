@@ -34,6 +34,43 @@
            d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
   }
 
+  /* В базе транскрипт лежит одной строкой: расширение склеивает сегменты через пробел
+     перед отправкой. Пока в записи нет сегментов, режем текст на абзацы сами —
+     иначе это стена в 56 тысяч знаков без единого перевода строки (жалоба Дениса 19.09). */
+  function sentences(text) {
+    // Intl.Segmenter знает границы предложений в китайском и японском, где точки другие
+    // и пробелов нет. Регулярка — запасной путь для браузеров постарше.
+    if (window.Intl && Intl.Segmenter) {
+      try {
+        var seg = new Intl.Segmenter(window.I18N.lang, { granularity: 'sentence' });
+        return [...seg.segment(String(text || ''))].map(function (s) { return s.segment; });
+      } catch (e) { /* падаем на регулярку */ }
+    }
+    return String(text || '').split(/(?<=[.!?…。！？])\s+/);
+  }
+
+  function paragraphs(text) {
+    var parts = sentences(text);
+    var out = [];
+    var cur = '';
+    for (var i = 0; i < parts.length; i++) {
+      cur += (cur ? ' ' : '') + parts[i];
+      if (cur.length >= 420) { out.push(cur); cur = ''; }
+    }
+    if (cur) out.push(cur);
+    return out;
+  }
+
+  function fmtTime(sec) {
+    // floor, а не round: таймкод должен указывать на момент, который УЖЕ прозвучал,
+    // иначе 75.5 сек показывается как 1:16 и перескакивает реплику
+    var s = Math.max(0, Math.floor(sec || 0));
+    var h = Math.floor(s / 3600);
+    var m = Math.floor((s % 3600) / 60);
+    var r = s % 60;
+    return (h ? h + ':' + String(m).padStart(2, '0') : String(m)) + ':' + String(r).padStart(2, '0');
+  }
+
   function fmtDur(sec) {
     if (!sec) return '';
     return t('minutes', { n: Math.round(sec / 60) });
@@ -140,10 +177,38 @@
 
     if (data.summary_text) el.detail.appendChild(summaryBlock(data.summary_text));
 
-    var body = document.createElement('div');
-    body.className = 'transcript';
-    body.textContent = data.transcript_text || '';
-    el.detail.appendChild(body);
+    el.detail.appendChild(transcriptBlock(data));
+  }
+
+  /* Две дороги: у новых записей есть сегменты с таймкодами — показываем как в панели;
+     у старых их нет, и текст режется на абзацы на лету. */
+  function transcriptBlock(data) {
+    var box = document.createElement('div');
+    box.className = 'transcript';
+
+    if (data.segments && data.segments.length) {
+      data.segments.forEach(function (s) {
+        var row = document.createElement('div');
+        row.className = 'seg';
+        var time = document.createElement('span');
+        time.className = 'seg-time';
+        time.textContent = fmtTime(s.t);
+        var txt = document.createElement('span');
+        txt.textContent = s.text || '';
+        row.appendChild(time);
+        row.appendChild(txt);
+        box.appendChild(row);
+      });
+      return box;
+    }
+
+    paragraphs(data.transcript_text).forEach(function (p) {
+      var el = document.createElement('p');
+      el.className = 'para';
+      el.textContent = p;
+      box.appendChild(el);
+    });
+    return box;
   }
 
   function summaryBlock(text) {
@@ -276,6 +341,15 @@
     return b;
   }
 
+  // В файл уходит тот же читаемый вид, что на экране: с таймкодами, если они есть,
+  // иначе абзацами. Скачанная стена в 56 тысяч знаков одной строкой — то, с чего начали.
+  function bodyForFile(data) {
+    if (data.segments && data.segments.length) {
+      return data.segments.map(function (s) { return fmtTime(s.t) + '  ' + (s.text || ''); }).join('\n');
+    }
+    return paragraphs(data.transcript_text).join('\n\n');
+  }
+
   function download(data, kind) {
     var name = 'transcript-' + data.id;
     var blob;
@@ -283,7 +357,7 @@
     if (kind === 'doc') {
       // .doc как HTML-обёртка — так же, как делает панель расширения
       var esc = document.createElement('div');
-      esc.textContent = (data.summary_text ? t('summary_title') + '\n' + data.summary_text + '\n\n' : '') + (data.transcript_text || '');
+      esc.textContent = (data.summary_text ? t('summary_title') + '\n' + data.summary_text + '\n\n' : '') + bodyForFile(data);
       blob = new Blob(
         ['<html xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"></head><body><pre>' +
          esc.innerHTML + '</pre></body></html>'],
@@ -292,7 +366,7 @@
       name += '.doc';
     } else {
       blob = new Blob(
-        [(data.summary_text ? t('summary_title').toUpperCase() + '\n' + data.summary_text + '\n\n---\n\n' : '') + (data.transcript_text || '')],
+        [(data.summary_text ? t('summary_title').toUpperCase() + '\n' + data.summary_text + '\n\n---\n\n' : '') + bodyForFile(data)],
         { type: 'text/plain;charset=utf-8' }
       );
       name += '.txt';

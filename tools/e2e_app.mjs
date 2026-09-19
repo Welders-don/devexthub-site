@@ -327,6 +327,40 @@ for (const mode of ['ok', 'fail']) {
   summaryMode = 'ok';
 }
 
+// 14. Читаемость транскрипта: сегменты с таймкодами, а без них — абзацы (жалоба 19.09)
+{
+  const page = await makePage(browser);
+  const WALL = Array.from({ length: 40 }, (_, i) => `Sentence number ${i} about plants and watering routines.`).join(' ');
+  await page.route(/\/transcriptions\/41/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      id: 41, platform: 'youtube', created_at: '2026-09-18T09:00:00Z', duration_sec: 480,
+      transcript_text: WALL, summary_text: null }) })
+  );
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  const paras = await page.$$eval('.transcript .para', (n) => n.length);
+  check('сплошной текст разложен на абзацы', paras > 1, `абзацев: ${paras}`);
+  check('абзац не склеен в одну строку', (await page.$$eval('.transcript .para', (n) => n[0].textContent.length)) < WALL.length);
+  await page.close();
+}
+
+{
+  const page = await makePage(browser);
+  await page.route(/\/transcriptions\/41/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      id: 41, platform: 'youtube', created_at: '2026-09-18T09:00:00Z', duration_sec: 480,
+      transcript_text: 'a b c',
+      segments: [{ t: 0, text: 'Первая реплика' }, { t: 75.5, text: 'Вторая реплика' }],
+      summary_text: null }) })
+  );
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript .seg');
+  const times = await page.$$eval('.seg-time', (n) => n.map((e) => e.textContent));
+  check('сегменты показаны с таймкодами', times.length === 2, times.join(', '));
+  check('таймкод в минутах и секундах', times[1] === '1:15', times[1]);
+  await page.close();
+}
+
 await browser.close();
 console.log(results.join('\n'));
 const failed = results.filter((r) => r.startsWith('❌')).length;
