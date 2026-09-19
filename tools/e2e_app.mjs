@@ -119,8 +119,8 @@ const browser = await chromium.launch({
   await page.goto(BASE, { waitUntil: 'networkidle' });
   await page.waitForSelector('.transcript');
   await page.click('button:has-text("Summarize")');
-  await page.waitForSelector('.err');
-  check('ошибка саммари показывается человеку', (await page.textContent('.err')).includes('Summary failed'));
+  await page.waitForSelector('.summary.err');
+  check('ошибка саммари показывается человеку', (await page.textContent('.summary.err')).includes('Summary failed'));
   await page.close();
 }
 
@@ -433,6 +433,54 @@ for (const mode of ['ok', 'fail']) {
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForSelector('.stamp-toggle input');
   check('выбор запомнился после перезагрузки', !(await page.isChecked('.stamp-toggle input')));
+  await page.close();
+}
+
+// 19. Вход с устройства без расширения: пустой экран даёт кнопку Google (Денис 19.09)
+for (const mode of ['ok', 'noaccount']) {
+  const page = await makePage(browser, { authed: false });
+  await page.route(/accounts\.google\.com\/gsi\/client/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/javascript',
+      body: `window.__gsi = {};
+             window.google = { accounts: { id: {
+               initialize: function (o) { window.__gsi.cb = o.callback; },
+               renderButton: function (box) { box.dataset.gsi = '1'; },
+             } } };` })
+  );
+  await page.route(/\/api\/site\/config/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ client_id: 'x.apps.googleusercontent.com' }) })
+  );
+  let loginCalled = false;
+  await page.route(/\/api\/site\/login/, (route) => {
+    loginCalled = true;
+    return route.fulfill({ status: mode === 'ok' ? 200 : 404, contentType: 'application/json',
+      body: JSON.stringify(mode === 'ok' ? { ok: true, email: 'd@e.f' } : { error: 'no_account' }) });
+  });
+
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#empty:not(.hidden)');
+  await page.waitForFunction(() => document.getElementById('signinEmpty').dataset.gsi === '1', null, { timeout: 4000 }).catch(() => {});
+
+  if (mode === 'ok') {
+    check('на пустом экране есть кнопка входа', (await page.getAttribute('#signinEmpty', 'data-gsi')) === '1');
+    check('видна подсказка про любое устройство', /any device/i.test(await page.textContent('#empty')));
+    // после успешного входа кабинет должен открыться
+    await page.route(/\/api\/site\/me/, (route) =>
+      route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+        transcriptions: TRANSCRIPTS, summaries_used: 0, gate_after: 3, signed_in: true,
+        email: 'd@e.f', retention_days: 90, retention_signed_in: 90, signed_quota: 6,
+        window_days: 14, window_used: 0, next_reset: null }) })
+    );
+    await page.evaluate(() => window.__gsi.cb({ credential: 'tok' }));
+    await page.waitForSelector('#app:not(.hidden)', { timeout: 5000 }).catch(() => {});
+    check('вход без расширения открывает кабинет', await page.isVisible('#app'));
+    check('запрос на вход ушёл', loginCalled);
+  } else {
+    await page.evaluate(() => window.__gsi.cb({ credential: 'tok' }));
+    await page.waitForSelector('#signinEmptyMsg:not(.hidden)', { timeout: 5000 }).catch(() => {});
+    const msg = await page.textContent('#signinEmptyMsg');
+    check('незнакомому аккаунту объясняют, а не молчат', /No transcripts for this account/i.test(msg), msg.slice(0, 50));
+  }
   await page.close();
 }
 
