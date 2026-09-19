@@ -13,6 +13,7 @@ const TRANSCRIPTS = [
 
 let summaryMode = 'ok';
 let meOverride = null;
+let summaryDelay = 0;
 
 async function makePage(browser, { authed = true, locale } = {}) {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, locale });
@@ -35,6 +36,7 @@ async function makePage(browser, { authed = true, locale } = {}) {
       });
     }
     if (url.includes('/summary')) {
+      if (summaryDelay) await new Promise((r) => setTimeout(r, summaryDelay));
       if (summaryMode === 'gate') return json(402, { error: 'GATE', summaries_used: 3 });
       if (summaryMode === 'quota') return json(402, { error: 'QUOTA', quota: 6, window_days: 14, next_reset: '2026-10-02T00:00:00Z' });
       if (summaryMode === 'fail') return json(502, { error: 'SUMMARY_FAILED' });
@@ -270,6 +272,59 @@ for (const mode of ['ok', 'fail']) {
   check('вошедшему кнопка Google не рисуется', (await page.getAttribute('#signin', 'data-gsi')) === null);
   await page.close();
   meOverride = null;
+}
+
+// 11. Пока саммари считается: кнопка гаснет, полоска едет, срок назван (жалоба 19.09)
+{
+  const page = await makePage(browser);
+  summaryDelay = 1500;
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  await page.click('.item');
+  await page.waitForSelector('.js-sum');
+  await page.click('.js-sum');
+
+  await page.waitForSelector('.summary.working');
+  check('пока считается — кнопка неактивна', await page.isDisabled('.js-sum'));
+  check('на кнопке написано, что идёт работа', /Preparing/i.test(await page.textContent('.js-sum')));
+  check('видна движущаяся полоска', await page.isVisible('.summary.working .progress span'));
+  check('сказано, сколько ждать', /minute/i.test(await page.textContent('.summary.working .hint')));
+
+  await page.waitForSelector('.summary:not(.working)', { timeout: 6000 });
+  check('после готового саммари кнопка убрана', (await page.$('.js-sum')) === null);
+  await page.close();
+  summaryDelay = 0;
+}
+
+// 12. Сбой саммари: кнопку возвращаем — повтор имеет смысл
+{
+  const page = await makePage(browser);
+  summaryMode = 'fail';
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  await page.click('.item');
+  await page.waitForSelector('.js-sum');
+  await page.click('.js-sum');
+  await page.waitForSelector('.summary.err');
+  check('после сбоя кнопка снова активна', (await page.$('.js-sum')) !== null && !(await page.isDisabled('.js-sum')));
+  check('после сбоя на кнопке снова обычный текст', /Summarize/i.test(await page.textContent('.js-sum')));
+  await page.close();
+  summaryMode = 'ok';
+}
+
+// 13. Гейт по лимиту: кнопку убираем — повтор не поможет
+{
+  const page = await makePage(browser);
+  summaryMode = 'gate';
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  await page.click('.item');
+  await page.waitForSelector('.js-sum');
+  await page.click('.js-sum');
+  await page.waitForSelector('.gate');
+  check('после гейта кнопка саммари убрана', (await page.$('.js-sum')) === null);
+  await page.close();
+  summaryMode = 'ok';
 }
 
 await browser.close();
