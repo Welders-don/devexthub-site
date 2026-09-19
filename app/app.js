@@ -120,7 +120,7 @@
 
     if (!data.summary_text) {
       var sumBtn = document.createElement('button');
-      sumBtn.className = 'btn small';
+      sumBtn.className = 'btn small js-sum';
       sumBtn.type = 'button';
       sumBtn.textContent = t('summarize');
       var badge = document.createElement('span');
@@ -161,9 +161,29 @@
   /* ---------- саммари ---------- */
 
   function summarize(id) {
+    // Саммари длинного видео идёт до минуты. Без движущегося индикатора это читается
+    // как «залипло» (Денис, 19.09), поэтому: кнопка гаснет, полоска едет, срок назван.
+    var btn = el.detail.querySelector('.js-sum');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = t('summarizing_btn');
+    }
+
     var placeholder = document.createElement('div');
-    placeholder.className = 'summary';
-    placeholder.textContent = t('summarizing');
+    placeholder.className = 'summary working';
+
+    var label = document.createElement('div');
+    label.textContent = t('summarizing');
+    var bar = document.createElement('div');
+    bar.className = 'progress';
+    bar.appendChild(document.createElement('span'));
+    var hint = document.createElement('div');
+    hint.className = 'muted hint';
+    hint.textContent = t('summarizing_hint');
+
+    placeholder.appendChild(label);
+    placeholder.appendChild(bar);
+    placeholder.appendChild(hint);
     el.detail.insertBefore(placeholder, el.detail.children[1] || null);
 
     api('/summary', {
@@ -181,6 +201,7 @@
       })
       .then(function (data) {
         el.detail.replaceChild(summaryBlock(data.summary), placeholder);
+        if (btn) btn.remove(); // саммари уже есть — предлагать сделать его ещё раз незачем
         state.used += 1;
         var item = state.items.filter(function (i) { return i.id === id; })[0];
         if (item) { item.has_summary = true; renderList(); }
@@ -190,6 +211,13 @@
           why === 'GATE' ? gateBlock() : why === 'QUOTA' ? quotaBlock() : failBlock(),
           placeholder
         );
+        // отказ по лимиту повтором не лечится, а вот сбой — да, поэтому кнопку возвращаем
+        if (btn && why !== 'GATE' && why !== 'QUOTA') {
+          btn.disabled = false;
+          btn.textContent = t('summarize');
+        } else if (btn) {
+          btn.remove();
+        }
       });
   }
 
