@@ -361,6 +361,25 @@ for (const mode of ['ok', 'fail']) {
   await page.close();
 }
 
+// 16. Мелкие сегменты собираются в абзацы, а не строка на каждые 3 секунды (Денис 19.09)
+{
+  const page = await makePage(browser);
+  // как в жизни: реплики по 4 секунды подряд, без длинных пауз
+  const many = Array.from({ length: 60 }, (_, i) => ({ t: i * 4, text: `Короткая реплика номер ${i}` }));
+  await page.route(/\/transcriptions\/41/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      id: 41, platform: 'youtube', created_at: '2026-09-18T09:00:00Z', duration_sec: 240,
+      transcript_text: many.map((s) => s.text).join(' '), segments: many, summary_text: null }) })
+  );
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript .seg');
+  const rows = await page.$$eval('.transcript .seg', (n) => n.length);
+  check('60 мелких сегментов сжались в абзацы', rows > 1 && rows < 15, `строк: ${rows}`);
+  const first = await page.$eval('.transcript .seg', (n) => n.textContent);
+  check('в абзаце больше одной реплики', (first.match(/Короткая реплика/g) || []).length > 1);
+  await page.close();
+}
+
 await browser.close();
 console.log(results.join('\n'));
 const failed = results.filter((r) => r.startsWith('❌')).length;

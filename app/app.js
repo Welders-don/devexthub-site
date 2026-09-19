@@ -61,6 +61,34 @@
     return out;
   }
 
+  /* Сегменты приходят по 3-5 секунд (у часового видео их под две тысячи), и строка на
+     каждый — нечитаемо. Собираем в абзацы ровно по тем же правилам, что панель
+     расширения в groupSegments: режем на конце предложения после 150 знаков, по паузе
+     длиннее 8 секунд или по 300 знакам. Таймкод — начало абзаца. */
+  function groupSegments(segs) {
+    var out = [];
+    var cur = null;
+    var endsSentence = function (s) { return /[.?!…。！？]$/.test(s.replace(/\s+$/, '')); };
+
+    segs.forEach(function (s) {
+      var text = String(s.text || '').trim();
+      if (!text) return;
+      if (!cur) { cur = { t: s.t, text: text, end: s.t }; return; }
+
+      var gap = s.t - cur.end;
+      if ((cur.text.length > 150 && endsSentence(cur.text)) || gap > 8 || cur.text.length > 300) {
+        out.push(cur);
+        cur = { t: s.t, text: text, end: s.t };
+      } else {
+        cur.text += ' ' + text;
+        cur.end = s.t;
+      }
+    });
+
+    if (cur) out.push(cur);
+    return out;
+  }
+
   function fmtTime(sec) {
     // floor, а не round: таймкод должен указывать на момент, который УЖЕ прозвучал,
     // иначе 75.5 сек показывается как 1:16 и перескакивает реплику
@@ -187,14 +215,14 @@
     box.className = 'transcript';
 
     if (data.segments && data.segments.length) {
-      data.segments.forEach(function (s) {
+      groupSegments(data.segments).forEach(function (p) {
         var row = document.createElement('div');
         row.className = 'seg';
         var time = document.createElement('span');
         time.className = 'seg-time';
-        time.textContent = fmtTime(s.t);
+        time.textContent = fmtTime(p.t);
         var txt = document.createElement('span');
-        txt.textContent = s.text || '';
+        txt.textContent = p.text;
         row.appendChild(time);
         row.appendChild(txt);
         box.appendChild(row);
@@ -345,7 +373,11 @@
   // иначе абзацами. Скачанная стена в 56 тысяч знаков одной строкой — то, с чего начали.
   function bodyForFile(data) {
     if (data.segments && data.segments.length) {
-      return data.segments.map(function (s) { return fmtTime(s.t) + '  ' + (s.text || ''); }).join('\n');
+      // абзац и его таймкод разными строками: в Word это читается как текст с метками,
+      // а не как расшифровка субтитров по одному предложению
+      return groupSegments(data.segments)
+        .map(function (p) { return '[' + fmtTime(p.t) + ']\n' + p.text; })
+        .join('\n\n');
     }
     return paragraphs(data.transcript_text).join('\n\n');
   }
