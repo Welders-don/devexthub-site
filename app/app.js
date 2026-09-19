@@ -7,6 +7,8 @@
   var el = {
     loading: document.getElementById('loading'),
     empty: document.getElementById('empty'),
+    signinEmpty: document.getElementById('signinEmpty'),
+    signinEmptyMsg: document.getElementById('signinEmptyMsg'),
     app: document.getElementById('app'),
     list: document.getElementById('list'),
     detail: document.getElementById('detail'),
@@ -461,6 +463,24 @@
 
   var gsiReady = false;
 
+  // Вход с устройства, где расширения нет: билета взять неоткуда, человек доказывает,
+  // что он это он, самим входом в Google. Без этого библиотека читалась только с той
+  // машины, где стоит панель (Денис, 19.09).
+  function onLoginCredential(resp) {
+    el.signinEmptyMsg.classList.add('hidden');
+    api('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ credential: resp.credential }),
+    })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status === 404 ? 'NO_ACCOUNT' : 'FAIL'); })
+      .then(function () { show('loading'); loadMe(); })
+      .catch(function (why) {
+        el.signinEmptyMsg.textContent = t(why === 'NO_ACCOUNT' ? 'login_no_account' : 'sign_in_fail');
+        el.signinEmptyMsg.classList.remove('hidden');
+      });
+  }
+
   function onCredential(resp) {
     api('/google', {
       method: 'POST',
@@ -486,23 +506,39 @@
   // иначе она перестаёт быть узнаваемой (и это против правил бренда Google).
   function renderSignIn(box) {
     if (!box || !state.clientId || state.signedIn) return;
+    drawGoogleButton(box, onCredential);
+  }
+
+  // На пустом экране и в кабинете обработчики разные (там вход без билета, тут привязка
+  // к текущей установке), поэтому initialize зовём перед каждой отрисовкой.
+  function drawGoogleButton(box, callback) {
+    if (!box || !state.clientId) return;
     withGsi(function () {
-      if (!gsiReady) {
-        window.google.accounts.id.initialize({
-          client_id: state.clientId,
-          callback: onCredential,
-        });
-        gsiReady = true;
-      }
+      window.google.accounts.id.initialize({ client_id: state.clientId, callback: callback });
+      gsiReady = true;
       box.textContent = '';
       window.google.accounts.id.renderButton(box, { type: 'standard', size: 'medium', locale: window.I18N.lang });
     });
   }
 
+  // На пустом экране сессии нет, а значит нет и ответа /me с client_id — берём его
+  // отдельным публичным запросом, чтобы не держать копию в статике сайта.
+  function offerLogin() {
+    if (state.clientId) return drawGoogleButton(el.signinEmpty, onLoginCredential);
+    api('/config')
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (cfg) {
+        if (!cfg.client_id) return;
+        state.clientId = cfg.client_id;
+        drawGoogleButton(el.signinEmpty, onLoginCredential);
+      })
+      .catch(function () { /* без кнопки страница остаётся рабочей */ });
+  }
+
   function loadMe(openId, auto) {
     return api('/me')
       .then(function (r) {
-        if (r.status === 401) { show('empty'); return null; }
+        if (r.status === 401) { show('empty'); offerLogin(); return null; }
         if (!r.ok) throw new Error('me failed');
         return r.json();
       })

@@ -32,6 +32,8 @@
 .detail-head .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 /* accent-color вместо самодельного чекбокса: фирменный цвет без потери доступности */
+.signin-row { margin: 26px 0 10px; color: var(--muted); }
+#signinEmpty { display: inline-flex; min-height: 32px; }
 .stamp-toggle { display: inline-flex; align-items: center; gap: 2px; font-size: 14px; color: var(--muted); cursor: pointer; margin-right: 4px; }
 .stamp-toggle input { accent-color: var(--green); cursor: pointer; }
 
