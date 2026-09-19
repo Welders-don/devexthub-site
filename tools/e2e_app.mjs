@@ -46,6 +46,7 @@ async function makePage(browser, { authed = true, locale } = {}) {
 }
 
 const results = [];
+const googleCalls = [];
 const check = (name, ok, extra = '') => { results.push(`${ok ? '✅' : '❌'} ${name}${extra ? ' — ' + extra : ''}`); };
 
 const browser = await chromium.launch({
@@ -196,6 +197,79 @@ for (const [locale, marker, key] of [['ru-RU', 'Ваши транскрипты'
   await page.waitForSelector('.transcript');
   check('незнакомый язык → английский', (await page.textContent('#app h1')).trim() === 'Your transcripts');
   await page.close();
+}
+
+// 9. Google-вход. Сам GIS в тест не пускаем — подменяем заглушкой и смотрим, что наш код
+//    зовёт renderButton, шлёт credential на /google и переживает отказ.
+for (const mode of ['ok', 'fail']) {
+  const page = await makePage(browser);
+  const CLIENT_ID = '322544381088-test.apps.googleusercontent.com';
+  meOverride = { client_id: CLIENT_ID };
+
+  await page.route(/accounts\.google\.com\/gsi\/client/, (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/javascript',
+      body: `window.__gsi = {};
+             window.google = { accounts: { id: {
+               initialize: function (o) { window.__gsi.cb = o.callback; window.__gsi.clientId = o.client_id; },
+               renderButton: function (box) { window.__gsi.rendered = (window.__gsi.rendered || 0) + 1; box.dataset.gsi = '1'; },
+             } } };`,
+    })
+  );
+  await page.route(/\/api\/site\/google/, (route) => {
+    googleCalls.push(JSON.parse(route.request().postData() || '{}'));
+    return route.fulfill({
+      status: mode === 'ok' ? 200 : 401,
+      contentType: 'application/json',
+      body: JSON.stringify(mode === 'ok' ? { ok: true, email: 'denis@example.com' } : { error: 'invalid_token' }),
+    });
+  });
+
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  await page.waitForFunction(() => window.__gsi && window.__gsi.rendered > 0, null, { timeout: 4000 }).catch(() => {});
+
+  if (mode === 'ok') {
+    check('кнопка Google отрисована в шапке', (await page.getAttribute('#signin', 'data-gsi')) === '1');
+    check('в GIS ушёл client_id с бэкенда', (await page.evaluate(() => window.__gsi.clientId)) === CLIENT_ID);
+
+    summaryMode = 'gate';
+    await page.click('.item');
+    await page.waitForSelector('.actions button');
+    await page.click('.actions button');
+    await page.waitForSelector('.gate');
+    check('в экране гейта тоже есть кнопка входа', (await page.getAttribute('.gate-signin', 'data-gsi')) === '1');
+    check('гейт больше не обещает вход «в следующем обновлении»',
+      !/next update/i.test(await page.textContent('.gate')));
+    summaryMode = 'ok';
+
+    meOverride = { client_id: CLIENT_ID, signed_in: true, email: 'denis@example.com', retention_days: 90 };
+    await page.evaluate(() => window.__gsi.cb({ credential: 'fake.jwt.token' }));
+    await page.waitForFunction(() => /denis@example\.com/.test(document.getElementById('signin').textContent), null, { timeout: 4000 }).catch(() => {});
+    check('credential ушёл на бэкенд', googleCalls.some((c) => c.credential === 'fake.jwt.token'));
+    check('после входа в шапке почта, а не кнопка', /denis@example\.com/.test(await page.textContent('#signin')));
+    check('после входа срок стал 90 дней', /90/.test(await page.textContent('#retention')));
+  } else {
+    await page.evaluate(() => window.__gsi.cb({ credential: 'bad.token' }));
+    await page.waitForSelector('#signin .err', { timeout: 4000 }).catch(() => {});
+    check('отказ входа показан человеку, а не молча', await page.isVisible('#signin .err'));
+  }
+
+  await page.close();
+  meOverride = null;
+}
+
+// 10. Вошедшему кнопку не показываем вовсе
+{
+  const page = await makePage(browser);
+  meOverride = { signed_in: true, email: 'a@b.co', retention_days: 90, client_id: 'x.apps.googleusercontent.com' };
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  check('вошедшему показана почта', (await page.textContent('#signin')).includes('a@b.co'));
+  check('вошедшему кнопка Google не рисуется', (await page.getAttribute('#signin', 'data-gsi')) === null);
+  await page.close();
+  meOverride = null;
 }
 
 await browser.close();
