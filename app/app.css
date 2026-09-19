@@ -36,6 +36,8 @@
 
 .gate { border: 1px solid #e3d5ac; background: #fdf8ec; border-radius: 11px; padding: 16px 18px; margin-bottom: 18px; }
 .gate b { display: block; margin-bottom: 4px; }
+.gate-signin { margin-top: 12px; }
+#signin { display: inline-flex; align-items: center; min-height: 32px; }
 
 .transcript { white-space: pre-wrap; font-size: 16px; line-height: 1.65; color: var(--ink-soft); max-height: 62vh; overflow-y: auto; }
 

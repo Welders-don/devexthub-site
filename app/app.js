@@ -11,10 +11,11 @@
     list: document.getElementById('list'),
     detail: document.getElementById('detail'),
     retention: document.getElementById('retention'),
+    signin: document.getElementById('signin'),
   };
 
   var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null, days: 30, daysSignedIn: 90,
-                quota: 6, windowUsed: 0, nextReset: null };
+                quota: 6, windowUsed: 0, nextReset: null, clientId: null, email: null };
   var t = window.I18N.t;
 
   function api(path, opts) {
@@ -201,6 +202,14 @@
     p.textContent = t('gate_body', { days: state.daysSignedIn || 90 });
     box.appendChild(b);
     box.appendChild(p);
+
+    // Гейт — единственное место, где вход человеку реально нужен прямо сейчас,
+    // поэтому кнопка стоит тут же, а не только в шапке.
+    var here = document.createElement('div');
+    here.className = 'gate-signin';
+    box.appendChild(here);
+    renderSignIn(here);
+
     return box;
   }
 
@@ -269,7 +278,55 @@
     URL.revokeObjectURL(url);
   }
 
-  /* ---------- вход ---------- */
+  /* ---------- вход через Google ---------- */
+
+  /* Скрипт GIS грузится асинхронно и может опоздать к первой отрисовке — ждём его,
+     но не вечно: без кнопки кабинет остаётся рабочим, просто без входа. */
+  function withGsi(cb, tries) {
+    if (window.google && window.google.accounts && window.google.accounts.id) return cb();
+    if ((tries || 0) > 20) return;
+    setTimeout(function () { withGsi(cb, (tries || 0) + 1); }, 250);
+  }
+
+  var gsiReady = false;
+
+  function onCredential(resp) {
+    api('/google', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ credential: resp.credential }),
+    })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function () { loadMe(state.openId); })
+      .catch(function () {
+        var box = document.getElementById('signin');
+        if (box) { box.textContent = ''; box.appendChild(errSpan(t('sign_in_fail'))); }
+      });
+  }
+
+  function errSpan(text) {
+    var s = document.createElement('span');
+    s.className = 'err';
+    s.textContent = text;
+    return s;
+  }
+
+  // Кнопку рисует сам Google в наш контейнер — свой стиль ей не навязываем,
+  // иначе она перестаёт быть узнаваемой (и это против правил бренда Google).
+  function renderSignIn(box) {
+    if (!box || !state.clientId || state.signedIn) return;
+    withGsi(function () {
+      if (!gsiReady) {
+        window.google.accounts.id.initialize({
+          client_id: state.clientId,
+          callback: onCredential,
+        });
+        gsiReady = true;
+      }
+      box.textContent = '';
+      window.google.accounts.id.renderButton(box, { type: 'standard', size: 'medium', locale: window.I18N.lang });
+    });
+  }
 
   function loadMe(openId, auto) {
     return api('/me')
@@ -289,8 +346,13 @@
         state.quota = data.signed_quota || 6;
         state.windowUsed = data.window_used || 0;
         state.nextReset = data.next_reset || null;
+        state.clientId = data.client_id || null;
+        state.email = data.email || null;
         el.retention.textContent = t('retention', { n: state.days });
         if (!state.signedIn) el.retention.title = t('retention_hint', { n: state.daysSignedIn });
+        el.signin.textContent = '';
+        if (state.signedIn) el.signin.textContent = t('signed_as', { email: state.email || '' });
+        else renderSignIn(el.signin);
         show('app');
         renderList();
 
