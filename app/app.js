@@ -75,15 +75,19 @@
     segs.forEach(function (s) {
       var text = String(s.text || '').trim();
       if (!text) return;
-      if (!cur) { cur = { t: s.t, text: text, end: s.t }; return; }
+      if (!cur) { cur = { t: s.t, text: text, end: s.t, s: s.s }; return; }
 
       var gap = s.t - cur.end;
-      if ((cur.text.length > 150 && endsSentence(cur.text)) || gap > 8 || cur.text.length > 300) {
+      // смена говорящего рвёт абзац так же, как длинная пауза: иначе реплики двух людей
+      // склеиваются в один кусок и метка врёт
+      var speakerChanged = s.s != null && cur.s != null && s.s !== cur.s;
+      if ((cur.text.length > 150 && endsSentence(cur.text)) || gap > 8 || cur.text.length > 300 || speakerChanged) {
         out.push(cur);
-        cur = { t: s.t, text: text, end: s.t };
+        cur = { t: s.t, text: text, end: s.t, s: s.s };
       } else {
         cur.text += ' ' + text;
         cur.end = s.t;
+        if (cur.s == null) cur.s = s.s;
       }
     });
 
@@ -252,6 +256,12 @@
         var txt = document.createElement('span');
         txt.textContent = p.text;
         row.appendChild(time);
+        if (p.s != null) {
+          var who = document.createElement('span');
+          who.className = 'seg-speaker';
+          who.textContent = t('speaker', { n: p.s + 1 });
+          row.appendChild(who);
+        }
         row.appendChild(txt);
         box.appendChild(row);
       });
@@ -404,7 +414,10 @@
       // абзац и его таймкод разными строками: в Word это читается как текст с метками,
       // а не как расшифровка субтитров по одному предложению
       return groupSegments(data.segments)
-        .map(function (p) { return '[' + fmtTime(p.t) + ']\n' + p.text; })
+        .map(function (p) {
+          var who = p.s != null ? ' ' + t('speaker', { n: p.s + 1 }) : '';
+          return '[' + fmtTime(p.t) + ']' + who + '\n' + p.text;
+        })
         .join('\n\n');
     }
     // Без таймкодов текст всё равно должен делиться на абзацы — у конкурента с 200k

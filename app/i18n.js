@@ -35,6 +35,7 @@
       signed_as: 'Signed in as {email}',
       sign_in_fail: 'Sign-in failed. Try again.',
       minutes: '{n} min',
+      speaker: 'Speaker {n}',
       has_summary: '✓ summary',
     },
     pt: {
@@ -69,6 +70,7 @@
       signed_as: 'Conectado como {email}',
       sign_in_fail: 'Falha ao entrar. Tente de novo.',
       minutes: '{n} min',
+      speaker: 'Locutor {n}',
       has_summary: '✓ resumo',
     },
     es: {
@@ -103,6 +105,7 @@
       signed_as: 'Sesión iniciada como {email}',
       sign_in_fail: 'No se pudo entrar. Inténtalo de nuevo.',
       minutes: '{n} min',
+      speaker: 'Hablante {n}',
       has_summary: '✓ resumen',
     },
     ru: {
@@ -137,6 +140,7 @@
       signed_as: 'Вы вошли как {email}',
       sign_in_fail: 'Войти не получилось. Попробуйте ещё раз.',
       minutes: '{n} мин',
+      speaker: 'Спикер {n}',
       has_summary: '✓ саммари',
     },
     zh: {
@@ -171,6 +175,7 @@
       signed_as: '已登录：{email}',
       sign_in_fail: '登录失败，请重试。',
       minutes: '{n} 分钟',
+      speaker: '讲话人 {n}',
       has_summary: '✓ 摘要',
     },
     fr: {
@@ -205,6 +210,7 @@
       signed_as: 'Connecté en tant que {email}',
       sign_in_fail: 'Échec de la connexion. Réessayez.',
       minutes: '{n} min',
+      speaker: 'Intervenant {n}',
       has_summary: '✓ résumé',
     },
     vi: {
@@ -239,6 +245,7 @@
       signed_as: 'Đã đăng nhập: {email}',
       sign_in_fail: 'Đăng nhập thất bại. Thử lại nhé.',
       minutes: '{n} phút',
+      speaker: 'Người nói {n}',
       has_summary: '✓ tóm tắt',
     },
     ja: {
@@ -273,6 +280,7 @@
       signed_as: '{email} でログイン中',
       sign_in_fail: 'ログインできませんでした。もう一度お試しください。',
       minutes: '{n}分',
+      speaker: '話者 {n}',
       has_summary: '✓ 要約',
     },
     de: {
@@ -307,6 +315,7 @@
       signed_as: 'Angemeldet als {email}',
       sign_in_fail: 'Anmeldung fehlgeschlagen. Bitte erneut versuchen.',
       minutes: '{n} Min.',
+      speaker: 'Sprecher {n}',
       has_summary: '✓ Zusammenfassung',
     },
     ar: {
@@ -341,6 +350,7 @@
       signed_as: 'تم تسجيل الدخول بـ {email}',
       sign_in_fail: 'تعذّر تسجيل الدخول. حاول مرة أخرى.',
       minutes: '{n} دقيقة',
+      speaker: 'المتحدث {n}',
       has_summary: '✓ ملخص',
     },
     it: {
@@ -375,6 +385,7 @@
       signed_as: 'Accesso come {email}',
       sign_in_fail: 'Accesso non riuscito. Riprova.',
       minutes: '{n} min',
+      speaker: 'Interlocutore {n}',
       has_summary: '✓ riassunto',
     },
     ko: {
@@ -409,6 +420,7 @@
       signed_as: '{email}(으)로 로그인됨',
       sign_in_fail: '로그인하지 못했습니다. 다시 시도해 주세요.',
       minutes: '{n}분',
+      speaker: '화자 {n}',
       has_summary: '✓ 요약',
     },
   };
