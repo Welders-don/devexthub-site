@@ -172,6 +172,15 @@
   function renderDetail(data) {
     el.detail.textContent = '';
 
+    // Заголовок появился только в записях с 1.2.8 — у прежних названия взять неоткуда,
+    // и тогда шапка остаётся как была, без пустой строки (запрос Дениса 19.09).
+    if (data.title) {
+      var h = document.createElement('h2');
+      h.className = 'detail-title';
+      h.textContent = data.title;
+      el.detail.appendChild(h);
+    }
+
     var head = document.createElement('div');
     head.className = 'detail-head';
 
@@ -387,18 +396,24 @@
     var blob;
 
     if (kind === 'doc') {
-      // .doc как HTML-обёртка — так же, как делает панель расширения
+      // .doc как HTML-обёртка — так же, как делает панель расширения: сверху название
+      // и дата, дальше текст. До 19.09 файл начинался прямо с голого текста.
       var esc = document.createElement('div');
       esc.textContent = (data.summary_text ? t('summary_title') + '\n' + data.summary_text + '\n\n' : '') + bodyForFile(data);
+      var head = document.createElement('div');
+      head.textContent = data.title || '';
       blob = new Blob(
-        ['<html xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"></head><body><pre>' +
-         esc.innerHTML + '</pre></body></html>'],
+        ['<html xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"></head><body>' +
+         (data.title ? '<h2>' + head.innerHTML + '</h2>' : '') +
+         '<p style="color:#888">' + fmtDate(data.created_at) + '</p>' +
+         '<pre>' + esc.innerHTML + '</pre></body></html>'],
         { type: 'application/msword' }
       );
       name += '.doc';
     } else {
       blob = new Blob(
-        [(data.summary_text ? t('summary_title').toUpperCase() + '\n' + data.summary_text + '\n\n---\n\n' : '') + bodyForFile(data)],
+        [(data.title ? data.title + '\n' + fmtDate(data.created_at) + '\n\n' : '') +
+         (data.summary_text ? t('summary_title').toUpperCase() + '\n' + data.summary_text + '\n\n---\n\n' : '') + bodyForFile(data)],
         { type: 'text/plain;charset=utf-8' }
       );
       name += '.txt';
