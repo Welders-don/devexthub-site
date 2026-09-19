@@ -15,7 +15,7 @@
   };
 
   var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null, days: 30, daysSignedIn: 90,
-                quota: 6, windowUsed: 0, nextReset: null, clientId: null, email: null };
+                quota: 6, windowUsed: 0, nextReset: null, clientId: null, email: null, noStamps: false };
   var t = window.I18N.t;
 
   function api(path, opts) {
@@ -205,6 +205,23 @@
       actions.appendChild(sumBtn);
     }
 
+    // Выбор вида выгрузки есть у конкурента и оказался нужен (Денис, 19.09).
+    // Показываем только там, где он что-то меняет — то есть когда таймкоды вообще есть.
+    if (data.segments && data.segments.length) {
+      var lab = document.createElement('label');
+      lab.className = 'stamp-toggle';
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !state.noStamps;
+      cb.addEventListener('change', function () {
+        state.noStamps = !cb.checked;
+        try { localStorage.setItem('dvx_no_stamps', state.noStamps ? '1' : ''); } catch (e) {}
+      });
+      lab.appendChild(cb);
+      lab.appendChild(document.createTextNode(' ' + t('with_stamps')));
+      actions.appendChild(lab);
+    }
+
     actions.appendChild(downloadBtn('TXT', data, 'txt'));
     actions.appendChild(downloadBtn('Word', data, 'doc'));
 
@@ -381,12 +398,17 @@
   // В файл уходит тот же читаемый вид, что на экране: с таймкодами, если они есть,
   // иначе абзацами. Скачанная стена в 56 тысяч знаков одной строкой — то, с чего начали.
   function bodyForFile(data) {
-    if (data.segments && data.segments.length) {
+    if (data.segments && data.segments.length && !state.noStamps) {
       // абзац и его таймкод разными строками: в Word это читается как текст с метками,
       // а не как расшифровка субтитров по одному предложению
       return groupSegments(data.segments)
         .map(function (p) { return '[' + fmtTime(p.t) + ']\n' + p.text; })
         .join('\n\n');
+    }
+    // Без таймкодов текст всё равно должен делиться на абзацы — у конкурента с 200k
+    // установок ровно два вида выгрузки, и второй это не сплошняк (Денис, 19.09).
+    if (data.segments && data.segments.length) {
+      return groupSegments(data.segments).map(function (p) { return p.text; }).join('\n\n');
     }
     return paragraphs(data.transcript_text).join('\n\n');
   }
@@ -512,6 +534,8 @@
   }
 
   function start() {
+    // выбор вида выгрузки живёт между визитами: выбрал раз — больше не переключаешь
+    try { state.noStamps = localStorage.getItem('dvx_no_stamps') === '1'; } catch (e) {}
     window.I18N.apply();
     document.title = t('title');
     var q = new URLSearchParams(location.search);
