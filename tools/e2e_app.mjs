@@ -402,6 +402,40 @@ for (const mode of ['ok', 'fail']) {
   await page.close();
 }
 
+// 18. Выгрузка в двух видах: с таймкодами и без (как у конкурента, Денис 19.09)
+{
+  const page = await makePage(browser);
+  const segs = [{ t: 0, text: 'Первая реплика.' }, { t: 75.5, text: 'Вторая реплика.' }];
+  await page.route(/\/transcriptions\/41/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      id: 41, platform: 'youtube', created_at: '2026-09-18T09:00:00Z', duration_sec: 480,
+      transcript_text: 'Первая реплика. Вторая реплика.', segments: segs, summary_text: null }) })
+  );
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  check('галочка таймкодов есть и включена', await page.isChecked('.stamp-toggle input'));
+
+  // ловим содержимое файла, не скачивая его
+  const grab = () => page.evaluate(() => new Promise((res) => {
+    const orig = URL.createObjectURL;
+    URL.createObjectURL = (blob) => { blob.text().then(res); URL.createObjectURL = orig; return 'blob:x'; };
+    document.querySelectorAll('.actions button').forEach((b) => { if (b.textContent === 'TXT') b.click(); });
+  }));
+
+  const withStamps = await grab();
+  check('в файле есть таймкоды', /\[1:15\]/.test(withStamps), withStamps.slice(0, 40).replace(/\n/g, '·'));
+
+  await page.uncheck('.stamp-toggle input');
+  const without = await grab();
+  check('без галочки таймкодов в файле нет', !/\[\d+:\d\d\]/.test(without));
+  check('но текст остался разбит на абзацы', without.indexOf('\n\n') > 0);
+
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForSelector('.stamp-toggle input');
+  check('выбор запомнился после перезагрузки', !(await page.isChecked('.stamp-toggle input')));
+  await page.close();
+}
+
 await browser.close();
 console.log(results.join('\n'));
 const failed = results.filter((r) => r.startsWith('❌')).length;
