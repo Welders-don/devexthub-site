@@ -487,6 +487,37 @@ for (const mode of ['ok', 'noaccount']) {
   await page.close();
 }
 
+// 20. Спикеры: метка на экране, смена говорящего рвёт абзац (Денис 19.09)
+{
+  const page = await makePage(browser);
+  const segs = [
+    { t: 0, text: 'Первая реплика первого.', s: 0 },
+    { t: 3, text: 'Ещё немного от первого.', s: 0 },
+    { t: 6, text: 'А это уже второй говорит.', s: 1 },
+  ];
+  await page.route(/\/transcriptions\/41/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      id: 41, platform: 'other', created_at: '2026-09-18T09:00:00Z', duration_sec: 60,
+      transcript_text: segs.map((s) => s.text).join(' '), segments: segs, summary_text: null }) })
+  );
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript .seg');
+  const labels = await page.$$eval('.seg-speaker', (n) => n.map((e) => e.textContent));
+  check('метки говорящих показаны', labels.length === 2, labels.join(' | '));
+  check('нумерация с единицы, не с нуля', labels[0] === 'Speaker 1' && labels[1] === 'Speaker 2', labels.join(','));
+  const rows = await page.$$eval('.transcript .seg', (n) => n.map((e) => e.textContent));
+  check('реплики разных людей не склеены', rows.length === 2 && !rows[0].includes('второй'));
+
+  // и в файле спикер тоже есть
+  const txt = await page.evaluate(() => new Promise((res) => {
+    const orig = URL.createObjectURL;
+    URL.createObjectURL = (blob) => { blob.text().then(res); URL.createObjectURL = orig; return 'blob:x'; };
+    document.querySelectorAll('.actions button').forEach((b) => { if (b.textContent === 'TXT') b.click(); });
+  }));
+  check('в файле подписан говорящий', /Speaker 2/.test(txt), txt.slice(0, 60).replace(/\n/g, '·'));
+  await page.close();
+}
+
 await browser.close();
 console.log(results.join('\n'));
 const failed = results.filter((r) => r.startsWith('❌')).length;
