@@ -380,6 +380,28 @@ for (const mode of ['ok', 'fail']) {
   await page.close();
 }
 
+// 17. Заголовок: есть — показываем, нет — шапка без пустой строки (Денис 19.09)
+{
+  const page = await makePage(browser);
+  await page.route(/\/transcriptions\/41/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      id: 41, platform: 'youtube', created_at: '2026-09-18T09:00:00Z', duration_sec: 480,
+      title: 'Бангладеш: как живут люди', transcript_text: 'Текст расшифровки.', summary_text: null }) })
+  );
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  check('название видео показано заголовком', (await page.textContent('.detail-title')) === 'Бангладеш: как живут люди');
+  await page.close();
+}
+
+{
+  const page = await makePage(browser);  // у старых записей названия нет
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.transcript');
+  check('без названия пустого заголовка нет', (await page.$('.detail-title')) === null);
+  await page.close();
+}
+
 await browser.close();
 console.log(results.join('\n'));
 const failed = results.filter((r) => r.startsWith('❌')).length;
