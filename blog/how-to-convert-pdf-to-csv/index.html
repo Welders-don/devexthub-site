@@ -19,7 +19,9 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How do I convert a PDF to CSV?","acceptedAnswer":{"@type":"Answer","text":"Open the PDF, click the Convert PDF to Excel extension, and export as CSV. It reads the table structure and writes each column into its own comma-separated field in one click, with no sign-up."}},
 {"@type":"Question","name":"What is the difference between exporting to CSV and Excel?","acceptedAnswer":{"@type":"Answer","text":"CSV is a plain comma-separated text file that almost any app can import, from databases to accounting tools. Excel (.xlsx) keeps formatting and formulas. The extension exports either, so you pick what the next tool needs."}},
-{"@type":"Question","name":"Can I convert a scanned PDF to CSV?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scanned or image-only PDFs are read with an optional AI mode. Text-based PDFs convert to CSV for free with no account."}}]}
+{"@type":"Question","name":"Can I convert a scanned PDF to CSV?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scanned or image-only PDFs are read with an optional AI mode. Text-based PDFs convert to CSV for free with no account."}},
+{"@type":"Question","name":"Can ChatGPT convert a PDF to CSV or Excel?","acceptedAnswer":{"@type":"Answer","text":"It can attempt it, but with tables of numbers a chat model often reorders rows, drops columns or invents values, and you cannot tell which figure changed. A dedicated extractor reads the table structure and keeps the numbers exact, without uploading the document to a third party."}},
+{"@type":"Question","name":"How do I convert a PDF table without the columns merging into one?","acceptedAnswer":{"@type":"Answer","text":"Copy-paste collapses the columns because it only carries plain text. A tool that reads the table structure rebuilds each column as its own field, and quotes values like 1,488.00 so the thousands comma cannot split the row."}}]}
 </script>
 </head>
 <body>
@@ -61,14 +63,36 @@
     <h2>Why not just save as CSV from a viewer?</h2>
     <p>Most PDF viewers have no CSV option at all, and the ones that export text give you a single wall of words with the columns gone. CSV only works when the field boundaries are correct: one comma per column, one line per row. The extension keeps that structure, so a value like <code>1,488.00</code> stays in the right field instead of splitting your row in half at the thousands comma.</p>
 
+    <h2>What a clean conversion actually looks like</h2>
+    <p>Here is the difference in practice. A three column invoice row in the PDF reads <code>Consulting fee   12   1,488.00</code>. Copy-pasted into a text editor it arrives as one string with the spacing lost, and any import treats it as a single field. Converted properly it comes out as:</p>
+    <pre><code>Description,Qty,Amount
+Consulting fee,12,"1,488.00"
+Hosting (annual),1,"240.00"</code></pre>
+    <p>Two details do the work here. The thousands comma inside the amount is quoted, so it cannot break the row into an extra column. And the header line survives, which is what lets the next tool map the fields automatically instead of asking you to do it by hand.</p>
+
     <h2>CSV or Excel: which should you pick?</h2>
     <p>Pick <b>CSV</b> when the next step is an import: a database, a CRM, an accounting package or a Python script all take CSV happily. Pick <b>Excel (.xlsx)</b> when a person will open the file and you want formatting and formulas to survive. The same extension exports both, so you are not locked into one.</p>
+    <p>A practical rule: if a machine reads the file next, choose CSV. If a human reads it next, choose Excel. CSV carries no formatting, no formulas and no multiple sheets, which is exactly why importers like it and exactly why it is the wrong format to hand to a colleague for review.</p>
+
+    <h2>Getting the CSV into the next tool</h2>
+    <p>Once the file is on disk, the import is the easy part:</p>
+    <ul>
+      <li><b>Google Sheets:</b> File, Import, Upload, then pick "Detect automatically" as the separator.</li>
+      <li><b>Excel:</b> Data, From Text/CSV, check that the preview shows separate columns before you load.</li>
+      <li><b>A database or script:</b> point your importer at the file directly. With the header row intact, <code>pandas.read_csv()</code> or a <code>COPY</code> statement needs no extra arguments.</li>
+    </ul>
+    <p>If the preview shows everything crammed into one column, the export lost its field boundaries. That is the symptom the conversion above is meant to prevent.</p>
+
+    <h2>Why not just ask ChatGPT to do it?</h2>
+    <p>It is a fair question, and the answer is that a chat model is the wrong instrument for a grid of figures. ChatGPT handles prose well, but with tables it paraphrases: it can reorder rows, merge or drop columns, round values, or quietly fill a gap with a number that was never in the document. On an invoice or a bank statement one altered figure is a real problem, and nothing in the output tells you which one changed.</p>
+    <p>There is a privacy angle too. Using a chat model means uploading the document to a third party, which is not ideal for financial or personal files. A browser extension keeps the file on your device.</p>
+    <p>Where AI genuinely helps is after the extraction. Get the data out exactly with a tool built for it, confirm the totals match, then hand the clean CSV to ChatGPT for summarising, trend spotting or drafting an explanation.</p>
 
     <h2>What about scanned or photographed PDFs?</h2>
     <p>Text-based PDFs convert to CSV for free. If your file is a scan or an image-only PDF, like a photographed invoice, an optional AI mode reads it too. It is opt-in, so you decide when to use it, and plain text PDFs never need it.</p>
 
     <h2>Need the full spreadsheet instead?</h2>
-    <p>If you would rather keep formulas and formatting, export to Excel. See our guide on <a href="../how-to-convert-a-pdf-table-to-excel/">converting a PDF table to Excel</a>, or go the other way with <a href="../how-to-convert-excel-to-pdf/">Excel to PDF</a>.</p>
+    <p>If you would rather keep formulas and formatting, export to Excel instead of CSV: it is the same one click, just a different format in the export step. To go the other way, see our guide on <a href="../how-to-convert-excel-to-pdf/">converting Excel to PDF</a>.</p>
 
     <div class="post-cta">
       <h3>Get your PDF data into CSV</h3>
