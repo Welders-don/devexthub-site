@@ -518,6 +518,61 @@ for (const mode of ['ok', 'noaccount']) {
   await page.close();
 }
 
+// 21. Вернувшийся не должен читать инструкцию для новичка (Денис 21.09)
+{
+  const page = await makePage(browser, { authed: false });
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#empty:not(.hidden)');
+  check('новичок видит объяснение, а не «с возвращением»',
+    (await page.isVisible('#emptyNew')) && !(await page.isVisible('#emptyBack')));
+  check('новичку показана кнопка установки', await page.isVisible('#emptyCta'));
+
+  // тот же браузер, но человек уже входил когда-то
+  await page.evaluate(() => localStorage.setItem('dvx_signed_before', '1'));
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForSelector('#empty:not(.hidden)');
+  check('вернувшийся видит «с возвращением»',
+    (await page.isVisible('#emptyBack')) && !(await page.isVisible('#emptyNew')));
+  check('вернувшемуся не суют «установить расширение»', !(await page.isVisible('#emptyCta')));
+  // сама кнопка рисуется скриптом Google (он замокан в тесте 20) — здесь важно лишь то,
+  // что моя правка не спрятала место под неё вместе с блоком для новичка
+  check('место под кнопку входа не спрятано', await page.evaluate(() => {
+    var n = document.getElementById('signinEmpty');
+    return !!n && !n.closest('.hidden');
+  }));
+  check('сказано, что переустановка не влияет на записи',
+    /Reinstalling the extension does not affect/i.test(await page.textContent('#emptyBack')));
+  await page.close();
+}
+
+// 22. Отметка ставится сама после входа — иначе экран «с возвращением» никогда не покажется.
+// Сессия сама по себе не считается: билет из расширения даёт вход БЕЗ Google, и звать
+// такого человека «войди тем же аккаунтом Google» бессмысленно — аккаунта у него нет.
+{
+  const page = await makePage(browser, { authed: true });
+  await page.route(/\/api\/site\/me/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      transcriptions: TRANSCRIPTS, summaries_used: 0, gate_after: 3, signed_in: true,
+      email: 'd@e.f', retention_days: 90, retention_signed_in: 90, signed_quota: 6,
+      window_days: 14, window_used: 0, next_reset: null }) })
+  );
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#app:not(.hidden)');
+  check('после входа через Google браузер помечен как знакомый',
+    (await page.evaluate(() => localStorage.getItem('dvx_signed_before'))) === '1');
+  await page.close();
+}
+
+// 23. Сессия по билету расширения, без Google — отметку НЕ ставим
+{
+  const page = await makePage(browser, { authed: true });
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#app:not(.hidden)');
+  check('вход без Google знакомым браузер не делает',
+    (await page.evaluate(() => localStorage.getItem('dvx_signed_before'))) === null);
+  await page.close();
+}
+
 await browser.close();
 console.log(results.join('\n'));
 const failed = results.filter((r) => r.startsWith('❌')).length;
