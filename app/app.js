@@ -9,6 +9,9 @@
     empty: document.getElementById('empty'),
     signinEmpty: document.getElementById('signinEmpty'),
     signinEmptyMsg: document.getElementById('signinEmptyMsg'),
+    emptyNew: document.getElementById('emptyNew'),
+    emptyBack: document.getElementById('emptyBack'),
+    emptyCta: document.getElementById('emptyCta'),
     app: document.getElementById('app'),
     list: document.getElementById('list'),
     detail: document.getElementById('detail'),
@@ -24,10 +27,30 @@
     return fetch(API + path, Object.assign({ credentials: 'include' }, opts || {}));
   }
 
+  // Отметка «на этом браузере уже входили». Отпечаток для этого не годится: он плывёт
+  // после обновления Chrome и совпадает у разных людей, поэтому в SAME_ACCOUNT его нет.
+  var SEEN_KEY = 'dvx_signed_before';
+
+  function wasSignedBefore() {
+    try { return localStorage.getItem(SEEN_KEY) === '1'; } catch (e) { return false; }
+  }
+
+  function rememberSignedIn() {
+    try { localStorage.setItem(SEEN_KEY, '1'); } catch (e) { /* приватный режим — не беда */ }
+  }
+
   function show(which) {
     el.loading.classList.toggle('hidden', which !== 'loading');
     el.empty.classList.toggle('hidden', which !== 'empty');
     el.app.classList.toggle('hidden', which !== 'app');
+    // Вернувшемуся не нужны ни «что это за страница», ни кнопка «установить расширение» —
+    // он всё это знает, ему нужен только вход.
+    if (which === 'empty') {
+      var back = wasSignedBefore();
+      el.emptyNew.classList.toggle('hidden', back);
+      el.emptyBack.classList.toggle('hidden', !back);
+      el.emptyCta.classList.toggle('hidden', back);
+    }
   }
 
   function fmtDate(iso) {
@@ -564,6 +587,8 @@
         state.gateAfter = data.gate_after || 3;
         state.used = data.summaries_used || 0;
         state.signedIn = !!data.signed_in;
+        // одна точка на оба пути входа: и по билету из расширения, и кнопкой на пустом экране
+        if (state.signedIn) rememberSignedIn();
         state.days = data.retention_days || 30;
         state.daysSignedIn = data.retention_signed_in || 90;
         state.quota = data.signed_quota || 6;

@@ -38,14 +38,22 @@
 
   <!-- сессии нет: страница открывается сама по себе, без редиректа на логин -->
   <div id="empty" class="app-state hidden">
-    <h1 data-i18n="empty_h1">Your transcripts live here</h1>
-    <p class="lead" data-i18n-html="empty_lead">This page shows the transcripts you made with the <b>Transcribe Video to Text</b> extension — with summaries, the full text and downloads in any format.</p>
-    <p data-i18n-html="empty_how">Open it from the extension panel: press <b>Summary</b> or <b>History</b> and this page opens with your own transcripts.</p>
-    <!-- вход с любого устройства: расширение для чтения библиотеки не нужно -->
-    <p class="signin-row"><span data-i18n="empty_signed">Already used it? Sign in to see your transcripts from any device.</span></p>
+    <!-- новичок: что это за страница и как ей пользоваться -->
+    <div id="emptyNew">
+      <h1 data-i18n="empty_h1">Your transcripts live here</h1>
+      <p class="lead" data-i18n-html="empty_lead">This page shows the transcripts you made with the <b>Transcribe Video to Text</b> extension — with summaries, the full text and downloads in any format.</p>
+      <p data-i18n-html="empty_how">Open it from the extension panel: press <b>Summary</b> or <b>History</b> and this page opens with your own transcripts.</p>
+      <!-- вход с любого устройства: расширение для чтения библиотеки не нужно -->
+      <p class="signin-row"><span data-i18n="empty_signed">Already used it? Sign in to see your transcripts from any device.</span></p>
+    </div>
+    <!-- на этом браузере уже входили: инструкция «как сделать транскрипт» ему лишняя -->
+    <div id="emptyBack" class="hidden">
+      <h1 data-i18n="back_h1">Welcome back</h1>
+      <p class="lead" data-i18n="back_lead">Your transcripts are still here — sign in with the same Google account and they open. Reinstalling the extension does not affect them.</p>
+    </div>
     <div id="signinEmpty"></div>
     <p id="signinEmptyMsg" class="muted hidden"></p>
-    <p class="cta-row">
+    <p id="emptyCta" class="cta-row">
       <a class="btn" href="https://chromewebstore.google.com/detail/transcribe-video-to-text/gkbpjhnldeahifpfbihdcpmkcfomabkg" target="_blank" rel="noopener" data-i18n="cta_install">Get the extension</a>
       <a class="btn ghost" href="/transcribe-video-to-text/" data-i18n="cta_how">How it works</a>
     </p>
