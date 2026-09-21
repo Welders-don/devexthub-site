@@ -33,3 +33,14 @@ releases/**/tts*.json
 releases/**/*_resp.json
 releases/**/frames/*.png
 releases/**/frames/*.jpg
+
+# .media = входящие файлы из Telegram, в т.ч. НЕОБРЕЗАННЫЕ записи экрана с личными данными.
+# Репо публичный и раздаётся как сайт → любой файл отсюда доступен по URL (проверено 21.09:
+# /.media/compross_14/*.mp4 отдавал 200). Сырьё и распаковки сюда не коммитим.
+.media/**/*.mp4
+.media/**/*.mov
+.media/**/*.mp3
+.media/**/*.wav
+.media/**/*.pcm
+.media/**/*.zip
+.media/_vid/
