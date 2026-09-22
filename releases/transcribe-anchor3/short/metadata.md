@@ -1,6 +1,7 @@
 # Метаданные — TVT-шорт #3 «vimeo transcript generator»
 
-**СТАТУС:** собран 21.09, НЕ залит. Файл: `.media/_vid/work/tvt3-vimeo-short-v4.mp4`
+**СТАТУС:** ЗАЛИТ 22.09 = **https://youtube.com/shorts/JYlVIy2ZhG0** (проверено oembed).
+Файл: `.media/_vid/work/tvt3-vimeo-short-v4.mp4`
 (13.01с, 1080x1920, 30fps, голос Fenrir, сабы Groq). Рендер в git НЕ коммитится (репо публичный).
 Ключ: **vimeo transcript generator** (320/мес, KD 20). UTM content: **tvt_short3**.
 Лонг этого захода = https://youtu.be/LhE12gD3tU8 (залит 21.09).
