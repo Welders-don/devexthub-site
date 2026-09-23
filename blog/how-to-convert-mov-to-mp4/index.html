@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Convert MOV to MP4 on Windows, Mac or in Chrome | Devexthub</title>
+<meta name="description" content="How to convert a MOV file to MP4, free: in your browser without uploading, with VLC on Windows, with iMovie on Mac. Plus why iPhone videos won't play on Windows and how to stop it.">
+<link rel="canonical" href="https://www.devexthub.com/blog/how-to-convert-mov-to-mp4/">
+<meta property="og:title" content="How to Convert MOV to MP4 on Windows, Mac or in Chrome">
+<meta property="og:description" content="Three free ways to turn a .MOV into an MP4 that plays everywhere, and why iPhone videos won't open on Windows in the first place.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.devexthub.com/blog/how-to-convert-mov-to-mp4/">
+<link rel="stylesheet" href="../../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I convert a MOV file to MP4?","acceptedAnswer":{"@type":"Answer","text":"The quickest free way is a browser extension such as Convert MOV to MP4: drop in the file and save the MP4, with nothing uploaded. On Windows you can also use VLC (Media, Convert / Save), and on a Mac iMovie (File, Share, File)."}},
+{"@type":"Question","name":"Can I just rename .mov to .mp4?","acceptedAnswer":{"@type":"Answer","text":"Sometimes it opens, because MOV and MP4 are close relatives, but it is not a real conversion. If the video inside is HEVC, the renamed file still won't play on a PC without the HEVC codec."}},
+{"@type":"Question","name":"Does converting MOV to MP4 lose quality?","acceptedAnswer":{"@type":"Answer","text":"Not when the video inside is H.264: the file is only rewrapped into MP4, so the picture is untouched. An HEVC video has to be re-encoded to H.264 to play everywhere, which is a real conversion."}},
+{"@type":"Question","name":"How do I stop my iPhone from recording MOV files in HEVC?","acceptedAnswer":{"@type":"Answer","text":"Go to Settings, Camera, Formats and choose Most Compatible. New videos are then recorded in H.264, which plays on almost any device. The file is still a .MOV, but it converts to MP4 in seconds."}}]}
+</script>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../../">All tools</a>
+      <a href="../">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <article class="section wrap post reveal">
+    <div class="breadcrumb"><a href="../../">Home</a> / <a href="../">Blog</a> / Convert MOV to MP4</div>
+    <h1>How to convert MOV to MP4 on Windows, Mac or right in Chrome</h1>
+    <p class="post-meta">Convert MOV to MP4 &middot; 4 min read</p>
+
+    <p class="lede">You filmed something on an iPhone, moved it to a PC, and the .MOV won't play. Or a website says "MP4 only". Here are three free ways to convert MOV to MP4, starting with the one that takes a few seconds and doesn't upload your video anywhere.</p>
+
+    <h2>Why a MOV file won't play in the first place</h2>
+    <p>MOV is Apple's video container, the "box" the video sits in. MP4 is its close relative and the format almost everything accepts. The real trouble is usually what's inside the box: since iOS 11, iPhones record video in <b>HEVC</b> (also called H.265) to save space.</p>
+    <p>Windows doesn't play HEVC out of the box. It needs Microsoft's HEVC Video Extensions, a paid add-on from the Microsoft Store. Chrome plays HEVC only when your computer has a hardware decoder for it, and otherwise just shows a black frame or refuses the file. So converting MOV to MP4 is really two jobs: change the box, and, if the video is HEVC, turn it into <b>H.264</b>, which plays everywhere.</p>
+
+    <h2>Method 1: convert in your browser, no upload</h2>
+    <p><a href="../../convert-mov-to-mp4/">Convert MOV to MP4</a> is a free Chrome extension that does the conversion on your own computer. The video is read from your disk and never sent to a server, so a large file doesn't mean a long upload.</p>
+    <ol>
+      <li>Add the extension to Chrome and click its icon.</li>
+      <li>Drop in your .MOV file, or several at once.</li>
+      <li>Check the time estimate. A MOV with H.264 inside takes seconds, an HEVC clip takes longer because it is re-encoded.</li>
+      <li>Download the MP4. Your original file stays untouched.</li>
+    </ol>
+    <p>When the video inside is already H.264, the file is only rewrapped, so there is no quality loss at all. When it's HEVC, the extension converts it to H.264 using your computer's video hardware, and falls back to a built-in decoder when there's no hardware for it.</p>
+
+    <div class="post-cta">
+      <h3>Convert your MOV without uploading it</h3>
+      <p>Free, no sign-up, the video stays on your computer.</p>
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/ipeocmfcjjnbmogcigekoehhlkmdpebj">Add to Chrome &middot; free</a>
+    </div>
+
+    <h2>Method 2: convert MOV to MP4 on Windows with VLC</h2>
+    <p>VLC is a free media player that can also convert files. It works well, but the menu is easy to get lost in.</p>
+    <ol>
+      <li>Open VLC and go to <b>Media &rarr; Convert / Save</b>.</li>
+      <li>Click <b>Add</b>, pick your .MOV, then click <b>Convert / Save</b>.</li>
+      <li>In <b>Profile</b>, choose <b>Video - H.264 + MP3 (MP4)</b>.</li>
+      <li>Set a destination file name ending in .mp4 and click <b>Start</b>.</li>
+    </ol>
+    <p>VLC always re-encodes, so even a clip that could have been rewrapped in seconds goes through a full conversion.</p>
+
+    <h2>Method 3: convert MOV to MP4 on a Mac with iMovie</h2>
+    <p>On a Mac, iMovie comes free and can save a clip as MP4.</p>
+    <ol>
+      <li>Create a new movie in iMovie and drag your .MOV onto the timeline.</li>
+      <li>Go to <b>File &rarr; Share &rarr; File</b>.</li>
+      <li>Pick the resolution and quality. Avoid the ProRes option, which saves a .mov instead.</li>
+      <li>Click <b>Next</b> and save. iMovie exports an .mp4.</li>
+    </ol>
+    <p>QuickTime Player's <b>Export As</b> won't help here: it saves another .mov.</p>
+
+    <h2>Can I just rename .mov to .mp4?</h2>
+    <p>Sometimes the renamed file opens, because the two formats are close relatives. But nothing inside changes. If the video is HEVC, the renamed file still won't play on a PC without the codec, and some upload forms check the contents rather than the name. A real conversion is safer.</p>
+
+    <h2>Stop the problem at the source</h2>
+    <p>If you regularly send iPhone videos to Windows users, change how the phone records:</p>
+    <ul>
+      <li><b>Settings &rarr; Camera &rarr; Formats &rarr; Most Compatible.</b> New videos are recorded in H.264. They are still .MOV files, but they play on almost anything and convert to MP4 in seconds without quality loss.</li>
+      <li><b>Settings &rarr; Photos &rarr; Transfer to Mac or PC &rarr; Automatic.</b> The iPhone tries to convert videos when you copy them over a cable. It doesn't always do it, so keep a converter handy.</li>
+    </ul>
+    <p>Need to go the other way? See our guide on <a href="../how-to-convert-mp4-to-mov/">how to convert MP4 to MOV</a>.</p>
+
+    <div class="post-cta">
+      <h3>Make your iPhone videos play everywhere</h3>
+      <p>MOV to MP4 and back, many files at once. Free, no upload.</p>
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/ipeocmfcjjnbmogcigekoehhlkmdpebj">Add to Chrome &middot; free</a>
+    </div>
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../../">Devexthub</a>
+    <a href="../">Blog</a>
+    <a href="../../convert-mov-to-mp4/">Convert MOV to MP4</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var utm = "utm_source=devexthub_blog&utm_medium=referral&utm_campaign=how-to-convert-mov-to-mp4";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
