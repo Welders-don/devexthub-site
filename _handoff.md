@@ -1,3 +1,40 @@
+# Handoff 2026-09-23 — Convert MOV to MP4 заехал на сайт: лендинг + 2 статьи
+
+## Где остановились (23.09)
+Пятый продукт (Convertmovtomp4, 2-й dev-аккаунт) под общим брендом devexthub. Решение Дениса:
+банят developer-аккаунт, а не домен, так что всё под одним брендом. Заморозку SEO Денис
+**точечно отменил для MOV**: 1 лендинг + 2 статьи, ключи разведены против каннибализации.
+Всё в проде, push `5320284`, все URL отдают 200 на www, sitemap 40.
+
+## Что сделано
+- `/convert-mov-to-mp4/` — лендинг, голова `convert mov to mp4` (14.8K US). Скрин из стора
+  → `assets/cvt-demo.jpg`, иконка `assets/convert-mov-icon-128.png`. UTM campaign=convert-mov-to-mp4.
+- `/blog/how-to-convert-mov-to-mp4/` — вопросная группа «how to convert mov to mp4» (~8.4K, KD 43-49):
+  HEVC/Windows, наш способ, VLC, iMovie, настройка айфона Most Compatible.
+- `/blog/how-to-convert-mp4-to-mov/` — «how to convert mp4 to mov» 590/KD38 + «convert video
+  from mp4 to mov» 270/KD30: наш способ, QuickTime Export As, HandBrake не умеет MOV.
+- Главная: 5-я карточка → лендинг, счётчики «5 tools / Five extensions», пункт «MOV to MP4»
+  в меню и подвале. Блог: 2 карточки сверху. Sitemap 37→40.
+- Ключи взяты из `~/projects/Convertmovtomp4/research/keywords-2026-09-15.tsv` (скрины Дениса 15.09).
+- Закоммичены (НЕ удалены) хвосты переноса MEMORY.md от 19.09 в PROJECT.md и offpage/*.
+
+## Сверено с кодом расширения (не выдумывать на будущих страницах)
+- Переключателя направления НЕТ: `targetFor()` в `app/convert.js`, .mov→.mp4, .mp4→.mov по имени файла.
+- Без перекодирования только H.264; HEVC → транскод в H.264 (железо, иначе wasm-фолбэк).
+- Пакет = выбор многих файлов, папка только для СОХРАНЕНИЯ. Скрин стора врёт «Whole folder
+  at once» → на сайте поправлено, в сторе править при следующем обновлении MOV.
+
+## Следующий шаг
+1. (Денис, по желанию) GSC → Sitemaps → Submit `sitemap.xml`, чтобы Google сразу увидел 40.
+   Request Indexing не трогать.
+2. При следующем обновлении MOV в CWS: поле Website = `https://www.devexthub.com/convert-mov-to-mp4/`,
+   заменить screenshot-1 (надпись про папку).
+3. Замер: срез GSC ~середина октября, вместе с экспериментом слияния PDF-дублей. Индекс
+   стоит на 25 с 17.08, быстрой индексации не ждать.
+4. Дальше по MOV статей НЕ пишем без решения Дениса («на этом остановимся»).
+
+---
+
 # Handoff 2026-09-22 — заход Transcribe #3 ЗАКРЫТ, дыра в VIDEO-LEDGER заделана
 
 ## Где остановились (22.09)

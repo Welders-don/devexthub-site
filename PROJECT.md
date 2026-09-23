@@ -103,7 +103,7 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 
 ## Структура (витрина, лендинги, блог — сколько статей, SEO-каркас sitemap/robots)
 - Витрина: `index.html` + `styles.css` (общий).
-- 4 лендинга (каждый своя папка index.html): `pdf-to-excel/`, `transcribe-video-to-text/`, `extract-text-from-image/`, `image-enhancer/`.
+- 5 лендингов (каждый своя папка index.html): `pdf-to-excel/`, `transcribe-video-to-text/`, `extract-text-from-image/`, `image-enhancer/`, `convert-mov-to-mp4/` (с 23.09; продукт со 2-го dev-аккаунта, решение Дениса — всё под одним брендом devexthub).
 - Блог: `blog/` + `blog/index.html`, ~25 статей-папок на диске (handoff фиксировал «18 статей», 28.07 добрали кластер PDF: pdf-to-csv, save-excel-as-pdf, pdf-to-excel-on-mac). Точное число к публикации — [проверить у Дениса].
 - SEO-каркас (появился 28.07): `sitemap.xml` (32 URL, namespace ДОЛЖЕН быть http://www.sitemap<b>s</b>.org/... иначе GSC отбивает) + `robots.txt` (Allow /, ссылка на sitemap).
 - На каждое расширение ~30 Semrush-ключей вшиты в описания/лендинги; FAQ-schema, UTM. GSC-verification meta в `index.html`. SEO-база закрыта с самого старта — новой задачей НЕ предлагать.
