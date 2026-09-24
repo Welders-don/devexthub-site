@@ -1,3 +1,28 @@
+# Handoff 2026-09-24 поздний вечер — PDF 1.0.9 LIVE, ролик PDF #4 разблокирован
+
+## Где остановились
+PDF-to-Excel 1.0.9 опубликована 24.09 (сервер обновлений update2/crx отдаёт 1.0.9, карточка
+стора ещё показывала 1.0.8, отстаёт). Блокер ролика PDF #4 «pdf to csv» теперь один: футаж от Дениса.
+
+## Что сделано
+- Pdftoexel/PROJECT.md: LIVE = 1.0.9, следующая сборка 1.0.10 (коммит 4fa2f97 в репо Pdftoexel).
+- MEMORY.md (статус PDF + YouTube) и memory/2026-09-24.md обновлены.
+
+## Следующий шаг
+1. Футаж от Дениса → `releases/pdf-anchor4/src/`: кусок 1 «их» ~8с (копипаст таблицы в Sheets →
+   всё в столбце A), кусок 2 «наш» ~15с (иконка → дроп → Convert → Download .csv → открыть CSV).
+   Тот же bank-statement-sample.pdf, 1080p, записывать на 1.0.9 (дебет/кредит раздельно).
+   Потом: VO Puck/Fenrir, сабы Groq, монтаж по build_pdf_anchor3.sh, макеты из mock/ в финал НЕ брать.
+2. 25.09: шорт ET #4 (см. блок ниже), после заливки ID в metadata + строка VIDEO-LEDGER.
+3. ~01.10: result_bad и сносы после скачивания до/после 1.0.9 (гипотеза: склейка дебет/кредит = часть оттока).
+4. Если футажа PDF долго нет, в круге следующий Image Enhancer #4 (последний лонг 18.09).
+
+## Контекст
+- Live-версию сверять: `curl -sL "https://clients2.google.com/service/update2/crx?response=updatecheck&prodversion=140.0&acceptformat=crx2,crx3&x=id%3Dhboeifcemhbamnoakkbalaemdleehfnf%26uc"` → grep version.
+- Неотслеживаемые файлы в git status (.media/, releases/*/mock, check, __pycache__) — рабочие, не коммитились.
+
+---
+
 # Handoff 2026-09-24 вечер — YouTube: ET #4 лонг залит, шорт завтра; PDF #4 ждёт 1.0.9
 
 ## Где остановились
