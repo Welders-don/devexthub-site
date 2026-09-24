@@ -93,3 +93,11 @@
 /* Переустановка (24.09): куда делись прежние записи и как больше не терять */
 .earlier-note { margin: -6px 0 16px; padding: 10px 14px; border: 1px solid #e3d5ac; background: #fdf8ec;
   border-radius: 11px; font-size: 14px; line-height: 1.5; }
+
+/* Остальные продукты под транскриптами */
+.xpromo { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); }
+.xpromo h2 { font-size: 18px; margin: 0 0 14px; color: var(--ink-soft); }
+.xp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.xp-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; transition: border-color .15s, transform .15s; }
+.xp-card:hover { border-color: var(--green); transform: translateY(-2px); }
+.xp-card img { flex: none; border-radius: 8px; }
