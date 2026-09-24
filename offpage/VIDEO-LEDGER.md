@@ -4,12 +4,13 @@
 Последняя сверка с API: 09.09.2026. Все ролики — формат Shorts (<60с). «Лонг» у нас = 25-35с (развёрнутый), «шорт» = 11-17с (хук). Оба на вкладке Shorts.
 Вести ЗДЕСЬ. При сомнении — пересверить через API (playlistId uploads = UUjPKVtLH8DD-hgSbYzl3SIw), не по обрывкам в metadata.
 
-Всего: 25 роликов · 1921 просмотр (просмотры на 09.09.2026; шесть роликов 14-22.09 ещё без замера).
+Всего: 26 роликов · 1921 просмотр (просмотры на 09.09.2026; шесть роликов 14-22.09 ещё без замера).
 
 ## Все ролики (свежие сверху, views на 09.09)
 
 | Дата | Продукт | Тип | Views | ID | Название |
 |---|---|---|---|---|---|
+| 24.09 | ET  | лонг | —   | q37YJIbCLp8 | How to Copy Text From a Picture: 2 Free Ways in Chrome |
 | 22.09 | TVT | шорт | —   | JYlVIy2ZhG0 | Vimeo transcript in two clicks |
 | 21.09 | TVT | лонг | —   | LhE12gD3tU8 | Free Vimeo Transcript Generator in Chrome |
 | 19.09 | IE  | шорт | —   | _NZXDZdRGOg | Bulk image upscaler |
@@ -42,7 +43,7 @@ URL любого: `https://youtu.be/<ID>` (или `youtube.com/shorts/<ID>`).
 - **PDF** — 7 роликов, лидер канала (708 + 311 + 47…). Топ = scanned PDF to Excel (a0KIAtDSc6U, 708).
 - **TVT** — 6. Сильный: YouTube transcript 1 click (o4_9YZLv7Lo, 217). Свежий заход #3 Vimeo: лонг LhE12gD3tU8 (21.09, tvt_long3) + шорт JYlVIy2ZhG0 (22.09, tvt_short3).
 - **IE** — 6. Ровно: 102 / 83 / 61 / 35 + заход #3 (6HlH8j-XZUg / _NZXDZdRGOg, bulk image upscaler).
-- **ET** — 6. Пик: copy text from image (evGF5JxPbFc, 137). Заход #3: I1E3OQ7vhmU / bJamqjo8r7s (jpg to text free).
+- **ET** — 7. Заход #4 (copy text from picture, монтаж «2 способа» из готовых футажей): лонг q37YJIbCLp8 (24.09, et_long4), шорт ждёт заливки. Пик: copy text from image (evGF5JxPbFc, 137). Заход #3: I1E3OQ7vhmU / bJamqjo8r7s (jpg to text free).
 
 ## Заметки
 - Свежие 4 ролика (сент: WpX9jkQjVX8/lpsqHo6DUGk/i-4eQkuy6Bk) — 2-5 просмотров, не раскочегарились, судить рано.

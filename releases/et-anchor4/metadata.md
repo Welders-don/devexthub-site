@@ -1,6 +1,6 @@
 # Метаданные — ET заход #4 «copy text from picture»
 
-**СТАТУС:** собран 24.09, ждёт заливки Денисом.
+**СТАТУС:** ЛОНГ ЗАЛИТ 24.09 = **https://youtu.be/q37YJIbCLp8** (28с, проверен через oEmbed + Data API). Шорт ждёт заливки.
 Ключ: **copy text from picture** 2 900/мес, KD 34 + **how to copy text from a picture** 720, KD 35
 (Semrush US, `knowledge/seo-keywords-extract-text.md`). В роликах ET не было: #1 extract text,
 #2 copy text from image, #3 jpg to text free.
@@ -60,5 +60,5 @@ Chrome extension reads every line on your device.
 #copytextfrompicture #ocr #chromeextension #imagetotext
 
 ## Закреп-коммент шорта (мост на лонг + лендинг)
-Full version: https://youtu.be/<ID лонга>
+Full version: https://youtu.be/q37YJIbCLp8
 Free in Chrome: https://www.devexthub.com/extract-text-from-image/?utm_source=youtube&utm_medium=video&utm_campaign=extracttext&utm_content=et_short4
