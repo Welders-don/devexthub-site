@@ -107,6 +107,7 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - Блог: `blog/` + `blog/index.html`, ~25 статей-папок на диске (handoff фиксировал «18 статей», 28.07 добрали кластер PDF: pdf-to-csv, save-excel-as-pdf, pdf-to-excel-on-mac). Точное число к публикации — [проверить у Дениса].
 - SEO-каркас (появился 28.07): `sitemap.xml` (32 URL, namespace ДОЛЖЕН быть http://www.sitemap<b>s</b>.org/... иначе GSC отбивает) + `robots.txt` (Allow /, ссылка на sitemap).
 - На каждое расширение ~30 Semrush-ключей вшиты в описания/лендинги; FAQ-schema, UTM. GSC-verification meta в `index.html`. SEO-база закрыта с самого старта — новой задачей НЕ предлагать.
+- 🔴 Полный список продуктов живёт в ДВУХ местах: главная `index.html` (меню, карточки, подвал, счётчик «N tools») и кабинет `app/index.html` (меню, подвал, блок `#xpromo` с 24.09, клики = Umami-событие `app-xpromo`). Лендинги и статьи соседей не перечисляют (только All tools + свой продукт), так задумано. Новый продукт = правка ОБОИХ файлов; 23.09 MOV забыли в кабинете, Денис поймал 24.09.
 - Медиа/баннеры: `assets/`, `.media/`, `releases/` (в т.ч. `releases/marquee/` — баннеры 1400x560 под CWS featured).
 
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
