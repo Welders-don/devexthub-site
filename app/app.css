@@ -79,3 +79,13 @@
 /* Метка говорящего: тот же смысл, что в панели расширения, но спокойнее по цвету */
 .seg-speaker { flex-shrink: 0; font-family: var(--mono); font-size: 11px; text-transform: uppercase;
   letter-spacing: .4px; color: var(--green); padding-top: 3px; }
+
+/* Отклик на саммари (24.09): копировать + полезно ли. Под текстом, не спорит с ним. */
+.sum-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 14px;
+  padding-top: 12px; border-top: 1px solid var(--line); white-space: normal; font-size: 14px; }
+.sum-vote { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; margin-left: 6px; }
+.vote { background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px;
+  font-size: 16px; line-height: 1.3; cursor: pointer; opacity: .6; }
+.vote:hover, .vote:focus-visible { opacity: 1; }
+.vote.on { opacity: 1; border-color: var(--green); background: var(--bg); }
+.small-note { font-size: 13px; }

@@ -19,7 +19,7 @@
     signin: document.getElementById('signin'),
   };
 
-  var state = { items: [], gateAfter: 3, used: 0, signedIn: false, openId: null, days: 30, daysSignedIn: 90,
+  var state = { items: [], gateAfter: 3, used: 0, minChars: 500, signedIn: false, openId: null, days: 30, daysSignedIn: 90,
                 quota: 6, windowUsed: 0, nextReset: null, clientId: null, email: null, noStamps: false };
   var t = window.I18N.t;
 
@@ -221,7 +221,13 @@
     var actions = document.createElement('div');
     actions.className = 'actions';
 
-    if (!data.summary_text) {
+    // Огрызок в пару фраз саммари не улучшит (аудит 24.09) — вместо кнопки честная подсказка.
+    if (!data.summary_text && (data.transcript_text || '').length < state.minChars) {
+      var short = document.createElement('span');
+      short.className = 'muted small-note';
+      short.textContent = t('too_short');
+      actions.appendChild(short);
+    } else if (!data.summary_text) {
       var sumBtn = document.createElement('button');
       sumBtn.className = 'btn small js-sum';
       sumBtn.type = 'button';
@@ -258,7 +264,7 @@
     head.appendChild(actions);
     el.detail.appendChild(head);
 
-    if (data.summary_text) el.detail.appendChild(summaryBlock(data.summary_text));
+    if (data.summary_text) el.detail.appendChild(summaryBlock(data.summary_text, data.id, data.summary_vote));
 
     el.detail.appendChild(transcriptBlock(data));
   }
@@ -300,7 +306,7 @@
     return box;
   }
 
-  function summaryBlock(text) {
+  function summaryBlock(text, id, vote) {
     var box = document.createElement('div');
     box.className = 'summary';
     var h = document.createElement('h3');
@@ -309,7 +315,69 @@
     p.textContent = text;
     box.appendChild(h);
     box.appendChild(p);
+    box.appendChild(summaryFoot(text, id, vote));
     return box;
+  }
+
+  // Единственный сигнал качества саммари (до 24.09 кабинет не слал ни одного события).
+  function sendFeedback(id, kind) {
+    return api('/summary/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ transcription_id: id, kind: kind }),
+    }).catch(function () { /* отклик не стоит ошибки на экране */ });
+  }
+
+  function summaryFoot(text, id, vote) {
+    var foot = document.createElement('div');
+    foot.className = 'sum-foot';
+
+    var copy = document.createElement('button');
+    copy.className = 'btn ghost small';
+    copy.type = 'button';
+    copy.textContent = t('sum_copy');
+    copy.addEventListener('click', function () {
+      navigator.clipboard.writeText(text).then(function () {
+        copy.textContent = t('sum_copied');
+        setTimeout(function () { copy.textContent = t('sum_copy'); }, 1500);
+        sendFeedback(id, 'copy');
+      });
+    });
+    foot.appendChild(copy);
+
+    // вопрос и обе кнопки держим одной группой: на 360 px 👎 отрывался на новую строку
+    var group = document.createElement('span');
+    group.className = 'sum-vote';
+    var ask = document.createElement('span');
+    ask.className = 'muted';
+    ask.textContent = t('sum_useful');
+    group.appendChild(ask);
+
+    var up = voteBtn('👍', vote === 1);
+    var down = voteBtn('👎', vote === -1);
+    up.addEventListener('click', function () { pick(up, down, 'up'); });
+    down.addEventListener('click', function () { pick(down, up, 'down'); });
+    group.appendChild(up);
+    group.appendChild(down);
+    foot.appendChild(group);
+
+    function pick(on, off, kind) {
+      on.classList.add('on');
+      on.setAttribute('aria-pressed', 'true');
+      off.classList.remove('on');
+      off.setAttribute('aria-pressed', 'false');
+      sendFeedback(id, kind);
+    }
+    return foot;
+  }
+
+  function voteBtn(label, on) {
+    var b = document.createElement('button');
+    b.className = 'vote' + (on ? ' on' : '');
+    b.type = 'button';
+    b.textContent = label;
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    return b;
   }
 
   /* ---------- саммари ---------- */
@@ -346,6 +414,7 @@
       body: JSON.stringify({ transcription_id: id }),
     })
       .then(function (r) {
+        if (r.status === 422) throw 'SHORT';
         if (r.status === 402) return r.json().then(function (d) {
           if (d && d.next_reset) state.nextReset = d.next_reset;
           throw (d && d.error === 'QUOTA') ? 'QUOTA' : 'GATE';
@@ -354,19 +423,23 @@
         return r.json();
       })
       .then(function (data) {
-        el.detail.replaceChild(summaryBlock(data.summary), placeholder);
+        el.detail.replaceChild(summaryBlock(data.summary, id, null), placeholder);
         if (btn) btn.remove(); // саммари уже есть — предлагать сделать его ещё раз незачем
         state.used += 1;
         var item = state.items.filter(function (i) { return i.id === id; })[0];
         if (item) { item.has_summary = true; renderList(); }
       })
       .catch(function (why) {
+        // Автозапуск из панели по короткой записи: подсказка «слишком коротко» уже стоит
+        // у кнопок, второй раз её не рисуем (запрос всё равно нужен — сервер считает отказ).
+        if (why === 'SHORT' && !btn) { placeholder.remove(); return; }
         el.detail.replaceChild(
-          why === 'GATE' ? gateBlock() : why === 'QUOTA' ? quotaBlock() : failBlock(),
+          why === 'GATE' ? gateBlock() : why === 'QUOTA' ? quotaBlock()
+            : why === 'SHORT' ? shortBlock() : failBlock(),
           placeholder
         );
-        // отказ по лимиту повтором не лечится, а вот сбой — да, поэтому кнопку возвращаем
-        if (btn && why !== 'GATE' && why !== 'QUOTA') {
+        // отказ по лимиту и по длине повтором не лечится, а вот сбой — да, поэтому кнопку возвращаем
+        if (btn && why !== 'GATE' && why !== 'QUOTA' && why !== 'SHORT') {
           btn.disabled = false;
           btn.textContent = t('summarize');
         } else if (btn) {
@@ -410,6 +483,13 @@
   function fmtDay(iso) {
     if (!iso) return '—';
     return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  }
+
+  function shortBlock() {
+    var p = document.createElement('div');
+    p.className = 'summary';
+    p.textContent = t('too_short');
+    return p;
   }
 
   function failBlock() {
@@ -586,6 +666,7 @@
         state.items = data.transcriptions || [];
         state.gateAfter = data.gate_after || 3;
         state.used = data.summaries_used || 0;
+        state.minChars = data.summary_min_chars || 500;
         state.signedIn = !!data.signed_in;
         // одна точка на оба пути входа: и по билету из расширения, и кнопкой на пустом экране
         if (state.signedIn) rememberSignedIn();
