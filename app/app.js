@@ -17,6 +17,7 @@
     detail: document.getElementById('detail'),
     retention: document.getElementById('retention'),
     signin: document.getElementById('signin'),
+    earlierNote: document.getElementById('earlierNote'),
   };
 
   var state = { items: [], gateAfter: 3, used: 0, minChars: 500, signedIn: false, openId: null, days: 30, daysSignedIn: 90,
@@ -679,6 +680,9 @@
         state.email = data.email || null;
         el.retention.textContent = t('retention', { n: state.days });
         if (!state.signedIn) el.retention.title = t('retention_hint', { n: state.daysSignedIn });
+        // Переустановка: записи прежней установки на этом компьютере здесь не видны
+        // (по отпечатку их не отдаём). Честно говорим, куда делись и как не терять дальше.
+        el.earlierNote.classList.toggle('hidden', !(data.earlier_install && !state.signedIn));
         el.signin.textContent = '';
         if (state.signedIn) el.signin.textContent = t('signed_as', { email: state.email || '' });
         else renderSignIn(el.signin);

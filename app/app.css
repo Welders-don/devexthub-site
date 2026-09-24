@@ -89,3 +89,7 @@
 .vote:hover, .vote:focus-visible { opacity: 1; }
 .vote.on { opacity: 1; border-color: var(--green); background: var(--bg); }
 .small-note { font-size: 13px; }
+
+/* Переустановка (24.09): куда делись прежние записи и как больше не терять */
+.earlier-note { margin: -6px 0 16px; padding: 10px 14px; border: 1px solid #e3d5ac; background: #fdf8ec;
+  border-radius: 11px; font-size: 14px; line-height: 1.5; }
