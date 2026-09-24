@@ -1,0 +1,22 @@
+import { chromium } from '/home/client/projects/JobAgent/node_modules/playwright/index.mjs';
+import fs from 'fs'; import path from 'path';
+const dir = process.argv[2];
+const b = await chromium.launch({executablePath:'/home/client/.cache/ms-playwright/chromium_headless_shell-1208/chrome-headless-shell-linux64/chrome-headless-shell'});
+const p = await b.newPage();
+const types = {'.js':'text/javascript','.mjs':'text/javascript','.html':'text/html','.pdf':'application/pdf'};
+await p.route('http://x.local/**', r => { const f = path.join(dir, new URL(r.request().url()).pathname);
+  if (!fs.existsSync(f)) return r.fulfill({status:404,body:''});
+  r.fulfill({status:200, body: fs.readFileSync(f), contentType: types[path.extname(f)]||'application/octet-stream'}); });
+p.on('console', m => console.error('[page]', m.text()));
+await p.addInitScript(() => { window.chrome = { runtime: { getURL: (x) => '/' + x.replace(/^\//,'') } }; });
+await p.goto('http://x.local/blank.html').catch(()=>{});
+const out = await p.evaluate(async () => {
+  const { analyzePdf } = await import('/sidepanel/pdf-extract.js');
+  const { analysisToSheets } = await import('/sidepanel/pdf-to-tables.js');
+  const { buildCsvBlob } = await import('/sidepanel/csv-writer.js');
+  const buf = await (await fetch('/bank-statement-sample.pdf')).arrayBuffer();
+  const file = new File([buf], 'bank-statement-sample.pdf', {type:'application/pdf'});
+  const a = await analyzePdf(file); const s = await analysisToSheets(a);
+  return await buildCsvBlob(s).text();
+});
+process.stdout.write(out); await b.close();
