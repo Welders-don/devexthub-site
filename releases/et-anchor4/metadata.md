@@ -1,6 +1,6 @@
 # Метаданные — ET заход #4 «copy text from picture»
 
-**СТАТУС:** ЛОНГ ЗАЛИТ 24.09 = **https://youtu.be/q37YJIbCLp8** (28с, проверен через oEmbed + Data API). Шорт ждёт заливки.
+**СТАТУС:** ЛОНГ ЗАЛИТ 24.09 = **https://youtu.be/q37YJIbCLp8** (28с, проверен через oEmbed + Data API). Шорт ЗАЛИТ 25.09 = **https://youtube.com/shorts/AEyvvazUzqM** (12с, public, описание+теги сверены Data API).
 Ключ: **copy text from picture** 2 900/мес, KD 34 + **how to copy text from a picture** 720, KD 35
 (Semrush US, `knowledge/seo-keywords-extract-text.md`). В роликах ET не было: #1 extract text,
 #2 copy text from image, #3 jpg to text free.
