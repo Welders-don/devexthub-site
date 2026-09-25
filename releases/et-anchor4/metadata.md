@@ -55,9 +55,14 @@ https://www.devexthub.com/blog/how-to-copy-text-from-an-image/?utm_source=youtub
 Copy text from a picture in 2 ways #shorts
 
 ## Описание
-Can't copy text from a picture? Draw a box around it on the page, or upload the file. This free
-Chrome extension reads every line on your device.
-#copytextfrompicture #ocr #chromeextension #imagetotext
+How to copy text from a picture when the words won't select? Two free ways in Chrome: draw a box
+around the picture on the page, or upload the image file. The OCR turns the picture into text right
+on your device, then you copy text from the image or save it as .txt. Works with screenshots, JPG
+and PNG.
+
+Free image to text extension: https://www.devexthub.com/extract-text-from-image/?utm_source=youtube&utm_medium=video&utm_campaign=extracttext&utm_content=et_short4
+
+#copytextfrompicture #imagetotext #ocr #chromeextension #shorts
 
 ## Закреп-коммент шорта (мост на лонг + лендинг)
 Full version: https://youtu.be/q37YJIbCLp8
