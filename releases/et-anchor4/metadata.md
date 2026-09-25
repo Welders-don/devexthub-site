@@ -64,6 +64,10 @@ Free image to text extension: https://www.devexthub.com/extract-text-from-image/
 
 #copytextfrompicture #imagetotext #ocr #chromeextension #shorts
 
+## Теги (Shorts)
+copy text from picture, how to copy text from a picture, copy text from image, picture to text,
+extract text from image, image to text, ocr chrome extension, free ocr, shorts
+
 ## Закреп-коммент шорта (мост на лонг + лендинг)
 Full version: https://youtu.be/q37YJIbCLp8
 Free in Chrome: https://www.devexthub.com/extract-text-from-image/?utm_source=youtube&utm_medium=video&utm_campaign=extracttext&utm_content=et_short4
