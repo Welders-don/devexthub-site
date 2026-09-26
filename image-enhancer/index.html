@@ -219,7 +219,9 @@
 
 <script>
 (function () {
-  var utm = "utm_source=devexthub_landing&utm_medium=referral&utm_campaign=image-enhancer";
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=image-enhancer";
   document.querySelectorAll("a.store-link").forEach(function (a) {
     a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
   });
