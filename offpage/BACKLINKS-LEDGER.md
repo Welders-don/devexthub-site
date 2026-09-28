@@ -79,6 +79,7 @@
 - Wall of Tools / EasyLaunch / LemonLaunch / Launch Streak (похоже один владелец): free, часть с бейджем, dofollow, DR 12-57. Максимум 1-2
 - MicroLaunch (только $39/$79 на /submit), Huzzler: не проверено. VerifiedDR от $29/мес: нет
 - nofollow / нет ссылки: BetaList, Indie Hackers, Extpose, Crx4Chrome, Chrome-Stats, ExtensionHub, awesome-lists. Peerlist, Launching Next: 403, не проверено
+СТАТУС 28.09: подвал «Also on: PH · Fazier · Uno» LIVE на главной (пуш b0989ca, проверено curl). Пакет `offpage/devhunt-fazier-uno-pack-2026-09-28.md`, подача за Денисом (Fazier → Uno → DevHunt), статусы ⬜.
 Отдельно форумы: `knowledge/offpage-forum-tactics-2026-09-28.md` (dev.to в теле статьи dofollow, проверено).
 
 ## Что догнать (открытые хвосты, ревизия 25.08)
