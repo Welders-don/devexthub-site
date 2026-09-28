@@ -1,5 +1,6 @@
 # Метаданные для заливки — PDF-to-Excel лонг #4 (pdf to csv)
 
+**ЗАЛИТ 28.09 = youtu.be/5U1cTz0daGo** (title укорочен Денисом до «How to Convert PDF to CSV for Free»).
 Файл: `pdf-anchor4-final.mp4` (собран 28.09: 1:58, 1920x1080, голос Puck, сабы Groq; первый how-to длиннее 35 с,
 пилот формата «поисковый лонг», см. knowledge/youtube-channel-warmup.md, разбор 28.09).
 Ключевой кластер: pdf to csv · convert pdf to csv · pdf to csv converter · convert pdf to csv free
@@ -59,5 +60,5 @@ extension converts PDF to CSV in your browser, with every value in its own cell.
 #pdftocsv #pdftoexcel #chromeextension #excel
 
 ## Закреп-коммент шорта (ставить на youtube.com)
-Full version: https://youtu.be/<ID лонга>
+Full version: https://youtu.be/5U1cTz0daGo
 Free in Chrome: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_short4

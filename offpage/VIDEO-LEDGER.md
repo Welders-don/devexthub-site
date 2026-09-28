@@ -10,6 +10,7 @@
 
 | Дата | Продукт | Тип | Views | ID | Название |
 |---|---|---|---|---|---|
+| 28.09 | PDF | лонг | —   | 5U1cTz0daGo | How to Convert PDF to CSV for Free (1:59, пилот поискового формата) |
 | 25.09 | ET  | шорт | —   | AEyvvazUzqM | Copy text from a picture in 2 ways |
 | 24.09 | ET  | лонг | —   | q37YJIbCLp8 | How to Copy Text From a Picture: 2 Free Ways in Chrome |
 | 22.09 | TVT | шорт | —   | JYlVIy2ZhG0 | Vimeo transcript in two clicks |
