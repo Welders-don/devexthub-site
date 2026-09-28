@@ -1,33 +1,45 @@
 # Метаданные для заливки — PDF-to-Excel лонг #4 (pdf to csv)
 
-Файл: `pdf-anchor4-final.mp4` (ещё не собран; ~28с, 1920x1080, голос Puck, сабы Groq)
+Файл: `pdf-anchor4-final.mp4` (собран 28.09: 1:25, 1920x1080, голос Puck, сабы Groq; первый how-to длиннее 35 с,
+пилот формата «поисковый лонг», см. knowledge/youtube-channel-warmup.md, разбор 28.09).
 Ключевой кластер: pdf to csv · convert pdf to csv · pdf to csv converter · convert pdf to csv free
-UTM: pdf_long4
+UTM: pdf_long4 (campaign = pdftoexcel, как в правиле 26.08; в прошлой версии файла стояло pdf-to-excel, исправлено)
+Card (подсказка) на 1:03 → youtu.be/lpsqHo6DUGk (smallpdf, PDF #3).
+Аудитория: НЕ для детей, без 18+.
 
 ## Title
 How to Convert PDF to CSV for Free (Chrome, No Upload)
 
 ## Описание
-When you copy a table out of a PDF and paste it into a spreadsheet, every row usually lands
-in one column and you end up splitting it by hand. This video shows how to convert PDF to CSV
-for free, so each value lands in its own cell.
+When you copy a table out of a PDF and paste it into a spreadsheet, every row lands in one
+column and you end up splitting it by hand. This video shows how to convert PDF to CSV for
+free, step by step, so each value lands in its own cell.
 
-The free Chrome extension works as a PDF to CSV converter right in your browser. Click the
-icon, drop the PDF, hit convert and choose Download .csv. The file opens with clean columns in
-Excel, Google Sheets or any tool that imports CSV. Text-based PDFs are read locally, so the
-file stays on your machine. No upload, no account.
+We use a two page bank statement. The free Chrome extension works as a PDF to CSV converter
+right in your browser: open the side panel, drop the PDF, hit convert and choose Download .csv.
+The file opens with clean columns in Excel or Google Sheets, date, description, debit, credit
+and balance. Text based PDFs are read locally, so the file stays on your machine. No upload,
+no account. Scanned PDFs go through AI mode, which reads the scan on our server.
 
-Step by step guide: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdf-to-excel&utm_content=pdf_long4
+Step by step guide: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_long4
+
+Chapters
+0:00 Why pasting a PDF table breaks
+0:14 Install and open the PDF
+0:27 Open the side panel
+0:38 Convert PDF to CSV and download
+0:53 The CSV in Excel, every value in its cell
+1:03 Scanned PDFs and Smallpdf
 
 #pdftocsv #pdftoexcel #csv #chromeextension
 
 ## Теги
 pdf to csv, convert pdf to csv, pdf to csv converter, convert pdf to csv free,
-how to convert pdf to csv, pdf table to csv, pdf to excel, chrome extension
+how to convert pdf to csv, pdf table to csv, bank statement to csv, pdf to excel, chrome extension
 
 ## Закреплённый комментарий (ставить на youtube.com, НЕ в Studio)
 Free PDF to CSV in Chrome, no sign-up:
-https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdf-to-excel&utm_content=pdf_long4
+https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_long4
 
 ---
 
@@ -46,4 +58,4 @@ extension converts PDF to CSV in your browser, with every value in its own cell.
 
 ## Закреп-коммент шорта (ставить на youtube.com)
 Full version: https://youtu.be/<ID лонга>
-Free in Chrome: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdf-to-excel&utm_content=pdf_short4
+Free in Chrome: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_short4
