@@ -1,8 +1,14 @@
 # Пакет подачи: Fazier · Uno Directory · DevHunt (28.09.2026)
 
+## ССЫЛКИ НА ФОРМЫ (проверены 28.09)
+1. Fazier: https://fazier.com/submit  → тариф Basic Free, «Submit Free with embed badge»
+2. Uno Directory: https://uno.directory/submit-tool  → бесплатный вариант с обратной ссылкой (попросит войти)
+3. DevHunt: https://devhunt.org/account/tools/new  → войти через GitHub
+
+
 Условия и rel проверены 28.09 по HTML (см. BACKLINKS-LEDGER, секция «Перепроверка каталогов 28.09»).
 Обратная ссылка стоит в подвале главной: строка «Also on: Product Hunt · Fazier · Uno Directory» (коммит 99bbfec).
-⚠️ Подавать ПОСЛЕ пуша подвала на сайт, иначе проверка обратной ссылки не пройдёт.
+Подвал на сайте с 28.09 (проверено), можно подавать.
 
 Порядок: Fazier (ждать до 30 дней) → Uno (сразу) → DevHunt (очередь ~6 нед). Все 4 продукта на каждой площадке.
 Описания на трёх площадках РАЗНЫЕ намеренно (дубли текста режут и каталоги, и AI-поиск).
@@ -12,17 +18,18 @@
 - Pricing: Free
 - Логотипы: `assets/pdf-to-excel-icon-128.png`, `assets/transcribe-icon-128.png`, `assets/extract-text-icon-128.png`, `assets/image-enhancer-icon-128.png` (если просят крупнее 128, скажи, отрендерю)
 - Скрины: те же, что на лендингах / в CWS
-- Website = ЛЕНДИНГ с UTM (вес на домен). Подставить площадку в utm_source: `fazier` / `uno` / `devhunt`
-  - PDF: https://www.devexthub.com/pdf-to-excel/?utm_source=SRC&utm_medium=directory&utm_campaign=offpage_pdftoexcel
-  - TVT: https://www.devexthub.com/transcribe-video-to-text/?utm_source=SRC&utm_medium=directory&utm_campaign=offpage_transcribe
-  - ET: https://www.devexthub.com/extract-text-from-image/?utm_source=SRC&utm_medium=directory&utm_campaign=offpage_extracttext
-  - IE: https://www.devexthub.com/image-enhancer/?utm_source=SRC&utm_medium=directory&utm_campaign=offpage_imageenhancer
+- Website: готовые ссылки с метками лежат в разделе каждой площадки, копировать как есть
 - Chrome Web Store (если есть отдельное поле): ссылки в `offpage/cws-canonical-urls.md`
 - ЧЕСТНОСТЬ TVT: субтитры YouTube бесплатно без входа; AI-транскрипция: 3 без входа, дальше бесплатный вход через Google, 10 в месяц. «No sign-up» про TVT НЕ писать.
 
 ---
 
-## 1. Fazier (fazier.com → Submit → Basic Free «with embed badge»)
+## 1. Fazier: https://fazier.com/submit
+Website (готовые ссылки, копировать как есть):
+- PDF: https://www.devexthub.com/pdf-to-excel/?utm_source=fazier&utm_medium=directory&utm_campaign=offpage_pdftoexcel
+- TVT: https://www.devexthub.com/transcribe-video-to-text/?utm_source=fazier&utm_medium=directory&utm_campaign=offpage_transcribe
+- ET: https://www.devexthub.com/extract-text-from-image/?utm_source=fazier&utm_medium=directory&utm_campaign=offpage_extracttext
+- IE: https://www.devexthub.com/image-enhancer/?utm_source=fazier&utm_medium=directory&utm_campaign=offpage_imageenhancer
 Угол: результат для пользователя.
 - Backlink location: https://www.devexthub.com/ (подвал)
 - Category: Productivity (IE можно Design/Photo, если есть)
@@ -45,7 +52,12 @@ IE
 
 ---
 
-## 2. Uno Directory (uno.directory → Submit, free-вариант с обратной ссылкой)
+## 2. Uno Directory: https://uno.directory/submit-tool
+Website:
+- PDF: https://www.devexthub.com/pdf-to-excel/?utm_source=uno&utm_medium=directory&utm_campaign=offpage_pdftoexcel
+- TVT: https://www.devexthub.com/transcribe-video-to-text/?utm_source=uno&utm_medium=directory&utm_campaign=offpage_transcribe
+- ET: https://www.devexthub.com/extract-text-from-image/?utm_source=uno&utm_medium=directory&utm_campaign=offpage_extracttext
+- IE: https://www.devexthub.com/image-enhancer/?utm_source=uno&utm_medium=directory&utm_campaign=offpage_imageenhancer
 Угол: коротко, «что это и кому». Листинг сразу после автопроверки ссылки.
 - Backlink URL: https://www.devexthub.com/
 - Если пишет «backlink not found»: скажи мне, добавлю строку в подвал и на лендинги.
@@ -57,7 +69,12 @@ IE: Free on-device AI photo enhancer for Chrome: unblur, sharpen and upscale ima
 
 ---
 
-## 3. DevHunt (devhunt.org → вход через GitHub → Submit, категория Browser Extension)
+## 3. DevHunt: https://devhunt.org/account/tools/new (вход через GitHub, категория Browser Extension)
+Website:
+- PDF: https://www.devexthub.com/pdf-to-excel/?utm_source=devhunt&utm_medium=directory&utm_campaign=offpage_pdftoexcel
+- TVT: https://www.devexthub.com/transcribe-video-to-text/?utm_source=devhunt&utm_medium=directory&utm_campaign=offpage_transcribe
+- ET: https://www.devexthub.com/extract-text-from-image/?utm_source=devhunt&utm_medium=directory&utm_campaign=offpage_extracttext
+- IE: https://www.devexthub.com/image-enhancer/?utm_source=devhunt&utm_medium=directory&utm_campaign=offpage_imageenhancer
 Угол: для разработчиков, как устроено. Очередь ~6 нед, пропуск за $49 НЕ берём.
 
 PDF
