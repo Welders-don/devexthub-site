@@ -22,6 +22,7 @@ The file opens with clean columns in Excel or Google Sheets, date, description, 
 and balance. Text based PDFs are read locally, so the file stays on your machine. No upload,
 no account. Scanned PDFs go through AI mode, which reads the scan on our server.
 
+Add to Chrome (free): https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf
 Step by step guide: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_long4
 
 Chapters
@@ -42,7 +43,8 @@ how to convert pdf to csv, pdf table to csv, bank statement to csv, pdf to excel
 
 ## Закреплённый комментарий (ставить на youtube.com, НЕ в Studio)
 Free PDF to CSV in Chrome, no sign-up:
-https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_long4
+Add to Chrome: https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf
+Guide: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_long4
 
 ---
 
@@ -56,6 +58,7 @@ PDF to CSV in one click, no more one-column mess #shorts
 
 ## Описание
 Full tutorial: https://youtu.be/5U1cTz0daGo
+Add to Chrome: https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf
 
 Pasting a PDF table into a spreadsheet dumps everything into one column. This free Chrome
 extension converts PDF to CSV in your browser, with every value in its own cell.
@@ -63,4 +66,5 @@ extension converts PDF to CSV in your browser, with every value in its own cell.
 
 ## Закреп-коммент шорта (ставить на youtube.com)
 Full version: https://youtu.be/5U1cTz0daGo
+Add to Chrome: https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf
 Free in Chrome: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_short4
