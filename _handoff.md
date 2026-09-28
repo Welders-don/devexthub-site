@@ -1,3 +1,33 @@
+# Handoff 2026-09-28 вечер — каталоги: Fazier PDF подан, остальное завтра по команде Дениса
+
+## Где остановились
+Денис попросил остановиться: сегодня нет времени, завтра продолжим, КОГДА ОН СКАЖЕТ. Ничего не выкладывать и не подавать самому.
+
+## Что сделано 28.09
+- Перепроверены каталоги (ledger, секция «Перепроверка каталогов 28.09»): новые free dofollow = Fazier, DevHunt, Uno Directory. SubmitAiTools nofollow, Future Tools без веса, Uneed требует 20 апвоутов. ExtensionLaunch: free скорее nofollow, privacy-ссылка dofollow (не делали).
+- Сайт LIVE: подвал главной «Also on: Product Hunt · Uno Directory» + бейдж Featured on Fazier (neutral, 250px) на главной И в подвале 4 лендингов (ca2e96a). НЕ СНИМАТЬ: условие free-листинга Fazier.
+- Лендинг TVT + 6 статей: убрано ложное «no sign-up» (58ebc72, LIVE).
+- **Fazier PDF ПОДАН**: аккаунт Nichola Chaus @nichola-chaus, slug convert-pdf-to-excel, лонч 28.10.2026.
+- Пакет полей: `offpage/devhunt-fazier-uno-pack-2026-09-28.md` (прямые ссылки на формы + готовые UTM).
+- Картинки Fazier (локально, не выложены): `releases/fazier-{pdf,ie,tvt,et}/` = logo-250 + gallery-* 1200x628. TVT/ET галерея = скрины секций лендинга (черновые, cand-* варианты рядом), IE/PDF = из CWS-галерей.
+
+## Следующий шаг (по команде Дениса)
+1. Fazier TVT, ET, IE по тому же флоу, что PDF:
+   3 комментария к чужим продуктам (засчитываются за аккаунт? не проверено, возможно нужны снова) → Product link = лендинг с utm fazier (бейдж уже стоит) → Topics Productivity / Chrome Extensions / 3-я по продукту → Description из пакета → Features + Use cases (написать под продукт) → лого + галерея + YouTube-лонг продукта (ID в VIDEO-LEDGER) → Pricing Free → Makers ок → Competitors + Makers Comment (написать под продукт) → дата → СНЯТЬ галку Premium $49 → Submit.
+2. Uno Directory (https://uno.directory/submit-tool), 4 продукта, backlink URL = https://www.devexthub.com/ (строка «Also on» в подвале).
+3. DevHunt (https://devhunt.org/account/tools/new), вход через GitHub, 4 продукта.
+4. После каждой подачи: строка в BACKLINKS-LEDGER.
+
+## Открытые решения Дениса
+- Главная обещает «No sign-up, ever» для всех, а у TVT теперь вход Google после 3 AI. Смягчить или оставить.
+- Бейдж Fazier 250px крупный; уменьшить можно после одобрения листинга.
+
+## Контекст
+- Грабли Fazier: проверка бейджа идёт по странице из Product link; Premium $49 отмечен по умолчанию на последнем шаге.
+- Лонги для поля YouTube: PDF TToK2n9zb-U (использован), остальные в offpage/VIDEO-LEDGER.md.
+
+---
+
 # Handoff 2026-09-24 поздний вечер — PDF 1.0.9 LIVE, ролик PDF #4 разблокирован
 
 ## Где остановились
