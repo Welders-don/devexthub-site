@@ -48,13 +48,15 @@ https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm
 
 # ШОРТ к лонгу №4
 
-Файл: `pdf-short4-final.mp4` (ещё не собран; ~12с, 1080x1920, голос Fenrir)
+Файл: `short/pdf-short4-final.mp4` (собран 28.09: 11.4с, 1080x1920, голос Fenrir по фразам, без караоке; сборка short/build_short4.sh)
 UTM: pdf_short4
 
 ## Title (Shorts)
-PDF table pasted into one column? Do this #shorts
+PDF to CSV in one click, no more one-column mess #shorts
 
 ## Описание
+Full tutorial: https://youtu.be/5U1cTz0daGo
+
 Pasting a PDF table into a spreadsheet dumps everything into one column. This free Chrome
 extension converts PDF to CSV in your browser, with every value in its own cell.
 #pdftocsv #pdftoexcel #chromeextension #excel
