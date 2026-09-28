@@ -13,6 +13,9 @@ PARTS=[
  "Got a scanned PDF instead? The extension spots it and offers AI mode, which reads the scan on our server and rebuilds the table.",
  "And unlike online converters such as Smallpdf, there's no account and no paywall when you download.",
  "That's how to convert a PDF to CSV for free, right in Chrome.",
+ "Got a long statement? Tick Split pages into separate sheets, and each page goes to its own sheet.",
+ "One tip. When Excel opens a CSV, it can turn a date like zero seven slash zero five into five July. To keep dates exactly as in the PDF, import the file with Data, From Text or CSV, and set that column to text.",
+ "And a quick heads up. On multi page statements, the page footer and the next page header can land between your rows, so give the sheet a quick look before you use it.",
 ]
 STYLE="Read this in a clear, friendly, confident tutorial voice at a natural pace: "
 KEY=os.environ["GEMINI_API_KEY"]

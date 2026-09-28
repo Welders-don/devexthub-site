@@ -1,10 +1,10 @@
 # Метаданные для заливки — PDF-to-Excel лонг #4 (pdf to csv)
 
-Файл: `pdf-anchor4-final.mp4` (собран 28.09: 1:25, 1920x1080, голос Puck, сабы Groq; первый how-to длиннее 35 с,
+Файл: `pdf-anchor4-final.mp4` (собран 28.09: 1:58, 1920x1080, голос Puck, сабы Groq; первый how-to длиннее 35 с,
 пилот формата «поисковый лонг», см. knowledge/youtube-channel-warmup.md, разбор 28.09).
 Ключевой кластер: pdf to csv · convert pdf to csv · pdf to csv converter · convert pdf to csv free
 UTM: pdf_long4 (campaign = pdftoexcel, как в правиле 26.08; в прошлой версии файла стояло pdf-to-excel, исправлено)
-Card (подсказка) на 1:03 → youtu.be/lpsqHo6DUGk (smallpdf, PDF #3).
+Card (подсказка) на 1:45 → youtu.be/lpsqHo6DUGk (smallpdf, PDF #3).
 Аудитория: НЕ для детей, без 18+.
 
 ## Title
@@ -13,7 +13,7 @@ How to Convert PDF to CSV for Free (Chrome, No Upload)
 ## Описание
 When you copy a table out of a PDF and paste it into a spreadsheet, every row lands in one
 column and you end up splitting it by hand. This video shows how to convert PDF to CSV for
-free, step by step, so each value lands in its own cell.
+free, step by step, so each value lands in its own cell, plus two tips that save you cleanup later.
 
 We use a two page bank statement. The free Chrome extension works as a PDF to CSV converter
 right in your browser: open the side panel, drop the PDF, hit convert and choose Download .csv.
@@ -26,10 +26,12 @@ Step by step guide: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?ut
 Chapters
 0:00 Why pasting a PDF table breaks
 0:14 Install and open the PDF
-0:27 Open the side panel
-0:38 Convert PDF to CSV and download
-0:53 The CSV in Excel, every value in its cell
-1:03 Scanned PDFs and Smallpdf
+0:27 Open the side panel and add the PDF
+0:38 Split pages and convert PDF to CSV
+0:59 The CSV in Excel, every value in its cell
+1:09 Tip, keep dates exactly as in the PDF
+1:26 Multi-page statements, check page breaks
+1:36 Scanned PDFs and Smallpdf
 
 #pdftocsv #pdftoexcel #csv #chromeextension
 
