@@ -25,6 +25,7 @@
 | MarketingDB | ~59 | 🚫 | 🚫 | 🚫 | 🚫 | УСЛОВИЯ ИСПОРТИЛИСЬ (скрин 30.07): free = NOFOLLOW + обязательный бейдж (reciprocal) — не берём. Dofollow только Premium $13 one-time (+ блог-статья, рассылка, X). $13 = на решение Дениса, деньги |
 | SubmitAiTools | — | ⬜ | ⬜ | ⬜ | ⬜ | free, за human-verification. Условия dofollow/бейдж с сервера НЕ пробить — Денису проверить глазами перед заливкой |
 | Startup Stash | ~72 | 🚫 | 🚫 | 🚫 | 🚫 | 03.08 ОТБРОШЕНО. Форма free = обманка: после сабмита PDF+ET пришло письмо «Next Steps» с ПЛАТНЫМ листингом (Basic $199/год, Premium $399/год). Без оплаты в каталог не попадаешь. bait-and-switch. НЕ платить, IE+TVT не лили |
+| Fazier | 83 (заявл.) | 🟡 | ⬜ | ⬜ | ⬜ | PDF подан 28.09 (Денис, аккаунт Nichola Chaus @nichola-chaus, free Basic), slug convert-pdf-to-excel, дата лонча 28.10.2026. Условие: бейдж featured neutral в подвале главной + 4 лендингов (НЕ снимать, иначе снимут листинг). Проверка ищет бейдж на странице из Product link. Premium $49 стоит галкой ПО УМОЛЧАНИЮ на последнем шаге, снимать. Free-лончи вне топа: Visit без nofollow (проверено 28.09) |
 | Uneed.best | ~75 | ⬜ | ⬜ | ⬜ | ⬜ | 03.08: free-листинг есть, но dofollow = платный перк ($29.99). Free ~nofollow, бейджа нет. Опционально, низкий приоритет. Поля: directories-batch-0803.md |
 
 ## Product Hunt (отдельно, не directory)
