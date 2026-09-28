@@ -69,6 +69,18 @@
 - неопубликованная страница (`/product/extract-text-from-image-eeelko`) = `noindex, follow`; опубликованные без robots-meta (индексируются).
 - ссылка на CWS со страницы продукта dofollow, но это вес стору, не домену.
 
+### 🔁 Перепроверка каталогов 28.09.2026 (rel смотрели curl-ом по чужим листингам, DR = заявленный, не мерили)
+- Fazier: free, условие = ссылка на Fazier с нашего сайта + ожидание до 30 дн. rel="noreferrer" без nofollow на 37 free /launches/*, index,follow. Заявлен DR 83+. БРАТЬ
+- DevHunt: free, вход через GitHub, очередь ~6 нед (пропуск за $49), есть категория Browser Extension. Ссылка без rel (dofollow). DR ~59-62. БРАТЬ, без reciprocal
+- Uno Directory (новая): free за обратную ссылку, листинг сразу, rel="noopener". Заявлен DR 67. Брать, если согласны на ссылку в футере
+- Uneed: УСЛОВИЯ ИЗМЕНИЛИСЬ: free-очередь до 5 мес, dofollow только при 20 апвоутах; Fast-track $14.99 = dofollow от 10 апвоутов. Без аудитории нет
+- SubmitAiTools: 🚫 nofollow на 25/25 листингов + бейдж. Закрыто
+- Future Tools: 🚫 ссылка через /go/ (302), /go/ закрыт в robots.txt → веса нет даже при листинге. Не ждём
+- Wall of Tools / EasyLaunch / LemonLaunch / Launch Streak (похоже один владелец): free, часть с бейджем, dofollow, DR 12-57. Максимум 1-2
+- MicroLaunch (только $39/$79 на /submit), Huzzler: не проверено. VerifiedDR от $29/мес: нет
+- nofollow / нет ссылки: BetaList, Indie Hackers, Extpose, Crx4Chrome, Chrome-Stats, ExtensionHub, awesome-lists. Peerlist, Launching Next: 403, не проверено
+Отдельно форумы: `knowledge/offpage-forum-tactics-2026-09-28.md` (dev.to в теле статьи dofollow, проверено).
+
 ## Что догнать (открытые хвосты, ревизия 25.08)
 1. **Future Tools — висит 22 дня** (подан 03.08, все 4). ПРОВЕРКА 25.08: в выдаче по `site:futuretools.io devexthub` наших продуктов НЕТ. Не окончательный пруф (движок криво отработал оператор site:), но сигнал: за 22 дня не залистились. Решение: написать Matt Wolfe ИЛИ списать. Приоритет низкий — одна площадка погоды не делает.
 2. **Product Hunt IE** — последний неиспользованный крупный free-канал. Network прогрет тремя лончами.
