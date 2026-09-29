@@ -10,6 +10,7 @@
 
 | Дата | Продукт | Тип | Views | ID | Название |
 |---|---|---|---|---|---|
+| 29.09 | PDF | шорт | —   | UtVVWrx9Wyk | PDF to CSV in one click, no more one-column mess (v2, голос одним треком) |
 | 28.09 | PDF | лонг | —   | 5U1cTz0daGo | How to Convert PDF to CSV for Free (1:59, пилот поискового формата) |
 | 25.09 | ET  | шорт | —   | AEyvvazUzqM | Copy text from a picture in 2 ways |
 | 24.09 | ET  | лонг | —   | q37YJIbCLp8 | How to Copy Text From a Picture: 2 Free Ways in Chrome |

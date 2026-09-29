@@ -68,3 +68,6 @@ extension converts PDF to CSV in your browser, with every value in its own cell.
 Full version: https://youtu.be/5U1cTz0daGo
 Add to Chrome: https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf
 Free in Chrome: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_short4
+
+## Шорт (29.09)
+ID: UtVVWrx9Wyk · https://youtube.com/shorts/UtVVWrx9Wyk · 12с, public 29.09 09:25 UTC · UTM pdf_short4 · тексты = short/upload.txt. v1 (рваный звук) на канал не попал/удалён.
