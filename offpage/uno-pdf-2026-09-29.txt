@@ -1,0 +1,37 @@
+UNO DIRECTORY: PDF (первый из четырёх, проходим путь, потом остальные)
+Форма: https://uno.directory/submit-tool → Sign In (email) → Choose Free Listing
+Ссылка на Uno уже стоит в подвале главной devexthub.com (проверено 29.09), бейдж ставить не надо.
+НЕ выбирать Paid $10.
+Строки в [скобках] = подсказка, их НЕ копировать. Копировать только текст под ними.
+
+
+[Tool name]
+Convert PDF to Excel
+
+[Website URL]
+https://www.devexthub.com/pdf-to-excel/?utm_source=uno&utm_medium=directory&utm_campaign=offpage_pdftoexcel
+
+[Tagline]
+Pull tables out of PDFs into Excel or CSV in one click
+
+[Description]
+Free Chrome extension that pulls tables out of PDFs into Excel or CSV, and turns Excel back into PDF. Built for bank statements, invoices and reports. Open the PDF, click once and get a clean spreadsheet instead of retyping numbers by hand. An optional AI mode handles scanned and messy tables. No account needed.
+
+[Category / Subcategory]
+Productivity (если есть подкатегория: Tools, Data & Analytics или Browser Extensions)
+
+[Featured image]
+releases/uno-pdf/PDF-uno-featured.png
+
+[Logo, если попросит]
+releases/uno-pdf/PDF-logo.png
+
+[Tags]
+pdf to excel
+pdf to csv
+bank statement converter
+chrome extension
+free
+
+[Backlink URL, если попросит на шаге проверки]
+https://www.devexthub.com/
