@@ -1,0 +1,32 @@
+UNO DIRECTORY: TVT (второй из четырёх)
+Форма: https://uno.directory/submit-tool → Free Listing. AI Autofill НЕ жать. Paid $10 НЕ выбирать.
+Бейдж Uno уже стоит на лендинге TVT, Verify Backlink должен пройти сразу.
+Строки в [скобках] = подсказка, их НЕ копировать.
+
+
+[Featured Image]
+releases/uno-tvt/TVT-uno-featured-16x9.png
+
+[Category]
+Video & Audio
+
+[Subcategory]
+Transcription (если нет, то Speech to Text или пусто)
+
+[Name]
+Transcribe Video to Text
+
+[Tagline]
+Timestamped transcripts of YouTube and other web videos
+
+[Description]
+Free Chrome extension that gives you a timestamped transcript of YouTube, Vimeo, Loom, Coursera and most web videos, laid out by speaker. Export it to Word, TXT or SRT subtitles in one click. YouTube captions are free and unlimited. For videos without captions it runs AI speech recognition in 50+ languages, with a free monthly allowance after a quick Google sign-in.
+
+[Website URL]  (внизу формы, обязательное)
+https://www.devexthub.com/transcribe-video-to-text/?utm_source=uno&utm_medium=directory&utm_campaign=offpage_transcribe
+
+[Affiliate / Promo Code]
+пусто
+
+[Listing Type]
+Free Listing → Verify Backlink → Submit & Go Live
