@@ -1,0 +1,32 @@
+UNO DIRECTORY: IE (четвёртый, последний)
+Форма: https://uno.directory/submit-tool → Free Listing. AI Autofill НЕ жать. Paid $10 НЕ выбирать.
+Бейдж Uno уже стоит на лендинге IE, Verify Backlink должен пройти сразу.
+Строки в [скобках] = подсказка, их НЕ копировать.
+
+
+[Featured Image]
+releases/uno-ie/IE-uno-featured-16x9.png
+
+[Category]
+Image & Design
+
+[Subcategory]
+Image Enhancement / Upscaler, если есть. Нет, тогда пусто
+
+[Name]
+Image Enhancer
+
+[Tagline]
+Upscale and unblur photos in your browser, no upload
+
+[Description]
+Free AI image enhancer for Chrome. Drop in a small or blurry photo and upscale it up to 4x, sharpen it or clean up compression artifacts. The AI model runs on your device, so your photos are never uploaded, and there is no watermark and no daily limit. Great for product shots, thumbnails, avatars and images saved from chats. It works best on small or compressed images and cannot fully rescue a shot that was out of focus in the camera.
+
+[Website URL]  (внизу формы, обязательное)
+https://www.devexthub.com/image-enhancer/?utm_source=uno&utm_medium=directory&utm_campaign=offpage_imageenhancer
+
+[Affiliate / Promo Code]
+пусто
+
+[Listing Type]
+Free Listing → Verify Backlink → Submit & Go Live
