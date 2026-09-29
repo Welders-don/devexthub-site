@@ -42,7 +42,9 @@ YouTube:
 https://www.youtube.com/watch?v=Gv99xOSFys8
 
 Competitors:
-Tactiq, Glasp, Notta, Otter.ai
+https://tactiq.io
+https://www.notta.ai
+https://otter.ai
 
 Makers comment:
 Hi Fazier! I built this because copying a transcript out of YouTube by hand is painful, and most tools stop at one plain block of text. This one gives you a readable script split by speaker with timestamps, and exports straight to Word or SRT. YouTube captions are free and unlimited. For videos without captions it runs AI speech recognition, with a free monthly allowance. Would love to hear which sites you want it to support next.
@@ -86,7 +88,9 @@ YouTube:
 https://www.youtube.com/watch?v=YBuAdO9E4cU
 
 Competitors:
-Copyfish, Google Lens, Text Blaze OCR, Project Naptha
+https://ocr.space/copyfish
+https://lens.google
+https://projectnaptha.com
 
 Makers comment:
 Hi Fazier! You know that moment when the text is right there on the screen but you cannot select it? That is what this fixes. Paste or upload an image and get copyable text in a second. The part I cared about most: recognition runs in your browser, so screenshots of private chats or documents never go to a server. It is free with no account. Tell me which language it reads worst for you, that is what I am tuning next.
@@ -129,7 +133,10 @@ YouTube:
 https://www.youtube.com/watch?v=QtE2CfgRJHo
 
 Competitors:
-Let's Enhance, Upscale.media, Upscayl, Pixelcut
+https://letsenhance.io
+https://www.upscale.media
+https://upscayl.org
+https://www.pixelcut.ai
 
 Makers comment:
 Hi Fazier! Most online upscalers want you to upload your photo, then add a watermark or a daily cap. This one runs the AI model right in your browser: no upload, no watermark, no limit. To be honest about where it works: it is great on small or compressed images, but it cannot rescue a shot that was out of focus in the camera. Feedback on tough images is very welcome.
