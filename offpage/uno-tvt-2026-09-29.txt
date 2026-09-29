@@ -1,3 +1,5 @@
+# ОТМЕНЕНО 29.09 (Денис): Uno для TVT/ET/IE не подаём, остаётся только PDF.
+
 UNO DIRECTORY: TVT (второй из четырёх)
 Форма: https://uno.directory/submit-tool → Free Listing. AI Autofill НЕ жать. Paid $10 НЕ выбирать.
 Бейдж Uno уже стоит на лендинге TVT, Verify Backlink должен пройти сразу.
