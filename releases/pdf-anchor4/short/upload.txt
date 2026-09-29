@@ -1,0 +1,43 @@
+PDF ШОРТ #4 — ТЕКСТЫ ДЛЯ ЗАЛИВКИ
+Файл: pdf-short4-final.mp4 (11.4с, 1080x1920) · UTM: pdf_short4
+Лонг этого захода: https://youtu.be/5U1cTz0daGo
+Настройки: «для детей» НЕТ, «18+» НЕТ
+
+═══════════════════════════════════════════════════════════════
+TITLE
+═══════════════════════════════════════════════════════════════
+PDF to CSV in one click, no more one-column mess #shorts
+
+
+═══════════════════════════════════════════════════════════════
+ОПИСАНИЕ
+═══════════════════════════════════════════════════════════════
+Full tutorial: https://youtu.be/5U1cTz0daGo
+Add to Chrome: https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf
+
+Pasting a PDF table into a spreadsheet dumps everything into one column. This free Chrome extension converts PDF to CSV in your browser, with every value in its own cell.
+#pdftocsv #pdftoexcel #chromeextension #excel
+
+
+═══════════════════════════════════════════════════════════════
+ТЕГИ (через запятую)
+═══════════════════════════════════════════════════════════════
+pdf to csv, convert pdf to csv, pdf to csv converter, convert pdf to csv free, pdf table to csv, bank statement to csv, pdf to excel, chrome extension
+
+
+═══════════════════════════════════════════════════════════════
+ЗАКРЕП-КОММЕНТ
+ставить на обычном youtube.com, НЕ в Studio. Сначала глянуть, нет ли уже своего.
+═══════════════════════════════════════════════════════════════
+Full version: https://youtu.be/5U1cTz0daGo
+Add to Chrome: https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf
+Free in Chrome: https://www.devexthub.com/blog/how-to-convert-pdf-to-csv/?utm_source=youtube&utm_medium=video&utm_campaign=pdftoexcel&utm_content=pdf_short4
+
+
+═══════════════════════════════════════════════════════════════
+ЧЕК-ЛИСТ ПОСЛЕ ЗАЛИВКИ
+═══════════════════════════════════════════════════════════════
+[ ] Закреп-коммент (текст выше, на youtube.com)
+[ ] Конечную заставку НЕ ставить, энд-карточка прожжена в футаже
+[ ] Превью для шортов не ставится, YouTube берёт кадр сам
+[ ] Прислать ID шорта: впишу в metadata.md и VIDEO-LEDGER
