@@ -35,8 +35,8 @@ Creators pulling quotes or subtitles from their own videos
 Researchers and journalists transcribing interviews and podcasts
 Anyone who wants to read a long video instead of watching it
 
-Logo: releases/fazier-tvt/logo-250.png
-Gallery: releases/fazier-tvt/gallery-1-hero.png, gallery-2-demo.png, gallery-3-how.png
+Logo: releases/fazier-tvt/upload/TVT-logo.png
+Gallery (скрины стора): releases/fazier-tvt/upload/TVT-gallery-1..4-*.png
 
 YouTube:
 https://www.youtube.com/watch?v=Gv99xOSFys8
@@ -81,8 +81,8 @@ Copying numbers from a photo of a receipt or invoice
 Pulling quotes out of infographics and scanned pages
 Working with private documents you do not want to upload anywhere
 
-Logo: releases/fazier-et/logo-250.png
-Gallery: releases/fazier-et/gallery-1-hero.png, gallery-2-demo.png, gallery-3-how.png
+Logo: releases/fazier-et/upload/ET-logo.png
+Gallery (скрины стора): releases/fazier-et/upload/ET-gallery-1..3-*.png
 
 YouTube:
 https://www.youtube.com/watch?v=YBuAdO9E4cU
@@ -126,8 +126,8 @@ Fixing thumbnails, avatars and images saved from chats
 Cleaning up blurry screenshots before sharing
 Upscaling private photos without sending them to a cloud service
 
-Logo: releases/fazier-ie/logo-250.png
-Gallery: releases/fazier-ie/gallery-1-gallery-5-ui.png, gallery-2-gallery-3-upscale.png, gallery-3-gallery-1-private.png, gallery-4-gallery-4-free.png
+Logo: releases/fazier-ie/upload/IE-logo.png
+Gallery (скрины стора): releases/fazier-ie/upload/IE-gallery-1..4-*.png
 
 YouTube:
 https://www.youtube.com/watch?v=QtE2CfgRJHo
