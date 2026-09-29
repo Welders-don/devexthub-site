@@ -1,0 +1,32 @@
+UNO DIRECTORY: ET (третий из четырёх)
+Форма: https://uno.directory/submit-tool → Free Listing. AI Autofill НЕ жать. Paid $10 НЕ выбирать.
+Бейдж Uno уже стоит на лендинге ET, Verify Backlink должен пройти сразу.
+Строки в [скобках] = подсказка, их НЕ копировать.
+
+
+[Featured Image]
+releases/uno-et/ET-uno-featured-16x9.png
+
+[Category]
+Productivity (или Image & Design)
+
+[Subcategory]
+OCR, если есть. Нет, тогда любое про image / text extraction или пусто
+
+[Name]
+Extract Text from Image
+
+[Tagline]
+Copy text from any image or screenshot, right on your device
+
+[Description]
+Free on-device OCR for Chrome. Paste a screenshot, upload a photo or point at an image on a page and get the text in a second, ready to copy or save as a .txt file. Recognition runs in your browser, so your images are never uploaded to a server. Reads dozens of languages and scripts, including Latin, Cyrillic, Greek, Arabic, Hindi, Japanese, Korean and Thai. No account, no sign-up.
+
+[Website URL]  (внизу формы, обязательное)
+https://www.devexthub.com/extract-text-from-image/?utm_source=uno&utm_medium=directory&utm_campaign=offpage_extracttext
+
+[Affiliate / Promo Code]
+пусто
+
+[Listing Type]
+Free Listing → Verify Backlink → Submit & Go Live
