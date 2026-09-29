@@ -73,7 +73,7 @@
 
 ### 🔁 Перепроверка каталогов 28.09.2026 (rel смотрели curl-ом по чужим листингам, DR = заявленный, не мерили)
 - Fazier: free, условие = ссылка на Fazier с нашего сайта + ожидание до 30 дн. rel="noreferrer" без nofollow на 37 free /launches/*, index,follow. Заявлен DR 83+. БРАТЬ
-- DevHunt: free, вход через GitHub, очередь ~6 нед (пропуск за $49), есть категория Browser Extension. Ссылка без rel (dofollow). DR ~59-62. БРАТЬ, без reciprocal
+- DevHunt: Semrush 29.09 AS 37, трафик 8.5K, 11.6K ключей, 2.7K ref.domains. free, вход через GitHub, очередь ~6 нед (пропуск за $49), есть категория Browser Extension. Ссылка без rel (dofollow). DR ~59-62. БРАТЬ, без reciprocal
 - Uno Directory (новая): free за обратную ссылку, листинг сразу, rel="noopener". Заявлен DR 67. Брать, если согласны на ссылку в футере
 - Uneed: УСЛОВИЯ ИЗМЕНИЛИСЬ: free-очередь до 5 мес, dofollow только при 20 апвоутах; Fast-track $14.99 = dofollow от 10 апвоутов. Без аудитории нет
 - SubmitAiTools: 🚫 nofollow на 25/25 листингов + бейдж. Закрыто

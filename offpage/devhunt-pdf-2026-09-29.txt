@@ -1,0 +1,43 @@
+DEVHUNT: PDF (первый из четырёх, проходим путь, потом остальные)
+Форма: https://devhunt.org/account/tools/new → вход через GitHub
+Семраш 29.09: AS 37, трафик 8.5K/мес, ссылка без rel (dofollow). Лучшая из трёх площадок.
+Очередь ~6 недель. Пропуск очереди за $49 НЕ брать. Бейдж ставить не надо.
+Строки в [скобках] = подсказка, их НЕ копировать.
+Точной формы я не видел (закрыта входом): если поле не совпало, скинь скрин.
+
+
+[Tool name]
+Convert PDF to Excel
+
+[Slogan / Tagline]
+PDF tables to Excel or CSV, parsed in the browser
+
+[Website URL]
+https://www.devexthub.com/pdf-to-excel/?utm_source=devhunt&utm_medium=directory&utm_campaign=offpage_pdftoexcel
+
+[Description]
+Chrome extension that detects tables in PDF files and exports them to XLSX or CSV, plus XLSX back to PDF. Parsing happens in the browser. An optional AI mode helps with scanned or messy tables like bank statements and invoices. Free, no account.
+
+[Pricing]
+Free
+
+[Categories]
+Browser Extension (если можно вторую: Productivity)
+
+[GitHub repo]
+пусто (репо приватный)
+
+[Logo]
+releases/devhunt-pdf/PDF-logo.png
+
+[Screenshots / Gallery, по порядку]
+releases/devhunt-pdf/PDF-screen-1.png
+releases/devhunt-pdf/PDF-screen-2.png
+releases/devhunt-pdf/PDF-screen-3.png
+releases/devhunt-pdf/PDF-screen-4.png
+
+[Demo video]
+https://www.youtube.com/watch?v=TToK2n9zb-U
+
+[Launch week]
+ближайшая свободная бесплатная
