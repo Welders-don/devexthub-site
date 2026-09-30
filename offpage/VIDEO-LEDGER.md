@@ -10,6 +10,7 @@
 
 | Дата | Продукт | Тип | Views | ID | Название |
 |---|---|---|---|---|---|
+| 30.09 | IE  | лонг | —   | 3299lRqbMaU | How to Unblur a Picture for Free (1:53, второй поисковый лонг после PDF #4) |
 | 29.09 | PDF | шорт | —   | UtVVWrx9Wyk | PDF to CSV in one click, no more one-column mess (v2, голос одним треком) |
 | 28.09 | PDF | лонг | —   | 5U1cTz0daGo | How to Convert PDF to CSV for Free (1:59, пилот поискового формата) |
 | 25.09 | ET  | шорт | —   | AEyvvazUzqM | Copy text from a picture in 2 ways |
@@ -45,7 +46,7 @@ URL любого: `https://youtu.be/<ID>` (или `youtube.com/shorts/<ID>`).
 ## Раскладка по продуктам
 - **PDF** — 7 роликов, лидер канала (708 + 311 + 47…). Топ = scanned PDF to Excel (a0KIAtDSc6U, 708).
 - **TVT** — 6. Сильный: YouTube transcript 1 click (o4_9YZLv7Lo, 217). Свежий заход #3 Vimeo: лонг LhE12gD3tU8 (21.09, tvt_long3) + шорт JYlVIy2ZhG0 (22.09, tvt_short3).
-- **IE** — 6. Ровно: 102 / 83 / 61 / 35 + заход #3 (6HlH8j-XZUg / _NZXDZdRGOg, bulk image upscaler).
+- **IE** — 7. Ровно: 102 / 83 / 61 / 35 + заход #3 (6HlH8j-XZUg / _NZXDZdRGOg, bulk image upscaler). Заход #4 how to unblur a picture: лонг 3299lRqbMaU (30.09, ie_long4, 1:53, сборка Imageenhancer/releases/ie-anchor4).
 - **ET** — 8. Заход #4 (copy text from picture, монтаж «2 способа» из готовых футажей): лонг q37YJIbCLp8 (24.09, et_long4), шорт AEyvvazUzqM (25.09, et_short4). Пик: copy text from image (evGF5JxPbFc, 137). Заход #3: I1E3OQ7vhmU / bJamqjo8r7s (jpg to text free).
 
 ## Заметки
