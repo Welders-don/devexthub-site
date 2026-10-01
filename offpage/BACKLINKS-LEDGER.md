@@ -79,6 +79,7 @@
 - SubmitAiTools: 🚫 nofollow на 25/25 листингов + бейдж. Закрыто
 - Future Tools: 🚫 ссылка через /go/ (302), /go/ закрыт в robots.txt → веса нет даже при листинге. Не ждём
 - Wall of Tools / EasyLaunch / LemonLaunch / Launch Streak (похоже один владелец): free, часть с бейджем, dofollow, DR 12-57. Максимум 1-2
+  - 01.10 Semrush (скрин Дениса) lemonlaunch.com: AS 12, organic traffic 7, 339 ключей, 283 ref.domains → НИЖЕ порога (AS ≥20 + живой трафик), НЕ брать.
 - MicroLaunch (только $39/$79 на /submit), Huzzler: не проверено. VerifiedDR от $29/мес: нет
 - nofollow / нет ссылки: BetaList, Indie Hackers, Extpose, Crx4Chrome, Chrome-Stats, ExtensionHub, awesome-lists. Peerlist, Launching Next: 403, не проверено
 СТАТУС 28.09: подвал «Also on: PH · Fazier · Uno» LIVE на главной (пуш b0989ca, проверено curl). Пакет `offpage/devhunt-fazier-uno-pack-2026-09-28.md`, подача за Денисом (Fazier → Uno → DevHunt), статусы ⬜.
