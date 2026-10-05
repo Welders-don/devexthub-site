@@ -66,4 +66,4 @@ Fazier/Uno/PitchWall, YouTube), новые статьи не пишем.
 Ноль кликов на поз 8.6 при 74 показах = в пределах шума (ожидание ~1-2 клика), это не доказательство.
 Гипотеза: title /image-enhancer/ «Upscale Small, Blurry Images 4x | Free AI Enhancer for Chrome»
 не содержит фразы «image enhancer» и слова «extension», а запрос «image enhancer chrome extension»
-(поз 7.6) ищет именно их. Правку сниппета предложил Денису, решение за ним.
+(поз 7.6) ищет именно их. Правка залита 05.10 по ✔ Дениса (24b32ca): title → «Image Enhancer Chrome Extension: Upscale Blurry Images 4x Free», og:title и description не трогали. Замер CTR страницы за 28 дней ~26.10 (опора ДО: 74 пок, 0 кл, поз 8.6).
