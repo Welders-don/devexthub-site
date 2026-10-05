@@ -1,3 +1,29 @@
+# Handoff 2026-10-05 — GSC + Umami разобраны, title IE, store-click, devnode24 снят
+
+## Где остановились
+Аналитика сайта разобрана двумя приборами, две правки на сайте LIVE (push сделан). Ничего не горит.
+
+## Ждёт Дениса
+1. **GA4 карточек стора через 1-2 недели** (за те же даты, что и Umami с 05.10): сверю `utm_source=devexthub_landing` в GA4 с `store-click` в Umami. В GA4 сильно больше = Umami теряет визиты (копать в блокировщики).
+2. **PitchWall**: напоминание сегодня 05.10 20:00 CN (подаём все 4).
+3. Капитан: ответ Naomi 05-06.10 (таймер 06.10 10:00 CN), потом 1.3.1 с причёской (план в `~/projects/Capitan/_handoff.md`).
+
+## Что сделано 05.10
+- **GSC** (два экспорта: 3 мес `releases/gsc-2026-10-05/`, 28 дней `releases/gsc-2026-10-05-28d/`): клики 10 → 14, показы ~25/день, позиция дрейфует вверх. На 1-й странице: copy-text-on-pc 8.5, /image-enhancer/ 8.6, can-chatgpt-transcribe 8.7, /pdf-to-excel/ 7.8. TVT-лендинг поз 49 = главная цель ссылок. Три best-статьи от 16.08 7 недель без показов (живые, best-pdf в индексе). Разбор: `knowledge/gsc-devexthub-search-2026-10-05.md` (проект) + `~/workspace/knowledge/gsc-devexthub-search-2026-10-05.md` (недельный).
+- **Title /image-enhancer/** → «Image Enhancer Chrome Extension: Upscale Blurry Images 4x Free» (24b32ca, LIVE). Замер CTR таймером 26.10 09:00 CN (ДО: 74 пок / 0 кл / поз 8.6).
+- **Umami** (`knowledge/umami-devexthub-2026-10-05.md`): сайт без /app/ 22 → 87 сессий/нед за 3 недели, /app/ ~120/нед. Источники с 21.09: прямой 133, CWS 24, google 10, YouTube UTM ~17, PH 4, chatgpt 4, Fazier 3, Uno 2, outreach 0.
+- **ChatGPT**: в 18 Custom GPT ссылки на ЛЕНДИНГИ (так задумано 01.08), `utm_source=chatgpt.com` ставит сам ChatGPT. 11 заходов на сайт с 16.09, на карточку стора Капитана в GA4 181 сессия: разные приборы, не противоречие. Менять ссылки в GPT не будем (закрываются 11.12, решение Дениса).
+- **store-click** (fbbaad2, LIVE): 97 ссылок в стор на 42 страницах размечены `data-umami-event="store-click"` + `ext`. Проверено Lightpanda на живой странице (событие уходит). Правило для новых ссылок записано в PROJECT.md.
+- **Баг в /app/**: «Get the extension» с 18.09 вёл на чужой пустой ID gkbpjh…, исправлено на mgblgaahjeahphiahfakjiabnheanbhj (тот же коммит).
+- **Аутрич YT**: outreach-визитов 0, вторую волну НЕ собираем (Денис). Письма обещали кредит 40 мин, с 03.10 он 30.
+- **IONOS**: devnode24-блок 8443 удалён (неделя замера = 1 сканер Palo Alto). capitan.conf вынесен в /root/nginx-bak, туда же devexthub-main.conf.bak-cvt. Капитан и IE 200.
+
+## Контекст / грабли
+- Тестовый pageview Lightpanda (DE, ~03:3x UTC 05.10) лёг в Umami, событие store-click в БД НЕ писалось (fetch застаблен).
+- GSC Pages/Queries за 3 месяца перекошены августом, для текущей картины брать Last 28 days.
+
+---
+
 # Handoff 2026-10-01 — аутрич YouTube, плагины Claude, каталоги закрыты, TVT #4 ждёт решения
 
 ## Где остановились
