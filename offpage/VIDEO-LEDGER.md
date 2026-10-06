@@ -29,7 +29,7 @@
 | 27.08 | ET  | шорт | 137 | evGF5JxPbFc | Copy text from an image on a website |
 | 26.08 | ET  | лонг | 43  | YBuAdO9E4cU | How to Copy Text From an Image in Chrome |
 | 25.08 | PDF | шорт | 311 | 1ntwjh9Q2ng | Bank statement PDF to Excel in one click |
-| 22.08 | PDF | лонг | 12  | TToK2n9zb-U | How to Convert a Bank Statement PDF to Excel |
+| 22.08 | PDF | лонг (30 с, 16:9) | 12  | TToK2n9zb-U | How to Convert a Bank Statement PDF to Excel |
 | 20.08 | TVT | шорт | 217 | o4_9YZLv7Lo | Get a YouTube transcript in 1 click |
 | 17.08 | TVT | лонг (35 с, 16:9) | 66  | Gv99xOSFys8 | Free YouTube Transcript Generator in Chrome |
 | 16.08 | IE  | шорт | 83  | EQdCMQYBb5o | Unblur & Enhance Any Photo Free — On-Device AI |
