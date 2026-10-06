@@ -24,3 +24,14 @@
 - how-to-copy-text-from-an-image-on-pc: убрана неправда «встроенного способа нет» (Snipping Tool Text actions, Lens на Chromebook), флоу ET описан как есть (Start selection, file:// не работает → Upload File / Ctrl+V), тест: чек 0 ошибок из 66 слов, слайд 1 из 50, 4 с повтор. 2 скрина.
 - Замер ~03.11 (28 дней после пуша). ДО (28д до 02.10): on-pc поз 8.5 / 157 пок / 3 кл; chatgpt поз 8.7 / 68 пок / 0 кл.
 - Добавлено 06.10: блок «What the built-in tools don't do» (+ Add selection копит области, Download .txt, любая ОС vs Text actions только Win11, выбор алфавита из 13, Lens шлёт в Google). Кабинет: метка говорящего только при смене (24d5cdf). ОДНОВРЕМЕННО поменяли текст, картинки, свежесть (lastmod) → если позиция сдвинется, причину не разделить.
+
+## Эксперимент «одна правка = одна статья» (06.10, по просьбе Дениса)
+sitemap lastmod у этих трёх НЕ менялся, title/meta description НЕ менялись (иначе свежесть и сниппет смешаются с правкой).
+| статья | единственная правка | база 28д до 02.10 (кл/пок/поз) | база 3 мес |
+|---|---|---|---|
+| best-ocr-chrome-extension | ТЕКСТ: честный флоу (рамка вместо «один клик», было «избегайте рамку») + блок «How it did in our test» (чек 0/66, слайд 1/50, 15 с/4 с) | 4 / 260 / 14.1 | 4 / 1214 / 35.7 |
+| how-to-copy-text-from-an-image | КАРТИНКИ: 2 скрина ET (et-pc-select/result), текст не тронут | 1 / 11 / 31.0 | 1 / 779 / 65.8 |
+| how-to-get-a-youtube-transcript | ВИДЕО: iframe youtube-nocookie Gv99xOSFys8 (35 с) + VideoObject | 0 / 0 / - | 0 / 24 / 79.5 |
+Плюс 06.10 раньше (смешанная правка, текст+картинки+lastmod): how-to-copy-text-from-an-image-on-pc, can-chatgpt-transcribe-a-video.
+Ограничения: показов мало (кроме best-ocr), один замер = наблюдение, не вывод. Замер ~03.11 (28д после 06.10), Performance → Pages, Last 28 days.
+Отложено до замера (иначе вторая переменная): best-ocr meta description и FAQ «in one click»; youtube-transcript «laid out speaker by speaker» (на пути субтитров спикеров нет) и «over 50 languages» не сверено.

@@ -31,7 +31,7 @@
 | 25.08 | PDF | шорт | 311 | 1ntwjh9Q2ng | Bank statement PDF to Excel in one click |
 | 22.08 | PDF | лонг | 12  | TToK2n9zb-U | How to Convert a Bank Statement PDF to Excel |
 | 20.08 | TVT | шорт | 217 | o4_9YZLv7Lo | Get a YouTube transcript in 1 click |
-| 17.08 | TVT | лонг | 66  | Gv99xOSFys8 | Free YouTube Transcript Generator in Chrome |
+| 17.08 | TVT | лонг (35 с, 16:9) | 66  | Gv99xOSFys8 | Free YouTube Transcript Generator in Chrome |
 | 16.08 | IE  | шорт | 83  | EQdCMQYBb5o | Unblur & Enhance Any Photo Free — On-Device AI |
 | 13.08 | IE  | лонг | 102 | QtE2CfgRJHo | Free AI Image Upscaler & Unblur in Chrome |
 | 05.08 | ET  | шорт | 34  | 7um6pb1H4jo | Copy text from any photo in one click |
