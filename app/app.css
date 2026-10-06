@@ -109,3 +109,18 @@
 .xp-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; transition: border-color .15s, transform .15s; }
 .xp-card:hover { border-color: var(--green); transform: translateY(-2px); }
 .xp-card img { flex: none; border-radius: 8px; }
+
+/* Остальные продукты в левой колонке (06.10): видны сразу, колонка липнет при прокрутке */
+.app-side { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 84px; }
+.app-side .app-list { max-height: calc(100vh - 420px); min-height: 120px; overflow-y: auto; }
+.side-tools { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.side-tools h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.side-tools a { display: flex; align-items: center; gap: 10px; padding: 6px 4px; border-radius: 8px; color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 600; }
+.side-tools a:hover, .side-tools a:focus-visible { background: var(--bg-soft); color: var(--green); }
+.side-tools img { flex: none; border-radius: 6px; }
+@media (max-width: 860px) {
+  .app-side { position: static; }
+  .app-side .app-list { max-height: 40vh; }
+  /* на телефоне блок сдвигал сам транскрипт за экран; там остаётся блок внизу страницы */
+  .side-tools { display: none; }
+}
