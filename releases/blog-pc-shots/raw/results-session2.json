@@ -1,0 +1,44 @@
+[
+  {
+    "label": "slide en (first OCR after browser restart)",
+    "ms": 7041,
+    "sawDownload": false,
+    "sawEngineHint": true,
+    "err": null,
+    "text": "Q3 LOGISTICS REVIEW\nWarehouse throughput up 18 percent after the\nnew picking route rolled out in May.\nAverage order cycle time: 41 hours\nReturns processed same day: 92 percent\nDamaged in transit: O.7 percent of volume\nTwo sites still run the old scanner firmware\nSource: internal ops dashboard, week 39",
+    "acc": {
+      "charErrors": 1,
+      "chars": 302,
+      "wordErrors": 1,
+      "words": 50
+    }
+  },
+  {
+    "label": "receipt latin #1 (model not cached)",
+    "ms": 10765,
+    "sawDownload": true,
+    "sawEngineHint": false,
+    "err": null,
+    "text": "HARBOR LANE SUPPLY CO.\n214 Harbor Lane, Unit 3\nReceipt #A-20481 Oct 2, 2026 14:37\nItem Qty Price\nCotton work gloves, size L 2 $14.98\nMasking tape 48 mm x 50 m 3 $11.37\nDrill bit set, 21 pieces 1 $27.50\nLED bulb 9W warm white 4 $15.96\nSubtotal $69.81\nSales tax 8.25% $5.76\nTotal $75.57\nThank you! Returns accepted within 30 days with this receipt.",
+    "acc": {
+      "charErrors": 0,
+      "chars": 346,
+      "wordErrors": 0,
+      "words": 66
+    }
+  },
+  {
+    "label": "receipt latin #2 (warm)",
+    "ms": 4333,
+    "sawDownload": false,
+    "sawEngineHint": true,
+    "err": null,
+    "text": "HARBOR LANE SUPPLY CO.\n214 Harbor Lane, Unit 3\nReceipt #A-20481 Oct 2, 2026 14:37\nItem Qty Price\nCotton work gloves, size L 2 $14.98\nMasking tape 48 mm x 50 m 3 $11.37\nDrill bit set, 21 pieces 1 $27.50\nLED bulb 9W warm white 4 $15.96\nSubtotal $69.81\nSales tax 8.25% $5.76\nTotal $75.57\nThank you! Returns accepted within 30 days with this receipt.",
+    "acc": {
+      "charErrors": 0,
+      "chars": 346,
+      "wordErrors": 0,
+      "words": 66
+    }
+  }
+]

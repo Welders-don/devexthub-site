@@ -1,0 +1,30 @@
+[
+  {
+    "label": "receipt en #1 (first OCR after install, repeat)",
+    "ms": 14857,
+    "sawDownload": false,
+    "sawEngineHint": true,
+    "err": null,
+    "text": "HARBOR LANE SUPPLY CO.\n214 Harbor Lane, Unit 3\nReceipt #A-20481 Oct 2, 2026 14:37\nItem Qty Price\nCotton work gloves, size L 2 $14.98\nMasking tape 48 mm x 50 m 3 $11.37\nDrill bit set, 21 pieces 1 $27.50\nLED bulb 9W warm white 4 $15.96\nSubtotal $69.81\nSales tax 8.25% $5.76\nTotal $75.57\nThank you! Returns accepted within 30 days with this receipt.",
+    "acc": {
+      "charErrors": 0,
+      "chars": 346,
+      "wordErrors": 0,
+      "words": 66
+    }
+  },
+  {
+    "label": "receipt en #2 (warm, repeat)",
+    "ms": 3818,
+    "sawDownload": false,
+    "sawEngineHint": true,
+    "err": null,
+    "text": "HARBOR LANE SUPPLY CO.\n214 Harbor Lane, Unit 3\nReceipt #A-20481 Oct 2, 2026 14:37\nItem Qty Price\nCotton work gloves, size L 2 $14.98\nMasking tape 48 mm x 50 m 3 $11.37\nDrill bit set, 21 pieces 1 $27.50\nLED bulb 9W warm white 4 $15.96\nSubtotal $69.81\nSales tax 8.25% $5.76\nTotal $75.57\nThank you! Returns accepted within 30 days with this receipt.",
+    "acc": {
+      "charErrors": 0,
+      "chars": 346,
+      "wordErrors": 0,
+      "words": 66
+    }
+  }
+]
