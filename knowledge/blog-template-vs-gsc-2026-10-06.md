@@ -35,3 +35,13 @@ sitemap lastmod у этих трёх НЕ менялся, title/meta description
 Плюс 06.10 раньше (смешанная правка, текст+картинки+lastmod): how-to-copy-text-from-an-image-on-pc, can-chatgpt-transcribe-a-video.
 Ограничения: показов мало (кроме best-ocr), один замер = наблюдение, не вывод. Замер ~03.11 (28д после 06.10), Performance → Pages, Last 28 days.
 Отложено до замера (иначе вторая переменная): best-ocr meta description и FAQ «in one click»; youtube-transcript «laid out speaker by speaker» (на пути субтитров спикеров нет) и «over 50 languages» не сверено.
+
+## Эксперимент на НЕПРОИНДЕКСИРОВАННЫХ (06.10, ✔ Дениса): цель = попадание в индекс
+Обе висели в «Crawled - currently not indexed» (срез 20.09), 0 показов за 3 мес. lastmod/title/description не трогали.
+| статья | правка |
+|---|---|
+| how-to-convert-a-bank-statement-pdf-to-excel | ВИДЕО TToK2n9zb-U (30 с) + VideoObject; плюс шаги под реальный флоу (перетащить в панель) и убрано «sum a column» |
+| how-to-convert-pdf-to-excel-on-mac | КАРТИНКИ pdf-mac-panel/result (живой 1.1.0, рендер xlsx); плюс шаги под реальный флоу и убрано «Numbers stay real numbers» |
+Шаги правили, потому что под видео/скринами старый текст противоречил кадру. Это вторая переменная, честно.
+how-to-transcribe-song-lyrics-from-a-video: ждёт решения Дениса (А честный тест / Б сначала Groq для музыки), см. Capitan/knowledge/asr-singing-test-2026-10-06.md.
+Склейка PDF (csv + 2 донора) НЕ тронута. Проверка: URL Inspection / Coverage, середина октября и 03.11.
