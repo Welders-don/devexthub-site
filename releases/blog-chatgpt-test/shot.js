@@ -60,9 +60,9 @@ const db = require(path.join(SRV, 'services/db'));
   await page.evaluate(() => {
     const b = document.querySelector('.js-body');
     window.scrollTo(0, b.getBoundingClientRect().top + window.scrollY - 100);
-    const p = [...b.querySelectorAll('*')].find((e) => e.children.length === 0 && /We choose to go to the moon/i.test(e.textContent));
+    const p = [...b.querySelectorAll('*')].find((e) => e.children.length === 0 && /^President Pitzer/.test(e.textContent.trim()));
     let box = p.parentElement; while (box && box.scrollHeight <= box.clientHeight + 2) box = box.parentElement;
-    box.scrollTop += p.getBoundingClientRect().top - box.getBoundingClientRect().top - 120;
+    box.scrollTop += p.getBoundingClientRect().top - box.getBoundingClientRect().top - 250;
   });
   await page.waitForTimeout(300);
   await page.screenshot({ path: path.join(HERE, 'cab-transcript.png'), clip: await col() });
@@ -72,6 +72,8 @@ const db = require(path.join(SRV, 'services/db'));
   await page.waitForTimeout(300);
   await page.screenshot({ path: path.join(HERE, 'cab-readable.png'), clip: await col() });
   console.log('tabs:', await page.locator('.tab').allTextContents());
+  await page.locator('.tab', { hasText: 'Transcript' }).first().click();
+  console.log('labels visible/total:', await page.$$eval('.seg-speaker', (a) => [a.filter((e) => getComputedStyle(e).visibility !== 'hidden').length, a.length]), 'rows:', await page.locator('.seg').count());
 
   await browser.close();
   await db.query(`DELETE FROM polishes WHERE transcription_id=$1`, [tid]);
