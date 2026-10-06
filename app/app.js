@@ -446,12 +446,27 @@
 
   /* Две дороги: у новых записей есть сегменты с таймкодами — показываем как в панели;
      у старых их нет, и текст режется на абзацы на лету. */
+  /* Метка говорящего только при смене (Денис 06.10: «Speaker 4» на каждом абзаце монолога
+     выглядит как поломка). Один говорящий на всю запись: меток нет вовсе. */
+  function speakerMarks(groups) {
+    var seen = {};
+    groups.forEach(function (p) { if (p.s != null) seen[p.s] = 1; });
+    groups.multi = Object.keys(seen).length > 1;
+    var prev = null;
+    groups.forEach(function (p) {
+      p.mark = groups.multi && p.s != null && p.s !== prev;
+      if (p.s != null) prev = p.s;
+    });
+    return groups;
+  }
+
   function transcriptBlock(data) {
     var box = document.createElement('div');
     box.className = 'transcript';
 
     if (data.segments && data.segments.length) {
-      groupSegments(data.segments).forEach(function (p) {
+      var groups = speakerMarks(groupSegments(data.segments));
+      groups.forEach(function (p) {
         var row = document.createElement('div');
         row.className = 'seg';
         var time = document.createElement('span');
@@ -460,10 +475,12 @@
         var txt = document.createElement('span');
         txt.textContent = p.text;
         row.appendChild(time);
-        if (p.s != null) {
+        if (p.s != null && groups.multi) {
           var who = document.createElement('span');
           who.className = 'seg-speaker';
           who.textContent = t('speaker', { n: p.s + 1 });
+          // тот же говорящий: метку прячем, но место держим, иначе текст скачет по ширине
+          if (!p.mark) who.style.visibility = 'hidden';
           row.appendChild(who);
         }
         row.appendChild(txt);
@@ -699,9 +716,9 @@
     if (data.segments && data.segments.length && !state.noStamps) {
       // абзац и его таймкод разными строками: в Word это читается как текст с метками,
       // а не как расшифровка субтитров по одному предложению
-      return groupSegments(data.segments)
+      return speakerMarks(groupSegments(data.segments))
         .map(function (p) {
-          var who = p.s != null ? ' ' + t('speaker', { n: p.s + 1 }) : '';
+          var who = p.mark ? ' ' + t('speaker', { n: p.s + 1 }) : '';
           return '[' + fmtTime(p.t) + ']' + who + '\n' + p.text;
         })
         .join('\n\n');
