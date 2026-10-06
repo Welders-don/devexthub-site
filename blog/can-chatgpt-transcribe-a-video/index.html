@@ -7,19 +7,20 @@
 <link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Can ChatGPT Transcribe a Video? (And What to Use Instead) | Devexthub</title>
-<meta name="description" content="Can ChatGPT transcribe a YouTube or other video? Not on its own. Here's the workflow that works: get the transcript in your browser, then paste it into ChatGPT. Free to start.">
+<meta name="description" content="Can ChatGPT transcribe a YouTube or other video? Not from a link, and video uploads are not supported. We tested the workflow that works on a 24-minute speech: accuracy, timings, screenshots.">
 <link rel="canonical" href="https://www.devexthub.com/blog/can-chatgpt-transcribe-a-video/">
 <meta property="og:title" content="Can ChatGPT Transcribe a Video? (And What to Use Instead)">
-<meta property="og:description" content="ChatGPT can't watch or listen to a video. Generate the transcript in your browser first, then paste it into ChatGPT to summarize.">
+<meta property="og:description" content="ChatGPT can't play a video from a link. We tested the transcript-first workflow on JFK's Moon speech: 1 word in 80 off, speakers labeled, summary in 40 seconds.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.devexthub.com/blog/can-chatgpt-transcribe-a-video/">
 <link rel="stylesheet" href="../../styles.css">
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Can ChatGPT transcribe a video?","acceptedAnswer":{"@type":"Answer","text":"Not on its own. ChatGPT cannot open a video or listen to its audio. Generate the transcript first with a browser tool, then paste that text into ChatGPT to summarize or analyze it."}},
-{"@type":"Question","name":"Can ChatGPT transcribe a YouTube video from a link?","acceptedAnswer":{"@type":"Answer","text":"No. Pasting a YouTube link into ChatGPT does not transcribe it reliably. Use a transcript tool to get the text in one click, then paste the text into ChatGPT."}},
-{"@type":"Question","name":"What is the best way to transcribe a video for ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"Use a browser extension like Transcribe Video to Text to build the transcript on the page, copy it, and paste it into ChatGPT. It is free to start: 3 AI transcripts without an account, then a free Google sign-in."}}]}
+{"@type":"Question","name":"Can ChatGPT transcribe a video?","acceptedAnswer":{"@type":"Answer","text":"Not reliably. As of October 2026 ChatGPT cannot play a video from a link, and OpenAI's list of supported upload types does not include video or audio. Get the transcript with a separate tool first, then paste the text into ChatGPT."}},
+{"@type":"Question","name":"Can ChatGPT transcribe a YouTube video from a link?","acceptedAnswer":{"@type":"Answer","text":"No. ChatGPT cannot open the video. It either says so or writes a summary based on the title and description, which can sound right and still be wrong. Get the transcript in your browser and paste the text instead."}},
+{"@type":"Question","name":"Does ChatGPT Record mode transcribe videos?","acceptedAnswer":{"@type":"Answer","text":"Record mode in the ChatGPT desktop app for Mac records live audio from your microphone and system sound on paid plans. It does not open a video file you already have, and it is not available on Windows or the web."}},
+{"@type":"Question","name":"What is the best way to transcribe a video for ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"Use a browser extension like Transcribe Video to Text to get the transcript on the page, then copy it into ChatGPT. Videos with YouTube captions are free without a limit. Videos without captions use credits: 10 free a month, the first 3 without an account."}}]}
 </script>
 </head>
 <body>
@@ -37,21 +38,25 @@
   <article class="section wrap post reveal">
     <div class="breadcrumb"><a href="../../">Home</a> / <a href="../">Blog</a> / Can ChatGPT transcribe a video</div>
     <h1>Can ChatGPT transcribe a video?</h1>
-    <p class="post-meta">Transcribe Video to Text &middot; 3 min read</p>
+    <p class="post-meta">Transcribe Video to Text &middot; Updated October 6, 2026 &middot; 5 min read</p>
 
-    <p class="lede">Short answer: not by itself. ChatGPT can't watch a video or listen to its audio. But there's a simple two-step workflow that gets you exactly what you want, the video summarized, quoted or translated by AI.</p>
+    <p class="lede">Short answer: not reliably, and not from a link. We checked what ChatGPT can and can't do with video as of October 2026, then ran a real 24-minute recording through the workflow that does work. Results, timings and screenshots are below.</p>
 
-    <h2>Why ChatGPT can't do it alone</h2>
-    <p>ChatGPT works on text. It has no way to open a YouTube link, play a video, or turn speech into words. If you paste a video URL and ask for a transcript, you'll get a guess or a refusal, not the real thing. The transcription has to happen somewhere else first.</p>
+    <h2>What ChatGPT can and can't do with video (October 2026)</h2>
+    <ul>
+      <li><b>Paste a YouTube link.</b> ChatGPT can't play the video. It either says it can't access it, or writes a summary from the title and description that sounds specific and isn't. Independent tests published in 2026 report both outcomes.</li>
+      <li><b>Upload a video file.</b> OpenAI's <a href="https://help.openai.com/en/articles/8983675-what-types-of-files-are-supported" rel="nofollow noopener" target="_blank">list of supported file types</a> covers documents, spreadsheets, presentations, text and images. Video and audio are not on it. Some accounts accept an audio file anyway, but there is no documented limit and no guarantee the whole recording gets processed.</li>
+      <li><b>Record mode.</b> The ChatGPT desktop app for Mac can record a meeting from your microphone and system sound and transcribe it. It's on paid plans only, Mac only, and it records live, so it doesn't open a video file you already have.</li>
+      <li><b>The API.</b> Developers can send audio to OpenAI's transcription models. That's code, not a chat window.</li>
+    </ul>
+    <p>So the words have to come from somewhere else. Once you have them, ChatGPT is very good at the next step: summaries, quotes, translations, study notes.</p>
 
-    <h2>The workflow that actually works</h2>
-    <p>Get the transcript in your browser, then hand the text to ChatGPT:</p>
+    <h2>The workflow that works</h2>
     <ol>
-      <li>Open the video and use <a href="../../transcribe-video-to-text/">Transcribe Video to Text</a>, a free Chrome extension, to build the full transcript in one click.</li>
-      <li>Copy the transcript, or export it to Word, TXT or SRT.</li>
-      <li>Paste the text into ChatGPT and ask it to summarize, translate, or pull out the key quotes.</li>
+      <li>Open the video in Chrome and click <a href="../../transcribe-video-to-text/">Transcribe Video to Text</a>. If the video has YouTube captions, the transcript appears in seconds. If it doesn't, the extension listens while the video plays and writes the text as it goes, with timestamps and speaker labels.</li>
+      <li>Copy it, or export it to TXT, SRT or Word.</li>
+      <li>Paste it into ChatGPT. Or skip that step: the transcript page now makes a summary and a readable version on its own.</li>
     </ol>
-    <p>The transcription runs in your browser; ChatGPT just works on the clean text you give it. It's free to start (YouTube needs no sign-up at all) and works on YouTube, TikTok, Vimeo, Loom and most sites.</p>
 
     <div class="post-cta">
       <h3>Get the transcript, then feed it to AI</h3>
@@ -59,8 +64,41 @@
       <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Add to Chrome &middot; free</a>
     </div>
 
-    <h2>Why not just screenshot or retype it?</h2>
-    <p>Because it's slow and error-prone. A transcript tool gives you the complete text, laid out by speaker with timestamps, so you can drop it straight into ChatGPT without cleaning it up first. That means better summaries, accurate quotes and no missed lines.</p>
+    <h2>A real test: JFK's &ldquo;We choose to go to the Moon&rdquo;</h2>
+    <p>We took a 24-minute film of John F. Kennedy's 1962 address at Rice University from the Internet Archive. It has no captions, so this is the harder path: speech recognition. We ran the audio through the same speech engine and settings the extension uses (Deepgram Nova-3, speaker labels on). In the extension this happens while the video plays, so a 24-minute video takes 24 minutes.</p>
+
+    <figure class="demo">
+      <img src="../../assets/blog/tvt-jfk-transcript.webp" alt="Transcript of the JFK Rice University speech with timestamps and speaker labels, showing the passage We choose to go to the Moon" width="694" height="610" loading="lazy">
+      <figcaption style="text-align:center; color:var(--muted); font-size:14px; margin-top:10px;">The key passage at 23:00. Kennedy is labeled as a separate speaker from the hosts.</figcaption>
+    </figure>
+
+    <p>What came out:</p>
+    <ul>
+      <li><b>2,344 words and 4 speakers told apart:</b> the announcer, the chaplain, Rice's president and Kennedy.</li>
+      <li><b>About 1 word in 80 off.</b> We compared Kennedy's part (about 1,100 words, the film doesn't include the whole speech) with the official text published by Rice University. Around 14 words differed, mostly dropped small words like &ldquo;in&rdquo; and &ldquo;and&rdquo;. Numbers came out as words: &ldquo;fifty thousand&rdquo;, not &ldquo;50,000&rdquo;.</li>
+      <li><b>Names are where it slips.</b> &ldquo;Rice&rdquo; came out as &ldquo;Bryce&rdquo; once. Check names before you quote them.</li>
+    </ul>
+
+    <h2>Summary and readable text, without ChatGPT</h2>
+    <p>On the transcript page we pressed <b>Summarize</b> and then <b>Get readable text</b>. The summary took about 40 seconds, the readable version about 30.</p>
+
+    <figure class="demo">
+      <img src="../../assets/blog/tvt-jfk-summary.webp" alt="Built-in summary of the JFK speech: one line with the main point, then bullet points in the order of the speech" width="694" height="728" loading="lazy">
+      <figcaption style="text-align:center; color:var(--muted); font-size:14px; margin-top:10px;">The built-in summary: the main point first, then bullets in the order of the recording.</figcaption>
+    </figure>
+
+    <p>An honest note: the summary spends two bullets on the opening ceremony and the guest list, because the recording does. If you only want Kennedy's argument, paste the transcript into ChatGPT and say so. That's where a chat beats a one-click summary.</p>
+
+    <figure class="demo">
+      <img src="../../assets/blog/tvt-jfk-readable.webp" alt="Readable text view: the same words as the transcript with punctuation and paragraphs" width="694" height="728" loading="lazy">
+      <figcaption style="text-align:center; color:var(--muted); font-size:14px; margin-top:10px;">Readable text: the same words with punctuation and paragraphs, so it reads like an article.</figcaption>
+    </figure>
+
+    <h2>When ChatGPT is still the right tool</h2>
+    <p>The extension gets you the words and a quick summary. ChatGPT is better once you want to work with the text: ask follow-up questions, rewrite it for a different audience, translate it, or compare two talks. They work best together: the transcript from the extension, the thinking from ChatGPT.</p>
+
+    <h2>What's free</h2>
+    <p>Videos with YouTube captions are free with no limit. Videos without captions use credits: 10 free a month, the first 3 without an account, then a free Google sign-in. Export to TXT, SRT and Word is included.</p>
 
     <h2>Related guides</h2>
     <ul>
