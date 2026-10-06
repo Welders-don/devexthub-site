@@ -267,7 +267,185 @@
 
     if (data.summary_text) el.detail.appendChild(summaryBlock(data.summary_text, data.id, data.summary_vote));
 
-    el.detail.appendChild(transcriptBlock(data));
+    // Старый сервер блока polish не отдаёт — тогда вкладок нет, страница как раньше.
+    if (state.polishOn) el.detail.appendChild(viewTabs(data));
+    else el.detail.appendChild(transcriptBlock(data));
+  }
+
+  /* ---------- Readable text (причёска, 1.3.1) ---------- */
+
+  // Две вкладки над текстом: исходный транскрипт и читаемый. Причёска сама не запускается:
+  // по кликам видно, кому она правда нужна (Денис 06.10), и лимит не тратится зря.
+  function viewTabs(data) {
+    var wrap = document.createElement('div');
+    var bar = document.createElement('div');
+    bar.className = 'tabs';
+    bar.setAttribute('role', 'tablist');
+
+    var tabT = tabBtn(t('tab_transcript'), true);
+    var tabR = tabBtn(t('tab_readable'), false);
+    var badge = document.createElement('span');
+    badge.className = 'beta';
+    badge.textContent = t('beta');
+    tabR.appendChild(badge);
+    bar.appendChild(tabT);
+    bar.appendChild(tabR);
+
+    var paneT = transcriptBlock(data);
+    var paneR = document.createElement('div');
+    paneR.className = 'hidden';
+    var opened = false;
+
+    tabT.addEventListener('click', function () { select(tabT, tabR, paneT, paneR); });
+    tabR.addEventListener('click', function () {
+      select(tabR, tabT, paneR, paneT);
+      if (opened) return;
+      opened = true;
+      readableView(data, paneR);
+      api('/polish/open', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transcription_id: data.id, has: !!data.polished_text }),
+      }).catch(function () {});
+    });
+
+    wrap.appendChild(bar);
+    wrap.appendChild(paneT);
+    wrap.appendChild(paneR);
+    return wrap;
+  }
+
+  function tabBtn(label, on) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'tab' + (on ? ' on' : '');
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+    b.textContent = label;
+    return b;
+  }
+
+  function select(onTab, offTab, onPane, offPane) {
+    onTab.classList.add('on');
+    onTab.setAttribute('aria-selected', 'true');
+    offTab.classList.remove('on');
+    offTab.setAttribute('aria-selected', 'false');
+    onPane.classList.remove('hidden');
+    offPane.classList.add('hidden');
+  }
+
+  function readableView(data, pane) {
+    pane.textContent = '';
+    var sub = document.createElement('p');
+    sub.className = 'muted small-note readable-sub';
+    sub.textContent = t('readable_sub');
+    pane.appendChild(sub);
+
+    if (data.polished_text) {
+      pane.appendChild(readableBlock(data, data.polished_text, data.polish_vote));
+      return;
+    }
+    if ((data.transcript_text || '').length < state.minChars) {
+      var short = document.createElement('p');
+      short.className = 'muted';
+      short.textContent = t('readable_too_short');
+      pane.appendChild(short);
+      return;
+    }
+    var btn = document.createElement('button');
+    btn.className = 'btn small';
+    btn.type = 'button';
+    btn.textContent = t('readable_make');
+    btn.addEventListener('click', function () { makeReadable(data, pane, btn); });
+    pane.appendChild(btn);
+  }
+
+  function readableBlock(data, text, vote) {
+    var box = document.createElement('div');
+    var body = document.createElement('div');
+    body.className = 'transcript';
+    text.split(/\n\s*\n/).forEach(function (p) {
+      if (!p.trim()) return;
+      var el = document.createElement('p');
+      el.className = 'para';
+      el.textContent = p.trim();
+      body.appendChild(el);
+    });
+    box.appendChild(body);
+
+    var dl = document.createElement('button');
+    dl.className = 'btn ghost small';
+    dl.type = 'button';
+    dl.textContent = t('readable_download');
+    dl.addEventListener('click', function () {
+      var blob = new Blob(
+        [(data.title ? data.title + '\n' + fmtDate(data.created_at) + '\n\n' : '') + text],
+        { type: 'text/plain;charset=utf-8' }
+      );
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'transcript-' + data.id + '-readable.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+      sendFeedback(data.id, 'download', '/polish/feedback');
+    });
+    box.appendChild(summaryFoot(text, data.id, vote, '/polish/feedback', dl));
+    return box;
+  }
+
+  function makeReadable(data, pane, btn) {
+    btn.disabled = true;
+    btn.textContent = t('summarizing_btn');
+    var placeholder = document.createElement('div');
+    placeholder.className = 'summary working';
+    var label = document.createElement('div');
+    label.textContent = t('readable_working');
+    var bar = document.createElement('div');
+    bar.className = 'progress';
+    bar.appendChild(document.createElement('span'));
+    var hint = document.createElement('div');
+    hint.className = 'muted hint';
+    hint.textContent = t('summarizing_hint');
+    placeholder.appendChild(label);
+    placeholder.appendChild(bar);
+    placeholder.appendChild(hint);
+    pane.appendChild(placeholder);
+
+    api('/polish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ transcription_id: data.id }),
+    })
+      .then(function (r) {
+        if (r.status === 422) throw 'SHORT';
+        if (r.status === 402) return r.json().then(function (d) {
+          if (d && d.next_reset) state.polNext = d.next_reset;
+          throw (d && d.error === 'QUOTA') ? 'QUOTA' : 'GATE';
+        });
+        if (!r.ok) throw 'FAIL';
+        return r.json();
+      })
+      .then(function (d) {
+        data.polished_text = d.text;
+        readableView(data, pane);
+        var item = state.items.filter(function (i) { return i.id === data.id; })[0];
+        if (item) item.has_polish = true;
+      })
+      .catch(function (why) {
+        var block = why === 'GATE' ? gateBlock(t('readable_gate_title', { n: state.polGate }))
+          : why === 'QUOTA' ? quotaBlock(t('readable_quota_title'), t('readable_quota_body', { date: fmtDay(state.polNext) }))
+          : why === 'SHORT' ? noteBlock(t('readable_too_short'))
+          : failBlock(t('readable_fail'));
+        pane.replaceChild(block, placeholder);
+        // сбой лечится повтором, лимит и длина — нет
+        if (why === 'FAIL') {
+          btn.disabled = false;
+          btn.textContent = t('readable_make');
+        } else {
+          btn.remove();
+        }
+      });
   }
 
   /* Две дороги: у новых записей есть сегменты с таймкодами — показываем как в панели;
@@ -321,15 +499,15 @@
   }
 
   // Единственный сигнал качества саммари (до 24.09 кабинет не слал ни одного события).
-  function sendFeedback(id, kind) {
-    return api('/summary/feedback', {
+  function sendFeedback(id, kind, path) {
+    return api(path || '/summary/feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ transcription_id: id, kind: kind }),
     }).catch(function () { /* отклик не стоит ошибки на экране */ });
   }
 
-  function summaryFoot(text, id, vote) {
+  function summaryFoot(text, id, vote, path, extra) {
     var foot = document.createElement('div');
     foot.className = 'sum-foot';
 
@@ -341,10 +519,11 @@
       navigator.clipboard.writeText(text).then(function () {
         copy.textContent = t('sum_copied');
         setTimeout(function () { copy.textContent = t('sum_copy'); }, 1500);
-        sendFeedback(id, 'copy');
+        sendFeedback(id, 'copy', path);
       });
     });
     foot.appendChild(copy);
+    if (extra) foot.appendChild(extra);
 
     // вопрос и обе кнопки держим одной группой: на 360 px 👎 отрывался на новую строку
     var group = document.createElement('span');
@@ -367,7 +546,7 @@
       on.setAttribute('aria-pressed', 'true');
       off.classList.remove('on');
       off.setAttribute('aria-pressed', 'false');
-      sendFeedback(id, kind);
+      sendFeedback(id, kind, path);
     }
     return foot;
   }
@@ -449,11 +628,11 @@
       });
   }
 
-  function gateBlock() {
+  function gateBlock(title) {
     var box = document.createElement('div');
     box.className = 'gate';
     var b = document.createElement('b');
-    b.textContent = t('gate_title', { n: state.gateAfter });
+    b.textContent = title || t('gate_title', { n: state.gateAfter });
     var p = document.createElement('div');
     p.textContent = t('gate_body', { days: state.daysSignedIn || 90 });
     box.appendChild(b);
@@ -469,13 +648,13 @@
     return box;
   }
 
-  function quotaBlock() {
+  function quotaBlock(title, body) {
     var box = document.createElement('div');
     box.className = 'gate';
     var b = document.createElement('b');
-    b.textContent = t('quota_title');
+    b.textContent = title || t('quota_title');
     var p = document.createElement('div');
-    p.textContent = t('quota_body', { date: fmtDay(state.nextReset) });
+    p.textContent = body || t('quota_body', { date: fmtDay(state.nextReset) });
     box.appendChild(b);
     box.appendChild(p);
     return box;
@@ -493,10 +672,17 @@
     return p;
   }
 
-  function failBlock() {
+  function noteBlock(text) {
+    var p = document.createElement('div');
+    p.className = 'summary';
+    p.textContent = text;
+    return p;
+  }
+
+  function failBlock(text) {
     var p = document.createElement('div');
     p.className = 'summary err';
-    p.textContent = t('summary_fail');
+    p.textContent = text || t('summary_fail');
     return p;
   }
 
@@ -676,6 +862,9 @@
         state.quota = data.signed_quota || 6;
         state.windowUsed = data.window_used || 0;
         state.nextReset = data.next_reset || null;
+        state.polishOn = !!data.polish;
+        state.polGate = (data.polish && data.polish.gate_after) || 2;
+        state.polNext = (data.polish && data.polish.next_reset) || null;
         state.clientId = data.client_id || null;
         state.email = data.email || null;
         el.retention.textContent = t('retention', { n: state.days });
