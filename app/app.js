@@ -187,6 +187,8 @@
     api('/transcriptions/' + id)
       .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
       .then(function (data) {
+        // Старые саммари с меткой «Gist:» из промпта (сервер срезает с 06.10, в базе остались).
+        if (data.summary_text) data.summary_text = data.summary_text.replace(/^\s*(?:\S{1,3}\s+)?(?:one[- ]sentence\s+)?gist\w{0,2}\s*:\s*/i, '');
         renderDetail(data);
         if (autoSummary && !data.summary_text) summarize(id);
       })
