@@ -45,3 +45,5 @@ sitemap lastmod у этих трёх НЕ менялся, title/meta description
 Шаги правили, потому что под видео/скринами старый текст противоречил кадру. Это вторая переменная, честно.
 how-to-transcribe-song-lyrics-from-a-video: ждёт решения Дениса (А честный тест / Б сначала Groq для музыки), см. Capitan/knowledge/asr-singing-test-2026-10-06.md.
 Склейка PDF (csv + 2 донора) НЕ тронута. Проверка: URL Inspection / Coverage, середина октября и 03.11.
+| how-to-insert-a-pdf-into-excel (вне индекса) | АВТОР: подпись «By Nichola Chaus · Published July 25, 2026», био внизу (QC engineer, ссылка на YouTube @NicholaChaus), BlogPosting + Person (sameAs YouTube). Плюс шаги под реальный флоу и убрано «real numbers you can sum» / «ready to calculate» |
+Автор и био согласованы с Денисом 06.10 (Nichola Chaus = имя YouTube-канала и Fazier).
