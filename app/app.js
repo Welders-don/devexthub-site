@@ -258,6 +258,21 @@
       actions.appendChild(lab);
     }
 
+    // Причёска — отдельной кнопкой рядом с саммари (Денис 06.10: вкладка без текста не
+    // читалась как кнопка). Старый сервер блока polish не отдаёт — тогда кнопки нет.
+    if (state.polishOn && !data.polished_text && (data.transcript_text || '').length >= state.minChars) {
+      var polBtn = document.createElement('button');
+      polBtn.className = 'btn small js-pol';
+      polBtn.type = 'button';
+      polBtn.textContent = t('readable_make');
+      var polBadge = document.createElement('span');
+      polBadge.className = 'beta';
+      polBadge.textContent = t('beta');
+      polBtn.appendChild(polBadge);
+      polBtn.addEventListener('click', function () { makeReadable(data, polBtn); });
+      actions.appendChild(polBtn);
+    }
+
     actions.appendChild(downloadBtn('TXT', data, 'txt'));
     actions.appendChild(downloadBtn('Word', data, 'doc'));
 
@@ -267,47 +282,38 @@
 
     if (data.summary_text) el.detail.appendChild(summaryBlock(data.summary_text, data.id, data.summary_vote));
 
-    // Старый сервер блока polish не отдаёт — тогда вкладок нет, страница как раньше.
-    if (state.polishOn) el.detail.appendChild(viewTabs(data));
-    else el.detail.appendChild(transcriptBlock(data));
+    var body = document.createElement('div');
+    body.className = 'js-body';
+    body.appendChild(data.polished_text ? viewTabs(data, false) : transcriptBlock(data));
+    el.detail.appendChild(body);
   }
 
   /* ---------- Readable text (причёска, 1.3.1) ---------- */
 
-  // Две вкладки над текстом: исходный транскрипт и читаемый. Причёска сама не запускается:
-  // по кликам видно, кому она правда нужна (Денис 06.10), и лимит не тратится зря.
-  function viewTabs(data) {
+  // Вкладки появляются, только когда читаемый текст уже есть: переключать исходный
+  // транскрипт и причёсанный. До этого на месте вкладки кнопка в ряду действий.
+  function viewTabs(data, readableFirst) {
     var wrap = document.createElement('div');
     var bar = document.createElement('div');
     bar.className = 'tabs';
     bar.setAttribute('role', 'tablist');
 
-    var tabT = tabBtn(t('tab_transcript'), true);
-    var tabR = tabBtn(t('tab_readable'), false);
-    var badge = document.createElement('span');
-    badge.className = 'beta';
-    badge.textContent = t('beta');
-    tabR.appendChild(badge);
+    var tabT = tabBtn(t('tab_transcript'), !readableFirst);
+    var tabR = tabBtn(t('tab_readable'), readableFirst);
     bar.appendChild(tabT);
     bar.appendChild(tabR);
 
     var paneT = transcriptBlock(data);
     var paneR = document.createElement('div');
-    paneR.className = 'hidden';
-    var opened = false;
+    var sub = document.createElement('p');
+    sub.className = 'muted small-note readable-sub';
+    sub.textContent = t('readable_sub');
+    paneR.appendChild(sub);
+    paneR.appendChild(readableBlock(data, data.polished_text, data.polish_vote));
+    (readableFirst ? paneT : paneR).classList.add('hidden');
 
     tabT.addEventListener('click', function () { select(tabT, tabR, paneT, paneR); });
-    tabR.addEventListener('click', function () {
-      select(tabR, tabT, paneR, paneT);
-      if (opened) return;
-      opened = true;
-      readableView(data, paneR);
-      api('/polish/open', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ transcription_id: data.id, has: !!data.polished_text }),
-      }).catch(function () {});
-    });
+    tabR.addEventListener('click', function () { select(tabR, tabT, paneR, paneT); });
 
     wrap.appendChild(bar);
     wrap.appendChild(paneT);
@@ -332,32 +338,6 @@
     offTab.setAttribute('aria-selected', 'false');
     onPane.classList.remove('hidden');
     offPane.classList.add('hidden');
-  }
-
-  function readableView(data, pane) {
-    pane.textContent = '';
-    var sub = document.createElement('p');
-    sub.className = 'muted small-note readable-sub';
-    sub.textContent = t('readable_sub');
-    pane.appendChild(sub);
-
-    if (data.polished_text) {
-      pane.appendChild(readableBlock(data, data.polished_text, data.polish_vote));
-      return;
-    }
-    if ((data.transcript_text || '').length < state.minChars) {
-      var short = document.createElement('p');
-      short.className = 'muted';
-      short.textContent = t('readable_too_short');
-      pane.appendChild(short);
-      return;
-    }
-    var btn = document.createElement('button');
-    btn.className = 'btn small';
-    btn.type = 'button';
-    btn.textContent = t('readable_make');
-    btn.addEventListener('click', function () { makeReadable(data, pane, btn); });
-    pane.appendChild(btn);
   }
 
   function readableBlock(data, text, vote) {
@@ -394,9 +374,18 @@
     return box;
   }
 
-  function makeReadable(data, pane, btn) {
+  function makeReadable(data, btn) {
+    // Клик по кнопке = спрос, пишем до генерации: так в дайджесте видны и те,
+    // кто упёрся в лимит или не дождался.
+    api('/polish/open', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ transcription_id: data.id, has: false }),
+    }).catch(function () {});
+
     btn.disabled = true;
     btn.textContent = t('summarizing_btn');
+    var body = el.detail.querySelector('.js-body');
     var placeholder = document.createElement('div');
     placeholder.className = 'summary working';
     var label = document.createElement('div');
@@ -410,7 +399,7 @@
     placeholder.appendChild(label);
     placeholder.appendChild(bar);
     placeholder.appendChild(hint);
-    pane.appendChild(placeholder);
+    el.detail.insertBefore(placeholder, body);
 
     api('/polish', {
       method: 'POST',
@@ -428,16 +417,21 @@
       })
       .then(function (d) {
         data.polished_text = d.text;
-        readableView(data, pane);
+        placeholder.remove();
+        btn.remove();
+        body.textContent = '';
+        body.appendChild(viewTabs(data, true));
         var item = state.items.filter(function (i) { return i.id === data.id; })[0];
         if (item) item.has_polish = true;
       })
       .catch(function (why) {
-        var block = why === 'GATE' ? gateBlock(t('readable_gate_title', { n: state.polGate }))
-          : why === 'QUOTA' ? quotaBlock(t('readable_quota_title'), t('readable_quota_body', { date: fmtDay(state.polNext) }))
-          : why === 'SHORT' ? noteBlock(t('readable_too_short'))
-          : failBlock(t('readable_fail'));
-        pane.replaceChild(block, placeholder);
+        el.detail.replaceChild(
+          why === 'GATE' ? gateBlock(t('readable_gate_title', { n: state.polGate }))
+            : why === 'QUOTA' ? quotaBlock(t('readable_quota_title'), t('readable_quota_body', { date: fmtDay(state.polNext) }))
+            : why === 'SHORT' ? noteBlock(t('readable_too_short'))
+            : failBlock(t('readable_fail')),
+          placeholder
+        );
         // сбой лечится повтором, лимит и длина — нет
         if (why === 'FAIL') {
           btn.disabled = false;
