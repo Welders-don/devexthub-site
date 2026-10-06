@@ -90,6 +90,14 @@
 .vote.on { opacity: 1; border-color: var(--green); background: var(--bg); }
 .small-note { font-size: 13px; }
 
+/* Вкладки над текстом: транскрипт / читаемый текст (1.3.1) */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.tab { background: transparent; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  padding: 8px 12px; font: inherit; font-size: 15px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.tab:hover, .tab:focus-visible { color: var(--ink); }
+.tab.on { color: var(--ink); border-bottom-color: var(--green); }
+.readable-sub { margin: 0 0 12px; }
+
 /* Переустановка (24.09): куда делись прежние записи и как больше не терять */
 .earlier-note { margin: -6px 0 16px; padding: 10px 14px; border: 1px solid #e3d5ac; background: #fdf8ec;
   border-radius: 11px; font-size: 14px; line-height: 1.5; }
