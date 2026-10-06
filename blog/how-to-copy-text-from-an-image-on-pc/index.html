@@ -7,19 +7,19 @@
 <link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Copy Text From an Image on a PC or Chromebook | Devexthub</title>
-<meta name="description" content="Right-click on an image gives you no text. Here is how to copy text from a picture or screenshot on Windows or a Chromebook in one click, with a free on-device OCR extension.">
+<meta name="description" content="Copy text from a picture or screenshot on Windows 11 or a Chromebook: the built-in tools, and a free on-device OCR extension we tested on a real receipt (0 errors in 66 words).">
 <link rel="canonical" href="https://www.devexthub.com/blog/how-to-copy-text-from-an-image-on-pc/">
 <meta property="og:title" content="How to Copy Text From an Image on a PC or Chromebook">
-<meta property="og:description" content="Copy editable text out of any picture or screenshot on Windows or ChromeOS in one click, with a free on-device OCR extension.">
+<meta property="og:description" content="Snipping Tool, Google Lens or an on-device OCR extension: how to copy text from an image on a PC or Chromebook, with a real test.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.devexthub.com/blog/how-to-copy-text-from-an-image-on-pc/">
 <link rel="stylesheet" href="../../styles.css">
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How do I copy text from an image on a PC?","acceptedAnswer":{"@type":"Answer","text":"Install a free OCR Chrome extension, open the image in your browser, click the extension, and it reads the text so you can copy it. It works the same on Windows and on a Chromebook, with no retyping."}},
-{"@type":"Question","name":"How do I copy text from a screenshot on a Chromebook?","acceptedAnswer":{"@type":"Answer","text":"Take the screenshot, open it in Chrome, and run an OCR extension on it. The extension recognises the text in the image and lets you copy it or download it as a .txt file, all on the device."}},
-{"@type":"Question","name":"Is there a keyboard way to grab text from a picture?","acceptedAnswer":{"@type":"Answer","text":"There is no built-in Windows or ChromeOS shortcut that copies text out of any image. An OCR extension fills that gap: one click on the picture in your browser and the text is ready to paste."}}]}
+{"@type":"Question","name":"How do I copy text from an image on a PC?","acceptedAnswer":{"@type":"Answer","text":"On Windows 11, press Windows+Shift+S, take the snip, open it in Snipping Tool and click Text actions, then Copy all text. In Chrome on any PC, an OCR extension like Extract Text from Image lets you draw a box over the image and copy the text, with the recognition running on your device."}},
+{"@type":"Question","name":"How do I copy text from a screenshot on a Chromebook?","acceptedAnswer":{"@type":"Answer","text":"Open Screen capture, take a partial screenshot and select Search with Google, then Copy text. This sends the image to Google Lens. To keep it on the device, paste the screenshot into an OCR extension with Ctrl+V and copy the text from there."}},
+{"@type":"Question","name":"Is there a keyboard shortcut to grab text from a picture on Windows?","acceptedAnswer":{"@type":"Answer","text":"Windows+Shift+S opens the snipping overlay; after the snip, Text actions in Snipping Tool reads the text. If you install Microsoft PowerToys, Windows+Shift+T opens its Text Extractor, which copies text from any area of the screen."}}]}
 </script>
 </head>
 <body>
@@ -37,37 +37,68 @@
   <article class="section wrap post reveal">
     <div class="breadcrumb"><a href="../../">Home</a> / <a href="../">Blog</a> / Copy text on PC or Chromebook</div>
     <h1>How to copy text from an image on a PC or Chromebook</h1>
-    <p class="post-meta">Extract Text from Image &middot; 4 min read</p>
+    <p class="post-meta">Extract Text from Image &middot; Updated October 6, 2026 &middot; 5 min read</p>
+    <p class="lede">You have a picture or a screenshot with text you need, and right-clicking only offers to save or copy the whole image, never the words. Windows 11 and ChromeOS now have built-in ways to read that text. Below is how each one works, and a test of our free extension on a real receipt so you can see what to expect.</p>
 
-    <p class="lede">You have a picture or a screenshot with text you need, and right-clicking only offers to save or copy the whole image, never the words. Here is how to pull clean, editable text out of an image on Windows or a Chromebook in one click.</p>
+    <h2>The quick answer</h2>
+    <ul>
+      <li><b>Windows 11:</b> Snipping Tool, <b>Text actions</b>, <b>Copy all text</b>.</li>
+      <li><b>Chromebook:</b> Google Lens, built into the launcher and the screen capture tool.</li>
+      <li><b>Chrome on any PC, without sending the image anywhere:</b> <a href="../../extract-text-from-image/">Extract Text from Image</a>, a free extension that reads the text on your device.</li>
+    </ul>
 
-    <p>Neither Windows nor ChromeOS has a simple, built-in way to copy text out of any image. Windows has a few scattered options, ChromeOS has none for arbitrary pictures, and retyping is the fallback most people fall back to. The reliable answer on both is OCR: software that recognises the characters inside the image and hands them back as real text you can select and paste.</p>
-
-    <h2>The fastest way: a one-click OCR extension</h2>
-    <p><a href="../../extract-text-from-image/">Extract Text from Image</a> is a free Chrome extension that reads text from any picture or screenshot open in your browser. Because it runs in Chrome, the steps are identical on a Windows PC and a Chromebook.</p>
+    <h2>On Windows 11: Snipping Tool</h2>
     <ol>
-      <li>Add the extension to Chrome on your PC or Chromebook.</li>
-      <li>Open the image in your browser, or open a screenshot you just took.</li>
-      <li>Click the extension. It runs OCR and shows the recognised text.</li>
-      <li><b>Copy all</b> to the clipboard, or download it as a <b>.txt</b> file.</li>
+      <li>Press <code>Windows</code> + <code>Shift</code> + <code>S</code> and select the area with the text. To use a picture you already have, right-click the file and choose <b>Open with</b>, then <b>Snipping Tool</b>.</li>
+      <li>Open the snip in Snipping Tool and click <b>Text actions</b> in the toolbar.</li>
+      <li>Click <b>Copy all text</b>, or highlight part of it and press <code>Ctrl</code> + <code>C</code>.</li>
     </ol>
+    <p>It needs a recent Snipping Tool (version 11.2308.33.0 or newer, from the Microsoft Store). The Photos app can also select text in an image. Microsoft PowerToys adds Text Extractor on <code>Windows</code> + <code>Shift</code> + <code>T</code>, but that's a separate install aimed at power users.</p>
+
+    <h2>On a Chromebook: Google Lens</h2>
+    <ol>
+      <li>Open <b>Screen capture</b> and choose <b>Take partial screenshot</b>, or press the Launcher key and select <b>Lens</b>.</li>
+      <li>Drag over the text.</li>
+      <li>Select <b>Search with Google</b>, then <b>Copy text</b>. The button only appears when Lens finds text.</li>
+    </ol>
+    <p>Two things to know: Google has to be your default search engine, and the selected area is sent to Google to be read. Full walkthrough with the PDF case: <a href="../how-to-copy-text-from-an-image-on-a-chromebook/">how to copy text from an image on a Chromebook</a>.</p>
+
+    <h2>In Chrome on any PC: Extract Text from Image</h2>
+    <p>The extension works the same on Windows, Mac and ChromeOS, and the text recognition runs on your computer, so the image is not uploaded anywhere.</p>
+    <ol>
+      <li>Open the page with the image in Chrome.</li>
+      <li>Click the extension icon, then <b>Start selection</b>.</li>
+      <li>Drag a box over the text.</li>
+      <li>Click <b>Copy all</b>, or <b>Download</b> to save it as a .txt file. <b>+ Add selection</b> grabs another area without starting over.</li>
+    </ol>
+
+    <figure class="demo">
+      <img src="../../assets/blog/et-pc-select.webp" alt="Selection overlay of Extract Text from Image drawn over a receipt in Chrome" width="1280" height="800" loading="lazy">
+      <figcaption style="text-align:center; color:var(--muted); font-size:14px; margin-top:10px;">Step 3: drag a box over the text you need.</figcaption>
+    </figure>
+    <figure class="demo">
+      <img src="../../assets/blog/et-pc-result.webp" alt="Extracted Text panel showing every line of the receipt with Copy all and Download buttons" width="1280" height="800" loading="lazy">
+      <figcaption style="text-align:center; color:var(--muted); font-size:14px; margin-top:10px;">The result: every line of the receipt as plain text, ready to copy.</figcaption>
+    </figure>
+
+    <p><b>For a picture saved on your PC</b> or a screenshot you just took, use the <b>Upload File</b> tab in the extension: choose the file, drag it in, or paste it with <code>Ctrl</code> + <code>V</code>. A file dragged straight into a Chrome tab opens as a local file, and the selection doesn't work there.</p>
 
     <div class="post-cta">
       <h3>Copy text from any image</h3>
-      <p>Works the same on Windows and ChromeOS. Free, one click.</p>
+      <p>Works the same on Windows and ChromeOS. Free, on-device.</p>
       <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/eeelkokigmnmogpibbdkjdplpfnobpjb" data-umami-event="store-click" data-umami-event-ext="extract-text">Add to Chrome &middot; free</a>
     </div>
 
-    <h2>On Windows specifically</h2>
-    <p>Windows does have a couple of native routes, but each has a catch. Snip &amp; Sketch and the Snipping Tool can capture a region, and recent versions added a text action, but it is inconsistent across builds. PowerToys Text Extractor works well but is a separate install aimed at power users. If you already work in Chrome, <a href="../best-ocr-chrome-extension/">an OCR Chrome extension</a> is the least fiddly: the image is right there in the tab, and one click gives you the text.</p>
+    <h2>Our test: a receipt and a slide</h2>
+    <p>We ran the extension on two images: the receipt above and a <a href="../how-to-copy-text-from-an-image/">presentation slide</a> with numbers.</p>
+    <ul>
+      <li><b>Receipt:</b> 66 words, 0 errors, the same result in all 6 runs. Prices, the date and the receipt number came out exactly.</li>
+      <li><b>Slide:</b> 1 error in 50 words, the same every time: &ldquo;0.7&rdquo; came out as &ldquo;O.7&rdquo;, a zero read as the letter O. Check digits that sit next to letters before you paste them into a spreadsheet.</li>
+      <li><b>Speed:</b> the very first read after installing took about 15 seconds, because the recognition engine starts up. After that, about 4 seconds; after restarting the browser, about 7. That was on a small 2-core test machine; a normal PC is usually faster.</li>
+    </ul>
 
-    <h2>On a Chromebook specifically</h2>
-    <p>ChromeOS has no system feature that copies text out of a saved picture. Take a screenshot (<code>Ctrl</code> + <code>Show windows</code>, or <code>Ctrl</code> + <code>Shift</code> + <code>Show windows</code> for a region), open it in the browser, and run the extension on it. Since a Chromebook is built around Chrome, a Chrome extension is the natural fit and needs nothing else installed.</p>
-
-        <p>Full walkthrough for ChromeOS, including screenshots and the PDF case: <a href="../how-to-copy-text-from-an-image-on-a-chromebook/">how to copy text from an image on a Chromebook</a>.</p>
-
-<h2>Private by design</h2>
-    <p>The OCR runs on your device, so the picture is not uploaded to a server to be read. Nothing about the image leaves your machine, which matters when the screenshot holds an ID, a receipt or anything you would not paste into a random website. See how it works on <a href="../how-to-copy-text-from-a-screenshot/">screenshots</a> and on <a href="../how-to-extract-text-from-a-picture/">photos of documents</a>.</p>
+    <h2>Which one to use</h2>
+    <p>For a one-off on Windows 11, Snipping Tool is already there and also reads the text on your PC. On a Chromebook, Lens is the fastest if you don't mind the image going to Google. The extension is worth it when the image is already open in Chrome, when you do this often, or when the picture holds something you'd rather not send anywhere, like an ID or a bank screenshot. See how it handles <a href="../how-to-copy-text-from-a-screenshot/">screenshots</a> and <a href="../how-to-extract-text-from-a-picture/">photos of documents</a>, or compare <a href="../best-ocr-chrome-extension/">OCR Chrome extensions</a>.</p>
 
     <h2>If the file is a PDF, not an image</h2>
     <p>Copying from a PDF has its own traps: the text is selectable but the table falls apart the moment you paste it. A converter that keeps the grid solves it in one step, on <a href="../how-to-convert-pdf-to-excel-on-mac/">Mac</a> as well as Windows, and it is the reason people look for <a href="../smallpdf-alternative-for-pdf-to-excel/">a Smallpdf alternative</a>.</p>
