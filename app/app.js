@@ -367,7 +367,7 @@
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
       a.href = url;
-      a.download = 'transcript-' + data.id + '-readable.txt';
+      a.download = 'transcript-' + data.id + '-polished.txt';
       a.click();
       URL.revokeObjectURL(url);
       sendFeedback(data.id, 'download', '/polish/feedback');
