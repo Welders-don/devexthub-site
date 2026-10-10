@@ -1,0 +1,38 @@
+LIFTO: Convert PDF to Excel (claim 10.10.2026)
+Autofill НЕ жать (перепишет поля), заполнять руками.
+
+=== Шаг 1. Product ===
+
+Website (поле Autofill, если его потом попросят как ссылку):
+https://www.devexthub.com/pdf-to-excel/?utm_source=lifto
+
+Product Name:
+Convert PDF to Excel
+
+Tagline:
+Turn PDF tables and bank statements into Excel
+
+Description:
+A Chrome extension that turns tables from PDF reports, invoices and bank statements into an editable Excel or CSV file. Open the side panel, drop a PDF, click Convert and download .xlsx or .csv. Amounts land in the sheet as real numbers, so you can sum, sort and filter right away. Text-based PDFs are converted inside your browser and never leave your computer. For scans and messy layouts there is an optional AI mode. It also converts Excel back to PDF. Free, no account.
+
+Who is it for?:
+Accountants, bookkeepers and small business owners who were retyping bank statements, supplier price lists and invoices from PDF into a spreadsheet by hand, or copy-pasting and then fixing broken columns. Also analysts and students who need the numbers from a PDF report in Excel.
+
+How does it work?:
+1. Click the extension icon to open the side panel and drop your PDF.
+2. Click Convert to Excel. Multi-page files go into one sheet or one sheet per page.
+3. Download .xlsx or .csv. If the PDF is a scan, try AI mode.
+
+Category (до 3):
+Productivity, Finance
+
+=== Шаг 2. Demo ===
+Шорт PDF: https://www.youtube.com/shorts/UtVVWrx9Wyk
+Если просят файл, а не ссылку: скачать шорт из YouTube Studio (Content > ⋮ > Download).
+
+=== Шаг 3. Links ===
+Website: https://www.devexthub.com/pdf-to-excel/?utm_source=lifto
+Chrome Web Store (если есть поле): https://chromewebstore.google.com/detail/%D0%BF%D0%B4%D1%84-%D0%B2-%D1%8D%D0%BA%D1%81%D0%B5%D0%BB%D1%8C-%E2%80%94-convert-pd/hboeifcemhbamnoakkbalaemdleehfnf
+
+=== Шаг 4. Review ===
+Платный Launch ($29/$79) галкой по умолчанию НЕ должен стоять. Выбираем Free.
