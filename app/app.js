@@ -271,7 +271,11 @@
       notesBtn.textContent = '📝 ' + t('tab_notes');
       pitch = document.createElement('p');
       pitch.className = 'muted small-note notes-pitch';
-      pitch.textContent = t('notes_pitch');
+      // Без имени кнопки подпись читалась как пояснение к саммари: она стоит под ним (Денис, 10.10).
+      var pitchName = document.createElement('b');
+      pitchName.textContent = '📝 ' + t('tab_notes');
+      pitch.appendChild(pitchName);
+      pitch.appendChild(document.createTextNode(' · ' + t('notes_pitch')));
       notesBtn.addEventListener('click', function () { makeNotes(data, notesBtn, pitch); });
       actions.appendChild(notesBtn);
     }
