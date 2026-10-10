@@ -1,3 +1,11 @@
+# Handoff 2026-10-10 вечер: ссылки на страницу bank statement сделаны
+
+- dev.to (dofollow, проверено) + Medium (nofollow, проверено Денисом) опубликованы, реестр offpage/BACKLINKS-LEDGER.md «Статьи со ссылкой в теле».
+- YouTube TToK2n9zb-U: описание + закреп со ссылкой на /pdf-to-excel/bank-statement/ (utm_campaign=pdftoexcel, utm_content=pdf_long), сверено API 10.10, закреп один.
+- Фикс кодов валют на сайте (0392f5d) = расширение PDF 1.1.2 (на ревью CWS с 10.10).
+- Осталось (за Денисом, необязательно): повтор Request indexing в GSC (10.10 был сбой Google), The Next AI (поля в ~/workspace/knowledge/devexthub-bank-tool-links-2026-10-10.md), живые ответы Reddit/Quora с одного аккаунта.
+- Дальше: dev.to №2 Image Enhancer ~18.10 (таймер devto-ie-article-20261018), потом по одной в неделю со сдвигом (решение Дениса «не жестить»). Замер страницы 07.11 (таймер devexthub-bank-tool-20261107).
+
 # Handoff 2026-10-10: страница-инструмент bank statement LIVE (push a5dc686, e2e против прода 26/26, таймер замера 07.11)
 
 - По ✔ Дениса собрана /pdf-to-excel/bank-statement/: конвертер выписки в браузере ($0, файл не уходит), скан → стор. Ветка agent/bank-statement-tool от origin/main (d74ef46, 28b5a5d), ссылка с /pdf-to-excel/ (guides) + sitemap.
