@@ -59,7 +59,9 @@ function detectColumnAnchors(rows, xTolerance) {
 // Суммы в выписках выровнены по ПРАВОМУ краю: у 7.85 и 1,450.00 левые края
 // разные, и кластеризация по левому краю плодила ложные колонки, которые потом
 // сливались (дебет и кредит в одну ячейку). Числовые колонки ищем по правому краю.
-const NUMERIC_RE = /^[-+(]?[$€£¥₽]?\s?\d[\d,.\s]*\)?%?$/;
+// Код валюты буквами («RUB 5,476.82», «Rs. 1,000.00») тоже сумма. Тот же список в xlsx-writer.js.
+const CURRENCY_CODE = '(?:USD|EUR|GBP|RUB|INR|CNY|RMB|JPY|CHF|CAD|AUD|NZD|BRL|MXN|KZT|UAH|BYN|TRY|PLN|CZK|HUF|SEK|NOK|DKK|SGD|HKD|AED|SAR|ZAR|NGN|KES|IDR|MYR|PHP|THB|VND|KRW|ILS|EGP|PKR|BDT|ARS|CLP|COP|PEN|Rs\\.?|R\\$)';
+const NUMERIC_RE = new RegExp(`^[-+(]?(?:${CURRENCY_CODE}\\s?)?[-+]?[$€£¥₽]?\\s?\\d[\\d,.\\s]*\\)?%?(?:\\s?${CURRENCY_CODE})?$`);
 
 function isNumericItem(it) {
   return it.width > 0 && NUMERIC_RE.test(it.text.trim());
