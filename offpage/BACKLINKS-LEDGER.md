@@ -33,7 +33,7 @@
 
 ## Статьи со ссылкой в теле (dofollow)
 - dev.to, 10.10.2026, аккаунт Nichola Chaus (dev.to/nicholachaus, зарегистрирован 10.10, привет в Welcome thread): https://dev.to/nicholachaus/i-built-a-bank-statement-to-excel-converter-that-never-uploads-your-file-kji → /pdf-to-excel/bank-statement/. Проверено curl 10.10: 200, ссылка rel="noopener noreferrer" (без nofollow), robots без noindex, canonical на сам пост. AI Disclosure отмечен. Текст: ~/workspace/knowledge/devexthub-bank-tool-links-2026-10-10.md.
-- Medium, 10.10.2026, аккаунт Nichola Chaus (@chausnichola): https://medium.com/@chausnichola/how-to-get-your-bank-statement-into-excel-without-uploading-it-anywhere-1516ff137a0d → /pdf-to-excel/bank-statement/?utm_source=medium (ссылка на «free converter»). Пост в RSS есть. rel НЕ ПРОВЕРЕН: Medium режет наш сервер (403/Cloudflare), ждём проверку Денисом в DevTools. Статья пользовательская, не копия dev.to.
+- Medium, 10.10.2026, аккаунт Nichola Chaus (@chausnichola): https://medium.com/@chausnichola/how-to-get-your-bank-statement-into-excel-without-uploading-it-anywhere-1516ff137a0d → /pdf-to-excel/bank-statement/?utm_source=medium (ссылка на «free converter»). Пост в RSS есть. ⚠️NOFOLLOW: rel="noopener ugc nofollow" (проверено Денисом в DevTools 10.10, наш сервер Medium режет 403). Ценность = трафик, не вес домену. Статья пользовательская, не копия dev.to.
 
 ## Product Hunt (отдельно, не directory)
 - PDF — ✅ был на PH. 31.07 ОТРЕДАКТИРОВАНА карточка продукта: категория Productivity/PDF editor, описание переписано с ключами (без тире), Product URL сменён с CWS на лендинг https://www.devexthub.com/pdf-to-excel/. НЕ перезапускать.
