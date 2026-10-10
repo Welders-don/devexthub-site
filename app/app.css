@@ -96,7 +96,13 @@
   padding: 8px 12px; font: inherit; font-size: 15px; font-weight: 600; color: var(--muted); cursor: pointer; }
 .tab:hover, .tab:focus-visible { color: var(--ink); }
 .tab.on { color: var(--ink); border-bottom-color: var(--green); }
-.readable-sub { margin: 0 0 12px; }
+.notes-pitch { margin: -8px 0 16px; }
+.notes { font-size: 16px; line-height: 1.55; color: var(--ink-soft); max-height: 62vh; overflow-y: auto; }
+.notes h3 { margin: 18px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
+.notes h3:first-child { margin-top: 0; }
+.notes h4 { margin: 20px 0 6px; font-size: 16px; color: var(--ink); display: flex; gap: 10px; align-items: baseline; }
+.notes h4 .seg-time { padding-top: 0; }
+.notes p { margin: 0 0 6px; text-wrap: pretty; }
 
 /* Переустановка (24.09): куда делись прежние записи и как больше не терять */
 .earlier-note { margin: -6px 0 16px; padding: 10px 14px; border: 1px solid #e3d5ac; background: #fdf8ec;

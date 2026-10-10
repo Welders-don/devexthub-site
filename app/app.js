@@ -260,19 +260,20 @@
       actions.appendChild(lab);
     }
 
-    // Причёска — отдельной кнопкой рядом с саммари (Денис 06.10: вкладка без текста не
-    // читалась как кнопка). Старый сервер блока polish не отдаёт — тогда кнопки нет.
-    if (state.polishOn && !data.polished_text && (data.transcript_text || '').length >= state.minChars) {
-      var polBtn = document.createElement('button');
-      polBtn.className = 'btn small js-pol';
-      polBtn.type = 'button';
-      polBtn.textContent = t('readable_make');
-      var polBadge = document.createElement('span');
-      polBadge.className = 'beta';
-      polBadge.textContent = t('beta');
-      polBtn.appendChild(polBadge);
-      polBtn.addEventListener('click', function () { makeReadable(data, polBtn); });
-      actions.appendChild(polBtn);
+    // Конспект «Study notes» на месте причёски (10.10: причёску взял 1 живой из 58 нажавших
+    // Summarize). Отдельной кнопкой рядом с саммари, без «beta»: она говорит «может не сработать».
+    // Подпись под шапкой объясняет отличие от саммари. Старый сервер блока notes не отдаёт: кнопки нет.
+    var pitch = null;
+    if (state.notesOn && !data.notes_text && (data.transcript_text || '').length >= state.minChars) {
+      var notesBtn = document.createElement('button');
+      notesBtn.className = 'btn small js-notes';
+      notesBtn.type = 'button';
+      notesBtn.textContent = '📝 ' + t('tab_notes');
+      pitch = document.createElement('p');
+      pitch.className = 'muted small-note notes-pitch';
+      pitch.textContent = t('notes_pitch');
+      notesBtn.addEventListener('click', function () { makeNotes(data, notesBtn, pitch); });
+      actions.appendChild(notesBtn);
     }
 
     actions.appendChild(downloadBtn('TXT', data, 'txt'));
@@ -281,45 +282,41 @@
     head.appendChild(meta);
     head.appendChild(actions);
     el.detail.appendChild(head);
+    if (pitch) el.detail.appendChild(pitch);
 
     if (data.summary_text) el.detail.appendChild(summaryBlock(data.summary_text, data.id, data.summary_vote));
 
     var body = document.createElement('div');
     body.className = 'js-body';
-    body.appendChild(data.polished_text ? viewTabs(data, false) : transcriptBlock(data));
+    body.appendChild(data.notes_text ? viewTabs(data) : transcriptBlock(data));
     el.detail.appendChild(body);
   }
 
-  /* ---------- Readable text (причёска, 1.3.1) ---------- */
+  /* ---------- Study notes (конспект, 10.10) ---------- */
 
-  // Вкладки появляются, только когда читаемый текст уже есть: переключать исходный
-  // транскрипт и причёсанный. До этого на месте вкладки кнопка в ряду действий.
-  function viewTabs(data, readableFirst) {
+  // Вкладки появляются, только когда конспект уже есть: он открыт первым, транскрипт рядом.
+  // До этого на месте вкладки кнопка в ряду действий.
+  function viewTabs(data) {
     var wrap = document.createElement('div');
     var bar = document.createElement('div');
     bar.className = 'tabs';
     bar.setAttribute('role', 'tablist');
 
-    var tabT = tabBtn(t('tab_transcript'), !readableFirst);
-    var tabR = tabBtn(t('tab_readable'), readableFirst);
+    var tabT = tabBtn(t('tab_transcript'), false);
+    var tabN = tabBtn(t('tab_notes'), true);
     bar.appendChild(tabT);
-    bar.appendChild(tabR);
+    bar.appendChild(tabN);
 
     var paneT = transcriptBlock(data);
-    var paneR = document.createElement('div');
-    var sub = document.createElement('p');
-    sub.className = 'muted small-note readable-sub';
-    sub.textContent = t('readable_sub');
-    paneR.appendChild(sub);
-    paneR.appendChild(readableBlock(data, data.polished_text, data.polish_vote));
-    (readableFirst ? paneT : paneR).classList.add('hidden');
+    var paneN = notesBlock(data);
+    paneT.classList.add('hidden');
 
-    tabT.addEventListener('click', function () { select(tabT, tabR, paneT, paneR); });
-    tabR.addEventListener('click', function () { select(tabR, tabT, paneR, paneT); });
+    tabT.addEventListener('click', function () { select(tabT, tabN, paneT, paneN); });
+    tabN.addEventListener('click', function () { select(tabN, tabT, paneN, paneT); });
 
     wrap.appendChild(bar);
     wrap.appendChild(paneT);
-    wrap.appendChild(paneR);
+    wrap.appendChild(paneN);
     return wrap;
   }
 
@@ -342,23 +339,47 @@
     offPane.classList.add('hidden');
   }
 
-  function readableBlock(data, text, vote) {
+  // Метки Overview / Key takeaways / Terms сервер пишет по-английски (Haiku их не переводит),
+  // здесь они на языке интерфейса. Тот же текст уходит в копию и в файл.
+  var NOTE_LABELS = { 'Overview': 'notes_overview', 'Key takeaways': 'notes_takeaways', 'Terms': 'notes_terms' };
+
+  function notesText(text) {
+    return text.replace(/^(Overview|Key takeaways|Terms):[ \t]*$/gm, function (m, k) { return t(NOTE_LABELS[k]) + ':'; });
+  }
+
+  function notesBlock(data) {
+    var text = notesText(data.notes_text);
     var box = document.createElement('div');
     var body = document.createElement('div');
-    body.className = 'transcript';
-    text.split(/\n\s*\n/).forEach(function (p) {
-      if (!p.trim()) return;
-      var el = document.createElement('p');
-      el.className = 'para';
-      el.textContent = p.trim();
-      body.appendChild(el);
+    body.className = 'notes';
+    data.notes_text.split('\n').forEach(function (line) {
+      line = line.trim();
+      if (!line) return;
+      var label = /^(Overview|Key takeaways|Terms):$/.exec(line);
+      var topic = /^\((\d{1,2}:\d{2}(?::\d{2})?)\)\s*(.*)$/.exec(line);
+      var row;
+      if (label) {
+        row = document.createElement('h3');
+        row.textContent = t(NOTE_LABELS[label[1]]);
+      } else if (topic) {
+        row = document.createElement('h4');
+        var time = document.createElement('span');
+        time.className = 'seg-time';
+        time.textContent = topic[1];
+        row.appendChild(time);
+        row.appendChild(document.createTextNode(topic[2]));
+      } else {
+        row = document.createElement('p');
+        row.textContent = line;
+      }
+      body.appendChild(row);
     });
     box.appendChild(body);
 
     var dl = document.createElement('button');
     dl.className = 'btn ghost small';
     dl.type = 'button';
-    dl.textContent = t('readable_download');
+    dl.textContent = t('notes_download');
     dl.addEventListener('click', function () {
       var blob = new Blob(
         [(data.title ? data.title + '\n' + fmtDate(data.created_at) + '\n\n' : '') + text],
@@ -367,22 +388,22 @@
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
       a.href = url;
-      a.download = 'transcript-' + data.id + '-polished.txt';
+      a.download = 'transcript-' + data.id + '-notes.txt';
       a.click();
       URL.revokeObjectURL(url);
-      sendFeedback(data.id, 'download', '/polish/feedback');
+      sendFeedback(data.id, 'download', '/notes/feedback');
     });
-    box.appendChild(summaryFoot(text, data.id, vote, '/polish/feedback', dl));
+    box.appendChild(summaryFoot(text, data.id, data.notes_vote, '/notes/feedback', dl));
     return box;
   }
 
-  function makeReadable(data, btn) {
+  function makeNotes(data, btn, pitch) {
     // Клик по кнопке = спрос, пишем до генерации: так в дайджесте видны и те,
     // кто упёрся в лимит или не дождался.
-    api('/polish/open', {
+    api('/notes/open', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ transcription_id: data.id, has: false }),
+      body: JSON.stringify({ transcription_id: data.id }),
     }).catch(function () {});
 
     btn.disabled = true;
@@ -391,7 +412,7 @@
     var placeholder = document.createElement('div');
     placeholder.className = 'summary working';
     var label = document.createElement('div');
-    label.textContent = t('readable_working');
+    label.textContent = t('notes_working');
     var bar = document.createElement('div');
     bar.className = 'progress';
     bar.appendChild(document.createElement('span'));
@@ -403,7 +424,7 @@
     placeholder.appendChild(hint);
     el.detail.insertBefore(placeholder, body);
 
-    api('/polish', {
+    api('/notes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ transcription_id: data.id }),
@@ -411,35 +432,37 @@
       .then(function (r) {
         if (r.status === 422) throw 'SHORT';
         if (r.status === 402) return r.json().then(function (d) {
-          if (d && d.next_reset) state.polNext = d.next_reset;
+          if (d && d.next_reset) state.notesNext = d.next_reset;
           throw (d && d.error === 'QUOTA') ? 'QUOTA' : 'GATE';
         });
         if (!r.ok) throw 'FAIL';
         return r.json();
       })
       .then(function (d) {
-        data.polished_text = d.text;
+        data.notes_text = d.text;
         placeholder.remove();
         btn.remove();
+        if (pitch) pitch.remove();
         body.textContent = '';
-        body.appendChild(viewTabs(data, true));
+        body.appendChild(viewTabs(data));
         var item = state.items.filter(function (i) { return i.id === data.id; })[0];
-        if (item) item.has_polish = true;
+        if (item) item.has_notes = true;
       })
       .catch(function (why) {
         el.detail.replaceChild(
-          why === 'GATE' ? gateBlock(t('readable_gate_title', { n: state.polGate }))
-            : why === 'QUOTA' ? quotaBlock(t('readable_quota_title'), t('readable_quota_body', { date: fmtDay(state.polNext) }))
-            : why === 'SHORT' ? noteBlock(t('readable_too_short'))
-            : failBlock(t('readable_fail')),
+          why === 'GATE' ? gateBlock(t('notes_gate_title', { n: state.notesGate }))
+            : why === 'QUOTA' ? quotaBlock(t('notes_quota_title'), t('notes_quota_body', { date: fmtDay(state.notesNext) }))
+            : why === 'SHORT' ? noteBlock(t('notes_too_short'))
+            : failBlock(t('notes_fail')),
           placeholder
         );
         // сбой лечится повтором, лимит и длина — нет
         if (why === 'FAIL') {
           btn.disabled = false;
-          btn.textContent = t('readable_make');
+          btn.textContent = '📝 ' + t('tab_notes');
         } else {
           btn.remove();
+          if (pitch) pitch.remove();
         }
       });
   }
@@ -875,9 +898,9 @@
         state.quota = data.signed_quota || 6;
         state.windowUsed = data.window_used || 0;
         state.nextReset = data.next_reset || null;
-        state.polishOn = !!data.polish;
-        state.polGate = (data.polish && data.polish.gate_after) || 2;
-        state.polNext = (data.polish && data.polish.next_reset) || null;
+        state.notesOn = !!data.notes;
+        state.notesGate = (data.notes && data.notes.gate_after) || 2;
+        state.notesNext = (data.notes && data.notes.next_reset) || null;
         state.clientId = data.client_id || null;
         state.email = data.email || null;
         el.retention.textContent = t('retention', { n: state.days });
