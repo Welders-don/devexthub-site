@@ -1,3 +1,10 @@
+# Handoff 2026-10-10: страница-инструмент bank statement (ждёт push)
+
+- По ✔ Дениса собрана /pdf-to-excel/bank-statement/: конвертер выписки в браузере ($0, файл не уходит), скан → стор. Ветка agent/bank-statement-tool от origin/main (d74ef46, 28b5a5d), ссылка с /pdf-to-excel/ (guides) + sitemap.
+- e2e `node tools/e2e_bank_tool.mjs` 26/26, негатив с writer 1.1.0 падает. Скрины releases/bank-statement-tool/.
+- Дальше: push в main по ✔ → Денис: запрос индексации в GSC, описание YouTube, dev.to, Reddit, The Next AI (пакет ~/workspace/knowledge/devexthub-bank-tool-links-2026-10-10.md). Замер индекса ~07.11.
+- Почему одна страница, а не 15 банков: статья bank-statement висит Crawled-not-indexed с авг; банков по имени в US-сиде нет (Индия/Малайзия/Кения).
+
 # Handoff 2026-10-06: кабинет, причёска и блок продуктов сбоку
 
 - Причёска «Get readable text» в кабинете (f4ea37b), сервер Капитана выкачен 06.10.
