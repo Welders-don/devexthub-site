@@ -114,7 +114,7 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 
 ## Страница-инструмент «Bank statement to Excel» (10.10.2026)
 - URL `/pdf-to-excel/bank-statement/`: конвертер выписки прямо на странице, PDF не уходит на сервер ($0). Скан/без таблицы → кнопка в стор (AI-режим расширения). UTM `devexthub_tool / bank-statement-tool`.
-- Движок = КОПИЯ расширения Pdftoexel 1.1.1 в `assets/pdfx/` (pdf-to-tables, xlsx-writer, csv-writer, pdf.js, jszip) + свой `tool.js`. Правка парсера в расширении сама сюда НЕ приедет: переносить копией и гонять `node tools/e2e_bank_tool.mjs` (сайт на :8099).
+- Движок = КОПИЯ расширения Pdftoexel 1.1.1 + фикс кодов валют (Pdftoexel a63c9fa, 10.10, уйдёт в 1.1.2) в `assets/pdfx/` (pdf-to-tables, xlsx-writer, csv-writer, pdf.js, jszip) + свой `tool.js`. Правка парсера в расширении сама сюда НЕ приедет: переносить копией и гонять `node tools/e2e_bank_tool.mjs` (сайт на :8099).
 - Umami-события: `bst-convert` (result ok/scan/empty/error/locked/not-pdf, pages), `bst-download` (fmt).
 - Критерий: страница в индексе GSC к ~07.11. Не должно упасть: store-click pdf-to-excel с `/pdf-to-excel/`. Со статьи-эксперимента bank-statement ссылку НЕ ставили (замер 06.10).
 

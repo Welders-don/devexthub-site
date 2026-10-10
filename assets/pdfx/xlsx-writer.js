@@ -28,8 +28,11 @@ function sanitizeSheetName(name) {
 // Сумму из выписки пишем числом; даты, счета с ведущими нулями и длинные ID
 // остаются текстом. Возвращает { n, decimals } или null.
 const CURRENCY = /^[$€£¥₹₽]|[$€£¥₹₽]$/g;
+// Код валюты буквами («RUB 1,448.60», «1,448.60 RUB»). Тот же список в pdf-to-tables.js.
+const CURRENCY_CODE = '(?:USD|EUR|GBP|RUB|INR|CNY|RMB|JPY|CHF|CAD|AUD|NZD|BRL|MXN|KZT|UAH|BYN|TRY|PLN|CZK|HUF|SEK|NOK|DKK|SGD|HKD|AED|SAR|ZAR|NGN|KES|IDR|MYR|PHP|THB|VND|KRW|ILS|EGP|PKR|BDT|ARS|CLP|COP|PEN|Rs\\.?|R\\$)';
+const CURRENCY_CODE_EDGE = new RegExp(`^${CURRENCY_CODE}\\s?(?=[-+(]?[$€£¥₹₽]?\\s?\\d)|(?<=\\d\\)?)\\s?${CURRENCY_CODE}$`, 'g');
 function parseAmount(raw) {
-  let s = String(raw).trim().replace(CURRENCY, '').trim();
+  let s = String(raw).trim().replace(CURRENCY_CODE_EDGE, '').replace(CURRENCY, '').trim();
   let neg = false;
   if (/^\(.+\)$/.test(s)) { neg = true; s = s.slice(1, -1).trim(); }
   if (/^-/.test(s)) { neg = !neg; s = s.slice(1); } else if (/-$/.test(s)) { neg = !neg; s = s.slice(0, -1); }
