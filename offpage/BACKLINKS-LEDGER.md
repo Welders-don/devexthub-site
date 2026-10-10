@@ -31,6 +31,9 @@
 | Stork.AI | не мерили | ⬜ | ⬜ | 🟢 | ⬜ | ET нашёл Денис 06.10, мы НЕ подавали (каталог сам собрал, «Shipped» 07.08): https://www.stork.ai/en/extract-text-from-image . Проверено curl 06.10: ссылка на /extract-text-from-image/ rel="noopener noreferrer" (dofollow), в серверном HTML, robots index,follow, canonical на себя. Остальные 3 = 404. Новая подача только $49 разово (free и free-за-бейдж закрыты), уже бесплатные листинги остаются. Не платим |
 | Uneed.best | ~75 | ⬜ | ⬜ | ⬜ | ⬜ | 03.08: free-листинг есть, но dofollow = платный перк ($29.99). Free ~nofollow, бейджа нет. Опционально, низкий приоритет. Поля: directories-batch-0803.md |
 
+## Статьи со ссылкой в теле (dofollow)
+- dev.to, 10.10.2026, аккаунт Nichola Chaus (dev.to/nicholachaus, зарегистрирован 10.10, привет в Welcome thread): https://dev.to/nicholachaus/i-built-a-bank-statement-to-excel-converter-that-never-uploads-your-file-kji → /pdf-to-excel/bank-statement/. Проверено curl 10.10: 200, ссылка rel="noopener noreferrer" (без nofollow), robots без noindex, canonical на сам пост. AI Disclosure отмечен. Текст: ~/workspace/knowledge/devexthub-bank-tool-links-2026-10-10.md.
+
 ## Product Hunt (отдельно, не directory)
 - PDF — ✅ был на PH. 31.07 ОТРЕДАКТИРОВАНА карточка продукта: категория Productivity/PDF editor, описание переписано с ключами (без тире), Product URL сменён с CWS на лендинг https://www.devexthub.com/pdf-to-excel/. НЕ перезапускать.
 - TVT — ✅ был на PH. 31.07 ОТРЕДАКТИРОВАНА: подкатегория Transcription, описание переписано с ключами, Product URL → https://www.devexthub.com/transcribe-video-to-text/. НЕ перезапускать.
