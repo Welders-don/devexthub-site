@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bank Statement to Excel Converter: Free, Online, No Upload | Devexthub</title>
+<meta name="description" content="Free bank statement to Excel converter. Drop a PDF statement and get every transaction in Excel or CSV, with amounts as real numbers. Runs in your browser, the file is never uploaded, no sign-up.">
+<link rel="canonical" href="https://www.devexthub.com/pdf-to-excel/bank-statement/">
+<meta property="og:title" content="Bank Statement to Excel Converter, free and online">
+<meta property="og:description" content="Drop a PDF bank statement, download Excel or CSV. Runs in your browser, nothing is uploaded.">
+<meta property="og:image" content="https://www.devexthub.com/assets/pdf-to-excel-demo.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/pdf-to-excel/bank-statement/">
+<link rel="stylesheet" href="../../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Bank Statement to Excel Converter","url":"https://www.devexthub.com/pdf-to-excel/bank-statement/","applicationCategory":"FinanceApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is my bank statement uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The converter runs entirely in your browser. The PDF is read on your own computer and the Excel file is built there too, so your statement never reaches our server."}},
+{"@type":"Question","name":"Which banks does it work with?","acceptedAnswer":{"@type":"Answer","text":"Any bank, as long as the statement is a PDF with selectable text, which is what online banking gives you when you download a statement. Scanned or photographed statements have no text layer and need AI recognition."}},
+{"@type":"Question","name":"Is the bank statement converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There is no sign-up, no page limit and no watermark for text-based statements."}},
+{"@type":"Question","name":"Can I get CSV for accounting software?","acceptedAnswer":{"@type":"Answer","text":"Yes. After converting, download .csv instead of .xlsx. You get one row per line of the statement, ready to import into most budgeting and accounting tools."}},
+{"@type":"Question","name":"What if my statement is a scan?","acceptedAnswer":{"@type":"Answer","text":"A scan is a picture, so there is no text to read in the browser. The free Convert PDF to Excel Chrome extension has an AI mode that recognises the numbers in scanned statements."}}]}
+</script>
+<style>
+.hero { padding-left: 22px; padding-right: 22px; }
+.bst-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.bst-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.bst-drop:hover, .bst-drop.over, .bst-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.bst-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.bst-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.bst-drop .btn { margin-top: 16px; pointer-events: none; }
+.bst-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.bst-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.bst-box h3 { margin: 0 0 6px; font-size: 19px; }
+.bst-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.bst-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.bst-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.bst-scroll { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--line); border-radius: 10px; }
+#bst-preview { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+#bst-preview td { border-bottom: 1px solid var(--line); padding: 6px 10px; white-space: nowrap; max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+#bst-preview tr:nth-child(odd) td { background: var(--bg-soft); }
+.bst-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.bst-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../../">All tools</a>
+      <a href="../">PDF to Excel</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1>Bank statement to Excel converter</h1>
+    <p class="sub">Drop a PDF bank statement and download every transaction as Excel or CSV. It runs in your browser, so the statement is never uploaded.</p>
+
+    <div class="bst-tool">
+      <div id="bst-idle">
+        <label class="bst-drop" id="bst-drop" for="bst-file">
+          <input class="bst-hide" type="file" id="bst-file" accept="application/pdf,.pdf">
+          <b>Drop your statement PDF here</b>
+          <span>or click to choose a file &middot; any bank &middot; free</span><br>
+          <span class="btn">Choose PDF</span>
+        </label>
+      </div>
+
+      <div id="bst-busy" class="bst-box" hidden>
+        <h3>Reading your statement&hellip;</h3>
+        <p class="bst-file" id="bst-name"></p>
+      </div>
+
+      <div id="bst-done" class="bst-box" hidden>
+        <h3>Your statement is ready</h3>
+        <p id="bst-summary"></p>
+        <div class="bst-scroll"><table id="bst-preview"></table></div>
+        <div class="bst-row">
+          <a class="btn" id="bst-xlsx" href="#">Download Excel (.xlsx)</a>
+          <a class="btn btn-ghost" id="bst-csv" href="#">Download .csv</a>
+          <button type="button" class="bst-again">Convert another</button>
+        </div>
+      </div>
+
+      <div id="bst-scan" class="bst-box" hidden>
+        <h3>This statement is a scan</h3>
+        <p>It's a picture of the page, so there is no text for the browser to read. Our free Chrome extension has an AI mode that recognises the numbers in scanned and photographed statements.</p>
+        <div class="bst-row">
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Get the extension with AI mode</a>
+          <button type="button" class="bst-again">Try another file</button>
+        </div>
+      </div>
+
+      <div id="bst-empty" class="bst-box" hidden>
+        <h3>No table found in this PDF</h3>
+        <p>The file has text, but we couldn't find rows and columns in it. If it's an unusual layout, the AI mode in our Chrome extension may still read it.</p>
+        <div class="bst-row">
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Get the extension with AI mode</a>
+          <button type="button" class="bst-again">Try another file</button>
+        </div>
+      </div>
+
+      <div id="bst-error" class="bst-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="bst-error-text"></p>
+        <button type="button" class="bst-again">Choose another file</button>
+      </div>
+
+      <p class="bst-private">Nothing is uploaded: the PDF is read and the Excel file is built on your own computer.</p>
+    </div>
+   </div>
+  </section>
+
+  <section class="section soft reveal" id="how">
+    <div class="wrap">
+      <h2>How to convert a bank statement to Excel</h2>
+      <p class="lead">Three steps, a few seconds, no account.</p>
+      <div class="grid3">
+        <div class="card">
+          <span class="step-num">1</span>
+          <h3>Download the PDF</h3>
+          <p>In your online banking, open statements and download the month you need as PDF.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">2</span>
+          <h3>Drop it above</h3>
+          <p>The converter finds the rows and columns: date, description, debit, credit, balance.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">3</span>
+          <h3>Download Excel or CSV</h3>
+          <p>All pages land on one sheet. Amounts are real numbers, so SUM and filters work right away.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="wrap narrow">
+      <h2>What you get, and what to check</h2>
+      <ul class="ticks">
+        <li><b>Debit, credit and balance in separate columns</b>, not glued to the description.</li>
+        <li><b>Amounts as numbers.</b> Values like 1,488.00 or (25.40) become numbers you can add up. Dates stay as they were printed.</li>
+        <li><b>The whole page comes along.</b> Your bank's name, address and page footers land in the sheet too. Delete those rows before you import.</li>
+        <li><b>Up to 6 columns.</b> Very wide statements get neighbouring columns merged. Glance at the result before you send it to your accountant.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section soft reveal">
+    <div class="wrap narrow">
+      <h2>Converting statements every month?</h2>
+      <p class="lead">The same converter lives in a free Chrome extension. It opens in a side panel next to your online banking, so you skip the trip to this page, and its AI mode reads scanned and photographed statements too.</p>
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Add to Chrome &middot; free</a>
+    </div>
+  </section>
+
+  <section class="section reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Is my bank statement uploaded anywhere?</summary>
+          <p>No. The converter runs entirely in your browser. The PDF is read on your own computer and the Excel file is built there too, so your statement never reaches our server.</p>
+        </details>
+        <details>
+          <summary>Which banks does it work with?</summary>
+          <p>Any bank, as long as the statement is a PDF with selectable text, which is what online banking gives you when you download a statement. Scanned or photographed statements have no text layer and need AI recognition.</p>
+        </details>
+        <details>
+          <summary>Is the bank statement converter free?</summary>
+          <p>Yes. There is no sign-up, no page limit and no watermark for text-based statements.</p>
+        </details>
+        <details>
+          <summary>Can I get CSV for accounting software?</summary>
+          <p>Yes. After converting, download .csv instead of .xlsx. You get one row per line of the statement, ready to import into most budgeting and accounting tools.</p>
+        </details>
+        <details>
+          <summary>What if my statement is a scan?</summary>
+          <p>A scan is a picture, so there is no text to read in the browser. The free <a href="../">Convert PDF to Excel</a> Chrome extension has an AI mode that recognises the numbers in scanned statements.</p>
+        </details>
+      </div>
+      <p style="margin-top:28px;">Want the step-by-step version? Read <a href="../../blog/how-to-convert-a-bank-statement-pdf-to-excel/">how to convert a bank statement PDF to Excel</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../../">Devexthub</a>
+    <a href="../">Convert PDF to Excel</a>
+    <a href="../../blog/">Blog</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/pdfx/tool.js"></script>
+<script src="/assets/pdfx/jszip.min.js"></script>
+<script>
+(function () {
+  var utm = "utm_source=devexthub_tool&utm_medium=referral&utm_campaign=bank-statement-tool";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
