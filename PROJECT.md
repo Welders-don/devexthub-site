@@ -112,6 +112,12 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - UTM ссылок в стор на лендингах: `devexthub_landing`, а если referrer = `/app` (кабинет) → `devexthub_app` (26.09). Новый лендинг копировать с этой строкой, иначе переходы из кабинета пропадут в общем источнике.
 - Медиа/баннеры: `assets/`, `.media/`, `releases/` (в т.ч. `releases/marquee/` — баннеры 1400x560 под CWS featured).
 
+## Страница-инструмент «Bank statement to Excel» (10.10.2026)
+- URL `/pdf-to-excel/bank-statement/`: конвертер выписки прямо на странице, PDF не уходит на сервер ($0). Скан/без таблицы → кнопка в стор (AI-режим расширения). UTM `devexthub_tool / bank-statement-tool`.
+- Движок = КОПИЯ расширения Pdftoexel 1.1.1 в `assets/pdfx/` (pdf-to-tables, xlsx-writer, csv-writer, pdf.js, jszip) + свой `tool.js`. Правка парсера в расширении сама сюда НЕ приедет: переносить копией и гонять `node tools/e2e_bank_tool.mjs` (сайт на :8099).
+- Umami-события: `bst-convert` (result ok/scan/empty/error/locked/not-pdf, pages), `bst-download` (fmt).
+- Критерий: страница в индексе GSC к ~07.11. Не должно упасть: store-click pdf-to-excel с `/pdf-to-excel/`. Со статьи-эксперимента bank-statement ссылку НЕ ставили (замер 06.10).
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
