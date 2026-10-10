@@ -7,7 +7,7 @@ const { chromium } = pw;
 const require = createRequire(import.meta.url);
 const JSZip = require('../assets/pdfx/jszip.min.js');
 
-const BASE = 'http://localhost:8099/pdf-to-excel/bank-statement/';
+const BASE = process.env.BASE || 'http://localhost:8099/pdf-to-excel/bank-statement/';
 const TMP = '/tmp/bst-e2e';
 const SHOTS = new URL('../releases/bank-statement-tool/', import.meta.url).pathname;
 const FIXTURES = {

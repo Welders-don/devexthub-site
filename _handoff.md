@@ -1,4 +1,4 @@
-# Handoff 2026-10-10: страница-инструмент bank statement (ждёт push)
+# Handoff 2026-10-10: страница-инструмент bank statement LIVE (push a5dc686, e2e против прода 26/26, таймер замера 07.11)
 
 - По ✔ Дениса собрана /pdf-to-excel/bank-statement/: конвертер выписки в браузере ($0, файл не уходит), скан → стор. Ветка agent/bank-statement-tool от origin/main (d74ef46, 28b5a5d), ссылка с /pdf-to-excel/ (guides) + sitemap.
 - e2e `node tools/e2e_bank_tool.mjs` 26/26, негатив с writer 1.1.0 падает. Скрины releases/bank-statement-tool/.
