@@ -136,12 +136,18 @@
 /* выбор тарифа (12.10) */
 .billing-note { margin: -8px 0 16px; padding: 10px 14px; border-radius: 10px; background: #e8f5ec; color: #0f5132; font-size: 14px; }
 .upgrade { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin: 0 0 22px; }
-.upgrade h2 { margin: 0 0 8px; font-size: 20px; }
+.upgrade h2 { margin: 0 0 8px; font-size: 20px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.up-compare { font-size: 14px; font-weight: 400; color: inherit; }
 .up-toggle { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
-.up-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
-.up-card { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; }
-.up-card.rec { border-color: var(--green); }
+.up-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.up-card { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; cursor: pointer; }
+.up-card:hover { border-color: #b8c4bb; }
+.up-card.on { border: 2px solid var(--green); padding: 13px 15px; background: #f4faf6; }
+.up-card:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.up-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .up-name { font-weight: 600; }
+.up-badge { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--green); color: #fff; }
 .up-price b { font-size: 24px; }
-.up-go { justify-self: start; margin-top: 6px; }
+.up-feat { margin: 6px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
+.up-go { margin-top: 14px; }
 .up-err { color: #b42318; margin: 10px 0 0; }
