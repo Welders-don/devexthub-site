@@ -761,7 +761,11 @@
       var box = document.createElement('div'); el.upgrade.appendChild(box); renderSignIn(box);
       return;
     }
-    var interval = 'year';
+    var interval = 'year', chosen = 'pro';
+    var compare = document.createElement('a');
+    compare.href = '/transcribe-video-to-text/pricing/'; compare.target = '_blank'; compare.rel = 'noopener';
+    compare.className = 'up-compare'; compare.textContent = t('up_compare');
+    h.appendChild(compare);
     var tog = document.createElement('div'); tog.className = 'up-toggle';
     ['year', 'month'].forEach(function (iv) {
       var b = document.createElement('button'); b.type = 'button'; b.className = 'tab'; b.dataset.iv = iv;
@@ -770,32 +774,51 @@
       tog.appendChild(b);
     });
     el.upgrade.appendChild(tog);
-    var cards = document.createElement('div'); cards.className = 'up-cards'; el.upgrade.appendChild(cards);
+    // Карточка = выбор (рамка переезжает по клику), оплата одной кнопкой под ними:
+    // 12.10 Денис кликал по карточке Lite, ждал, что рамка переключится, а рамка Pro стояла как «выбранная».
+    var cards = document.createElement('div'); cards.className = 'up-cards'; cards.setAttribute('role', 'radiogroup');
+    el.upgrade.appendChild(cards);
+    var go = document.createElement('button'); go.type = 'button'; go.className = 'btn up-go';
+    el.upgrade.appendChild(go);
     var err = document.createElement('p'); err.className = 'up-err hidden'; el.upgrade.appendChild(err);
+    var FEATURES = {
+      lite: ['up_f_courses', 'up_f_2h', 'up_f_unlim', 'up_f_free'],
+      pro: ['up_f_courses', 'up_f_2h', 'up_f_unlim', 'up_f_support', 'up_f_free'],
+    };
     function paint() {
       tog.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('on', b.dataset.iv === interval); });
       cards.innerHTML = '';
       ['lite', 'pro'].forEach(function (plan) {
-        var pr = PRICES[plan], c = document.createElement('div'); c.className = 'up-card' + (plan === 'pro' ? ' rec' : '');
-        var price = interval === 'year' ? pr.year : pr.month;
-        c.innerHTML = '<div class="up-name"></div><div class="up-price"><b></b> <span class="muted"></span></div><div class="muted up-billed"></div><div class="up-min"></div>';
+        var pr = PRICES[plan], c = document.createElement('div');
+        c.className = 'up-card' + (plan === chosen ? ' on' : '');
+        c.dataset.plan = plan; c.tabIndex = 0;
+        c.setAttribute('role', 'radio'); c.setAttribute('aria-checked', String(plan === chosen));
+        c.innerHTML = '<div class="up-top"><span class="up-name"></span><span class="up-badge hidden"></span></div>' +
+          '<div class="up-price"><b></b> <span class="muted"></span></div><div class="muted up-billed"></div><ul class="up-feat"></ul>';
         c.querySelector('.up-name').textContent = plan === 'pro' ? 'Pro' : 'Lite';
-        c.querySelector('.up-price b').textContent = price;
+        if (plan === 'pro') { var bd = c.querySelector('.up-badge'); bd.textContent = t('up_recommended'); bd.classList.remove('hidden'); }
+        c.querySelector('.up-price b').textContent = interval === 'year' ? pr.year : pr.month;
         c.querySelector('.up-price span').textContent = t('up_per_month');
         c.querySelector('.up-billed').textContent = interval === 'year' ? t('up_billed_year', { sum: pr.billed }) : t('up_billed_month');
-        c.querySelector('.up-min').textContent = t('up_minutes', { n: pr.minutes });
-        var go = document.createElement('button'); go.type = 'button'; go.className = 'btn small up-go'; go.textContent = t('up_continue');
-        go.addEventListener('click', function () {
-          go.disabled = true; go.textContent = t('loading_short'); err.classList.add('hidden');
-          api('/billing/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ plan: plan, interval: interval }) })
-            .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-            .then(function (d) { window.location.href = d.url; })
-            .catch(function () { go.disabled = false; go.textContent = t('up_continue'); err.textContent = t('up_fail'); err.classList.remove('hidden'); });
-        });
-        c.appendChild(go);
+        var ul = c.querySelector('.up-feat');
+        [t('up_f_minutes', { n: pr.minutes, h: t(plan === 'pro' ? 'up_f_hours_pro' : 'up_f_hours_lite') })]
+          .concat(FEATURES[plan].map(function (k) { return t(k); }))
+          .forEach(function (txt) { var li = document.createElement('li'); li.textContent = txt; ul.appendChild(li); });
+        function pick() { chosen = plan; paint(); }
+        c.addEventListener('click', pick);
+        c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
         cards.appendChild(c);
       });
+      go.disabled = false;
+      go.textContent = t('up_continue_plan', { plan: chosen === 'pro' ? 'Pro' : 'Lite' });
     }
+    go.addEventListener('click', function () {
+      go.disabled = true; go.textContent = t('loading_short'); err.classList.add('hidden');
+      api('/billing/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ plan: chosen, interval: interval }) })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (d) { window.location.href = d.url; })
+        .catch(function () { paint(); err.textContent = t('up_fail'); err.classList.remove('hidden'); });
+    });
     paint();
   }
 
