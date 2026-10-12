@@ -17,6 +17,8 @@
     detail: document.getElementById('detail'),
     retention: document.getElementById('retention'),
     planLine: document.getElementById('planLine'),
+    billingNote: document.getElementById('billingNote'),
+    upgrade: document.getElementById('upgrade'),
     signin: document.getElementById('signin'),
     earlierNote: document.getElementById('earlierNote'),
   };
@@ -725,6 +727,78 @@
     el.planLine.appendChild(link);
   }
 
+  // Выбор тарифа (12.10, пейвол для заявки monetize). Цены = /pricing и кабинет monetize.
+  // Касса открыта только тем, кому сервер вернул billing_open (до запуска = тестеры).
+  var PRICES = {
+    lite: { minutes: 150, month: '$7.99', year: '$4.99', billed: '$59.88' },
+    pro: { minutes: 500, month: '$14.99', year: '$9.99', billed: '$119.88' },
+  };
+  var paidPolls = 0;
+
+  function renderUpgrade(data) {
+    // Вернулись с кассы: вебхук может прийти на пару секунд позже страницы, перечитываем.
+    if (state.paidBack) {
+      el.billingNote.classList.remove('hidden');
+      if (data.plan) { el.billingNote.textContent = t('paid_ok', { plan: data.plan.name === 'pro' ? 'Pro' : 'Lite' }); state.paidBack = false; }
+      else if (paidPolls < 6) { el.billingNote.textContent = t('paid_wait'); paidPolls++; setTimeout(function () { loadMe(state.openId); }, 3000); }
+      else el.billingNote.textContent = t('paid_slow');
+    }
+    if (!data.plan && data.billing_open) {
+      el.planLine.classList.remove('hidden');
+      el.planLine.textContent = t('plan_free') + ' · ';
+      var a = document.createElement('a');
+      a.href = '#'; a.className = 'plan-manage'; a.textContent = t('upgrade_link');
+      a.addEventListener('click', function (e) { e.preventDefault(); state.upgrade = true; renderUpgrade(data); });
+      el.planLine.appendChild(a);
+    }
+    var showPicker = state.upgrade && !data.plan && (data.billing_open || !data.signed_in);
+    el.upgrade.classList.toggle('hidden', !showPicker);
+    if (!showPicker) return;
+    el.upgrade.innerHTML = '';
+    var h = document.createElement('h2'); h.textContent = t('upgrade_h'); el.upgrade.appendChild(h);
+    if (!data.signed_in) {
+      var p = document.createElement('p'); p.className = 'muted'; p.textContent = t('upgrade_signin'); el.upgrade.appendChild(p);
+      var box = document.createElement('div'); el.upgrade.appendChild(box); renderSignIn(box);
+      return;
+    }
+    var interval = 'year';
+    var tog = document.createElement('div'); tog.className = 'up-toggle';
+    ['year', 'month'].forEach(function (iv) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'tab'; b.dataset.iv = iv;
+      b.textContent = t(iv === 'year' ? 'up_yearly' : 'up_monthly');
+      b.addEventListener('click', function () { interval = iv; paint(); });
+      tog.appendChild(b);
+    });
+    el.upgrade.appendChild(tog);
+    var cards = document.createElement('div'); cards.className = 'up-cards'; el.upgrade.appendChild(cards);
+    var err = document.createElement('p'); err.className = 'up-err hidden'; el.upgrade.appendChild(err);
+    function paint() {
+      tog.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('on', b.dataset.iv === interval); });
+      cards.innerHTML = '';
+      ['lite', 'pro'].forEach(function (plan) {
+        var pr = PRICES[plan], c = document.createElement('div'); c.className = 'up-card' + (plan === 'pro' ? ' rec' : '');
+        var price = interval === 'year' ? pr.year : pr.month;
+        c.innerHTML = '<div class="up-name"></div><div class="up-price"><b></b> <span class="muted"></span></div><div class="muted up-billed"></div><div class="up-min"></div>';
+        c.querySelector('.up-name').textContent = plan === 'pro' ? 'Pro' : 'Lite';
+        c.querySelector('.up-price b').textContent = price;
+        c.querySelector('.up-price span').textContent = t('up_per_month');
+        c.querySelector('.up-billed').textContent = interval === 'year' ? t('up_billed_year', { sum: pr.billed }) : t('up_billed_month');
+        c.querySelector('.up-min').textContent = t('up_minutes', { n: pr.minutes });
+        var go = document.createElement('button'); go.type = 'button'; go.className = 'btn small up-go'; go.textContent = t('up_continue');
+        go.addEventListener('click', function () {
+          go.disabled = true; go.textContent = t('loading_short'); err.classList.add('hidden');
+          api('/billing/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ plan: plan, interval: interval }) })
+            .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+            .then(function (d) { window.location.href = d.url; })
+            .catch(function () { go.disabled = false; go.textContent = t('up_continue'); err.textContent = t('up_fail'); err.classList.remove('hidden'); });
+        });
+        c.appendChild(go);
+        cards.appendChild(c);
+      });
+    }
+    paint();
+  }
+
   function fmtDay(iso) {
     if (!iso) return '—';
     return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
@@ -938,6 +1012,7 @@
         // (по отпечатку их не отдаём). Честно говорим, куда делись и как не терять дальше.
         el.earlierNote.classList.toggle('hidden', !(data.earlier_install && !state.signedIn));
         renderPlan(data.plan);
+        renderUpgrade(data);
         el.signin.textContent = '';
         if (state.signedIn) el.signin.textContent = t('signed_as', { email: state.email || '' });
         else renderSignIn(el.signin);
@@ -959,9 +1034,11 @@
     var nonce = q.get('state');
     var wanted = Number(q.get('t')) || null;
     var auto = q.get('summary') === '1'; // из панели нажали Summary — считаем сразу
+    state.upgrade = q.get('upgrade') === '1';       // из панели нажали Upgrade
+    state.paidBack = q.get('billing') === 'success'; // вернулись с кассы
 
     // билет из адреса убираем сразу, чтобы он не оседал в истории и реферерах
-    if (nonce || wanted || auto) history.replaceState(null, '', location.pathname);
+    if (nonce || wanted || auto || state.upgrade || state.paidBack) history.replaceState(null, '', location.pathname);
 
     if (!nonce) return loadMe(wanted, auto);
 
