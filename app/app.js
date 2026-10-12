@@ -736,11 +736,11 @@
   var paidPolls = 0;
 
   function renderUpgrade(data) {
-    // Вернулись с кассы: вебхук может прийти на пару секунд позже страницы, перечитываем.
+    // Вернулись с кассы: вебхук monetize приходит через ~30 с после оплаты (замер 12.10), ждём до минуты.
     if (state.paidBack) {
       el.billingNote.classList.remove('hidden');
       if (data.plan) { el.billingNote.textContent = t('paid_ok', { plan: data.plan.name === 'pro' ? 'Pro' : 'Lite' }); state.paidBack = false; }
-      else if (paidPolls < 6) { el.billingNote.textContent = t('paid_wait'); paidPolls++; setTimeout(function () { loadMe(state.openId); }, 3000); }
+      else if (paidPolls < 20) { el.billingNote.textContent = t('paid_wait'); paidPolls++; setTimeout(function () { loadMe(state.openId); }, 3000); }
       else el.billingNote.textContent = t('paid_slow');
     }
     if (!data.plan && data.billing_open) {
