@@ -19,6 +19,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://www.devexthub.com/assets/tvt-og.jpg">
 <link rel="stylesheet" href="../styles.css">
+<style>
+.contact { max-width: 620px; }
+.contact form { display: grid; gap: 12px; margin-top: 18px; }
+.contact input, .contact textarea { font: inherit; padding: 12px 14px; border: 1px solid #d9dcd8; border-radius: 10px; background: #fff; width: 100%; box-sizing: border-box; }
+.contact button { justify-self: start; }
+.contact .hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
+.contact-status { margin: 0; min-height: 1.4em; }
+.contact-status.err { color: #b42318; }
+</style>
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
 </head>
 <body>
@@ -210,6 +219,20 @@
     </div>
   </section>
 
+  <section class="section soft reveal" id="contact">
+    <div class="wrap contact">
+      <h2>Contact us</h2>
+      <p class="lead">A question, a bug or an idea? Write to <a href="mailto:telesinimarco@gmail.com">telesinimarco@gmail.com</a> or use the form, we reply by email.</p>
+      <form id="contactForm" novalidate>
+        <input type="email" name="email" placeholder="Your email" autocomplete="email" required>
+        <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <button class="btn" type="submit">Send message</button>
+        <p class="contact-status" id="contactStatus" role="status"></p>
+      </form>
+    </div>
+  </section>
+
   <section class="section reveal">
     <div class="wrap" style="text-align:center;">
       <h2>Turn your next video into text</h2>
@@ -227,6 +250,7 @@
     <a class="store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Chrome Web Store</a>
     <a href="https://welders-don.github.io/transcribe-video-to-text-privacy/">Privacy</a>
     <a href="pricing/">Pricing</a>
+    <a href="#contact">Contact</a>
     <a href="../terms/">Terms</a>
     <a href="../refund-policy/">Refunds</a>
     <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
@@ -258,6 +282,32 @@
       floatCta.classList.toggle("show", !entries[0].isIntersecting);
     }, { threshold: 0 }).observe(hero);
   }
+})();
+
+// Форма связи (12.10, требование monetize.software к сайту продукта): пишет в наш /api/feedback,
+// Денису прилетает алерт в Telegram. Скрытое поле website заполняют только боты, им молча «успех».
+(function () {
+  var f = document.getElementById("contactForm"), st = document.getElementById("contactStatus");
+  if (!f) return;
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = f.email.value.trim(), msg = f.message.value.trim();
+    st.className = "contact-status";
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || msg.length < 3) {
+      st.className = "contact-status err"; st.textContent = "Please add your email and a message."; return;
+    }
+    if (f.website.value) { f.reset(); st.textContent = "Thanks! We will reply by email."; return; }
+    var btn = f.querySelector("button"); btn.disabled = true; st.textContent = "Sending…";
+    fetch("https://transcribe.devexthub.com:8443/api/feedback", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, message: msg, category: "general", pageUrl: location.href })
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      f.reset(); st.textContent = "Thanks! We will reply by email.";
+    }).catch(function () {
+      st.className = "contact-status err"; st.textContent = "Could not send. Please email us instead.";
+    }).then(function () { btn.disabled = false; });
+  });
 })();
 </script>
 </body>
