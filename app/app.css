@@ -132,3 +132,16 @@
   /* на телефоне блок сдвигал сам транскрипт за экран; там остаётся блок внизу страницы */
   .side-tools { display: none; }
 }
+
+/* выбор тарифа (12.10) */
+.billing-note { margin: -8px 0 16px; padding: 10px 14px; border-radius: 10px; background: #e8f5ec; color: #0f5132; font-size: 14px; }
+.upgrade { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin: 0 0 22px; }
+.upgrade h2 { margin: 0 0 8px; font-size: 20px; }
+.up-toggle { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.up-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.up-card { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; }
+.up-card.rec { border-color: var(--green); }
+.up-name { font-weight: 600; }
+.up-price b { font-size: 24px; }
+.up-go { justify-self: start; margin-top: 6px; }
+.up-err { color: #b42318; margin: 10px 0 0; }
