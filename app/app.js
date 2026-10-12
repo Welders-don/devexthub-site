@@ -16,6 +16,7 @@
     list: document.getElementById('list'),
     detail: document.getElementById('detail'),
     retention: document.getElementById('retention'),
+    planLine: document.getElementById('planLine'),
     signin: document.getElementById('signin'),
     earlierNote: document.getElementById('earlierNote'),
   };
@@ -700,6 +701,18 @@
     return box;
   }
 
+  // Платный тариф (12.10): одна строка минут под заголовком. Месячная подписка: сброс минут
+  // и продление в один день, пишем только сброс. Годовая: минуты помесячно, продление отдельно.
+  function renderPlan(p) {
+    el.planLine.classList.toggle('hidden', !p);
+    if (!p) return;
+    var name = p.name === 'pro' ? 'Pro' : 'Lite';
+    var parts = [name, t('plan_left', { left: p.left, total: p.minutes }), t('plan_reset', { date: fmtDay(p.resets_at) })];
+    if (p.interval === 'year' && p.renews_at) parts.push(t('plan_renews', {
+      date: new Date(p.renews_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }));
+    el.planLine.textContent = parts.join(' · ');
+  }
+
   function fmtDay(iso) {
     if (!iso) return '—';
     return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
@@ -912,6 +925,7 @@
         // Переустановка: записи прежней установки на этом компьютере здесь не видны
         // (по отпечатку их не отдаём). Честно говорим, куда делись и как не терять дальше.
         el.earlierNote.classList.toggle('hidden', !(data.earlier_install && !state.signedIn));
+        renderPlan(data.plan);
         el.signin.textContent = '';
         if (state.signedIn) el.signin.textContent = t('signed_as', { email: state.email || '' });
         else renderSignIn(el.signin);
