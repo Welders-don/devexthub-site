@@ -710,7 +710,19 @@
     var parts = [name, t('plan_left', { left: p.left, total: p.minutes }), t('plan_reset', { date: fmtDay(p.resets_at) })];
     if (p.interval === 'year' && p.renews_at) parts.push(t('plan_renews', {
       date: new Date(p.renews_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }));
-    el.planLine.textContent = parts.join(' · ');
+    el.planLine.textContent = parts.join(' · ') + ' · ';
+    // Отмена, карта, чеки: кабинет подписчика Paddle по разовой ссылке с нашего сервера.
+    var link = document.createElement('a');
+    link.href = '#'; link.className = 'plan-manage'; link.textContent = t('plan_manage');
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      link.textContent = t('loading_short');
+      api('/billing/portal', { method: 'POST' })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (d) { window.location.href = d.url; })
+        .catch(function () { link.textContent = t('plan_manage_fail'); });
+    });
+    el.planLine.appendChild(link);
   }
 
   function fmtDay(iso) {
