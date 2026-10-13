@@ -747,7 +747,13 @@
     if (state.paidBack) {
       el.billingNote.classList.remove('hidden');
       if (data.plan) { el.billingNote.textContent = t('paid_ok', { plan: data.plan.name === 'pro' ? 'Pro' : 'Lite' }); state.paidBack = false; }
-      else if (paidPolls < 20) { el.billingNote.textContent = t('paid_wait'); paidPolls++; setTimeout(function () { loadMe(state.openId); }, 3000); }
+      else if (paidPolls < 20) {
+        el.billingNote.textContent = t('paid_wait'); paidPolls++;
+        // Сначала просим сервер сразу перечитать статус у monetize (их вебхук идёт 30-60 с), потом /me.
+        setTimeout(function () {
+          api('/billing/sync', { method: 'POST' }).catch(function () {}).then(function () { loadMe(state.openId); });
+        }, paidPolls === 1 ? 1500 : 3000);
+      }
       else el.billingNote.textContent = t('paid_slow');
     }
     if (!data.plan && data.billing_open) {
