@@ -810,18 +810,20 @@
       tog.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('on', b.dataset.iv === interval); });
       cards.innerHTML = '';
       // Карточка Free (13.10, Денис): что остаётся бесплатно и когда вернутся ИИ-кредиты.
-      // Не выбирается, у неё свой выход «Stay on Free». Честный выход рядом с ценой = доверие.
-      var fc = document.createElement('div'); fc.className = 'up-card up-free';
+      // Выбирается как тариф: кнопка становится «Stay on Free» с датой возврата кредитов.
+      var fc = document.createElement('div'); fc.className = 'up-card up-free' + (chosen === 'free' ? ' on' : '');
+      fc.dataset.plan = 'free'; fc.tabIndex = 0;
+      fc.setAttribute('role', 'radio'); fc.setAttribute('aria-checked', String(chosen === 'free'));
       fc.innerHTML = '<div class="up-top"><span class="up-name">Free</span><span class="up-cur"></span></div>' +
-        '<div class="up-price"><b>$0</b></div><div class="muted up-billed"></div><ul class="up-feat"></ul><a href="#" class="up-stay"></a>';
+        '<div class="up-price"><b>$0</b></div><div class="muted up-billed"></div><ul class="up-feat"></ul>';
       fc.querySelector('.up-cur').textContent = t('up_current');
       fc.querySelector('.up-billed').textContent = fu && fu.reset_date
         ? t(fu.remaining === 0 ? 'up_free_back' : 'up_free_left', { n: fu.remaining, date: fmtDay(fu.reset_date) }) : '';
       ['up_free_yt', 'up_free_ai', 'up_free_export', 'up_free_sum'].forEach(function (k) {
         var li = document.createElement('li'); li.textContent = t(k); fc.querySelector('.up-feat').appendChild(li);
       });
-      var stay = fc.querySelector('.up-stay'); stay.textContent = t('up_stay');
-      stay.addEventListener('click', function (e) { e.preventDefault(); state.upgrade = false; el.upgrade.classList.add('hidden'); });
+      fc.addEventListener('click', function () { chosen = 'free'; paint(); });
+      fc.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chosen = 'free'; paint(); } });
       cards.appendChild(fc);
       ['lite', 'pro'].forEach(function (plan) {
         var pr = PRICES[plan], c = document.createElement('div');
@@ -845,9 +847,20 @@
         cards.appendChild(c);
       });
       go.disabled = false;
-      go.textContent = t('up_continue_plan', { plan: chosen === 'pro' ? 'Pro' : 'Lite' });
+      var free = chosen === 'free';
+      go.classList.toggle('ghost', free);
+      go.textContent = free ? t('up_stay') : t('up_continue_plan', { plan: chosen === 'pro' ? 'Pro' : 'Lite' });
+      guar.textContent = free ? freeNote() : t('up_guarantee');
+    }
+    function freeNote() {
+      return fu && fu.reset_date ? t('up_free_note', { date: fmtDay(fu.reset_date) }) : t('up_free_note_nodate');
     }
     go.addEventListener('click', function () {
+      if (chosen === 'free') {
+        state.upgrade = false; el.upgrade.classList.add('hidden');
+        el.billingNote.textContent = freeNote(); el.billingNote.classList.remove('hidden');
+        return;
+      }
       go.disabled = true; go.textContent = t('loading_short'); err.classList.add('hidden');
       api('/billing/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ plan: chosen, interval: interval }) })
         .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
