@@ -1166,8 +1166,10 @@
   // Список не живой: новая запись из панели появлялась только после F5 (Денис 13.10).
   // Вернулся на вкладку кабинета = перечитать список, открытую запись не трогаем.
   // Не дёргаем, пока открыт выбор тарифа или форма поддержки (их бы сбросило перерисовкой).
+  // Плюс раз в 20 с, пока вкладка на экране: панель стоит сбоку той же вкладки, и переключения
+  // вкладки может не быть вовсе (Денис записал в соседней вкладке и смотрел сюда же).
   var lastLoad = Date.now();
-  document.addEventListener('visibilitychange', function () {
+  function refreshList() {
     if (document.visibilityState !== 'visible' || Date.now() - lastLoad < 5000) return;
     if (state.upgrade || state.paidBack || !el.supportBox.classList.contains('hidden')) return;
     lastLoad = Date.now();
@@ -1177,7 +1179,10 @@
       state.items = data.transcriptions;
       renderList();
     }).catch(function () {});
-  });
+  }
+  document.addEventListener('visibilitychange', refreshList);
+  window.addEventListener('focus', refreshList);
+  setInterval(refreshList, 20000);
 
   start();
 })();
