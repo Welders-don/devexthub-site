@@ -157,3 +157,10 @@
 .up-guar { margin: 8px 0 0; font-size: 13px; }
 .up-wait { margin: 4px 0 0; font-size: 13px; }
 .up-err { color: #b42318; margin: 10px 0 0; }
+.support-box { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: -6px 0 18px; display: grid; gap: 8px; max-width: 560px; }
+.support-box textarea { font: inherit; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; width: 100%; box-sizing: border-box; }
+.support-h { margin: 0; font-size: 14px; }
+.support-row { display: flex; align-items: center; gap: 14px; }
+.support-row a { color: inherit; font-size: 14px; }
+.support-st { font-size: 13px; }
+.support-ok { margin: 0; color: #0f5132; }
