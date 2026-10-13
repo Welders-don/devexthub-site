@@ -139,9 +139,13 @@
 .upgrade h2 { margin: 0 0 8px; font-size: 20px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .up-compare { font-size: 14px; font-weight: 400; color: inherit; }
 .up-toggle { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
-.up-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.up-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
 .up-card { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; cursor: pointer; }
 .up-card:hover { border-color: #b8c4bb; }
+.up-free { cursor: default; background: #fafaf8; }
+.up-free:hover { border-color: var(--line); }
+.up-cur { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.up-stay { font-size: 14px; color: inherit; margin-top: 6px; justify-self: start; }
 .up-card.on { border: 2px solid var(--green); padding: 13px 15px; background: #f4faf6; }
 .up-card:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 .up-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
