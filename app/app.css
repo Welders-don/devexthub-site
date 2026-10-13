@@ -99,6 +99,7 @@
 .tab:hover, .tab:focus-visible { color: var(--ink); }
 .tab.on { color: var(--ink); border-bottom-color: var(--green); }
 .notes-pitch { margin: -8px 0 16px; }
+.notes-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: -6px 0 18px; }
 .notes { font-size: 16px; line-height: 1.55; color: var(--ink-soft); max-height: 62vh; overflow-y: auto; }
 .notes h3 { margin: 18px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
 .notes h3:first-child { margin-top: 0; }

@@ -292,7 +292,7 @@
     el.detail.appendChild(head);
     if (pitch) el.detail.appendChild(pitch);
 
-    if (data.summary_text) el.detail.appendChild(summaryBlock(data.summary_text, data.id, data.summary_vote));
+    if (data.summary_text) notesUnder(el.detail.appendChild(summaryBlock(data.summary_text, data.id, data.summary_vote)));
 
     var body = document.createElement('div');
     body.className = 'js-body';
@@ -403,6 +403,23 @@
     });
     box.appendChild(summaryFoot(text, data.id, data.notes_vote, '/notes/feedback', dl));
     return box;
+  }
+
+  // Конспект предлагаем под готовым саммари (13.10: из 59 дошедших из панели саммари взяли 28,
+  // кнопку конспекта в ряду с TXT/Word нажал 1). Саммари из панели стартует само, и человек,
+  // получив его, уходит: предложение «подробнее» должно стоять там, куда он смотрит.
+  function notesUnder(summaryEl) {
+    var btn = el.detail.querySelector('.js-notes');
+    var pitch = el.detail.querySelector('.notes-pitch');
+    if (!btn || !pitch) return;
+    pitch.textContent = '';
+    pitch.className = 'notes-cta';
+    pitch.appendChild(btn);
+    var why = document.createElement('span');
+    why.className = 'muted';
+    why.textContent = t('notes_pitch');
+    pitch.appendChild(why);
+    summaryEl.parentNode.insertBefore(pitch, summaryEl.nextSibling);
   }
 
   function makeNotes(data, btn, pitch) {
@@ -647,7 +664,9 @@
         return r.json();
       })
       .then(function (data) {
-        el.detail.replaceChild(summaryBlock(data.summary, id, null), placeholder);
+        var sumEl = summaryBlock(data.summary, id, null);
+        el.detail.replaceChild(sumEl, placeholder);
+        notesUnder(sumEl);
         if (btn) btn.remove(); // саммари уже есть — предлагать сделать его ещё раз незачем
         state.used += 1;
         var item = state.items.filter(function (i) { return i.id === id; })[0];
