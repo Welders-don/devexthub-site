@@ -725,6 +725,13 @@
         .catch(function () { link.textContent = t('plan_manage_fail'); });
     });
     el.planLine.appendChild(link);
+    // Поддержка рядом с подпиской (13.10, Денис искал её здесь; требование monetize «Contact Support»).
+    el.planLine.appendChild(document.createTextNode(' · '));
+    var sup = document.createElement('a');
+    sup.className = 'plan-manage';
+    sup.href = 'mailto:team@devexthub.com?subject=' + encodeURIComponent('Transcribe Video to Text support (' + name + ')');
+    sup.textContent = t('plan_support');
+    el.planLine.appendChild(sup);
   }
 
   // Выбор тарифа (12.10, пейвол для заявки monetize). Цены = /pricing и кабинет monetize.
