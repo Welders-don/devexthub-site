@@ -17,6 +17,7 @@
     detail: document.getElementById('detail'),
     retention: document.getElementById('retention'),
     planLine: document.getElementById('planLine'),
+    supportBox: document.getElementById('supportBox'),
     billingNote: document.getElementById('billingNote'),
     upgrade: document.getElementById('upgrade'),
     signin: document.getElementById('signin'),
@@ -725,13 +726,42 @@
         .catch(function () { link.textContent = t('plan_manage_fail'); });
     });
     el.planLine.appendChild(link);
-    // Поддержка рядом с подпиской (13.10, Денис искал её здесь; требование monetize «Contact Support»).
     el.planLine.appendChild(document.createTextNode(' · '));
-    var sup = document.createElement('a');
-    sup.className = 'plan-support';
-    sup.href = 'mailto:team@devexthub.com?subject=' + encodeURIComponent('Transcribe Video to Text support (' + name + ')');
-    sup.textContent = t('plan_support');
-    el.planLine.appendChild(sup);
+    el.planLine.appendChild(supportLink(name));
+  }
+
+  // Поддержка прямо в кабинете (13.10, Денис: «у подписки негде оставить обращение», mailto не форма).
+  // Форма шлёт в тот же /api/feedback, что панель и сайт: алерт Денису в Telegram, ответ на почту входа.
+  var FEEDBACK_URL = 'https://transcribe.devexthub.com:8443/api/feedback';
+  function supportLink(planName) {
+    var a = document.createElement('a');
+    a.href = '#'; a.className = 'plan-support'; a.textContent = t('plan_support');
+    a.addEventListener('click', function (e) { e.preventDefault(); openSupport(planName); });
+    return a;
+  }
+  function openSupport(planName) {
+    var box = el.supportBox;
+    box.innerHTML = '';
+    box.classList.remove('hidden');
+    var h = document.createElement('p'); h.className = 'support-h'; h.textContent = t('support_h', { email: state.email || '' });
+    var ta = document.createElement('textarea'); ta.rows = 4; ta.placeholder = t('support_ph');
+    var row = document.createElement('div'); row.className = 'support-row';
+    var send = document.createElement('button'); send.type = 'button'; send.className = 'btn small'; send.textContent = t('support_send');
+    var cancel = document.createElement('a'); cancel.href = '#'; cancel.textContent = t('support_cancel');
+    var st = document.createElement('span'); st.className = 'muted support-st';
+    row.appendChild(send); row.appendChild(cancel); row.appendChild(st);
+    box.appendChild(h); box.appendChild(ta); box.appendChild(row);
+    ta.focus();
+    cancel.addEventListener('click', function (e) { e.preventDefault(); box.classList.add('hidden'); });
+    send.addEventListener('click', function () {
+      var msg = ta.value.trim();
+      if (msg.length < 3) { st.textContent = t('support_empty'); return; }
+      send.disabled = true; st.textContent = t('loading_short');
+      fetch(FEEDBACK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg, email: state.email || null, category: 'general', pageUrl: location.origin + location.pathname + '#cabinet-' + planName }) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); box.innerHTML = ''; var ok = document.createElement('p'); ok.className = 'support-ok'; ok.textContent = t('support_ok', { email: state.email || '' }); box.appendChild(ok); })
+        .catch(function () { send.disabled = false; st.textContent = t('support_fail'); });
+    });
   }
 
   // Выбор тарифа (12.10, пейвол для заявки monetize). Цены = /pricing и кабинет monetize.
@@ -763,6 +793,8 @@
       a.href = '#'; a.className = 'plan-manage'; a.textContent = t('upgrade_link');
       a.addEventListener('click', function (e) { e.preventDefault(); state.upgrade = true; renderUpgrade(data); });
       el.planLine.appendChild(a);
+      el.planLine.appendChild(document.createTextNode(' · '));
+      el.planLine.appendChild(supportLink('free'));
     }
     var showPicker = state.upgrade && !data.plan && (data.billing_open || !data.signed_in);
     el.upgrade.classList.toggle('hidden', !showPicker);
