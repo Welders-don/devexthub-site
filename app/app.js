@@ -755,7 +755,18 @@
     el.upgrade.classList.toggle('hidden', !showPicker);
     if (!showPicker) return;
     el.upgrade.innerHTML = '';
-    var h = document.createElement('h2'); h.textContent = t('upgrade_h'); el.upgrade.appendChild(h);
+    var fu = data.free_usage;
+    var h = document.createElement('h2'); h.textContent = t(fu && fu.remaining === 0 ? 'up_h_out' : 'upgrade_h'); el.upgrade.appendChild(h);
+    // Личная статистика + соцдоказательство (12.10, данные RevenueCat/RocketShip: контекст и
+    // доверие поднимают покупку). Цифры WAU и рейтинга сверены 13.10: 1 802 в неделю, 4.8 ★ (21).
+    if (fu && fu.minutes > 0) {
+      var me = document.createElement('p'); me.className = 'up-you';
+      var hrs = Math.floor(fu.minutes / 60), mins = fu.minutes % 60;
+      me.textContent = t('up_you_used', { time: (hrs ? hrs + ' ' + t('up_h') + ' ' : '') + mins + ' ' + t('up_min') });
+      el.upgrade.appendChild(me);
+    }
+    var proof = document.createElement('p'); proof.className = 'muted up-proof'; proof.textContent = t('up_social');
+    el.upgrade.appendChild(proof);
     if (!data.signed_in) {
       var p = document.createElement('p'); p.className = 'muted'; p.textContent = t('upgrade_signin'); el.upgrade.appendChild(p);
       var box = document.createElement('div'); el.upgrade.appendChild(box); renderSignIn(box);
@@ -769,7 +780,7 @@
     var tog = document.createElement('div'); tog.className = 'up-toggle';
     ['year', 'month'].forEach(function (iv) {
       var b = document.createElement('button'); b.type = 'button'; b.className = 'tab'; b.dataset.iv = iv;
-      b.textContent = t(iv === 'year' ? 'up_yearly' : 'up_monthly');
+      b.textContent = t(iv === 'year' ? 'up_yearly_save' : 'up_monthly');
       b.addEventListener('click', function () { interval = iv; paint(); });
       tog.appendChild(b);
     });
@@ -780,6 +791,14 @@
     el.upgrade.appendChild(cards);
     var go = document.createElement('button'); go.type = 'button'; go.className = 'btn up-go';
     el.upgrade.appendChild(go);
+    var guar = document.createElement('p'); guar.className = 'muted up-guar'; guar.textContent = t('up_guarantee');
+    el.upgrade.appendChild(guar);
+    // Честный выход: бесплатные минуты вернутся сами. Рядом с датой платный путь виден лучше.
+    if (fu && fu.remaining === 0 && fu.reset_date) {
+      var wait = document.createElement('p'); wait.className = 'muted up-wait';
+      wait.textContent = t('up_wait', { date: fmtDay(fu.reset_date) });
+      el.upgrade.appendChild(wait);
+    }
     var err = document.createElement('p'); err.className = 'up-err hidden'; el.upgrade.appendChild(err);
     var FEATURES = {
       lite: ['up_f_courses', 'up_f_2h', 'up_f_unlim', 'up_f_free'],
@@ -1004,7 +1023,9 @@
   }
 
   function loadMe(openId, auto) {
-    return api('/me')
+    var q = state.upgrade && !state.upgradeLogged ? '?upgrade=1' : '';
+    if (q) state.upgradeLogged = true;
+    return api('/me' + q)
       .then(function (r) {
         if (r.status === 401) { show('empty'); offerLogin(); return null; }
         if (!r.ok) throw new Error('me failed');
