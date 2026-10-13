@@ -793,12 +793,7 @@
     el.upgrade.appendChild(go);
     var guar = document.createElement('p'); guar.className = 'muted up-guar'; guar.textContent = t('up_guarantee');
     el.upgrade.appendChild(guar);
-    // Честный выход: бесплатные минуты вернутся сами. Рядом с датой платный путь виден лучше.
-    if (fu && fu.remaining === 0 && fu.reset_date) {
-      var wait = document.createElement('p'); wait.className = 'muted up-wait';
-      wait.textContent = t('up_wait', { date: fmtDay(fu.reset_date) });
-      el.upgrade.appendChild(wait);
-    }
+
     var err = document.createElement('p'); err.className = 'up-err hidden'; el.upgrade.appendChild(err);
     var FEATURES = {
       lite: ['up_f_courses', 'up_f_2h', 'up_f_unlim', 'up_f_free'],
@@ -807,6 +802,20 @@
     function paint() {
       tog.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('on', b.dataset.iv === interval); });
       cards.innerHTML = '';
+      // Карточка Free (13.10, Денис): что остаётся бесплатно и когда вернутся ИИ-кредиты.
+      // Не выбирается, у неё свой выход «Stay on Free». Честный выход рядом с ценой = доверие.
+      var fc = document.createElement('div'); fc.className = 'up-card up-free';
+      fc.innerHTML = '<div class="up-top"><span class="up-name">Free</span><span class="up-cur"></span></div>' +
+        '<div class="up-price"><b>$0</b></div><div class="muted up-billed"></div><ul class="up-feat"></ul><a href="#" class="up-stay"></a>';
+      fc.querySelector('.up-cur').textContent = t('up_current');
+      fc.querySelector('.up-billed').textContent = fu && fu.reset_date
+        ? t(fu.remaining === 0 ? 'up_free_back' : 'up_free_left', { n: fu.remaining, date: fmtDay(fu.reset_date) }) : '';
+      ['up_free_yt', 'up_free_ai', 'up_free_export', 'up_free_sum'].forEach(function (k) {
+        var li = document.createElement('li'); li.textContent = t(k); fc.querySelector('.up-feat').appendChild(li);
+      });
+      var stay = fc.querySelector('.up-stay'); stay.textContent = t('up_stay');
+      stay.addEventListener('click', function (e) { e.preventDefault(); state.upgrade = false; el.upgrade.classList.add('hidden'); });
+      cards.appendChild(fc);
       ['lite', 'pro'].forEach(function (plan) {
         var pr = PRICES[plan], c = document.createElement('div');
         c.className = 'up-card' + (plan === chosen ? ' on' : '');
