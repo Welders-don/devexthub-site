@@ -57,7 +57,7 @@
 .gate-signin { margin-top: 12px; }
 #signin { display: inline-flex; align-items: center; min-height: 32px; }
 .plan-line { margin: -12px 0 16px; font-size: 14px; }
-.plan-manage { color: inherit; text-decoration: underline; }
+.plan-manage, .plan-support { color: inherit; text-decoration: underline; }
 
 .transcript { font-size: 16px; line-height: 1.65; color: var(--ink-soft); max-height: 62vh; overflow-y: auto; }
 .transcript .para { margin: 0 0 16px; text-wrap: pretty; }

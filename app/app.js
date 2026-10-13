@@ -728,7 +728,7 @@
     // Поддержка рядом с подпиской (13.10, Денис искал её здесь; требование monetize «Contact Support»).
     el.planLine.appendChild(document.createTextNode(' · '));
     var sup = document.createElement('a');
-    sup.className = 'plan-manage';
+    sup.className = 'plan-support';
     sup.href = 'mailto:team@devexthub.com?subject=' + encodeURIComponent('Transcribe Video to Text support (' + name + ')');
     sup.textContent = t('plan_support');
     el.planLine.appendChild(sup);
