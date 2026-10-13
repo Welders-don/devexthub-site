@@ -1163,5 +1163,21 @@
       .catch(function () { return loadMe(wanted, auto); });
   }
 
+  // Список не живой: новая запись из панели появлялась только после F5 (Денис 13.10).
+  // Вернулся на вкладку кабинета = перечитать список, открытую запись не трогаем.
+  // Не дёргаем, пока открыт выбор тарифа или форма поддержки (их бы сбросило перерисовкой).
+  var lastLoad = Date.now();
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState !== 'visible' || Date.now() - lastLoad < 5000) return;
+    if (state.upgrade || state.paidBack || !el.supportBox.classList.contains('hidden')) return;
+    lastLoad = Date.now();
+    // только список: открытая запись и её саммари/конспект не перегружаются
+    api('/me').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+      if (!data || !data.transcriptions) return;
+      state.items = data.transcriptions;
+      renderList();
+    }).catch(function () {});
+  });
+
   start();
 })();
