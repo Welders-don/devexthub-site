@@ -10,8 +10,8 @@
 <meta name="description" content="Your transcripts and summaries from the Transcribe Video to Text extension.">
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="app.css?v=32">
-<script src="i18n.js?v=32"></script>
+<link rel="stylesheet" href="app.css?v=33">
+<script src="i18n.js?v=33"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
 </head>
@@ -58,7 +58,6 @@
   <div id="app" class="hidden">
     <div class="app-head">
       <h1 data-i18n="app_h1">Your transcripts</h1>
-      <span class="muted" id="retention"></span>
       <span id="signin"></span>
     </div>
     <p class="plan-line muted hidden" id="planLine"></p>
@@ -70,6 +69,8 @@
     <div class="app-grid">
       <div class="app-side">
         <aside class="app-list" id="list"></aside>
+        <!-- Срок хранения под списком, а не у заголовка: не главное на странице (Денис 14.10) -->
+        <p class="muted retention-note" id="retention"></p>
         <!-- 06.10: блок снизу видели единицы (6 кликов за 3 недели на ~270 сессий), он под
              транскриптом. Здесь он виден сразу; place различает клики сбоку и снизу. -->
         <nav class="side-tools" aria-label="More free tools">
@@ -112,6 +113,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=32"></script>
+<script src="app.js?v=33"></script>
 </body>
 </html>
