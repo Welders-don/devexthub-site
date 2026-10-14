@@ -1,4 +1,5 @@
-// Раскладка кабинета 14.10: в шапке нет меню сайта, срок хранения под списком, а не у заголовка.
+// Раскладка кабинета 14.10: в шапке нет меню сайта, срок хранения под списком, а не у заголовка,
+// другие инструменты только снизу (левый блок убран).
 // Запуск: node tools/e2e-app-layout.mjs <корень сайта> [скрин.png]
 import pw from '/home/client/workspace/tmp/pw/node_modules/playwright-core/index.js';
 import { spawn } from 'node:child_process';
@@ -36,7 +37,8 @@ const r = await p.evaluate(() => {
 check('срок хранения не у заголовка', !r.inHead, r);
 check('срок хранения под списком', r.inSide && r.below, r);
 check('текст и подсказка на месте', /30/.test(r.text) && /90/.test(r.title), r);
-check('блок инструментов слева на месте', await p.isVisible('.side-tools'));
+check('блока инструментов слева нет', (await p.locator('.side-tools').count()) === 0);
+check('нижний блок инструментов на месте (4 ссылки)', (await p.locator('#xpromo a[data-umami-event="app-xpromo"]').count()) === 4);
 if (shot) await p.screenshot({ path: shot, fullPage: true });
 await b.close();
 console.log(fail ? `${fail} FAIL` : 'ALL OK');
