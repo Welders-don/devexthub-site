@@ -37,7 +37,7 @@ check('срок хранения не у заголовка', !r.inHead, r);
 check('срок хранения под списком', r.inSide && r.below, r);
 check('текст и подсказка на месте', /30/.test(r.text) && /90/.test(r.title), r);
 check('блок инструментов слева на месте', await p.isVisible('.side-tools'));
-if (shot) await p.screenshot({ path: shot });
+if (shot) await p.screenshot({ path: shot, fullPage: true });
 await b.close();
 console.log(fail ? `${fail} FAIL` : 'ALL OK');
 process.exit(fail ? 1 : 0);
