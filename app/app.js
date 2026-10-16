@@ -751,6 +751,7 @@
 
   // Поддержка прямо в кабинете (13.10, Денис: «у подписки негде оставить обращение», mailto не форма).
   // Форма шлёт в тот же /api/feedback, что панель и сайт: алерт Денису в Telegram, ответ на почту входа.
+  // category support = сервер ещё заводит тикет в «Поддержке пейволлов» monetize (модерация 15.10).
   var FEEDBACK_URL = 'https://transcribe.devexthub.com:8443/api/feedback';
   function supportLink(planName) {
     var a = document.createElement('a');
@@ -777,7 +778,7 @@
       if (msg.length < 3) { st.textContent = t('support_empty'); return; }
       send.disabled = true; st.textContent = t('loading_short');
       fetch(FEEDBACK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: msg, email: state.email || null, category: 'general', pageUrl: location.origin + location.pathname + '#cabinet-' + planName }) })
+        body: JSON.stringify({ message: msg, email: state.email || null, category: 'support', pageUrl: location.origin + location.pathname + '#cabinet-' + planName }) })
         .then(function (r) { if (!r.ok) throw new Error(r.status); box.innerHTML = ''; var ok = document.createElement('p'); ok.className = 'support-ok'; ok.textContent = t('support_ok', { email: state.email || '' }); box.appendChild(ok); })
         .catch(function () { send.disabled = false; st.textContent = t('support_fail'); });
     });
