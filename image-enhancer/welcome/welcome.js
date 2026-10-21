@@ -35,8 +35,8 @@ ask({ type: 'WELCOME_OPEN', keys: [...keys, 'titleOnb'] }).then(r => {
   if (r.strings.titleOnb) document.title = r.strings.titleOnb;
   if (r.lang) document.documentElement.lang = r.lang;
   // Редактор открывает расширение: ссылку на chrome-extension:// сайт открыть не может.
-  // href снимаем: Umami на ссылке с data-umami-event сам уводит по href (preventDefault
-  // ему не указ), а без href только считает клик.
+  // Umami на этой странице нет (21.10): страница открывается сама после установки, счёт
+  // ведёт расширение (welcome_open / welcome_cta), сторонний счётчик тут лишний.
   cta.removeAttribute('href');
   cta.style.cursor = 'pointer';
   cta.addEventListener('click', () => ask({ type: 'OPEN_APP' }));
