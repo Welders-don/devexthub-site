@@ -27,6 +27,28 @@
 <meta property="og:image" content="https://www.devexthub.com/assets/cvt-demo.jpg">
 <link rel="stylesheet" href="../styles.css">
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.mvt-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.mvt-tool h2 { margin: 0 0 12px; font-size: 22px; }
+.mvt-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.mvt-drop:hover, .mvt-drop.over, .mvt-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.mvt-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.mvt-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.mvt-drop .btn { margin-top: 16px; pointer-events: none; }
+.mvt-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.mvt-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.mvt-box h3 { margin: 0 0 6px; font-size: 19px; word-break: break-word; }
+.mvt-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.mvt-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.mvt-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#mvt-bar { width: 100%; height: 10px; margin: 4px 0 8px; accent-color: var(--green); }
+#mvt-clock { font-size: 14px; color: var(--muted); }
+.mvt-warn { background: #fff7e0; border: 1px solid #f0d58a; border-radius: 10px; padding: 10px 12px; color: #6b5200; font-size: 15px; }
+.mvt-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.mvt-ext { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.mvt-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
 </head>
 <body>
 <header class="site-head sticky">
@@ -53,8 +75,55 @@
    </div>
   </section>
 
-  <section class="demo wrap reveal">
-    <img src="../assets/cvt-demo.jpg" alt="Convert MOV to MP4 extension: IMG_4821.mov converted, Download IMG_4821.mp4 button" width="1280" height="800" loading="lazy">
+  <section class="demo wrap" id="try">
+    <div class="mvt-tool">
+      <h2>Convert a video here, free</h2>
+      <p class="mvt-warn" id="mvt-multi" hidden>This page converts one file at a time, so we took the first one. To convert a whole folder at once, use the free Chrome extension below.</p>
+
+      <div id="mvt-idle">
+        <label class="mvt-drop" id="mvt-drop" for="mvt-file">
+          <input class="mvt-hide" type="file" id="mvt-file" accept="video/*,.mov,.qt,.mp4,.m4v">
+          <b>Drop a MOV or MP4 video here</b>
+          <span>MOV becomes MP4, MP4 becomes MOV &middot; large files too</span><br>
+          <span class="btn">Choose video</span>
+        </label>
+      </div>
+
+      <div id="mvt-busy" class="mvt-box" hidden>
+        <h3 id="mvt-state">Reading the file&hellip;</h3>
+        <p class="mvt-file" id="mvt-name"></p>
+        <progress id="mvt-bar" max="1"></progress>
+        <span id="mvt-clock"></span>
+      </div>
+
+      <div id="mvt-big" class="mvt-box" hidden>
+        <h3>Big file: choose where to save it</h3>
+        <p class="mvt-file" id="mvt-big-name"></p>
+        <p>It will be written straight to your disk, so it doesn't have to fit in browser memory.</p>
+        <button type="button" class="btn" id="mvt-big-go">Choose where to save</button>
+      </div>
+
+      <div id="mvt-done" class="mvt-box" hidden>
+        <h3 id="mvt-done-title">Done</h3>
+        <p class="mvt-warn" id="mvt-warn" hidden></p>
+        <div class="mvt-row">
+          <a class="btn btn-ghost" id="mvt-dl" hidden>Download again</a>
+          <button type="button" class="mvt-again">Convert another video</button>
+        </div>
+        <div class="mvt-ext">
+          <p>Got a whole folder of clips? The free Chrome extension converts many files at once, one click from your toolbar.</p>
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/ipeocmfcjjnbmogcigekoehhlkmdpebj?utm_content=mov-widget" data-umami-event="store-click" data-umami-event-ext="convert-mov" data-umami-event-place="mov-widget">Add to Chrome &middot; free</a>
+        </div>
+      </div>
+
+      <div id="mvt-error" class="mvt-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="mvt-error-text"></p>
+        <button type="button" class="mvt-again">Try another video</button>
+      </div>
+
+      <p class="mvt-private">Nothing is uploaded: the video is converted on your own computer.</p>
+    </div>
   </section>
 
   <section class="trust reveal">
@@ -208,6 +277,7 @@
   </div>
 </footer>
 
+<script type="module" src="/assets/mov/app/tool.js"></script>
 <script>
 (function () {
   // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.

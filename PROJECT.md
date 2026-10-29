@@ -126,6 +126,15 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - База до виджета (Umami, визиты страницы в неделю): 14.09-26.10 = 1/8/13/5/5/9/6; store-click extract-text с неё 5 за 05.10-28.10. Визиты Дениса не исключены.
 - Критерий: `ocr-run ok` ≥ 20% визитов страницы за 2 недели после выкладки; store-click с этой страницы не ниже ~1/нед. Числа малые, вывод только по порядку.
 
+## Виджет MOV ↔ MP4 на /convert-mov-to-mp4/ (29.10.2026, курс: польза = виджет)
+- Блок `#try` под hero вместо картинки cvt-demo.jpg. ОДИН файл за раз (Денис 29.10: пачка = отличие расширения); две и больше → берём первый + подсказка про расширение (`mov-multi`).
+- Движок = КОПИЯ расширения Convertmovtomp4 1.0.6 (ветка agent/unknown-codec) в `assets/mov/` (vendor: Mediabunny MPL-2.0 + @hevcjs MIT с лицензиями; app/convert.js без chrome.i18n, hevc-fallback.js) + свой `app/tool.js`. Правка движка в расширении сама сюда НЕ приедет.
+- >150 МБ и есть showSaveFilePicker → пишем сразу на диск (жест истёк → кнопка «Choose where to save»). Без API (Safari/Firefox/мобилы) большие идут в память, OOM = понятная ошибка.
+- Umami: `mov-pick` (path remux/transcode/transcode_sw/fallback/audio, kind, sizeMb), `mov-run` (result ok/warn/error, path, kind, sizeMb, secs, err), `mov-download-again`, `mov-multi`, store-click place=mov-widget.
+- Тест: `node tools/e2e_mov_tool.mjs` (сайт :8095). На стенде HEVC прошёл transcode_sw за 16 с; ветка >150 МБ e2e НЕ покрыта; аппаратный транскод только живьём.
+- База до виджета (визиты/нед): 28.09-19.10 = 4/2/5/4, store-click 2 за 4 нед.
+- Критерий: `mov-run` ok+warn ≥ 20% визитов за 2 недели; store-click convert-mov со страницы не ниже ~2 за 4 нед. Числа малые.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
