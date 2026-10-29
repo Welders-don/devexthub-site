@@ -120,9 +120,9 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 
 ## OCR-виджет на /extract-text-from-image/ (29.10.2026, курс Site Builders урок 1: «польза = виджет»)
 - Блок `#try` сразу под hero вместо статичного макета `.ox-demo` (CSS `.ox-*` в styles.css остался, не используется). Картинка (файл / drop / Ctrl+V) → текст → Copy all / Download .txt; язык из списка 19, по умолчанию язык браузера, смена языка перечитывает ту же картинку.
-- Движок = tesseract.js 7.0.0 с jsDelivr, НЕ PaddleOCR расширения (у того 27 МБ wasm + 13 МБ моделей). Первая загрузка ~7 МБ (core 3.9 + eng 2.95), дальше кэш IndexedDB. Грузится только по первой картинке, на LCP не влияет. Картинка не покидает браузер.
+- Движок = tesseract.js 7.0.0 с jsDelivr, НЕ PaddleOCR расширения (у того 27 МБ wasm + 13 МБ моделей). Первая загрузка ~7 МБ (core 3.9 + eng 2.95), дальше кэш IndexedDB. Прогрев: качать начинает по pointerdown/focus/dragenter на поле (пока человек выбирает файл), на LCP не влияет. 29.10 первый живой заход Дениса (Android, Яндекс, VPN): 51 с до результата → добавлен прогрев; эмуляция телефона 4x CPU / 10 Мбит: 13 с → 6 с. Картинка не покидает браузер.
 - Перелив: после результата блок «draw a box on any tab» → стор, `utm_content=ocr-widget`, событие store-click с `place=ocr-widget`.
-- Umami: `ocr-pick` (via file/drop/paste), `ocr-run` (result ok/empty/error/not-image, lang, secs), `ocr-copy`, `ocr-download`. Тест: `node tools/e2e_ocr_tool.mjs` (сайт на :8099, нужна сеть).
+- Umami: `ocr-pick` (via file/drop/paste), `ocr-run` (result ok/empty/error/not-image, lang, secs = всё ожидание, load = из них ждали движок, read = распознавание; load/read с 29.10 вечера), `ocr-copy`, `ocr-download`. Тест: `node tools/e2e_ocr_tool.mjs` (сайт на :8099, нужна сеть).
 - База до виджета (Umami, визиты страницы в неделю): 14.09-26.10 = 1/8/13/5/5/9/6; store-click extract-text с неё 5 за 05.10-28.10. Визиты Дениса не исключены.
 - Критерий: `ocr-run ok` ≥ 20% визитов страницы за 2 недели после выкладки; store-click с этой страницы не ниже ~1/нед. Числа малые, вывод только по порядку.
 
