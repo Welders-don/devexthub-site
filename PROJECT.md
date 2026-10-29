@@ -118,6 +118,14 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - Umami-события: `bst-convert` (result ok/scan/empty/error/locked/not-pdf, pages), `bst-download` (fmt).
 - Критерий: страница в индексе GSC к ~07.11. Не должно упасть: store-click pdf-to-excel с `/pdf-to-excel/`. Со статьи-эксперимента bank-statement ссылку НЕ ставили (замер 06.10).
 
+## OCR-виджет на /extract-text-from-image/ (29.10.2026, курс Site Builders урок 1: «польза = виджет»)
+- Блок `#try` сразу под hero вместо статичного макета `.ox-demo` (CSS `.ox-*` в styles.css остался, не используется). Картинка (файл / drop / Ctrl+V) → текст → Copy all / Download .txt; язык из списка 19, по умолчанию язык браузера, смена языка перечитывает ту же картинку.
+- Движок = tesseract.js 7.0.0 с jsDelivr, НЕ PaddleOCR расширения (у того 27 МБ wasm + 13 МБ моделей). Первая загрузка ~7 МБ (core 3.9 + eng 2.95), дальше кэш IndexedDB. Грузится только по первой картинке, на LCP не влияет. Картинка не покидает браузер.
+- Перелив: после результата блок «draw a box on any tab» → стор, `utm_content=ocr-widget`, событие store-click с `place=ocr-widget`.
+- Umami: `ocr-pick` (via file/drop/paste), `ocr-run` (result ok/empty/error/not-image, lang, secs), `ocr-copy`, `ocr-download`. Тест: `node tools/e2e_ocr_tool.mjs` (сайт на :8099, нужна сеть).
+- База до виджета (Umami, визиты страницы в неделю): 14.09-26.10 = 1/8/13/5/5/9/6; store-click extract-text с неё 5 за 05.10-28.10. Визиты Дениса не исключены.
+- Критерий: `ocr-run ok` ≥ 20% визитов страницы за 2 недели после выкладки; store-click с этой страницы не ниже ~1/нед. Числа малые, вывод только по порядку.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
