@@ -41,16 +41,31 @@ function progress(m) {
     : 'Loading the text reader (first time only)…';
 }
 
-async function getWorker(code) {
-  await loadScript();
-  if (!worker) {
-    worker = await window.Tesseract.createWorker(code, 1, { logger: progress });
-  } else if (workerLang !== code) {
-    await worker.reinitialize(code);
-  }
-  workerLang = code;
-  return worker;
+// Вызовы встают в очередь: прогрев и распознавание не создают двух воркеров.
+let queue = Promise.resolve();
+function getWorker(code) {
+  queue = queue.catch(() => {}).then(async () => {
+    await loadScript();
+    if (!worker) {
+      worker = await window.Tesseract.createWorker(code, 1, { logger: progress });
+    } else if (workerLang !== code) {
+      await worker.reinitialize(code);
+    }
+    workerLang = code;
+    return worker;
+  });
+  return queue;
 }
+
+// Прогрев: движок (~7 МБ) начинает качаться, пока человек выбирает файл.
+// На телефоне выбор файла сам занимает 10-20 с, а загрузка 6-20 с.
+let warmed = false;
+function prewarm() {
+  if (warmed) return;
+  warmed = true;
+  getWorker(lang.value).catch(() => { worker = null; workerLang = null; });
+}
+['pointerdown', 'focusin', 'dragenter'].forEach((t) => drop.addEventListener(t, prewarm));
 
 // Дефолтный язык по языку браузера, если он есть в списке.
 const nav = (navigator.language || 'en').slice(0, 2);
@@ -64,8 +79,10 @@ async function run() {
   show('oxt-busy');
   started = Date.now();
   let text;
+  let loaded;
   try {
     const w = await getWorker(code);
+    loaded = Date.now();
     text = ((await w.recognize(lastImage)).data.text || '').trim();
   } catch (err) {
     worker = null;
@@ -74,17 +91,22 @@ async function run() {
     track('ocr-run', { result: 'error', lang: code });
     return;
   }
-  const secs = Math.round((Date.now() - started) / 1000);
+  // secs = всё ожидание человека, load = сколько из него ждали движок, read = само распознавание.
+  const timing = {
+    secs: Math.round((Date.now() - started) / 1000),
+    load: Math.round((loaded - started) / 1000),
+    read: Math.round((Date.now() - loaded) / 1000),
+  };
   if (!text) {
     show('oxt-empty');
-    track('ocr-run', { result: 'empty', lang: code, secs });
+    track('ocr-run', { result: 'empty', lang: code, ...timing });
     return;
   }
   out.value = text;
   const words = text.split(/\s+/).length;
   $('oxt-summary').textContent = `${words} word${words === 1 ? '' : 's'} found. Edit if needed, then copy or download.`;
   show('oxt-done');
-  track('ocr-run', { result: 'ok', lang: code, secs });
+  track('ocr-run', { result: 'ok', lang: code, ...timing });
 }
 
 function pick(files, via) {
