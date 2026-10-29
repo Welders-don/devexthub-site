@@ -125,6 +125,7 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - Umami: `ocr-pick` (via file/drop/paste), `ocr-run` (result ok/empty/error/not-image, lang, secs = всё ожидание, load = из них ждали движок, read = распознавание; load/read с 29.10 вечера), `ocr-copy`, `ocr-download`. Тест: `node tools/e2e_ocr_tool.mjs` (сайт на :8099, нужна сеть).
 - База до виджета (Umami, визиты страницы в неделю): 14.09-26.10 = 1/8/13/5/5/9/6; store-click extract-text с неё 5 за 05.10-28.10. Визиты Дениса не исключены.
 - Критерий: `ocr-run ok` ≥ 20% визитов страницы за 2 недели после выкладки; store-click с этой страницы не ниже ~1/нед. Числа малые, вывод только по порядку.
+- 29.10 on-page под ключи курса (knowledge/keywords-ocr-widget-2026-10-29.md): title «PNG to Text & JPG to Text Converter, Free OCR», H1 «PNG and JPG to text, free and online», sub про виджет + расширение для страниц, h2 виджета «Convert an image to text», FAQ «How do I convert a PNG or JPG to text?». Было: «Extract & Copy Text from Any Image, free OCR extension» / «Extract text from any image in one click». Критерий: в GSC за 4 недели появляются показы по png/jpg/picture to text; не падают store-click extract-text (~1/нед) и показы страницы (база 28 дн до 29.10 снять из GSC у Дениса).
 
 ## Виджет MOV ↔ MP4 на /convert-mov-to-mp4/ (29.10.2026, курс: польза = виджет)
 - Блок `#try` под hero вместо картинки cvt-demo.jpg. ОДИН файл за раз (Денис 29.10: пачка = отличие расширения); две и больше → берём первый + подсказка про расширение (`mov-multi`).
