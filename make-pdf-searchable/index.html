@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make PDF Searchable Free Online: OCR a Scanned PDF | Devexthub</title>
+<meta name="description" content="Make a scanned PDF searchable free, right in your browser: drop the PDF and get the same file back with an invisible text layer, so Ctrl+F, select and copy work. Nothing is uploaded, no sign-up.">
+<link rel="canonical" href="https://www.devexthub.com/make-pdf-searchable/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Searchable PDF maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/make-pdf-searchable/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I make a PDF searchable?","acceptedAnswer":{"@type":"Answer","text":"Drop the scanned PDF into the tool at the top of this page and pick the language of the text. Each scanned page is read, and an invisible text layer is added under the image. Download the new PDF, open it and press Ctrl+F: the words are found and can be selected and copied."}},
+{"@type":"Question","name":"Will my PDF look different?","acceptedAnswer":{"@type":"Answer","text":"No. The pages stay exactly as they were, with the same images and size; only invisible text is added on top. Pages that already had text are left untouched."}},
+{"@type":"Question","name":"Which languages are supported?","acceptedAnswer":{"@type":"Answer","text":"English, Spanish, Portuguese, French, German, Italian, Dutch, Polish, Turkish, Russian, Ukrainian, Vietnamese and Indonesian. Pick the language of the document before you drop it."}},
+{"@type":"Question","name":"Is there a page limit?","acceptedAnswer":{"@type":"Answer","text":"Up to 50 pages and 100 MB per file. Each scanned page takes a few seconds on a computer, a bit longer on a phone. Larger documents can be split first."}},
+{"@type":"Question","name":"Is my PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The text is recognized and the new PDF is built in your browser, on your own device. Only the text reader itself is downloaded once."}},
+{"@type":"Question","name":"Why are some words found wrong?","acceptedAnswer":{"@type":"Answer","text":"Recognition is best on flat, sharp scans at 200-300 DPI. Phone photos of documents, crumpled pages, stamps and handwriting are read with mistakes, so search may miss some words. Rescan straight and in good light for the best result."}},
+{"@type":"Question","name":"Can I get the text out instead?","acceptedAnswer":{"@type":"Answer","text":"Yes: open the searchable PDF and copy the text, or for an image of a page use our image to text converter. To get tables into Excel, our PDF to Excel converter reads PDFs with text."}}]}
+</script>
+<meta property="og:title" content="Make a PDF searchable, free and online">
+<meta property="og:description" content="Add an invisible text layer to a scanned PDF so you can search, select and copy its text. No upload.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/make-pdf-searchable/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+/* Виджет конвертера: стили 1:1 со страницы выписок (bank-statement), 30.10 */
+.hero { padding-left: 22px; padding-right: 22px; }
+.spdf-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.spdf-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.spdf-drop:hover, .spdf-drop.over, .spdf-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.spdf-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.spdf-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.spdf-drop .btn { margin-top: 16px; pointer-events: none; }
+.spdf-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.spdf-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.spdf-box h3 { margin: 0 0 6px; font-size: 19px; }
+.spdf-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.spdf-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.spdf-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.spdf-scroll { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--line); border-radius: 10px; }
+#spdf-preview { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+#spdf-preview td { border-bottom: 1px solid var(--line); padding: 6px 10px; white-space: nowrap; max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+#spdf-preview tr:nth-child(odd) td { background: var(--bg-soft); }
+.spdf-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.spdf-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+
+.spdf-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.spdf-head h2 { margin: 0; font-size: 22px; }
+.spdf-head label { color: var(--muted); font-size: 15px; }
+.spdf-head select { font: inherit; font-size: 15px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); }
+#spdf-bar { width: 100%; height: 10px; margin: 6px 0 12px; accent-color: var(--green); }
+#spdf-dl[hidden] { display: none; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Make</span> <span class="fx-w" style="--i:1">a</span> <span class="fx-w" style="--i:2">PDF</span> <span class="fx-w" style="--i:3">searchable,</span></span><span class="fx-line"><span class="fx-w" style="--i:4">free</span> <span class="fx-w" style="--i:5">and</span> <span class="fx-w arrow" style="--i:6">online</span></span></h1>
+    <p class="sub">A scanned PDF is just pictures of pages: Ctrl+F finds nothing and you can't copy a word. Drop it below and get the same PDF back with an invisible text layer, so search, select and copy work. The file never leaves your computer.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="spdf-tool">
+      <div class="spdf-head">
+        <h2>Searchable PDF maker</h2>
+        <label>Language of the text
+          <select id="spdf-lang">
+            <option value="eng">English</option>
+            <option value="spa">Spanish</option>
+            <option value="por">Portuguese</option>
+            <option value="fra">French</option>
+            <option value="deu">German</option>
+            <option value="ita">Italian</option>
+            <option value="nld">Dutch</option>
+            <option value="pol">Polish</option>
+            <option value="tur">Turkish</option>
+            <option value="rus">Russian</option>
+            <option value="ukr">Ukrainian</option>
+            <option value="vie">Vietnamese</option>
+            <option value="ind">Indonesian</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="spdf-idle">
+        <label class="spdf-drop" id="spdf-drop" for="spdf-file">
+          <input class="spdf-hide" type="file" id="spdf-file" accept="application/pdf,.pdf">
+          <b>Drop a scanned PDF here</b>
+          <span>or click to choose a file &middot; up to 50 pages &middot; free</span><br>
+          <span class="btn">Choose PDF</span>
+        </label>
+      </div>
+
+      <div id="spdf-busy" class="spdf-box" hidden>
+        <h3 id="spdf-status">Opening the PDF&hellip;</h3>
+        <p class="spdf-file" id="spdf-name"></p>
+        <progress id="spdf-bar" max="1" value="0"></progress>
+        <button type="button" class="spdf-again" id="spdf-cancel">Cancel</button>
+      </div>
+
+      <div id="spdf-done" class="spdf-box" hidden>
+        <h3 id="spdf-done-title">Done</h3>
+        <p id="spdf-summary"></p>
+        <div class="spdf-row">
+          <a class="btn btn-ghost" id="spdf-dl" href="#">Download again</a>
+          <button type="button" class="spdf-again">Make another PDF searchable</button>
+        </div>
+        <p style="margin:16px 0 0">Need the tables in Excel? <a href="../pdf-to-excel/">Convert PDF to Excel</a> works on the searchable file too.</p>
+      </div>
+
+      <div id="spdf-error" class="spdf-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="spdf-error-text"></p>
+        <button type="button" class="spdf-again">Choose another file</button>
+      </div>
+
+      <p class="spdf-private">Nothing is uploaded: the text is recognized and the PDF is built on your own computer.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to make a scanned PDF searchable</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Pick the language</h3><p>Choose the language the document is written in, so the words are read correctly.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Drop the PDF</h3><p>Scanned contracts, receipts, old books, faxes. Each scanned page is read in your browser; pages with text are skipped.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Search and copy</h3><p>The new PDF looks the same, but Ctrl+F finds words and you can select and copy text in any PDF viewer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I make a PDF searchable?</summary>
+          <p>Drop the scanned PDF into the tool at the top of this page and pick the language of the text. Each scanned page is read, and an invisible text layer is added under the image. Download the new PDF, open it and press Ctrl+F: the words are found and can be selected and copied.</p>
+        </details>
+        <details>
+          <summary>Will my PDF look different?</summary>
+          <p>No. The pages stay exactly as they were, with the same images and size; only invisible text is added on top. Pages that already had text are left untouched.</p>
+        </details>
+        <details>
+          <summary>Which languages are supported?</summary>
+          <p>English, Spanish, Portuguese, French, German, Italian, Dutch, Polish, Turkish, Russian, Ukrainian, Vietnamese and Indonesian. Pick the language of the document before you drop it.</p>
+        </details>
+        <details>
+          <summary>Is there a page limit?</summary>
+          <p>Up to 50 pages and 100 MB per file. Each scanned page takes a few seconds on a computer, a bit longer on a phone. Larger documents can be split first.</p>
+        </details>
+        <details>
+          <summary>Is my PDF uploaded?</summary>
+          <p>No. The text is recognized and the new PDF is built in your browser, on your own device. Only the text reader itself is downloaded once.</p>
+        </details>
+        <details>
+          <summary>Why are some words found wrong?</summary>
+          <p>Recognition is best on flat, sharp scans at 200-300 DPI. Phone photos of documents, crumpled pages, stamps and handwriting are read with mistakes, so search may miss some words. Rescan straight and in good light for the best result.</p>
+        </details>
+        <details>
+          <summary>Can I get the text out instead?</summary>
+          <p>Yes: open the searchable PDF and copy the text, or for an image of a page use our image to text converter. To get tables into Excel, our PDF to Excel converter reads PDFs with text.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Only need the text from a picture? <a href="../extract-text-from-image/">Image to text</a>. A PDF that already has text? <a href="../pdf-to-text/">PDF to TXT</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Chrome Web Store</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/spdf/tool.js"></script>
+<script>
+// Add UTM tags to every Chrome Web Store link so installs show up
+// as "devexthub_landing" in the CWS developer dashboard sources.
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=make-pdf-searchable";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  // Reveal-on-scroll
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  // Show floating CTA once the hero button is scrolled out of view
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
