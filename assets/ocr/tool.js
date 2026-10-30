@@ -107,6 +107,8 @@ async function run() {
   $('oxt-summary').textContent = `${words} word${words === 1 ? '' : 's'} found. Edit if needed, then copy or download.`;
   show('oxt-done');
   track('ocr-run', { result: 'ok', lang: code, ...timing });
+  // Страница /translate-picture/ (30.10) переводит готовый текст: assets/translate/tool.js.
+  document.dispatchEvent(new CustomEvent('oxt-text', { detail: { text, lang: code } }));
 }
 
 function pick(files, via) {

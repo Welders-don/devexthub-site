@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translate from a Pic: Photo to English Translator, Free Online | Devexthub</title>
+<meta name="description" content="Translate text from a picture free: drop a photo or screenshot, and its text is read and translated to English or 18 other languages. The picture is never uploaded, no sign-up.">
+<link rel="canonical" href="https://www.devexthub.com/translate-picture/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Picture translator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/translate-picture/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I translate text from a picture?","acceptedAnswer":{"@type":"Answer","text":"Drop the picture, screenshot or photo into the translator at the top of this page, or paste it with Ctrl+V. Pick the language of the text in the picture first. The text is read in a few seconds and translated right away; choose another language under Translate to whenever you like."}},
+{"@type":"Question","name":"How do I translate a photo to English?","acceptedAnswer":{"@type":"Answer","text":"Keep English under Translate to (it's the default), choose the language of the photo above the drop area and drop the photo. You get the English translation and the original text side by side, both ready to copy."}},
+{"@type":"Question","name":"Is it free? Is there a limit?","acceptedAnswer":{"@type":"Answer","text":"Yes, free and without sign-up. In Chrome or Edge on a computer the translation runs on your device with no limit. In other browsers it uses the free MyMemory service, which allows about 5,000 characters a day per network."}},
+{"@type":"Question","name":"Is my photo uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The text is read from the picture in your browser. In Chrome or Edge on a computer the translation also stays on your device; elsewhere only the recognized text, not the picture, is sent to MyMemory to translate."}},
+{"@type":"Question","name":"Which languages can it translate?","acceptedAnswer":{"@type":"Answer","text":"English, Spanish, Portuguese, French, German, Italian, Dutch, Polish, Turkish, Russian, Ukrainian, Arabic, Hindi, Indonesian, Vietnamese, Thai, Chinese, Japanese and Korean, in any direction."}},
+{"@type":"Question","name":"Can it translate handwriting?","acceptedAnswer":{"@type":"Answer","text":"Printed text, screenshots, signs and menus work best. Handwriting and cursive are hard to read for any text recognition, so expect mistakes; you can fix the text in the box and press Translate again."}}]}
+</script>
+<meta property="og:title" content="Translate from a picture, free and online">
+<meta property="og:description" content="Drop a photo or screenshot and get its text translated to English or 18 other languages. No upload, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/translate-picture/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.oxt-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.oxt-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.oxt-head h2 { margin: 0; font-size: 22px; }
+.oxt-head label { color: var(--muted); font-size: 15px; }
+.oxt-head select { font: inherit; font-size: 15px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); }
+.oxt-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.oxt-drop:hover, .oxt-drop.over, .oxt-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.oxt-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.oxt-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.oxt-drop .btn { margin-top: 16px; pointer-events: none; }
+.oxt-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.oxt-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.oxt-box h3 { margin: 0 0 6px; font-size: 19px; }
+.oxt-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.oxt-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.oxt-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#oxt-text { width: 100%; min-height: 180px; box-sizing: border-box; margin: 0 0 14px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink); background: var(--bg-soft); resize: vertical; }
+.oxt-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.oxt-ext { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.oxt-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+#trn-text { width: 100%; min-height: 180px; box-sizing: border-box; margin: 0 0 8px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink); background: var(--bg-soft); resize: vertical; }
+#oxt-text { min-height: 120px; }
+.trn-note { font-size: 14px !important; }
+#trn-device[hidden], #trn-online[hidden] { display: none; }
+.trn-src { margin: 22px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.trn-src h3 { font-size: 17px !important; }
+.oxt-box .oxt-head h3 { margin: 0; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Translate</span> <span class="fx-w" style="--i:1">from</span> <span class="fx-w" style="--i:2">a</span> <span class="fx-w" style="--i:3">pic,</span></span><span class="fx-line"><span class="fx-w" style="--i:4">free</span> <span class="fx-w" style="--i:5">and</span> <span class="fx-w arrow" style="--i:6">online</span></span></h1>
+    <p class="sub">Drop a photo, screenshot or picture below and get its text translated to English or 18 other languages, with the original next to it. Menus, signs, documents, chats: no retyping, and the picture never leaves your device.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="oxt-tool">
+      <div class="oxt-head">
+        <h2>Translate from a picture</h2>
+        <label>Text in the picture is in
+          <select id="oxt-lang">
+            <option value="eng" data-nav="en">English</option>
+            <option value="spa" data-nav="es">Spanish</option>
+            <option value="por" data-nav="pt">Portuguese</option>
+            <option value="fra" data-nav="fr">French</option>
+            <option value="deu" data-nav="de">German</option>
+            <option value="ita" data-nav="it">Italian</option>
+            <option value="nld" data-nav="nl">Dutch</option>
+            <option value="pol" data-nav="pl">Polish</option>
+            <option value="tur" data-nav="tr">Turkish</option>
+            <option value="rus" data-nav="ru">Russian</option>
+            <option value="ukr" data-nav="uk">Ukrainian</option>
+            <option value="ara" data-nav="ar">Arabic</option>
+            <option value="hin" data-nav="hi">Hindi</option>
+            <option value="ind" data-nav="id">Indonesian</option>
+            <option value="vie" data-nav="vi">Vietnamese</option>
+            <option value="tha" data-nav="th">Thai</option>
+            <option value="chi_sim" data-nav="zh">Chinese (Simplified)</option>
+            <option value="jpn" data-nav="ja">Japanese</option>
+            <option value="kor" data-nav="ko">Korean</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="oxt-idle">
+        <label class="oxt-drop" id="oxt-drop" for="oxt-file">
+          <input class="oxt-hide" type="file" id="oxt-file" accept="image/*">
+          <b>Drop an image or screenshot here</b>
+          <span>or paste it with Ctrl+V &middot; PNG, JPG, WEBP</span><br>
+          <span class="btn">Choose image</span>
+        </label>
+      </div>
+
+      <div id="oxt-busy" class="oxt-box" hidden>
+        <h3 id="oxt-status">Starting&hellip;</h3>
+        <p class="oxt-file" id="oxt-name"></p>
+      </div>
+
+      <div id="oxt-done" class="oxt-box" hidden>
+        <div class="oxt-head">
+          <h3>Translation</h3>
+          <label>Translate to <select id="trn-target"><option value="en" selected>English</option><option value="es">Spanish</option><option value="pt">Portuguese</option><option value="fr">French</option><option value="de">German</option><option value="it">Italian</option><option value="nl">Dutch</option><option value="pl">Polish</option><option value="tr">Turkish</option><option value="ru">Russian</option><option value="uk">Ukrainian</option><option value="ar">Arabic</option><option value="hi">Hindi</option><option value="id">Indonesian</option><option value="vi">Vietnamese</option><option value="th">Thai</option><option value="zh">Chinese</option><option value="ja">Japanese</option><option value="ko">Korean</option></select></label>
+        </div>
+        <textarea id="trn-text" spellcheck="false" aria-label="Translation"></textarea>
+        <p class="trn-note" id="trn-note" aria-live="polite"></p>
+        <div class="oxt-row">
+          <button type="button" class="btn" id="trn-device" hidden>Download and translate on this computer</button>
+          <button type="button" class="btn btn-ghost" id="trn-online" hidden>Translate online instead</button>
+          <button type="button" class="btn" id="trn-copy">Copy translation</button>
+          <button type="button" class="oxt-again">Translate another picture</button>
+        </div>
+        <div class="trn-src">
+          <h3>Text from the picture</h3>
+          <p id="oxt-summary"></p>
+          <textarea id="oxt-text" spellcheck="false" aria-label="Text from the picture"></textarea>
+          <div class="oxt-row">
+            <button type="button" class="btn btn-ghost" id="trn-go">Translate again</button>
+            <button type="button" class="btn btn-ghost" id="oxt-copy">Copy all</button>
+            <button type="button" class="btn btn-ghost" id="oxt-txt">Download .txt</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="oxt-empty" class="oxt-box" hidden>
+        <h3>No text found</h3>
+        <p>Check that the language above matches the image (changing it re-reads the same picture), or try a sharper, larger crop. Handwriting and very stylized fonts are hard for any OCR.</p>
+        <div class="oxt-row">
+          <button type="button" class="oxt-again">Try another image</button>
+        </div>
+      </div>
+
+      <div id="oxt-error" class="oxt-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="oxt-error-text">The text reader didn't load. Check your connection and try again.</p>
+        <button type="button" class="oxt-again">Choose another image</button>
+      </div>
+
+      <p class="oxt-private">The picture never leaves your device: the text is read right here. In Chrome or Edge on a computer it is translated here too; in other browsers only the text goes to the free MyMemory translation service.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to translate a photo to English</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Pick the language</h3><p>Choose the language of the text in the picture, so it is read correctly. Chinese, Japanese, Arabic and more are in the list.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Drop the picture</h3><p>A photo, a screenshot or a scan. Paste it with Ctrl+V or pick it from your phone's gallery.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Read and copy</h3><p>The translation appears with the original under it. Fix the original if a word was misread and translate again.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I translate text from a picture?</summary>
+          <p>Drop the picture, screenshot or photo into the translator at the top of this page, or paste it with Ctrl+V. Pick the language of the text in the picture first. The text is read in a few seconds and translated right away; choose another language under Translate to whenever you like.</p>
+        </details>
+        <details>
+          <summary>How do I translate a photo to English?</summary>
+          <p>Keep English under Translate to (it's the default), choose the language of the photo above the drop area and drop the photo. You get the English translation and the original text side by side, both ready to copy.</p>
+        </details>
+        <details>
+          <summary>Is it free? Is there a limit?</summary>
+          <p>Yes, free and without sign-up. In Chrome or Edge on a computer the translation runs on your device with no limit. In other browsers it uses the free MyMemory service, which allows about 5,000 characters a day per network.</p>
+        </details>
+        <details>
+          <summary>Is my photo uploaded?</summary>
+          <p>No. The text is read from the picture in your browser. In Chrome or Edge on a computer the translation also stays on your device; elsewhere only the recognized text, not the picture, is sent to MyMemory to translate.</p>
+        </details>
+        <details>
+          <summary>Which languages can it translate?</summary>
+          <p>English, Spanish, Portuguese, French, German, Italian, Dutch, Polish, Turkish, Russian, Ukrainian, Arabic, Hindi, Indonesian, Vietnamese, Thai, Chinese, Japanese and Korean, in any direction.</p>
+        </details>
+        <details>
+          <summary>Can it translate handwriting?</summary>
+          <p>Printed text, screenshots, signs and menus work best. Handwriting and cursive are hard to read for any text recognition, so expect mistakes; you can fix the text in the box and press Translate again.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Only need the text, not a translation? <a href="../extract-text-from-image/">Image to text</a> or <a href="../image-to-word/">image to Word</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/ocr/tool.js"></script>
+<script type="module" src="/assets/translate/tool.js"></script>
+<script>
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
