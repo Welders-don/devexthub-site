@@ -181,6 +181,10 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - Тот же OCR-виджет (`assets/ocr/tool.js`, tesseract.js) + главная кнопка «Download Word (.docx)» (`#oxt-docx`, есть только на этой странице) → `assets/ocr/docx.js`: минимальный .docx через JSZip (`/assets/pdfx/jszip.min.js`), строка = абзац. Проверено python-docx (открывается, абзацы верные). Событие `ocr-download` теперь с `fmt` (txt/docx) на обеих страницах.
 - e2e `tools/e2e_word_tool.mjs`, регрессия OCR `tools/e2e_ocr_tool.mjs`. Ссылки OCR ↔ Word.
 
+## Страница изменить размер картинки /resize-image/ (30.10.2026, кластер ~27.7k: change size of image 14.8k/KD 24, shrink image size 1.6k/KD 13)
+- `assets/resize/tool.js`: canvas, без сети. Ширина/высота с замком пропорций, проценты, JPG/PNG/WEBP, качество (у PNG скрыто), живой вес файла, превью. JPG заливает прозрачность белым. Ссылки ↔ /image-enhancer/ («больше и чётче = AI»).
+- События `rsz-pick` (mp), `rsz-run` (not-image/bad-image), `rsz-download` (format, w, h). e2e `tools/e2e_resize_tool.mjs`.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
