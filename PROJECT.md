@@ -161,6 +161,12 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - e2e `tools/e2e_mkv_tool.mjs` (ffmpeg делает dual/aac/ac3 MKV), регрессия MOV `tools/e2e_mov_tool.mjs`.
 - Критерий: страница в индексе GSC к ~20.11; `mkv-run` ok+warn ≥ 20% визитов после индексации.
 
+## Страница видео → GIF /video-to-gif/ (30.10.2026, mp4 to gif converter 6.6k/KD 7, how to turn video into gif 2.9k/KD 8)
+- `assets/gif/tool.js`: кадры Mediabunny CanvasSink (`assets/mov/vendor`, тот же модуль, HEVC без железа = `assets/mov/app/hevc-fallback.js`), GIF = gifenc 1.0.3 (MIT, `assets/gif/gifenc.esm.js` + LICENSE). Свой UI: начало, длина ≤ 15 с, ширина 320/480/640, 10/15 fps, превью первого кадра, GIF на странице до скачивания. В главном потоке (кадр 480 px ≈ десятки мс).
+- Замер стенда: 10 с 720p H.264 → 5 с GIF 480 px 10 fps = 50 кадров, 591 КБ, 3 с; айфонный HEVC MOV программно 2 с / 320 px — ок.
+- События `gif-pick` (secs), `gif-run` (result ok/cancel/error, frames, fps, width, sizeKb, secs, why), `gif-download`. Store-CTA в виджете нет (расширение GIF не делает), ссылки на MOV/MKV-страницы. e2e `tools/e2e_gif_tool.mjs`.
+- Критерий: в индексе GSC к ~20.11; `gif-run` ok ≥ 20% визитов после индексации.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
