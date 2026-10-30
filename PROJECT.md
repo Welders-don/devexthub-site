@@ -191,6 +191,13 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - События `mp3-pick` (codec, mins, sizeMb), `mp3-run` (result ok/error, path mp3/wav/m4a или noaudio/nodecode/rejected, kbps, codec, secs), `mp3-download-again`. e2e `tools/e2e_mp3_tool.mjs` (MOV→MP3 320 / WAV, MKV 5.1 Opus → стерео, без звука, txt, отмена, мобильный). Ссылки с MOV- и GIF-страниц.
 - Критерий: в индексе GSC к ~20.11; `mp3-run` ok ≥ 20% визитов после индексации. Не должно упасть: `mov-run` на /convert-mov-to-mp4/.
 
+## Страница перевод с картинки /translate-picture/ (30.10.2026, кластер ~19k: translate from a pic 9.9k/KD 28, translate photo to english 8.1k/KD 28)
+- OCR-виджет тот же (`assets/ocr/tool.js`, после распознавания шлёт событие `oxt-text` {text, lang}), перевод = `assets/translate/tool.js`: строки склеиваются в абзацы, перевод по абзацам. Цель по умолчанию English (картинка английская → язык браузера или Spanish).
+- Движок 1: Chrome Translator API (Chrome 138+/Edge 148+, только десктоп, на устройстве, $0, без лимита). Скачать языковой пакет можно только по клику → кнопки «Download and translate on this computer» / «Translate online instead». 🔴 `availability()` может не ответить вовсе (headless Chrome 145 висит) → таймаут 4 с = API нет. В воркере API не работает.
+- Движок 2 (нет API / unavailable): MyMemory `api.mymemory.translated.net/get` без ключа, CORS *, ≤ 500 байт за запрос (режем по предложениям), ~5000 символов/день на IP; лимит = `quotaFinished`/«MYMEMORY WARNING» → честный текст. Уходит только текст, картинка нет (написано под виджетом и в FAQ).
+- События `trn-run` (result ok/quota/error/ask-download, engine device|mymemory, src, tgt, chars, secs), `trn-copy`; OCR-события как на /extract-text-from-image/. e2e `tools/e2e_translate_tool.mjs` (Translator подменяется, MyMemory в кейсе 1 настоящий).
+- Критерий: в индексе GSC к ~20.11; `trn-run` ok ≥ 20% визитов после индексации; доля quota < 10% от trn-run. Не должно упасть: `ocr-run` ok на /extract-text-from-image/.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
