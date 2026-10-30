@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOV to MP3 Converter Free Online, Also WAV & M4A | Devexthub</title>
+<meta name="description" content="Convert MOV to MP3 free, right in your browser: drop a video and save its sound as MP3, WAV or M4A. MP4, MKV and WEBM work too. Nothing is uploaded, no sign-up.">
+<link rel="canonical" href="https://www.devexthub.com/mov-to-mp3/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MOV to MP3 converter","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/mov-to-mp3/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I convert MOV to MP3?","acceptedAnswer":{"@type":"Answer","text":"Drop the MOV video into the converter at the top of this page, keep MP3 selected, pick the quality and press Convert. The MP3 lands in your Downloads and plays right on the page. Nothing is uploaded."}},
+{"@type":"Question","name":"Can I convert MP4 or other videos to MP3 too?","acceptedAnswer":{"@type":"Answer","text":"Yes. MP4, MOV, MKV and WEBM all work, as long as your browser can read the sound inside. iPhone videos (MOV with AAC sound) work in every modern browser."}},
+{"@type":"Question","name":"MP3, WAV or M4A: which one should I pick?","acceptedAnswer":{"@type":"Answer","text":"MP3 plays everywhere and stays small: 192 kbps is plenty for speech and music. WAV is uncompressed, for editing in an audio app, and is about ten times bigger. M4A (AAC) is a little smaller than MP3 at the same quality and plays on Apple devices."}},
+{"@type":"Question","name":"Is there a length or size limit?","acceptedAnswer":{"@type":"Answer","text":"No fixed limit. Long videos are fine for MP3 and M4A; WAV of a very long video can get too big for a browser tab, and the converter tells you before you start."}},
+{"@type":"Question","name":"Is my video uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The sound is taken out and converted on your own device, inside the browser tab."}}]}
+</script>
+<meta property="og:title" content="MOV to MP3 converter, free and online">
+<meta property="og:description" content="Save the sound of a video as MP3, WAV or M4A. No upload, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/mov-to-mp3/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.a2m-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.a2m-tool h2 { margin: 0 0 12px; font-size: 22px; }
+.a2m-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.a2m-drop:hover, .a2m-drop.over, .a2m-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.a2m-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.a2m-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.a2m-drop .btn { margin-top: 16px; pointer-events: none; }
+.a2m-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.a2m-box { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--bg); box-shadow: var(--shadow-card); }
+.a2m-box h3 { margin: 0 0 6px; font-size: 19px; }
+.a2m-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.a2m-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.a2m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 0 0 16px; }
+.a2m-grid label { display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.a2m-grid input, .a2m-grid select { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); }
+#a2m-bar { width: 100%; height: 10px; margin: 6px 0 12px; accent-color: var(--green); }
+.a2m-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.a2m-link { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.a2m-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+#a2m-kbps-wrap[hidden] { display: none; }
+#a2m-player { display: block; width: 100%; margin: 0 0 12px; }
+#a2m-est { font-size: 15px; }
+.a2m-lic { margin-top: 6px; color: var(--muted); font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Convert</span> <span class="fx-w" style="--i:1">MOV</span> <span class="fx-w" style="--i:2">to</span> <span class="fx-w" style="--i:3">MP3,</span></span><span class="fx-line"><span class="fx-w" style="--i:4">free</span> <span class="fx-w" style="--i:5">and</span> <span class="fx-w arrow" style="--i:6">online</span></span></h1>
+    <p class="sub">Drop a video below and save its sound as MP3, WAV or M4A. Works with MOV from an iPhone, MP4, MKV and WEBM, and the video never leaves your device.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="a2m-tool">
+      <h2>MOV to MP3 converter</h2>
+
+      <div id="a2m-idle">
+        <label class="a2m-drop" id="a2m-drop" for="a2m-file">
+          <input class="a2m-hide" type="file" id="a2m-file" accept="video/*,audio/*,.mov,.mkv,.webm">
+          <b>Drop a video here</b>
+          <span>or click to choose &middot; MOV, MP4, MKV, WEBM</span><br>
+          <span class="btn">Choose video</span>
+        </label>
+      </div>
+
+      <div id="a2m-opts" class="a2m-box" hidden>
+        <p class="a2m-file" id="a2m-name"></p>
+        <div class="a2m-grid">
+          <label>Format<select id="a2m-format"><option value="mp3" selected>MP3</option><option value="wav">WAV (uncompressed)</option><option value="m4a">M4A (AAC)</option></select></label>
+          <label id="a2m-kbps-wrap">Quality<select id="a2m-kbps"><option value="128">128 kbps, smaller</option><option value="192" selected>192 kbps</option><option value="320">320 kbps, best</option></select></label>
+        </div>
+        <p id="a2m-est"></p>
+        <div class="a2m-row">
+          <button type="button" class="btn" id="a2m-go">Convert</button>
+          <button type="button" class="a2m-link a2m-new">Choose another video</button>
+        </div>
+      </div>
+
+      <div id="a2m-busy" class="a2m-box" hidden>
+        <h3 id="a2m-status">Saving the sound&hellip;</h3>
+        <progress id="a2m-bar" max="1"></progress>
+        <button type="button" class="a2m-link" id="a2m-cancel">Cancel</button>
+      </div>
+
+      <div id="a2m-done" class="a2m-box" hidden>
+        <h3 id="a2m-done-title">Done</h3>
+        <audio id="a2m-player" controls preload="metadata"></audio>
+        <div class="a2m-row">
+          <a class="btn btn-ghost" id="a2m-dl" href="#">Download again</a>
+          <button type="button" class="a2m-link a2m-new">Convert another video</button>
+        </div>
+        <p style="margin:16px 0 0">Need the words, not the sound? <a href="https://transcribevideototext.app/">Transcribe a video to text</a>.</p>
+      </div>
+
+      <div id="a2m-error" class="a2m-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="a2m-error-text"></p>
+        <button type="button" class="a2m-link a2m-new">Choose another video</button>
+      </div>
+
+      <p class="a2m-private">Nothing is uploaded: the sound is converted on your own device.</p>
+      <p class="a2m-lic">MP3 files are made with the <a href="https://lame.sourceforge.io/" rel="noopener">LAME MP3 encoder</a> (LGPL, <a href="/assets/mov/vendor/mp3-encoder-LICENSE.txt">license and source</a>).</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to convert a MOV video to MP3</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Drop the video</h3><p>A MOV from an iPhone, an MP4, MKV or WEBM. It is read in your browser.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Pick the format</h3><p>MP3 for anywhere, WAV for editing, M4A for Apple devices. You see the size before you start.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Download</h3><p>The file goes to your Downloads and plays right on the page, so you can check it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I convert MOV to MP3?</summary>
+          <p>Drop the MOV video into the converter at the top of this page, keep MP3 selected, pick the quality and press Convert. The MP3 lands in your Downloads and plays right on the page. Nothing is uploaded.</p>
+        </details>
+        <details>
+          <summary>Can I convert MP4 or other videos to MP3 too?</summary>
+          <p>Yes. MP4, MOV, MKV and WEBM all work, as long as your browser can read the sound inside. iPhone videos (MOV with AAC sound) work in every modern browser.</p>
+        </details>
+        <details>
+          <summary>MP3, WAV or M4A: which one should I pick?</summary>
+          <p>MP3 plays everywhere and stays small: 192 kbps is plenty for speech and music. WAV is uncompressed, for editing in an audio app, and is about ten times bigger. M4A (AAC) is a little smaller than MP3 at the same quality and plays on Apple devices.</p>
+        </details>
+        <details>
+          <summary>Is there a length or size limit?</summary>
+          <p>No fixed limit. Long videos are fine for MP3 and M4A; WAV of a very long video can get too big for a browser tab, and the converter tells you before you start.</p>
+        </details>
+        <details>
+          <summary>Is my video uploaded anywhere?</summary>
+          <p>No. The sound is taken out and converted on your own device, inside the browser tab.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Need the video itself in another format? <a href="../convert-mov-to-mp4/">Convert MOV to MP4</a>, <a href="../mkv-to-mp4/">MKV to MP4</a> or <a href="../video-to-gif/">video to GIF</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/audio/tool.js"></script>
+<script>
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
