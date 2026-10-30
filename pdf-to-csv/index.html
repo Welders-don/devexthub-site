@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF to CSV Converter Free Online, No Upload | Devexthub</title>
+<meta name="description" content="Convert PDF to CSV free, right in your browser: drop a PDF and download its tables as a CSV file, with comma, semicolon or tab as the separator. Nothing is uploaded, no sign-up.">
+<link rel="canonical" href="https://www.devexthub.com/pdf-to-csv/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF to CSV converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/pdf-to-csv/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I convert a PDF to CSV?","acceptedAnswer":{"@type":"Answer","text":"Drop the PDF into the converter at the top of this page. The tables are read in a few seconds; check the preview, pick the separator and press Download CSV. Nothing is uploaded."}},
+{"@type":"Question","name":"My CSV opens in one column in Excel. What do I do?","acceptedAnswer":{"@type":"Answer","text":"Your Excel expects a semicolon, which is usual where a comma is the decimal mark (most of Europe and Latin America). Choose Semicolon under Separator and download again, or take the .xlsx file instead."}},
+{"@type":"Question","name":"Can I convert a bank statement PDF to CSV?","acceptedAnswer":{"@type":"Answer","text":"Yes, if the statement was downloaded from online banking (it has real text). Dates, descriptions and amounts come out in their own columns. For statements, our bank statement converter keeps amounts as numbers in Excel too."}},
+{"@type":"Question","name":"What about scanned PDFs?","acceptedAnswer":{"@type":"Answer","text":"A scan is a picture of the page with no text inside, so the browser can't read it. The AI mode in our free Chrome extension recognizes tables in scans and exports them to CSV or Excel."}},
+{"@type":"Question","name":"Is it free? Is my PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"Free, no sign-up, no page limit. The PDF is read and the CSV is built in your browser; the file never leaves your computer."}}]}
+</script>
+<meta property="og:title" content="PDF to CSV converter, free and online">
+<meta property="og:description" content="Download the tables of a PDF as a CSV file. No upload, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/pdf-to-csv/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+/* Виджет конвертера: стили 1:1 со страницы выписок (bank-statement), 30.10 */
+.hero { padding-left: 22px; padding-right: 22px; }
+.bst-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.bst-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.bst-drop:hover, .bst-drop.over, .bst-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.bst-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.bst-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.bst-drop .btn { margin-top: 16px; pointer-events: none; }
+.bst-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.bst-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.bst-box h3 { margin: 0 0 6px; font-size: 19px; }
+.bst-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.bst-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.bst-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.bst-scroll { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--line); border-radius: 10px; }
+#bst-preview { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+#bst-preview td { border-bottom: 1px solid var(--line); padding: 6px 10px; white-space: nowrap; max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+#bst-preview tr:nth-child(odd) td { background: var(--bg-soft); }
+.bst-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.bst-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+
+.bst-sep { display: flex; gap: 8px; align-items: center; margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+.bst-sep select { font: inherit; font-size: 15px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Convert</span> <span class="fx-w" style="--i:1">PDF</span> <span class="fx-w" style="--i:2">to</span> <span class="fx-w" style="--i:3">CSV,</span></span><span class="fx-line"><span class="fx-w" style="--i:4">free</span> <span class="fx-w" style="--i:5">and</span> <span class="fx-w arrow" style="--i:6">online</span></span></h1>
+    <p class="sub">Drop a PDF below and download its tables as a CSV file for Excel, Google Sheets or your accounting app. Pick a comma, semicolon or tab separator, and the file never leaves your computer.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="bst-tool" data-kind="csv">
+      <div id="bst-idle">
+        <label class="bst-drop" id="bst-drop" for="bst-file">
+          <input class="bst-hide" type="file" id="bst-file" accept="application/pdf,.pdf">
+          <b>Drop a PDF here</b>
+          <span>or click to choose a file &middot; invoices, statements, reports &middot; free</span><br>
+          <span class="btn">Choose PDF</span>
+        </label>
+      </div>
+
+      <div id="bst-busy" class="bst-box" hidden>
+        <h3>Reading the tables&hellip;</h3>
+        <p class="bst-file" id="bst-name"></p>
+      </div>
+
+      <div id="bst-done" class="bst-box" hidden>
+        <h3>Your CSV file is ready</h3>
+        <p id="bst-summary"></p>
+        <div class="bst-scroll"><table id="bst-preview"></table></div>
+        <label class="bst-sep">Separator
+          <select id="bst-sep"><option value=",">Comma (,)</option><option value=";">Semicolon (;) for Excel in Europe</option><option value="&#9;">Tab</option></select>
+        </label>
+        <div class="bst-row">
+          <a class="btn" id="bst-csv" href="#">Download CSV</a>
+          <a class="btn btn-ghost" id="bst-xlsx" href="#">Download Excel (.xlsx)</a>
+          <button type="button" class="bst-again">Convert another</button>
+        </div>
+        <p style="margin:16px 0 0">Converting PDFs every day? The free Chrome extension does it from your toolbar and reads scans with AI.</p>
+        <a class="btn store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf?utm_content=csv-widget" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel" data-umami-event-place="csv-widget">Add to Chrome &middot; free</a>
+      </div>
+
+      <div id="bst-scan" class="bst-box" hidden>
+        <h3>This PDF is a scan</h3>
+        <p>It's a picture of the page, so there is no text for the browser to read. Our free Chrome extension has an AI mode that recognises tables in scanned documents and exports them to CSV.</p>
+        <div class="bst-row">
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf?utm_content=csv-widget-scan" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel" data-umami-event-place="csv-widget-scan">Get the extension with AI mode</a>
+          <button type="button" class="bst-again">Try another file</button>
+        </div>
+      </div>
+
+      <div id="bst-empty" class="bst-box" hidden>
+        <h3>No table found in this PDF</h3>
+        <p>The file has text, but we couldn't find rows and columns in it. To get the plain text, use <a href="../pdf-to-text/">PDF to TXT</a>; for unusual layouts the AI mode in our Chrome extension may still read the table.</p>
+        <div class="bst-row">
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf?utm_content=csv-widget-empty" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel" data-umami-event-place="csv-widget-empty">Get the extension with AI mode</a>
+          <button type="button" class="bst-again">Try another file</button>
+        </div>
+      </div>
+
+      <div id="bst-error" class="bst-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="bst-error-text"></p>
+        <button type="button" class="bst-again">Choose another file</button>
+      </div>
+
+      <p class="bst-private">Nothing is uploaded: the PDF is read and the CSV is built on your own computer.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to convert a PDF to CSV</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Drop the PDF</h3><p>Any PDF made on a computer: invoices, bank statements, price lists, reports. It is read in your browser.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Check the preview</h3><p>All tables from all pages land on one sheet. The first rows are shown, so you see the columns before you save.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Pick the separator</h3><p>Comma for Google Sheets and most apps, semicolon for Excel set to European formats, tab for anything picky.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I convert a PDF to CSV?</summary>
+          <p>Drop the PDF into the converter at the top of this page. The tables are read in a few seconds; check the preview, pick the separator and press Download CSV. Nothing is uploaded.</p>
+        </details>
+        <details>
+          <summary>My CSV opens in one column in Excel. What do I do?</summary>
+          <p>Your Excel expects a semicolon, which is usual where a comma is the decimal mark (most of Europe and Latin America). Choose Semicolon under Separator and download again, or take the .xlsx file instead.</p>
+        </details>
+        <details>
+          <summary>Can I convert a bank statement PDF to CSV?</summary>
+          <p>Yes, if the statement was downloaded from online banking (it has real text). Dates, descriptions and amounts come out in their own columns. For statements, our bank statement converter keeps amounts as numbers in Excel too.</p>
+        </details>
+        <details>
+          <summary>What about scanned PDFs?</summary>
+          <p>A scan is a picture of the page with no text inside, so the browser can't read it. The AI mode in our free Chrome extension recognizes tables in scans and exports them to CSV or Excel.</p>
+        </details>
+        <details>
+          <summary>Is it free? Is my PDF uploaded?</summary>
+          <p>Free, no sign-up, no page limit. The PDF is read and the CSV is built in your browser; the file never leaves your computer.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Need an Excel file instead? <a href="../pdf-to-excel/">Convert PDF to Excel</a>. A bank statement? <a href="../pdf-to-excel/bank-statement/">Bank statement to Excel</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Chrome Web Store</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script src="/assets/pdfx/jszip.min.js"></script>
+<script type="module" src="/assets/pdfx/tool.js"></script>
+<script>
+// Add UTM tags to every Chrome Web Store link so installs show up
+// as "devexthub_landing" in the CWS developer dashboard sources.
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=pdf-to-csv";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  // Reveal-on-scroll
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  // Show floating CTA once the hero button is scrolled out of view
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>

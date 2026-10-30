@@ -1,5 +1,6 @@
 // Конвертер PDF → Excel/CSV: страница выписок /pdf-to-excel/bank-statement/ (data-kind="statement", по умолчанию)
-// и лендинг /pdf-to-excel/ (data-kind="table", 30.10). Отличаются только тексты, имя листа и события.
+// и лендинг /pdf-to-excel/ (data-kind="table", 30.10), страница /pdf-to-csv/ (data-kind="csv", 30.10: + выбор разделителя).
+// Отличаются тексты, имя листа и события.
 // Движок = копия расширения Convert PDF to Excel 1.1.1 (pdf-to-tables, xlsx-writer, csv-writer).
 // Файл не покидает браузер: сервер здесь не участвует.
 import * as pdfjsLib from './pdf.min.mjs';
@@ -21,9 +22,16 @@ const KINDS = {
   table: { ev: 'pdfx', sheet: 'Sheet1', base: 'converted',
     bad: "We couldn't read this file. Make sure it's a real PDF, not a damaged or renamed file.",
     notPdf: 'This tool takes PDF files. Save or export your document as PDF and drop it here.' },
+  csv: { ev: 'pcsv', sheet: 'Sheet1', base: 'converted',
+    bad: "We couldn't read this file. Make sure it's a real PDF, not a damaged or renamed file.",
+    notPdf: 'This tool takes PDF files. Save or export your document as PDF and drop it here.' },
 };
 const K = KINDS[document.querySelector('.bst-tool').dataset.kind] || KINDS.statement;
 let urls = [];
+let csvUrl = null;
+let last = null; // { merged, base } для пересборки CSV при смене разделителя
+const sepSel = $('bst-sep');
+const SEP_NAME = { ',': 'comma', ';': 'semicolon', '\t': 'tab' };
 
 function show(id) {
   states.forEach((s) => { $(s).hidden = s !== id; });
@@ -118,13 +126,24 @@ async function convert(file) {
   const merged = mergeSheets(sheets);
   const base = file.name.replace(/\.pdf$/i, '') || K.base;
   setDownload('bst-xlsx', await buildXlsxBlob(merged), `${base}.xlsx`, 'xlsx');
-  setDownload('bst-csv', buildCsvBlob(merged), `${base}.csv`, 'csv');
+  last = { merged, base };
+  setCsv();
   renderPreview(merged[0].grid);
   const rows = merged[0].grid.filter((r) => r.length > 0).length;
   $('bst-summary').textContent = `${pages} page${pages === 1 ? '' : 's'}, ${rows} rows. Preview of the first ${Math.min(PREVIEW_ROWS, rows)}:`;
   show('bst-done');
   track(`${K.ev}-convert`, { result: 'ok', pages });
 }
+
+function setCsv() {
+  const sep = sepSel ? sepSel.value : ',';
+  if (csvUrl) URL.revokeObjectURL(csvUrl);
+  const a = $('bst-csv');
+  a.href = csvUrl = URL.createObjectURL(buildCsvBlob(last.merged, sep));
+  a.download = `${last.base}.csv`;
+  a.onclick = () => track(`${K.ev}-download`, { fmt: 'csv', sep: SEP_NAME[sep] });
+}
+sepSel?.addEventListener('change', () => { if (last) setCsv(); });
 
 function pick(files) {
   const file = files && files[0];
