@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Image Upscaler Free Online: Upscale Photo 2x or 4x | Devexthub</title>
+<meta name="description" content="Upscale an image with AI free, right in your browser: make a small photo 2x or 4x bigger with sharper detail and higher resolution. No upload, no sign-up, no watermark.">
+<link rel="canonical" href="https://www.devexthub.com/ai-image-upscaler/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI image upscaler","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/ai-image-upscaler/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I upscale an image with AI?","acceptedAnswer":{"@type":"Answer","text":"Pick 2x or 4x above the drop area, then drop the photo or paste it with Ctrl+V. The AI model runs in your browser, shows the result next to the original and saves a PNG twice or four times as wide and tall."}},
+{"@type":"Question","name":"How do I make an image higher resolution?","acceptedAnswer":{"@type":"Answer","text":"Upscale it: 2x turns a 1000 \u00d7 750 photo into 2000 \u00d7 1500 pixels, 4x into 4000 \u00d7 3000. Plain resizing just stretches pixels; the AI upscaler adds sharp edges and detail, so the bigger photo stays clean."}},
+{"@type":"Question","name":"2x or 4x: which should I choose?","acceptedAnswer":{"@type":"Answer","text":"2x for most photos: it is faster and looks natural. 4x for very small images such as thumbnails, avatars or old web pictures under 600 pixels."}},
+{"@type":"Question","name":"Is there a size limit?","acceptedAnswer":{"@type":"Answer","text":"Photos up to 4 megapixels (about 2300 \u00d7 1700). That is exactly where small images need upscaling; a photo bigger than that is already high resolution."}},
+{"@type":"Question","name":"Is it free and private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Free, no sign-up, no watermark. The photo is upscaled on your own device and never uploaded; only the AI model is downloaded once."}}]}
+</script>
+<meta property="og:title" content="AI image upscaler, free and online">
+<meta property="og:description" content="Upscale an image with AI free, right in your browser: make a small photo 2x or 4x bigger with sharper detail and higher resolution. No upload, no sign-up, no watermark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/ai-image-upscaler/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.iew-tool { max-width: 820px; margin: 0 auto; text-align: left; }
+.iew-tool h2 { margin: 0 0 12px; font-size: 22px; }
+.iew-modes { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
+.iew-mode { font: inherit; font-size: 15px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.iew-mode.on { background: var(--green); border-color: var(--green); color: #fff; }
+.iew-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.iew-drop:hover, .iew-drop.over, .iew-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.iew-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.iew-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.iew-drop .btn { margin-top: 16px; pointer-events: none; }
+.iew-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.iew-box { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--bg); box-shadow: var(--shadow-card); }
+.iew-box h3 { margin: 0 0 6px; font-size: 19px; }
+.iew-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+#iew-bar { width: 100%; height: 10px; margin: 6px 0 12px; accent-color: var(--green); }
+.iew-cmp { position: relative; border-radius: 12px; overflow: hidden; background: #f3f4f3; margin: 0 0 8px; }
+/* Обе картинки вписаны в одно окно (contain): совпадают при любом размере, маленькие видны крупно */
+.iew-cmp > img { display: block; width: 100%; height: auto; max-height: min(60vh, 480px); object-fit: contain; }
+#iew-after-wrap { position: absolute; inset: 0; }
+#iew-after-wrap img { width: 100%; height: 100%; object-fit: contain; }
+#iew-before { image-rendering: auto; }
+#iew-cut { width: 100%; margin: 0 0 12px; accent-color: var(--green); }
+.iew-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.iew-link { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.iew-ext { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line); }
+.iew-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">AI</span> <span class="fx-w" style="--i:1">image</span> <span class="fx-w" style="--i:2">upscaler,</span></span><span class="fx-line"><span class="fx-w" style="--i:3">free</span> <span class="fx-w" style="--i:4">and</span> <span class="fx-w arrow" style="--i:5">online</span></span></h1>
+    <p class="sub">Make a small photo 2x or 4x bigger without the blocky pixels: the AI redraws detail as it raises the resolution. Drop a JPG, PNG or WEBP below, compare before and after, and download. The photo never leaves your device.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="iew-tool">
+      <h2>Upscale an image</h2>
+      <div class="iew-modes" role="group" aria-label="Mode">
+        <button type="button" class="iew-mode on" data-mode="upscale2x">Upscale 2x</button>
+        <button type="button" class="iew-mode" data-mode="upscale4x">Upscale 4x</button>
+      </div>
+
+      <div id="iew-idle">
+        <label class="iew-drop" id="iew-drop" for="iew-file">
+          <input class="iew-hide" type="file" id="iew-file" accept="image/*">
+          <b>Drop a photo here</b>
+          <span>or paste it with Ctrl+V &middot; JPG, PNG, WEBP up to 4 MP &middot; 2x or 4x bigger</span><br>
+          <span class="btn">Choose image</span>
+        </label>
+      </div>
+
+      <div id="iew-busy" class="iew-box" hidden>
+        <h3 id="iew-status">Starting&hellip;</h3>
+        <progress id="iew-bar" max="1"></progress>
+        <p>The first run downloads the AI model once (about 10 MB with the engine), after that it starts in seconds.</p>
+        <p id="iew-slow" hidden>This browser has no graphics acceleration, so the AI runs on the processor and takes longer. The Chrome extension uses several processor cores and is faster.</p>
+        <button type="button" class="iew-link" id="iew-cancel">Cancel</button>
+      </div>
+
+      <div id="iew-done" class="iew-box" hidden>
+        <div class="iew-cmp">
+          <img id="iew-before" alt="Original image">
+          <div id="iew-after-wrap"><img id="iew-after" alt="Enhanced image"></div>
+        </div>
+        <input type="range" id="iew-cut" min="0" max="100" value="50" aria-label="Compare before and after">
+        <p id="iew-meta"></p>
+        <div class="iew-row">
+          <a class="btn" id="iew-dl" href="#">Download PNG</a>
+          <button type="button" class="iew-link iew-rerun" data-mode="enhance">Try Enhance</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="upscale2x">Try 2x</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="upscale4x">Try 4x</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="unblur">Try Unblur</button>
+          <button type="button" class="iew-link iew-again">Another photo</button>
+        </div>
+        <div class="iew-ext">
+          <p>Lots of photos? The free Chrome extension enhances a whole folder in one go, with the same engine.</p>
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi?utm_content=ie-widget-ai-image-upscaler" data-umami-event="store-click" data-umami-event-ext="image-enhancer" data-umami-event-place="ie-widget">Add to Chrome &middot; free</a>
+        </div>
+      </div>
+
+      <div id="iew-error" class="iew-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="iew-error-text"></p>
+        <button type="button" class="iew-link iew-again">Choose another photo</button>
+      </div>
+
+      <p class="iew-private">Nothing is uploaded: the photo is enhanced on your own device.</p>
+      <p class="iew-private">Only need to change the size or the KB? <a href="../resize-image/">Resize an image</a>.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to upscale a photo</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Pick 2x or 4x</h3><p>2x for everyday photos, 4x for tiny images and thumbnails.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Drop the photo</h3><p>JPG, PNG or WEBP up to 4 MP. The AI model loads once, then starts in seconds.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Compare and save</h3><p>Drag the slider to compare with the original, then download the bigger PNG.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I upscale an image with AI?</summary>
+          <p>Pick 2x or 4x above the drop area, then drop the photo or paste it with Ctrl+V. The AI model runs in your browser, shows the result next to the original and saves a PNG twice or four times as wide and tall.</p>
+        </details>
+        <details>
+          <summary>How do I make an image higher resolution?</summary>
+          <p>Upscale it: 2x turns a 1000 × 750 photo into 2000 × 1500 pixels, 4x into 4000 × 3000. Plain resizing just stretches pixels; the AI upscaler adds sharp edges and detail, so the bigger photo stays clean.</p>
+        </details>
+        <details>
+          <summary>2x or 4x: which should I choose?</summary>
+          <p>2x for most photos: it is faster and looks natural. 4x for very small images such as thumbnails, avatars or old web pictures under 600 pixels.</p>
+        </details>
+        <details>
+          <summary>Is there a size limit?</summary>
+          <p>Photos up to 4 megapixels (about 2300 × 1700). That is exactly where small images need upscaling; a photo bigger than that is already high resolution.</p>
+        </details>
+        <details>
+          <summary>Is it free and private?</summary>
+          <p>Yes. Free, no sign-up, no watermark. The photo is upscaled on your own device and never uploaded; only the AI model is downloaded once.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Want it sharper, not bigger? <a href="../unblur-image/">Unblur an image</a> or <a href="../image-enhancer/">enhance it</a>. Only need a different size in KB? <a href="../resize-image/">Resize an image</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a class="store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Chrome Web Store</a>
+    <a href="https://welders-don.github.io/image-enhancer-privacy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/ie/tool.js"></script>
+<script>
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=ai-image-upscaler";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
