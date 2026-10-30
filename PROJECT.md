@@ -223,6 +223,13 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - Unblur честно про лёгкое размытие (FAQ: сильно смазанное не вернуть). e2e `tools/e2e_iemodes_tool.mjs` (SITE=…): 2x → 320×240, 4x → 640×480, unblur → 160×120, /image-enhancer/ остаётся на enhance.
 - Критерий: обе в индексе к ~20.11; `ie-run` ok с этих url ≥ 15% визитов. Не должно упасть: `ie-run` на /image-enhancer/.
 
+## Страницы яркость и цвет /brighten-image/ и /change-image-color/ (30.10.2026; image colour changer 4.4k/KD 28, recolor image 2.4k/15; image brightener 1.9k/23, brighten image 1.6k/23)
+- Общий `assets/color/tool.js`, `data-kind` brighten|recolor. Canvas, без сети: правка на превью ≤1200 px, при скачивании та же функция по полному размеру, формат исходника (JPG 0.92). «Hold to see the original» = исходник, пока кнопка нажата. До 40 МП.
+- brighten: Auto light (уровни по 0.5% гистограммы) → гамма (Brightness 0-100, по умолчанию 35) → контраст ±40, одной LUT.
+- recolor: клик по цвету → новый цвет (input color) → оттенки в пределах «How similar» (5-90°, мягкий край) сдвигаются по тону, насыщенность масштабируется, светлота сдвигается на 0.8 разницы (тени сохраняются); серое/белое (s<0.12) не трогаем. «Change all colors» = сдвиг тона всей картинки.
+- События `clr-pick` (kind, mp), `clr-run` (ошибки), `clr-download` (brighten: auto/b/c; recolor: all/tol/picked/edited). e2e `tools/e2e_color_tool.mjs` (SITE=…; клик по canvas через locator — иначе превью ниже экрана). Ссылки с /resize-image/.
+- Критерий: в индексе к ~20.11; `clr-download` ≥ 15% от `clr-pick`. Не должно упасть: `rsz-download` на /resize-image/.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
