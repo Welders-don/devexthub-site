@@ -103,8 +103,8 @@ async function run(file, handle) {
   $('mvt-state').textContent = `${(info.videoCodec || 'audio').toUpperCase()} → ${info.kind.toUpperCase()} · ` + {
     audio: 'audio only, copying the track as is',
     remux: 'instant, no quality loss',
-    transcode_sw: 'no video decoder on this computer, converting in software, may take a few minutes',
-    transcode: 'converting to H.264 on your computer',
+    transcode_sw: 'no video decoder on this device, converting in software, may take a few minutes',
+    transcode: 'converting to H.264 on your device',
     fallback: "your browser can't re-encode this codec, keeping the original (may not play on Windows)",
   }[path];
   track(`${KIND}-pick`, { path, kind: info.kind, sizeMb });
