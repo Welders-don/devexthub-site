@@ -27,7 +27,9 @@ async function open(path, viewport = { width: 1280, height: 900 }) {
   const t = await page.inputValue('#oxt-text');
   ok(/хорошая погода/.test(t) && /Магазин открыт/.test(t), `распознано: «${t.replace(/\n/g, ' / ')}»`);
   ok(/^Найдено слов: \d+/.test(await page.textContent('#oxt-summary')), `сводка по-русски: «${await page.textContent('#oxt-summary')}»`);
-  await page.click('#oxt-copy'); ok(await page.textContent('#oxt-copy') === 'Скопировано', 'кнопка «Скопировано»');
+  await page.context().grantPermissions(['clipboard-read', 'clipboard-write'], { origin: SITE });
+  await page.click('#oxt-copy');
+  ok(await page.waitForFunction(() => document.getElementById('oxt-copy').textContent === 'Скопировано', null, { timeout: 5000 }).then(() => true, () => false), 'кнопка «Скопировано»');
   ok((await page.evaluate(() => window.__ev)).some(([n, d]) => n === 'ocr-run' && d.result === 'ok' && d.lang === 'rus'), 'событие ocr-run ok rus');
   await page.screenshot({ path: `${SHOTS}/tekst-desktop-done.png` });
   ok(errors.length === 0, `без ошибок JS ${errors.join(' | ')}`);
