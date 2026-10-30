@@ -10,7 +10,8 @@ const $ = (id) => document.getElementById(id);
 const drop = $('iew-drop');
 const input = $('iew-file');
 const states = ['iew-idle', 'iew-busy', 'iew-done', 'iew-error'];
-let mode = 'enhance';
+// Режим по умолчанию задаёт страница (кнопка .on): /ai-image-upscaler/ = 2x, /unblur-image/ = unblur (30.10).
+let mode = document.querySelector('.iew-mode.on')?.dataset.mode || 'enhance';
 let bitmap = null;
 let fileName = 'image';
 let busy = false;

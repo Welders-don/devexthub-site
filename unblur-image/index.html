@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unblur Image Free Online: Fix Blurry Photos & Text with AI | Devexthub</title>
+<meta name="description" content="Unblur an image free, right in your browser: the AI sharpens slightly blurry photos, soft text and pixelated pictures. Compare before and after, then download. Nothing is uploaded.">
+<link rel="canonical" href="https://www.devexthub.com/unblur-image/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image unblur tool","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/unblur-image/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I unblur an image?","acceptedAnswer":{"@type":"Answer","text":"Drop the photo into the tool at the top of this page or paste it with Ctrl+V. The AI sharpens edges and removes the soft, smeared look, then shows the result next to the original so you can compare before downloading."}},
+{"@type":"Question","name":"Can it fix a very blurry photo?","acceptedAnswer":{"@type":"Answer","text":"It works best on slight blur: a soft focus, a small shake, a picture that lost sharpness after compression. A photo that is heavily out of focus or motion-smeared has lost the detail, and no tool can bring it back honestly."}},
+{"@type":"Question","name":"Can it make blurry text readable?","acceptedAnswer":{"@type":"Answer","text":"Often, yes, when the letters are only a little soft or pixelated, such as a screenshot or a photo of a document. Then use our image to text converter to copy the words."}},
+{"@type":"Question","name":"How do I unpixelate an image?","acceptedAnswer":{"@type":"Answer","text":"Drop it here: the AI smooths the blocky pixels into clean edges. For a very small pixelated picture, the AI image upscaler with 4x works even better."}},
+{"@type":"Question","name":"Is it free and private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Free, no sign-up, no watermark. The photo is processed on your own device and never uploaded."}}]}
+</script>
+<meta property="og:title" content="Unblur an image, free and online">
+<meta property="og:description" content="Unblur an image free, right in your browser: the AI sharpens slightly blurry photos, soft text and pixelated pictures. Compare before and after, then download. Nothing is uploaded.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/unblur-image/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.iew-tool { max-width: 820px; margin: 0 auto; text-align: left; }
+.iew-tool h2 { margin: 0 0 12px; font-size: 22px; }
+.iew-modes { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
+.iew-mode { font: inherit; font-size: 15px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.iew-mode.on { background: var(--green); border-color: var(--green); color: #fff; }
+.iew-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.iew-drop:hover, .iew-drop.over, .iew-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.iew-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.iew-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.iew-drop .btn { margin-top: 16px; pointer-events: none; }
+.iew-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.iew-box { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--bg); box-shadow: var(--shadow-card); }
+.iew-box h3 { margin: 0 0 6px; font-size: 19px; }
+.iew-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+#iew-bar { width: 100%; height: 10px; margin: 6px 0 12px; accent-color: var(--green); }
+.iew-cmp { position: relative; border-radius: 12px; overflow: hidden; background: #f3f4f3; margin: 0 0 8px; }
+/* Обе картинки вписаны в одно окно (contain): совпадают при любом размере, маленькие видны крупно */
+.iew-cmp > img { display: block; width: 100%; height: auto; max-height: min(60vh, 480px); object-fit: contain; }
+#iew-after-wrap { position: absolute; inset: 0; }
+#iew-after-wrap img { width: 100%; height: 100%; object-fit: contain; }
+#iew-before { image-rendering: auto; }
+#iew-cut { width: 100%; margin: 0 0 12px; accent-color: var(--green); }
+.iew-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.iew-link { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.iew-ext { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line); }
+.iew-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Unblur</span> <span class="fx-w" style="--i:1">an</span> <span class="fx-w" style="--i:2">image,</span></span><span class="fx-line"><span class="fx-w" style="--i:3">free</span> <span class="fx-w" style="--i:4">and</span> <span class="fx-w arrow" style="--i:5">online</span></span></h1>
+    <p class="sub">A photo that came out a little soft, text that is hard to read, a picture that turned blocky after sending: drop it below and the AI sharpens the edges and cleans the pixels. Compare with the original before you save. Nothing is uploaded.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="iew-tool">
+      <h2>Unblur an image</h2>
+      <div class="iew-modes" role="group" aria-label="Mode">
+        <button type="button" class="iew-mode on" data-mode="unblur">Unblur</button>
+        <button type="button" class="iew-mode" data-mode="enhance">Enhance</button>
+      </div>
+
+      <div id="iew-idle">
+        <label class="iew-drop" id="iew-drop" for="iew-file">
+          <input class="iew-hide" type="file" id="iew-file" accept="image/*">
+          <b>Drop a photo here</b>
+          <span>or paste it with Ctrl+V &middot; JPG, PNG, WEBP up to 4 MP</span><br>
+          <span class="btn">Choose image</span>
+        </label>
+      </div>
+
+      <div id="iew-busy" class="iew-box" hidden>
+        <h3 id="iew-status">Starting&hellip;</h3>
+        <progress id="iew-bar" max="1"></progress>
+        <p>The first run downloads the AI model once (about 10 MB with the engine), after that it starts in seconds.</p>
+        <p id="iew-slow" hidden>This browser has no graphics acceleration, so the AI runs on the processor and takes longer. The Chrome extension uses several processor cores and is faster.</p>
+        <button type="button" class="iew-link" id="iew-cancel">Cancel</button>
+      </div>
+
+      <div id="iew-done" class="iew-box" hidden>
+        <div class="iew-cmp">
+          <img id="iew-before" alt="Original image">
+          <div id="iew-after-wrap"><img id="iew-after" alt="Enhanced image"></div>
+        </div>
+        <input type="range" id="iew-cut" min="0" max="100" value="50" aria-label="Compare before and after">
+        <p id="iew-meta"></p>
+        <div class="iew-row">
+          <a class="btn" id="iew-dl" href="#">Download PNG</a>
+          <button type="button" class="iew-link iew-rerun" data-mode="enhance">Try Enhance</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="upscale2x">Try 2x</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="upscale4x">Try 4x</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="unblur">Try Unblur</button>
+          <button type="button" class="iew-link iew-again">Another photo</button>
+        </div>
+        <div class="iew-ext">
+          <p>Lots of photos? The free Chrome extension enhances a whole folder in one go, with the same engine.</p>
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi?utm_content=ie-widget-unblur-image" data-umami-event="store-click" data-umami-event-ext="image-enhancer" data-umami-event-place="ie-widget">Add to Chrome &middot; free</a>
+        </div>
+      </div>
+
+      <div id="iew-error" class="iew-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="iew-error-text"></p>
+        <button type="button" class="iew-link iew-again">Choose another photo</button>
+      </div>
+
+      <p class="iew-private">Nothing is uploaded: the photo is enhanced on your own device.</p>
+      <p class="iew-private">Only need to change the size or the KB? <a href="../resize-image/">Resize an image</a>.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to fix a blurry photo</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Drop the photo</h3><p>A slightly blurry photo, soft text or a pixelated picture, up to 4 MP.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Let the AI sharpen</h3><p>It cleans edges and pixels right in your browser; the model loads once.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Compare and save</h3><p>Drag the slider to see before and after, try Enhance for a gentler look, and download.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I unblur an image?</summary>
+          <p>Drop the photo into the tool at the top of this page or paste it with Ctrl+V. The AI sharpens edges and removes the soft, smeared look, then shows the result next to the original so you can compare before downloading.</p>
+        </details>
+        <details>
+          <summary>Can it fix a very blurry photo?</summary>
+          <p>It works best on slight blur: a soft focus, a small shake, a picture that lost sharpness after compression. A photo that is heavily out of focus or motion-smeared has lost the detail, and no tool can bring it back honestly.</p>
+        </details>
+        <details>
+          <summary>Can it make blurry text readable?</summary>
+          <p>Often, yes, when the letters are only a little soft or pixelated, such as a screenshot or a photo of a document. Then use our image to text converter to copy the words.</p>
+        </details>
+        <details>
+          <summary>How do I unpixelate an image?</summary>
+          <p>Drop it here: the AI smooths the blocky pixels into clean edges. For a very small pixelated picture, the AI image upscaler with 4x works even better.</p>
+        </details>
+        <details>
+          <summary>Is it free and private?</summary>
+          <p>Yes. Free, no sign-up, no watermark. The photo is processed on your own device and never uploaded.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Need it bigger as well? <a href="../ai-image-upscaler/">AI image upscaler</a>. Need the text from the photo? <a href="../extract-text-from-image/">Image to text</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a class="store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Chrome Web Store</a>
+    <a href="https://welders-don.github.io/image-enhancer-privacy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/ie/tool.js"></script>
+<script>
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=unblur-image";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
