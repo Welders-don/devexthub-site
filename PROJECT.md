@@ -136,6 +136,14 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - База до виджета (визиты/нед): 28.09-19.10 = 4/2/5/4, store-click 2 за 4 нед.
 - Критерий: `mov-run` ok+warn ≥ 20% визитов за 2 недели; store-click convert-mov со страницы не ниже ~2 за 4 нед. Числа малые.
 
+## Виджет PDF → Excel на лендинге /pdf-to-excel/ (30.10.2026, ключ «convert pdf to excel» 18 100 / KD 23)
+- Тот же `assets/pdfx/tool.js`, что у выписок, параметр `data-kind` на `.bst-tool`: `statement` (по умолчанию, выписки) / `table` (лендинг): тексты ошибок, имя листа Sheet1/Statement, события `pdfx-convert`/`pdfx-download` против `bst-*`. Блок `#try` в hero вместо макета `.px-demo` (CSS `.px-*` в styles.css остался).
+- Первый экран: title «Convert PDF to Excel Free Online, No Upload», H1 «Convert PDF to Excel, free and online». Было «Convert PDF to Excel (and back), free Chrome extension» / «Stop retyping tables trapped in a PDF».
+- Перелив: после результата блок про расширение (`utm_content=pdf-widget`, place=pdf-widget), на скане/пустом — AI-режим (`pdf-widget-scan`/`-empty`).
+- e2e: `EV=pdfx BASE=…/pdf-to-excel/ node tools/e2e_bank_tool.mjs` (по умолчанию проверяет выписки); фикстура mac лежит в releases/blog-mac-shots/statement.pdf (не в git).
+- База до виджета (визиты/нед /pdf-to-excel/): 21.09-26.10 = 5/10/3/4/4/7, store-click 10 за 3 нед.
+- Критерий: `pdfx-convert` ok ≥ 20% визитов за 2 недели; store-click pdf-to-excel со страницы не ниже ~3/нед; через 4 нед в GSC показы по «convert pdf to excel».
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.

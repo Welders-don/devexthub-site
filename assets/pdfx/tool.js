@@ -1,4 +1,5 @@
-// Конвертер выписки на странице /pdf-to-excel/bank-statement/.
+// Конвертер PDF → Excel/CSV: страница выписок /pdf-to-excel/bank-statement/ (data-kind="statement", по умолчанию)
+// и лендинг /pdf-to-excel/ (data-kind="table", 30.10). Отличаются только тексты, имя листа и события.
 // Движок = копия расширения Convert PDF to Excel 1.1.1 (pdf-to-tables, xlsx-writer, csv-writer).
 // Файл не покидает браузер: сервер здесь не участвует.
 import * as pdfjsLib from './pdf.min.mjs';
@@ -13,6 +14,15 @@ const drop = $('bst-drop');
 const input = $('bst-file');
 const states = ['bst-idle', 'bst-busy', 'bst-done', 'bst-scan', 'bst-empty', 'bst-error'];
 const PREVIEW_ROWS = 12;
+const KINDS = {
+  statement: { ev: 'bst', sheet: 'Statement', base: 'statement',
+    bad: "We couldn't read this file. Make sure it's a PDF downloaded from your bank, not a damaged or renamed file.",
+    notPdf: 'This tool takes PDF files. Download the statement from your online banking as PDF and drop it here.' },
+  table: { ev: 'pdfx', sheet: 'Sheet1', base: 'converted',
+    bad: "We couldn't read this file. Make sure it's a real PDF, not a damaged or renamed file.",
+    notPdf: 'This tool takes PDF files. Save or export your document as PDF and drop it here.' },
+};
+const K = KINDS[document.querySelector('.bst-tool').dataset.kind] || KINDS.statement;
 let urls = [];
 
 function show(id) {
@@ -54,7 +64,7 @@ function mergeSheets(sheets) {
     sh.grid.forEach((row) => grid.push(row));
     (sh.sectionHeaderRows || []).forEach((i) => sectionHeaderRows.push(offset + i));
   }
-  return [{ name: 'Statement', grid, sectionHeaderRows }];
+  return [{ name: K.sheet, grid, sectionHeaderRows }];
 }
 
 function renderPreview(grid) {
@@ -73,7 +83,7 @@ function setDownload(id, blob, filename, fmt) {
   const a = $(id);
   a.href = url;
   a.download = filename;
-  a.onclick = () => track('bst-download', { fmt });
+  a.onclick = () => track(`${K.ev}-download`, { fmt });
 }
 
 async function convert(file) {
@@ -88,32 +98,32 @@ async function convert(file) {
     const locked = err && err.name === 'PasswordException';
     $('bst-error-text').textContent = locked
       ? 'This PDF is password-protected. Open it, save a copy without a password, and try again.'
-      : "We couldn't read this file. Make sure it's a PDF downloaded from your bank, not a damaged or renamed file.";
+      : K.bad;
     show('bst-error');
-    track('bst-convert', { result: locked ? 'locked' : 'error' });
+    track(`${K.ev}-convert`, { result: locked ? 'locked' : 'error' });
     return;
   }
   const pages = analysis.numPages;
   if (!analysis.isDigital) {
     show('bst-scan');
-    track('bst-convert', { result: 'scan', pages });
+    track(`${K.ev}-convert`, { result: 'scan', pages });
     return;
   }
   const sheets = (await analysisToSheets(analysis)).filter((s) => s.grid.length > 0);
   if (sheets.length === 0) {
     show('bst-empty');
-    track('bst-convert', { result: 'empty', pages });
+    track(`${K.ev}-convert`, { result: 'empty', pages });
     return;
   }
   const merged = mergeSheets(sheets);
-  const base = file.name.replace(/\.pdf$/i, '') || 'statement';
+  const base = file.name.replace(/\.pdf$/i, '') || K.base;
   setDownload('bst-xlsx', await buildXlsxBlob(merged), `${base}.xlsx`, 'xlsx');
   setDownload('bst-csv', buildCsvBlob(merged), `${base}.csv`, 'csv');
   renderPreview(merged[0].grid);
   const rows = merged[0].grid.filter((r) => r.length > 0).length;
   $('bst-summary').textContent = `${pages} page${pages === 1 ? '' : 's'}, ${rows} rows. Preview of the first ${Math.min(PREVIEW_ROWS, rows)}:`;
   show('bst-done');
-  track('bst-convert', { result: 'ok', pages });
+  track(`${K.ev}-convert`, { result: 'ok', pages });
 }
 
 function pick(files) {
@@ -121,9 +131,9 @@ function pick(files) {
   if (!file) return;
   if (!/\.pdf$/i.test(file.name) && file.type !== 'application/pdf') {
     $('bst-name').textContent = file.name;
-    $('bst-error-text').textContent = 'This tool takes PDF files. Download the statement from your online banking as PDF and drop it here.';
+    $('bst-error-text').textContent = K.notPdf;
     show('bst-error');
-    track('bst-convert', { result: 'not-pdf' });
+    track(`${K.ev}-convert`, { result: 'not-pdf' });
     return;
   }
   convert(file);

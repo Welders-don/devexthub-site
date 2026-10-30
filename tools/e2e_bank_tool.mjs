@@ -8,6 +8,8 @@ const require = createRequire(import.meta.url);
 const JSZip = require('../assets/pdfx/jszip.min.js');
 
 const BASE = process.env.BASE || 'http://localhost:8099/pdf-to-excel/bank-statement/';
+// EV=pdfx для лендинга /pdf-to-excel/ (тот же tool.js, data-kind="table", 30.10)
+const EV = process.env.EV || 'bst';
 const TMP = '/tmp/bst-e2e';
 const SHOTS = new URL('../releases/bank-statement-tool/', import.meta.url).pathname;
 const FIXTURES = {
@@ -75,8 +77,8 @@ for (const [label, file] of Object.entries(FIXTURES)) {
   const csv = fs.readFileSync(await dlCsv.path(), 'utf8');
   ok(csv.split('\n').length > 3, `${label}: csv ${csv.split('\n').length} строк`);
   const ev = await page.evaluate(() => window.__ev);
-  ok(ev.some(([n, d]) => n === 'bst-convert' && d.result === 'ok'), `${label}: событие bst-convert ok`);
-  ok(ev.filter(([n]) => n === 'bst-download').length === 2, `${label}: 2 события bst-download`);
+  ok(ev.some(([n, d]) => n === `${EV}-convert` && d.result === 'ok'), `${label}: событие ${EV}-convert ok`);
+  ok(ev.filter(([n]) => n === `${EV}-download`).length === 2, `${label}: 2 события ${EV}-download`);
   ok(errors.length === 0, `${label}: без ошибок JS ${errors.join('; ')}`);
   if (label === 'mac') await page.screenshot({ path: `${SHOTS}/desktop-done.png`, fullPage: false });
   await page.close();
@@ -90,7 +92,7 @@ for (const [label, file] of Object.entries(FIXTURES)) {
   ok(await visible(page, 'bst-scan'), 'скан: экран «это скан»');
   ok(!(await visible(page, 'bst-done')), 'скан: результата нет');
   const href = await page.locator('#bst-scan a.store-link').getAttribute('href');
-  ok(href.includes('utm_source=devexthub_tool'), 'скан: ссылка в стор с UTM');
+  ok(/utm_source=devexthub_(tool|landing)/.test(href), `скан: ссылка в стор с UTM (${href.split('?')[1]})`);
   await page.screenshot({ path: `${SHOTS}/desktop-scan.png` });
   await page.close();
 }
