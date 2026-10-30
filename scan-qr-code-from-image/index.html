@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scan QR Code from Image or Screenshot, Free Online | Devexthub</title>
+<meta name="description" content="Scan a QR code from a picture or screenshot right in your browser: drop or paste the image and see the link or text inside, ready to check, open or copy. Nothing is uploaded, no app needed.">
+<link rel="canonical" href="https://www.devexthub.com/scan-qr-code-from-image/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"QR code scanner from image","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/scan-qr-code-from-image/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I scan a QR code from a picture?","acceptedAnswer":{"@type":"Answer","text":"Drop the picture or screenshot into the scanner at the top of this page, or paste it with Ctrl+V. The content of the QR code appears right away: a link you can check and open, or text you can copy."}},
+{"@type":"Question","name":"How do I scan a QR code from a screenshot on my phone?","acceptedAnswer":{"@type":"Answer","text":"Open this page on your phone, tap Choose image and pick the screenshot from your gallery. It works in the phone's browser, no app needed."}},
+{"@type":"Question","name":"Is it safe to open the link from a QR code?","acceptedAnswer":{"@type":"Answer","text":"Check the address before you open it: the scanner shows the full link and its domain first. Scam QR codes often lead to look-alike addresses."}},
+{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The QR code is read in your browser, on your own device."}},
+{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Free, no sign-up, no app to install."}}]}
+</script>
+<meta property="og:title" content="Scan a QR code from an image or screenshot">
+<meta property="og:description" content="Drop or paste a picture with a QR code and see the link or text inside. No upload, no app.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/scan-qr-code-from-image/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+/* Виджет конвертера: стили 1:1 со страницы выписок (bank-statement), 30.10 */
+.hero { padding-left: 22px; padding-right: 22px; }
+.bst-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.bst-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.bst-drop:hover, .bst-drop.over, .bst-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.bst-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.bst-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.bst-drop .btn { margin-top: 16px; pointer-events: none; }
+.bst-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.bst-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.bst-box h3 { margin: 0 0 6px; font-size: 19px; }
+.bst-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.bst-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.bst-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.bst-scroll { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--line); border-radius: 10px; }
+#bst-preview { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+#bst-preview td { border-bottom: 1px solid var(--line); padding: 6px 10px; white-space: nowrap; max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+#bst-preview tr:nth-child(odd) td { background: var(--bg-soft); }
+.bst-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.bst-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+
+#qr-text { width: 100%; min-height: 70px; box-sizing: border-box; margin: 0 0 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: 15px/1.5 var(--mono); color: var(--ink); background: var(--bg-soft); resize: vertical; word-break: break-all; }
+/* .btn задаёт display и перебивает hidden */
+#qr-open[hidden] { display: none; }
+#qr-host { font-weight: 700; color: var(--ink); }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Scan</span> <span class="fx-w" style="--i:1">a</span> <span class="fx-w" style="--i:2">QR</span> <span class="fx-w" style="--i:3">code</span></span><span class="fx-line"><span class="fx-w" style="--i:4">from</span> <span class="fx-w" style="--i:5">a</span> <span class="fx-w arrow" style="--i:6">picture</span></span></h1>
+    <p class="sub">A QR code in a screenshot, a photo or a picture someone sent you? Drop it below or paste it with Ctrl+V and see what's inside: the link to check and open, or the text to copy. No app, nothing is uploaded.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="bst-tool">
+      <div id="qr-idle">
+        <label class="bst-drop" id="qr-drop" for="qr-file">
+          <input class="bst-hide" type="file" id="qr-file" accept="image/*">
+          <b>Drop a picture with a QR code</b>
+          <span>or paste a screenshot with Ctrl+V &middot; PNG, JPG, WEBP</span><br>
+          <span class="btn">Choose image</span>
+        </label>
+      </div>
+
+      <div id="qr-busy" class="bst-box" hidden>
+        <h3>Reading the QR code&hellip;</h3>
+      </div>
+
+      <div id="qr-done" class="bst-box" hidden>
+        <h3>QR code found</h3>
+        <p id="qr-kind"></p>
+        <textarea id="qr-text" readonly aria-label="Content of the QR code"></textarea>
+        <div class="bst-row">
+          <a class="btn" id="qr-open" href="#" target="_blank" rel="noopener noreferrer nofollow" hidden>Open <span id="qr-host"></span></a>
+          <button type="button" class="btn btn-ghost" id="qr-copy">Copy</button>
+          <button type="button" class="bst-again qr-again">Scan another</button>
+        </div>
+      </div>
+
+      <div id="qr-none" class="bst-box" hidden>
+        <h3>No QR code found</h3>
+        <p>Make sure the whole code is in the picture and not blurry, then try again. Cropping the image closer around the code helps. For ordinary text in a picture, use our <a href="../extract-text-from-image/">image to text converter</a>.</p>
+        <button type="button" class="bst-again qr-again">Try another image</button>
+      </div>
+
+      <div id="qr-error" class="bst-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="qr-error-text"></p>
+        <button type="button" class="bst-again qr-again">Choose another image</button>
+      </div>
+
+      <p class="bst-private">Nothing is uploaded: the QR code is read on your own device.</p>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I scan a QR code from a picture?</summary>
+          <p>Drop the picture or screenshot into the scanner at the top of this page, or paste it with Ctrl+V. The content of the QR code appears right away: a link you can check and open, or text you can copy.</p>
+        </details>
+        <details>
+          <summary>How do I scan a QR code from a screenshot on my phone?</summary>
+          <p>Open this page on your phone, tap Choose image and pick the screenshot from your gallery. It works in the phone's browser, no app needed.</p>
+        </details>
+        <details>
+          <summary>Is it safe to open the link from a QR code?</summary>
+          <p>Check the address before you open it: the scanner shows the full link and its domain first. Scam QR codes often lead to look-alike addresses.</p>
+        </details>
+        <details>
+          <summary>Is my image uploaded?</summary>
+          <p>No. The QR code is read in your browser, on your own device.</p>
+        </details>
+        <details>
+          <summary>Is it free?</summary>
+          <p>Yes. Free, no sign-up, no app to install.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Need the text from a picture instead? <a href="../extract-text-from-image/">Image to text</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Chrome Web Store</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/qr/tool.js"></script>
+<script>
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
