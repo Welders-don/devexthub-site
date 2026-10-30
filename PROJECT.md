@@ -135,6 +135,7 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - Тест: `node tools/e2e_mov_tool.mjs` (сайт :8095). На стенде HEVC прошёл transcode_sw за 16 с; ветка >150 МБ e2e НЕ покрыта; аппаратный транскод только живьём.
 - База до виджета (визиты/нед): 28.09-19.10 = 4/2/5/4, store-click 2 за 4 нед.
 - Критерий: `mov-run` ok+warn ≥ 20% визитов за 2 недели; store-click convert-mov со страницы не ниже ~2 за 4 нед. Числа малые.
+- 30.10 первый экран под ключи курса (knowledge/keywords-mov-widget-2026-10-30.md): title «MOV to MP4 Converter Free Online, No Upload», H1 «Change MOV to MP4, free and online» (было «Convert MOV to MP4 in Your Browser» / «…right in your browser»). Критерий: показы в GSC по change a .mov to mp4 / mov to mp4 converter free за 4 нед.
 
 ## Виджет PDF → Excel на лендинге /pdf-to-excel/ (30.10.2026, ключ «convert pdf to excel» 18 100 / KD 23)
 - Тот же `assets/pdfx/tool.js`, что у выписок, параметр `data-kind` на `.bst-tool`: `statement` (по умолчанию, выписки) / `table` (лендинг): тексты ошибок, имя листа Sheet1/Statement, события `pdfx-convert`/`pdfx-download` против `bst-*`. Блок `#try` в hero вместо макета `.px-demo` (CSS `.px-*` в styles.css остался).
