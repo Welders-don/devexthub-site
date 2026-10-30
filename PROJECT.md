@@ -167,6 +167,11 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - События `gif-pick` (secs), `gif-run` (result ok/cancel/error, frames, fps, width, sizeKb, secs, why), `gif-download`. Store-CTA в виджете нет (расширение GIF не делает), ссылки на MOV/MKV-страницы. e2e `tools/e2e_gif_tool.mjs`.
 - Критерий: в индексе GSC к ~20.11; `gif-run` ok ≥ 20% визитов после индексации.
 
+## Страница PDF → TXT /pdf-to-text/ (30.10.2026, кластер ~19k: pdf to txt 4.4k/KD 30, pdf to txt file 2.9k, how to copy text from pdf 1.9k)
+- `assets/pdfx/text.js` на том же pdf.js: элементы страницы группируются в строки по высоте, слева направо (две колонки на одной высоте сливаются в одну строку, как у pdftotext без -layout). Скан (текста < 20 символов) → совет: скриншот страницы в наш OCR /extract-text-from-image/. Таблицы → ссылка на /pdf-to-excel/; с лендинга PDF→Excel обратная ссылка (не классом bst-again: на нём висит открытие выбора файла).
+- События `ptx-convert` (result ok/scan/error/locked/not-pdf, pages, secs), `ptx-copy`, `ptx-download`. e2e `tools/e2e_pdftxt_tool.mjs`.
+- Критерий: в индексе GSC к ~20.11; `ptx-convert` ok ≥ 20% визитов после индексации.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
