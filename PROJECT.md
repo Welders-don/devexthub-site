@@ -218,6 +218,11 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - События `spdf-run` (result ok/nowords/already/cancel/error/locked/not-pdf/too-many/too-big, pages, ocrPages, words, lang, secs, sizeMb), `spdf-download`. e2e `tools/e2e_spdf_tool.mjs`: текст ищется pdf.js, «Invoice» ложится в ±1 pt от слова на картинке, смешанный PDF, отмена, мобильный. Реальные фото удостоверений (рус.): 2 стр. за 21 с, механика ок, но качество OCR по фото с телефона низкое (честно в FAQ).
 - Критерий: в индексе GSC к ~20.11; `spdf-run` ok ≥ 20% визитов после индексации. Не должно упасть: `ptx-*` на /pdf-to-text/ (оттуда ссылка со скан-экрана).
 
+## Страницы режимов Image Enhancer /ai-image-upscaler/ и /unblur-image/ (30.10.2026; ai image upscale 5.4k/KD 8, improve photo resolution 2.9k/11, upscale photo 1.9k/18; unpixelate image 1.9k/29, fix unfocused pictures 1.9k/21, deblur text 720/9, clear blurry image 720/10)
+- Тот же виджет и движок (`assets/ie/`), режим по умолчанию = кнопка `.iew-mode.on` на странице (апскейлер: 2x/4x; unblur: Unblur/Enhance). Остальные режимы — кнопками «Try …» после результата. utm_campaign = slug, utm_content ie-widget-{slug}. События те же `ie-*` (страницы различаются url_path).
+- Unblur честно про лёгкое размытие (FAQ: сильно смазанное не вернуть). e2e `tools/e2e_iemodes_tool.mjs` (SITE=…): 2x → 320×240, 4x → 640×480, unblur → 160×120, /image-enhancer/ остаётся на enhance.
+- Критерий: обе в индексе к ~20.11; `ie-run` ok с этих url ≥ 15% визитов. Не должно упасть: `ie-run` на /image-enhancer/.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
