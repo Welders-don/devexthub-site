@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP4 to GIF Converter Free Online, No Upload | Devexthub</title>
+<meta name="description" content="Turn a video into a GIF free, right in your browser: pick the start and length, the width and frame rate, and download the GIF. MP4, MOV, WEBM and MKV work. Nothing is uploaded, no sign-up, no watermark.">
+<link rel="canonical" href="https://www.devexthub.com/video-to-gif/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Video to GIF converter","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/video-to-gif/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I turn a video into a GIF?","acceptedAnswer":{"@type":"Answer","text":"Drop the video into the converter at the top of this page, set where the clip starts and how long it is, choose the width and frame rate, and press Make GIF. The GIF appears right on the page, ready to download. Nothing is uploaded."}},
+{"@type":"Question","name":"Can I convert MP4 to GIF for free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It's free, with no sign-up and no watermark. MP4, MOV, WEBM and MKV files work, as long as your browser can decode the video inside."}},
+{"@type":"Question","name":"How long can the GIF be?","acceptedAnswer":{"@type":"Answer","text":"Up to 15 seconds. GIFs get large fast, so short clips at 480 px and 10 frames per second are the sweet spot for chats and websites."}},
+{"@type":"Question","name":"Why is my GIF so big?","acceptedAnswer":{"@type":"Answer","text":"A GIF stores every frame as a picture with up to 256 colors, so size grows with length, width and frame rate. Make the clip shorter, pick 320 px or 10 fps to shrink it."}},
+{"@type":"Question","name":"Is my video uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The frames are read and the GIF is built on your own computer, inside the browser tab."}}]}
+</script>
+<meta property="og:title" content="MP4 to GIF converter, free and online">
+<meta property="og:description" content="Pick a clip from any video and turn it into a GIF right in your browser. No upload, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/video-to-gif/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.gif-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.gif-tool h2 { margin: 0 0 12px; font-size: 22px; }
+.gif-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.gif-drop:hover, .gif-drop.over, .gif-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.gif-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.gif-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.gif-drop .btn { margin-top: 16px; pointer-events: none; }
+.gif-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.gif-box { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--bg); box-shadow: var(--shadow-card); }
+.gif-box h3 { margin: 0 0 6px; font-size: 19px; }
+.gif-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.gif-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+#gif-thumb { display: block; max-width: 100%; height: auto; border-radius: 10px; margin: 0 0 14px; background: #f3f4f3; }
+.gif-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 0 0 16px; }
+.gif-grid label { display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.gif-grid input, .gif-grid select { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); }
+#gif-bar { width: 100%; height: 10px; margin: 6px 0 12px; accent-color: var(--green); }
+#gif-img { display: block; max-width: 100%; height: auto; border-radius: 10px; margin: 0 auto 10px; }
+.gif-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.gif-link { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.gif-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/ipeocmfcjjnbmogcigekoehhlkmdpebj" data-umami-event="store-click" data-umami-event-ext="convert-mov">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Turn</span> <span class="fx-w" style="--i:1">a</span> <span class="fx-w" style="--i:2">video</span> <span class="fx-w" style="--i:3">into</span> <span class="fx-w" style="--i:4">a</span> <span class="fx-w" style="--i:5">GIF,</span></span><span class="fx-line"><span class="fx-w" style="--i:6">free</span> <span class="fx-w" style="--i:7">and</span> <span class="fx-w arrow" style="--i:8">online</span></span></h1>
+    <p class="sub">An MP4 to GIF converter that works right in your browser. Drop a video below, choose the moment and how long it lasts, and download the GIF. MOV, WEBM and MKV work too, and the video never leaves your computer.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="gif-tool">
+      <h2>Video to GIF converter</h2>
+
+      <div id="gif-idle">
+        <label class="gif-drop" id="gif-drop" for="gif-file">
+          <input class="gif-hide" type="file" id="gif-file" accept="video/*,.mov,.mkv,.webm">
+          <b>Drop a video here</b>
+          <span>or click to choose &middot; MP4, MOV, WEBM, MKV</span><br>
+          <span class="btn">Choose video</span>
+        </label>
+      </div>
+
+      <div id="gif-opts" class="gif-box" hidden>
+        <p class="gif-file" id="gif-name"></p>
+        <canvas id="gif-thumb" width="320" height="180" aria-label="First frame of the video"></canvas>
+        <div class="gif-grid">
+          <label>Start at (seconds)<input type="number" id="gif-start" min="0" step="0.5" value="0"></label>
+          <label>Length (seconds, max 15)<input type="number" id="gif-len" min="0.5" max="15" step="0.5" value="5"></label>
+          <label>Width<select id="gif-width"><option value="320">320 px</option><option value="480" selected>480 px</option><option value="640">640 px</option></select></label>
+          <label>Frames per second<select id="gif-fps"><option value="10" selected>10 fps</option><option value="15">15 fps</option></select></label>
+        </div>
+        <div class="gif-row">
+          <button type="button" class="btn" id="gif-go">Make GIF</button>
+          <button type="button" class="gif-link gif-new">Choose another video</button>
+        </div>
+      </div>
+
+      <div id="gif-busy" class="gif-box" hidden>
+        <h3 id="gif-status">Making the GIF&hellip;</h3>
+        <progress id="gif-bar" max="1"></progress>
+        <button type="button" class="gif-link" id="gif-cancel">Cancel</button>
+      </div>
+
+      <div id="gif-done" class="gif-box" hidden>
+        <img id="gif-img" alt="Your GIF">
+        <p id="gif-meta"></p>
+        <div class="gif-row">
+          <a class="btn" id="gif-dl" href="#">Download GIF</a>
+          <button type="button" class="gif-link" id="gif-again">Change settings</button>
+          <button type="button" class="gif-link gif-new">Another video</button>
+        </div>
+      </div>
+
+      <div id="gif-error" class="gif-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="gif-error-text"></p>
+        <button type="button" class="gif-link gif-new">Choose another video</button>
+      </div>
+
+      <p class="gif-private">Nothing is uploaded: the GIF is made on your own computer.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to turn a video into a GIF</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Drop the video</h3><p>MP4 from a phone, a MOV, a WEBM screen recording or an MKV. It is read in your browser.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Pick the moment</h3><p>Set where the clip starts and how long it runs, up to 15 seconds, plus the width and frame rate.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Download the GIF</h3><p>It plays right on the page first, so you see what you get before you save it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I turn a video into a GIF?</summary>
+          <p>Drop the video into the converter at the top of this page, set where the clip starts and how long it is, choose the width and frame rate, and press Make GIF. The GIF appears right on the page, ready to download. Nothing is uploaded.</p>
+        </details>
+        <details>
+          <summary>Can I convert MP4 to GIF for free?</summary>
+          <p>Yes. It's free, with no sign-up and no watermark. MP4, MOV, WEBM and MKV files work, as long as your browser can decode the video inside.</p>
+        </details>
+        <details>
+          <summary>How long can the GIF be?</summary>
+          <p>Up to 15 seconds. GIFs get large fast, so short clips at 480 px and 10 frames per second are the sweet spot for chats and websites.</p>
+        </details>
+        <details>
+          <summary>Why is my GIF so big?</summary>
+          <p>A GIF stores every frame as a picture with up to 256 colors, so size grows with length, width and frame rate. Make the clip shorter, pick 320 px or 10 fps to shrink it.</p>
+        </details>
+        <details>
+          <summary>Is my video uploaded anywhere?</summary>
+          <p>No. The frames are read and the GIF is built on your own computer, inside the browser tab.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Need an MP4 instead of a GIF? <a href="../convert-mov-to-mp4/">Convert MOV to MP4</a> or <a href="../mkv-to-mp4/">MKV to MP4</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a class="store-link" href="https://chromewebstore.google.com/detail/ipeocmfcjjnbmogcigekoehhlkmdpebj" data-umami-event="store-click" data-umami-event-ext="convert-mov">Chrome Web Store</a>
+    <a href="https://welders-don.github.io/convert-mov-to-mp4-privacy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/gif/tool.js"></script>
+<script>
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=video-to-gif";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
