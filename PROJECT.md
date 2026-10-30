@@ -172,6 +172,11 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - События `ptx-convert` (result ok/scan/error/locked/not-pdf, pages, secs), `ptx-copy`, `ptx-download`. e2e `tools/e2e_pdftxt_tool.mjs`.
 - Критерий: в индексе GSC к ~20.11; `ptx-convert` ok ≥ 20% визитов после индексации.
 
+## Страница QR с картинки /scan-qr-code-from-image/ (30.10.2026, scan qr codes from picture 3.6k/KD 30, кластер ~4.3k)
+- `assets/qr/tool.js` + jsQR 1.4.0 (Apache-2.0, `assets/qr/jsQR.min.js` + LICENSE), грузится при первой картинке; пробует масштабы 1200/2400/800/600 и инверсию. Ссылка из QR показывается с доменом (защита от подделок), открывается с noopener/nofollow. Расширения под QR нет → на странице нет store-CTA; ссылки на OCR и обратно (с /extract-text-from-image/).
+- События `qr-scan` (result ok/none/error/not-image, kind url/wifi/text), `qr-copy`, `qr-open`. e2e `tools/e2e_qr_tool.mjs` (QR рисует qrcode-generator с jsDelivr: чистый, мелкий в скриншоте, инверсный, повёрнутый+размытый).
+- Грабля: `.btn` перебивает `hidden` → `#qr-open[hidden] { display: none }`.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
