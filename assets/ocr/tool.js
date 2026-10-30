@@ -147,6 +147,18 @@ $('oxt-copy').addEventListener('click', async () => {
   track('ocr-copy');
 });
 
+// Страница /image-to-word/ (30.10): главный выход — .docx (есть только там).
+$('oxt-docx')?.addEventListener('click', async () => {
+  const { buildDocx } = await import('./docx.js');
+  const url = URL.createObjectURL(await buildDocx(out.value));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = lastName.replace(/\.[a-z0-9]+$/i, '') + '.docx';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  track('ocr-download', { fmt: 'docx' });
+});
+
 $('oxt-txt').addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob([out.value], { type: 'text/plain;charset=utf-8' }));
   const a = document.createElement('a');
@@ -154,5 +166,5 @@ $('oxt-txt').addEventListener('click', () => {
   a.download = lastName.replace(/\.[a-z0-9]+$/i, '') + '.txt';
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  track('ocr-download');
+  track('ocr-download', { fmt: 'txt' });
 });
