@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Color Changer Online Free: Recolor an Image | Devexthub</title>
+<meta name="description" content="Change the color of anything in a picture free, right in your browser: click a color, pick a new one, and it is replaced while shadows and texture stay. Or shift all colors at once. Nothing is uploaded.">
+<link rel="canonical" href="https://www.devexthub.com/change-image-color/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image color changer","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/change-image-color/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I change the color of something in a picture?","acceptedAnswer":{"@type":"Answer","text":"Drop the image into the color changer above, click the color you want to change, then choose the new color. Everything of that color changes at once, keeping its shadows and highlights. Widen or narrow How similar to catch more or fewer shades."}},
+{"@type":"Question","name":"Can I recolor an image without Photoshop?","acceptedAnswer":{"@type":"Answer","text":"Yes. This works in any browser with no install and no account: click, pick a color, download."}},
+{"@type":"Question","name":"Why didn't the background change?","acceptedAnswer":{"@type":"Answer","text":"Grey, white and black areas have no color to shift, so they are left as they are on purpose. Tick Change all colors to shift every colored pixel in the picture instead."}},
+{"@type":"Question","name":"Can I make something black or white?","acceptedAnswer":{"@type":"Answer","text":"Partly: picking a very dark or light new color darkens or lightens the area, but shadows are kept, so the result stays natural rather than flat."}},
+{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. It is recolored in your browser, on your own device, and saved in the same format."}}]}
+</script>
+<meta property="og:title" content="Image color changer, free and online">
+<meta property="og:description" content="Change the color of anything in a picture free, right in your browser: click a color, pick a new one, and it is replaced while shadows and texture stay. Or shift all colors at once. Nothing is uploaded.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/change-image-color/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.clr-tool { max-width: 820px; margin: 0 auto; text-align: left; }
+.clr-tool h2 { margin: 0 0 12px; font-size: 22px; }
+.clr-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.clr-drop:hover, .clr-drop.over, .clr-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.clr-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.clr-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.clr-drop .btn { margin-top: 16px; pointer-events: none; }
+.clr-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.clr-box { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--bg); box-shadow: var(--shadow-card); }
+.clr-box h3 { margin: 0 0 6px; font-size: 19px; }
+.clr-box p { margin: 0 0 12px; color: var(--muted); font-size: 15.5px; }
+.clr-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.clr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 0 0 12px; }
+.clr-grid label { display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.clr-grid input, .clr-grid select { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); min-width: 0; }
+.clr-lock { display: flex; gap: 8px; align-items: center; font-size: 15px; color: var(--ink); margin: 0 0 12px; }
+.clr-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.clr-link { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.clr-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+#clr-canvas { display: block; max-width: 100%; max-height: 60vh; margin: 0 auto 12px; border-radius: 10px; background: repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0 / 16px 16px; }
+.clr-grid input[type=range] { width: 100%; accent-color: var(--green); padding: 0; border: 0; }
+.clr-tool[data-kind="recolor"] #clr-canvas { cursor: crosshair; }
+#clr-swatch { display: inline-block; width: 28px; height: 28px; border-radius: 8px; border: 1px solid var(--line); vertical-align: middle; }
+.clr-pickrow { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 0 0 12px; font-size: 15px; color: var(--ink); }
+.clr-pickrow input[type=color] { width: 44px; height: 32px; border: 1px solid var(--line); border-radius: 8px; padding: 2px; background: var(--bg); }
+#clr-hint { color: var(--green-deep) !important; font-weight: 600; }
+#clr-tol-wrap[hidden] { display: none; }
+.clr-compare { user-select: none; -webkit-user-select: none; touch-action: none; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Image</span> <span class="fx-w" style="--i:1">color</span> <span class="fx-w" style="--i:2">changer,</span></span><span class="fx-line"><span class="fx-w" style="--i:3">free</span> <span class="fx-w" style="--i:4">and</span> <span class="fx-w arrow" style="--i:5">online</span></span></h1>
+    <p class="sub">Turn a red car blue, try a new color for a wall or a dress, recolor a logo: click the color in the picture, pick the new one, and it changes while shadows and texture stay natural. Grey and white areas are left alone. Nothing is uploaded.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="clr-tool" data-kind="recolor">
+      <h2>Recolor an image</h2>
+      <div id="clr-idle">
+        <label class="clr-drop" id="clr-drop" for="clr-file">
+          <input class="clr-hide" type="file" id="clr-file" accept="image/*">
+          <b>Drop an image here</b>
+          <span>or paste it with Ctrl+V &middot; JPG, PNG, WEBP</span><br>
+          <span class="btn">Choose image</span>
+        </label>
+      </div>
+
+      <div id="clr-opts" class="clr-box" hidden>
+        <p class="clr-file" id="clr-src"></p>
+        <div class="clr-pickrow">Color to change <span id="clr-swatch"></span> &rarr; New color <input type="color" id="clr-new" value="#1e88e5" aria-label="New color"></div>
+        <p id="clr-hint"></p>
+        <div class="clr-grid">
+          <label id="clr-tol-wrap">How similar <span id="clr-tol-val">30°</span><input type="range" id="clr-tol" min="5" max="90" value="30"></label>
+        </div>
+        <label class="clr-lock"><input type="checkbox" id="clr-all"> Change all colors (shift the whole picture)</label>
+        <canvas id="clr-canvas" width="1" height="1" aria-label="Preview"></canvas>
+        <div class="clr-row">
+          <button type="button" class="btn" id="clr-dl">Download</button>
+          <button type="button" class="btn btn-ghost clr-compare" id="clr-compare">Hold to see the original</button>
+          <button type="button" class="clr-link clr-again">Another image</button>
+        </div>
+      </div>
+
+      <div id="clr-error" class="clr-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="clr-error-text"></p>
+        <button type="button" class="clr-link clr-again">Choose another image</button>
+      </div>
+
+      <p class="clr-private">Nothing is uploaded: the image is edited on your own device.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to recolor an image</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Drop the image</h3><p>A photo, a product shot, a logo or a drawing in JPG, PNG or WEBP.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Click and pick</h3><p>Click the color to change, choose the new color, adjust How similar until the whole object is covered.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Compare and save</h3><p>Hold the button to see the original, then download the full-size image.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I change the color of something in a picture?</summary>
+          <p>Drop the image into the color changer above, click the color you want to change, then choose the new color. Everything of that color changes at once, keeping its shadows and highlights. Widen or narrow How similar to catch more or fewer shades.</p>
+        </details>
+        <details>
+          <summary>Can I recolor an image without Photoshop?</summary>
+          <p>Yes. This works in any browser with no install and no account: click, pick a color, download.</p>
+        </details>
+        <details>
+          <summary>Why didn't the background change?</summary>
+          <p>Grey, white and black areas have no color to shift, so they are left as they are on purpose. Tick Change all colors to shift every colored pixel in the picture instead.</p>
+        </details>
+        <details>
+          <summary>Can I make something black or white?</summary>
+          <p>Partly: picking a very dark or light new color darkens or lightens the area, but shadows are kept, so the result stays natural rather than flat.</p>
+        </details>
+        <details>
+          <summary>Is my image uploaded?</summary>
+          <p>No. It is recolored in your browser, on your own device, and saved in the same format.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Picture too dark? <a href="../brighten-image/">Brighten an image</a>. Need a different size? <a href="../resize-image/">Resize an image</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a class="store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Chrome Web Store</a>
+    <a href="https://welders-don.github.io/image-enhancer-privacy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/color/tool.js"></script>
+<script>
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=change-image-color";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
