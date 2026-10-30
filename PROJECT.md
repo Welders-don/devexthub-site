@@ -144,6 +144,16 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - База до виджета (визиты/нед /pdf-to-excel/): 21.09-26.10 = 5/10/3/4/4/7, store-click 10 за 3 нед.
 - Критерий: `pdfx-convert` ok ≥ 20% визитов за 2 недели; store-click pdf-to-excel со страницы не ниже ~3/нед; через 4 нед в GSC показы по «convert pdf to excel».
 
+## Виджет Image Enhancer на /image-enhancer/ (30.10.2026, ключи «enhanced the image» 22.2k/KD 15, «ai image upscale» 5.4k/KD 8)
+- Блок `#try` под hero вместо CSS-демо `.ie-demo` (стили `.ie-*` в styles.css остались). Режимы как в расширении: Enhance (по умолчанию) / Upscale 2x / 4x / Unblur, сила 2 (Средний). Вход ≤ 4 МП. Шторка до/после (окно по пропорциям, max 60vh), Download PNG, «Try 2x/4x/Unblur» на той же картинке.
+- Движок `assets/ie/engine.js` = копия offscreen.js расширения 1.1.3 (тайлы 512 GPU / 256 WASM, overlap 16, самопроверка WebGPU → WASM, сила через смешивание), без chrome.*; ORT 1.26.0 ort.webgpu.min.mjs с jsDelivr, модель с IONOS `devexthub.com:8443/ie-assets/` (CORS *), кэш Cache API `ie-site-model-v1`. Работает в Web Worker (`worker.js`): на WASM тайл считается секундами, в главном потоке страница замирала. Отмена = terminate воркера + новый (мгновенно, модель из кэша).
+- WASM без crossOriginIsolated = ОДИН поток (Pages не ставит COOP/COEP). Замер на IONOS (2 ядра, без GPU): 0.75 МП enhance = 230 с. Поэтому на пути WASM показываем остаток времени и пометку «нет ускорения видеокарты, расширение быстрее (несколько ядер)». С WebGPU секунды.
+- Первая загрузка ~10 МБ (ORT jsep wasm br 5 МБ + модель 4.87 МБ); прогрев по pointerdown/focus/dragenter.
+- Umami: `ie-pick`, `ie-run` (result ok/cancel/error/too_large/not-image/bad-image, mode, mp, secs, load, backend), `ie-rerun`, `ie-download`; store-click place=ie-widget. e2e `tools/e2e_ie_tool.mjs` (сайт :8091).
+- Первый экран: title «Free AI Image Enhancer & Upscaler, Online or Chrome Extension» (оставлено «Chrome Extension»: по запросу «image enhancer chrome extension» страница была на поз. 7-8), H1 «Enhance and upscale images, free and online».
+- База (визиты/нед): 28.09-26.10 = 9/7/5/5/3, store-click 7 за 4 нед.
+- Критерий: `ie-run` ok ≥ 20% визитов за 2 нед; store-click image-enhancer со страницы не ниже ~2/нед; доля backend=wasm и cancel на wasm смотреть отдельно (если wasm-юзеры массово отменяют → урезать вход на wasm до 1 МП).
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.

@@ -6,8 +6,8 @@
 <link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Image Enhancer Chrome Extension: Upscale Blurry Images 4x Free</title>
-<meta name="description" content="Enlarge small, pixelated or over-compressed images up to 4x without the mush. A free AI image enhancer for thumbnails, product photos and screenshots that runs in your browser, so your images never leave your device. No sign-up, no watermark.">
+<title>Free AI Image Enhancer & Upscaler, Online or Chrome Extension</title>
+<meta name="description" content="Enhance and upscale images free, right in your browser: make a small or blurry photo sharper and up to 4x bigger in seconds. Nothing is uploaded, no sign-up, no watermark. Batches with the Chrome extension.">
 <link rel="canonical" href="https://www.devexthub.com/image-enhancer/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image Enhancer","applicationCategory":"UtilitiesApplication","operatingSystem":"Chrome","url":"https://www.devexthub.com/image-enhancer/","downloadUrl":"https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
@@ -18,6 +18,35 @@
 <meta property="og:url" content="https://www.devexthub.com/image-enhancer/">
 <link rel="stylesheet" href="../styles.css">
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.iew-tool { max-width: 820px; margin: 0 auto; text-align: left; }
+.iew-tool h2 { margin: 0 0 12px; font-size: 22px; }
+.iew-modes { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
+.iew-mode { font: inherit; font-size: 15px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.iew-mode.on { background: var(--green); border-color: var(--green); color: #fff; }
+.iew-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.iew-drop:hover, .iew-drop.over, .iew-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.iew-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.iew-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.iew-drop .btn { margin-top: 16px; pointer-events: none; }
+.iew-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.iew-box { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--bg); box-shadow: var(--shadow-card); }
+.iew-box h3 { margin: 0 0 6px; font-size: 19px; }
+.iew-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+#iew-bar { width: 100%; height: 10px; margin: 6px 0 12px; accent-color: var(--green); }
+.iew-cmp { position: relative; border-radius: 12px; overflow: hidden; background: #f3f4f3; margin: 0 0 8px; }
+/* Обе картинки вписаны в одно окно (contain): совпадают при любом размере, маленькие видны крупно */
+.iew-cmp > img { display: block; width: 100%; height: auto; max-height: min(60vh, 480px); object-fit: contain; }
+#iew-after-wrap { position: absolute; inset: 0; }
+#iew-after-wrap img { width: 100%; height: 100%; object-fit: contain; }
+#iew-before { image-rendering: auto; }
+#iew-cut { width: 100%; margin: 0 0 12px; accent-color: var(--green); }
+.iew-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.iew-link { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.iew-ext { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line); }
+.iew-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
 </head>
 <body>
 <header class="site-head sticky">
@@ -35,8 +64,8 @@
 <main>
   <section class="hero-band">
    <div class="hero wrap">
-    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Upscale</span> <span class="fx-w" style="--i:1">small</span> <span class="fx-w" style="--i:2">images</span></span><span class="fx-line"><span class="fx-w" style="--i:3">4x</span> <span class="fx-w" style="--i:4">in</span> <span class="fx-w" style="--i:5">one</span> <span class="fx-w arrow" style="--i:6">click</span></span></h1>
-    <p class="sub">Thumbnails, product shots, avatars, images saved from chats, screenshots that got compressed into mush. A free AI enhancer that makes them bigger and sharper right in your browser, so they never leave your device. No sign-up, no watermark.</p>
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Enhance</span> <span class="fx-w" style="--i:1">and</span> <span class="fx-w" style="--i:2">upscale</span> <span class="fx-w" style="--i:3">images,</span></span><span class="fx-line"><span class="fx-w" style="--i:4">free</span> <span class="fx-w" style="--i:5">and</span> <span class="fx-w arrow" style="--i:6">online</span></span></h1>
+    <p class="sub">Drop a small, blurry or over-compressed photo below: the AI makes it sharper and up to 4x bigger right in your browser, and the photo never leaves your device. No sign-up, no watermark. A whole folder? The free Chrome extension does batches.</p>
     <div class="cta-row">
       <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Add to Chrome &middot; free</a>
     </div>
@@ -44,14 +73,61 @@
    </div>
   </section>
 
-  <section class="demo wrap reveal">
-    <div class="ie-demo">
-      <div class="ie-scene"></div>
-      <div class="ie-blur"><div class="ie-scene"></div></div>
-      <div class="ie-divide"></div>
-      <div class="ie-handle">&#8596;</div>
-      <span class="ie-lbl b">Before</span>
-      <span class="ie-lbl a">After</span>
+  <section class="demo wrap" id="try">
+    <div class="iew-tool">
+      <h2>Enhance an image</h2>
+      <div class="iew-modes" role="group" aria-label="Mode">
+        <button type="button" class="iew-mode on" data-mode="enhance">Enhance</button>
+        <button type="button" class="iew-mode" data-mode="upscale2x">Upscale 2x</button>
+        <button type="button" class="iew-mode" data-mode="upscale4x">Upscale 4x</button>
+        <button type="button" class="iew-mode" data-mode="unblur">Unblur</button>
+      </div>
+
+      <div id="iew-idle">
+        <label class="iew-drop" id="iew-drop" for="iew-file">
+          <input class="iew-hide" type="file" id="iew-file" accept="image/*">
+          <b>Drop a photo here</b>
+          <span>or paste it with Ctrl+V &middot; JPG, PNG, WEBP up to 4 MP</span><br>
+          <span class="btn">Choose image</span>
+        </label>
+      </div>
+
+      <div id="iew-busy" class="iew-box" hidden>
+        <h3 id="iew-status">Starting&hellip;</h3>
+        <progress id="iew-bar" max="1"></progress>
+        <p>The first run downloads the AI model once (about 10 MB with the engine), after that it starts in seconds.</p>
+        <p id="iew-slow" hidden>This browser has no graphics acceleration, so the AI runs on the processor and takes longer. The Chrome extension uses several processor cores and is faster.</p>
+        <button type="button" class="iew-link" id="iew-cancel">Cancel</button>
+      </div>
+
+      <div id="iew-done" class="iew-box" hidden>
+        <div class="iew-cmp">
+          <img id="iew-before" alt="Original image">
+          <div id="iew-after-wrap"><img id="iew-after" alt="Enhanced image"></div>
+        </div>
+        <input type="range" id="iew-cut" min="0" max="100" value="50" aria-label="Compare before and after">
+        <p id="iew-meta"></p>
+        <div class="iew-row">
+          <a class="btn" id="iew-dl" href="#">Download PNG</a>
+          <button type="button" class="iew-link iew-rerun" data-mode="enhance">Try Enhance</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="upscale2x">Try 2x</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="upscale4x">Try 4x</button>
+          <button type="button" class="iew-link iew-rerun" data-mode="unblur">Try Unblur</button>
+          <button type="button" class="iew-link iew-again">Another photo</button>
+        </div>
+        <div class="iew-ext">
+          <p>Lots of photos? The free Chrome extension enhances a whole folder in one go, with the same engine.</p>
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi?utm_content=ie-widget" data-umami-event="store-click" data-umami-event-ext="image-enhancer" data-umami-event-place="ie-widget">Add to Chrome &middot; free</a>
+        </div>
+      </div>
+
+      <div id="iew-error" class="iew-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="iew-error-text"></p>
+        <button type="button" class="iew-link iew-again">Choose another photo</button>
+      </div>
+
+      <p class="iew-private">Nothing is uploaded: the photo is enhanced on your own device.</p>
     </div>
   </section>
 
@@ -219,6 +295,7 @@
   </div>
 </footer>
 
+<script type="module" src="/assets/ie/tool.js"></script>
 <script>
 (function () {
   // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
