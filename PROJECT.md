@@ -211,6 +211,13 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - События те же (ocr-run, trn-run), русские отличаются url_path /ru/. e2e `tools/e2e_ru_tool.mjs` (SITE=…; браузер en-US; MyMemory настоящий). Регресс английских: e2e_translate/ocr/word.
 - Критерий: обе в индексе GSC к ~20.11 (Яндекс не подключён — решение Дениса, если пойдёт). Не должно упасть: ocr-run/trn-run на английских страницах.
 
+## Страница searchable PDF /make-pdf-searchable/ (30.10.2026, кластер ~5.8k: pdf searchable 1000/KD 27, how to make pdf searchable 1000/30, convert pdf to searchable pdf 590/27)
+- `assets/spdf/tool.js`: pdf.js (`assets/pdfx`) рендерит страницу ~2000 px → tesseract.js 7 (`blocks`: слова с bbox и baseline) → pdf-lib 1.17.1 + @pdf-lib/fontkit 1.1.1 кладут НЕВИДИМЫЙ текст (opacity 0, Noto Sans subset) поверх ИСХОДНОЙ страницы. Картинки не пережимаются (скан 1.93 → 1.99 МБ), страницы с текстом (>20 симв.) не трогаем. Координаты через `viewport.convertToPdfPoint` (поворот и CropBox учтены). tesseract.js 7 сам PDF не делает (выдачу убрали).
+- Вендор в `assets/spdf/`: pdf-lib (MIT), fontkit (MIT), NotoSans-Regular.ttf (OFL) + лицензии. Шрифт = латиница/кириллица/греческий → языки только eng/spa/por/fra/deu/ita/nld/pol/tur/rus/ukr/vie/ind (CJK/арабский = нужен другой шрифт).
+- Лимиты: 50 стр., 100 МБ. Отмена: гонка recognize с отменой + terminate воркера.
+- События `spdf-run` (result ok/nowords/already/cancel/error/locked/not-pdf/too-many/too-big, pages, ocrPages, words, lang, secs, sizeMb), `spdf-download`. e2e `tools/e2e_spdf_tool.mjs`: текст ищется pdf.js, «Invoice» ложится в ±1 pt от слова на картинке, смешанный PDF, отмена, мобильный. Реальные фото удостоверений (рус.): 2 стр. за 21 с, механика ок, но качество OCR по фото с телефона низкое (честно в FAQ).
+- Критерий: в индексе GSC к ~20.11; `spdf-run` ok ≥ 20% визитов после индексации. Не должно упасть: `ptx-*` на /pdf-to-text/ (оттуда ссылка со скан-экрана).
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
