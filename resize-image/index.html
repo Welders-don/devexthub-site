@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resize Image Online Free: Change Size in Pixels or KB | Devexthub</title>
+<meta name="description" content="Change the size of an image free, right in your browser: set width and height in pixels or a percentage, shrink the file in KB with the quality slider, and save as JPG, PNG or WEBP. Nothing is uploaded.">
+<link rel="canonical" href="https://www.devexthub.com/resize-image/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image resizer","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/resize-image/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I change the size of an image?","acceptedAnswer":{"@type":"Answer","text":"Drop the image into the resizer at the top of this page, type the new width or height (the other side follows to keep proportions) or pick a percentage, then download. You see the new size and file weight before you save."}},
+{"@type":"Question","name":"How do I make an image file smaller in KB?","acceptedAnswer":{"@type":"Answer","text":"Pick JPG or WEBP and lower the quality slider, or make the dimensions smaller. The new file size is shown live, so you can stop when it fits an upload limit."}},
+{"@type":"Question","name":"Will resizing make my image blurry?","acceptedAnswer":{"@type":"Answer","text":"Making an image smaller keeps it sharp. Making it much bigger only stretches the pixels; for a bigger and sharper picture use our AI image upscaler instead."}},
+{"@type":"Question","name":"Which formats are supported?","acceptedAnswer":{"@type":"Answer","text":"JPG, PNG and WEBP in and out. PNG keeps transparency; JPG fills transparent areas with white."}},
+{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The image is resized in your browser, on your own device."}}]}
+</script>
+<meta property="og:title" content="Resize an image online, free and without upload">
+<meta property="og:description" content="Change width and height or shrink the file size of a JPG, PNG or WEBP right in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/resize-image/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.rsz-tool { max-width: 820px; margin: 0 auto; text-align: left; }
+.rsz-tool h2 { margin: 0 0 12px; font-size: 22px; }
+.rsz-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.rsz-drop:hover, .rsz-drop.over, .rsz-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.rsz-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.rsz-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.rsz-drop .btn { margin-top: 16px; pointer-events: none; }
+.rsz-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.rsz-box { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--bg); box-shadow: var(--shadow-card); }
+.rsz-box h3 { margin: 0 0 6px; font-size: 19px; }
+.rsz-box p { margin: 0 0 12px; color: var(--muted); font-size: 15.5px; }
+.rsz-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.rsz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 0 0 12px; }
+.rsz-grid label { display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.rsz-grid input, .rsz-grid select { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); min-width: 0; }
+.rsz-lock { display: flex; gap: 8px; align-items: center; font-size: 15px; color: var(--ink); margin: 0 0 12px; }
+#rsz-q { width: 100%; accent-color: var(--green); }
+#rsz-preview { display: block; max-width: 100%; max-height: 50vh; margin: 0 auto 10px; border-radius: 10px; background: repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0 / 16px 16px; }
+#rsz-out { font-weight: 700; color: var(--ink); }
+.rsz-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.rsz-link { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.rsz-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Change</span> <span class="fx-w" style="--i:1">the</span> <span class="fx-w" style="--i:2">size</span> <span class="fx-w" style="--i:3">of</span> <span class="fx-w" style="--i:4">an</span> <span class="fx-w" style="--i:5">image,</span></span><span class="fx-line"><span class="fx-w" style="--i:6">free</span> <span class="fx-w" style="--i:7">and</span> <span class="fx-w arrow" style="--i:8">online</span></span></h1>
+    <p class="sub">Drop a JPG, PNG or WEBP below, set the new width and height in pixels or a percentage, and shrink the file in KB if a form asks for it. You see the new size before you save, and the image never leaves your device.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="rsz-tool">
+      <h2>Image resizer</h2>
+      <div id="rsz-idle">
+        <label class="rsz-drop" id="rsz-drop" for="rsz-file">
+          <input class="rsz-hide" type="file" id="rsz-file" accept="image/*">
+          <b>Drop an image here</b>
+          <span>or paste it with Ctrl+V &middot; JPG, PNG, WEBP</span><br>
+          <span class="btn">Choose image</span>
+        </label>
+      </div>
+
+      <div id="rsz-opts" class="rsz-box" hidden>
+        <p class="rsz-file" id="rsz-src"></p>
+        <div class="rsz-grid">
+          <label>Width (px)<input type="number" id="rsz-w" min="1" max="16000"></label>
+          <label>Height (px)<input type="number" id="rsz-h" min="1" max="16000"></label>
+          <label>Percent<select id="rsz-pct"><option value="">custom</option><option value="25">25%</option><option value="50">50%</option><option value="75">75%</option><option value="100" selected>100%</option><option value="150">150%</option><option value="200">200%</option></select></label>
+          <label>Format<select id="rsz-format"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select></label>
+        </div>
+        <label class="rsz-lock"><input type="checkbox" id="rsz-lock" checked> Keep proportions</label>
+        <label id="rsz-q-wrap" class="rsz-grid" style="display:grid;gap:4px">Quality <span id="rsz-q-val">85%</span><input type="range" id="rsz-q" min="30" max="100" value="85"></label>
+        <img id="rsz-preview" alt="Resized image preview">
+        <p id="rsz-out"></p>
+        <div class="rsz-row">
+          <a class="btn" id="rsz-dl" href="#">Download</a>
+          <button type="button" class="rsz-link rsz-again">Another image</button>
+        </div>
+        <p style="margin-top:14px">Want it bigger and sharper, not just stretched? Try the <a href="../image-enhancer/">AI image upscaler</a>.</p>
+      </div>
+
+      <div id="rsz-error" class="rsz-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="rsz-error-text"></p>
+        <button type="button" class="rsz-link rsz-again">Choose another image</button>
+      </div>
+
+      <p class="rsz-private">Nothing is uploaded: the image is resized on your own device.</p>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I change the size of an image?</summary>
+          <p>Drop the image into the resizer at the top of this page, type the new width or height (the other side follows to keep proportions) or pick a percentage, then download. You see the new size and file weight before you save.</p>
+        </details>
+        <details>
+          <summary>How do I make an image file smaller in KB?</summary>
+          <p>Pick JPG or WEBP and lower the quality slider, or make the dimensions smaller. The new file size is shown live, so you can stop when it fits an upload limit.</p>
+        </details>
+        <details>
+          <summary>Will resizing make my image blurry?</summary>
+          <p>Making an image smaller keeps it sharp. Making it much bigger only stretches the pixels; for a bigger and sharper picture use our AI image upscaler instead.</p>
+        </details>
+        <details>
+          <summary>Which formats are supported?</summary>
+          <p>JPG, PNG and WEBP in and out. PNG keeps transparency; JPG fills transparent areas with white.</p>
+        </details>
+        <details>
+          <summary>Is my image uploaded?</summary>
+          <p>No. The image is resized in your browser, on your own device.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a class="store-link" href="https://chromewebstore.google.com/detail/pkkccllbjokjgkffmjcjigfajhojjlmi" data-umami-event="store-click" data-umami-event-ext="image-enhancer">Chrome Web Store</a>
+    <a href="https://welders-don.github.io/image-enhancer-privacy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/resize/tool.js"></script>
+<script>
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=resize-image";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
