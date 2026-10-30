@@ -4,6 +4,19 @@
 const TESS = 'https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/tesseract.min.js';
 
 const $ = (id) => document.getElementById(id);
+// Русские страницы /ru/ (30.10): тексты интерфейса по <html lang>.
+const RU = document.documentElement.lang === 'ru';
+const T = RU ? {
+  reading: (p) => `Читаю текст… ${p}%`, loading: 'Загружаю распознавание (только в первый раз)…', starting: 'Начинаю…',
+  found: (n) => `Найдено слов: ${n}. Поправьте, если нужно, и копируйте или скачивайте.`,
+  notImage: 'Нужна картинка: PNG, JPG, WEBP, BMP или GIF. Для PDF сначала сделайте скриншот страницы.',
+  copied: 'Скопировано', copy: 'Копировать всё',
+} : {
+  reading: (p) => `Reading text… ${p}%`, loading: 'Loading the text reader (first time only)…', starting: 'Starting…',
+  found: (n) => `${n} word${n === 1 ? '' : 's'} found. Edit if needed, then copy or download.`,
+  notImage: 'This takes image files: PNG, JPG, WEBP, BMP or GIF. For a PDF, take a screenshot of the page first.',
+  copied: 'Copied', copy: 'Copy all',
+};
 const drop = $('oxt-drop');
 const input = $('oxt-file');
 const lang = $('oxt-lang');
@@ -37,8 +50,8 @@ function loadScript() {
 function progress(m) {
   const pct = Math.round((m.progress || 0) * 100);
   $('oxt-status').textContent = m.status === 'recognizing text'
-    ? `Reading text… ${pct}%`
-    : 'Loading the text reader (first time only)…';
+    ? T.reading(pct)
+    : T.loading;
 }
 
 // Вызовы встают в очередь: прогрев и распознавание не создают двух воркеров.
@@ -70,12 +83,12 @@ function prewarm() {
 // Дефолтный язык по языку браузера, если он есть в списке.
 const nav = (navigator.language || 'en').slice(0, 2);
 const match = lang.querySelector(`option[data-nav="${nav}"]`);
-if (match) lang.value = match.value;
+if (match && !lang.dataset.fixed) lang.value = match.value;
 
 async function run() {
   const code = lang.value;
   $('oxt-name').textContent = lastName;
-  $('oxt-status').textContent = 'Starting…';
+  $('oxt-status').textContent = T.starting;
   show('oxt-busy');
   started = Date.now();
   let text;
@@ -104,7 +117,7 @@ async function run() {
   }
   out.value = text;
   const words = text.split(/\s+/).length;
-  $('oxt-summary').textContent = `${words} word${words === 1 ? '' : 's'} found. Edit if needed, then copy or download.`;
+  $('oxt-summary').textContent = T.found(words);
   show('oxt-done');
   track('ocr-run', { result: 'ok', lang: code, ...timing });
   // Страница /translate-picture/ (30.10) переводит готовый текст: assets/translate/tool.js.
@@ -115,7 +128,7 @@ function pick(files, via) {
   const file = files && files[0];
   if (!file) return;
   if (!/^image\//.test(file.type)) {
-    $('oxt-error-text').textContent = 'This takes image files: PNG, JPG, WEBP, BMP or GIF. For a PDF, take a screenshot of the page first.';
+    $('oxt-error-text').textContent = T.notImage;
     show('oxt-error');
     track('ocr-run', { result: 'not-image' });
     return;
@@ -144,8 +157,8 @@ $('oxt-copy').addEventListener('click', async () => {
     out.select();
     document.execCommand('copy');
   }
-  $('oxt-copy').textContent = 'Copied';
-  setTimeout(() => { $('oxt-copy').textContent = 'Copy all'; }, 1500);
+  $('oxt-copy').textContent = T.copied;
+  setTimeout(() => { $('oxt-copy').textContent = T.copy; }, 1500);
   track('ocr-copy');
 });
 

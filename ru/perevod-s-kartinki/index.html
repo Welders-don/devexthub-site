@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Перевод с картинки онлайн бесплатно: переводчик по фото | Devexthub</title>
+<meta name="description" content="Бесплатный перевод с картинки или фото: перетащите изображение, и текст с него распознается и переведётся на русский или ещё 18 языков. Без регистрации, картинка не загружается на сервер.">
+<link rel="canonical" href="https://www.devexthub.com/ru/perevod-s-kartinki/">
+<link rel="alternate" hreflang="ru" href="https://www.devexthub.com/ru/perevod-s-kartinki/">
+<link rel="alternate" hreflang="en" href="https://www.devexthub.com/translate-picture/">
+<link rel="alternate" hreflang="x-default" href="https://www.devexthub.com/translate-picture/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Перевод с картинки","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","inLanguage":"ru","url":"https://www.devexthub.com/ru/perevod-s-kartinki/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Как перевести текст с картинки?","acceptedAnswer":{"@type":"Answer","text":"Выберите язык текста на картинке и перетащите её в окно вверху страницы или вставьте через Ctrl+V. Текст распознается и сразу переведётся на русский. Язык перевода можно сменить в любой момент."}},
+{"@type":"Question","name":"Как перевести фото с английского на русский?","acceptedAnswer":{"@type":"Answer","text":"Оставьте «Английский» в поле языка текста (он стоит по умолчанию) и «Русский» в поле перевода, затем перетащите фото. Перевод и исходный текст появятся рядом, оба можно скопировать."}},
+{"@type":"Question","name":"Это бесплатно? Есть ли лимит?","acceptedAnswer":{"@type":"Answer","text":"Бесплатно и без регистрации. В Chrome и Edge на компьютере перевод идёт прямо на устройстве и без лимита. В других браузерах работает бесплатный сервис MyMemory, у него около 5000 символов в день на одну сеть."}},
+{"@type":"Question","name":"Фото куда-то загружается?","acceptedAnswer":{"@type":"Answer","text":"Нет. Текст распознаётся в вашем браузере. В Chrome и Edge на компьютере перевод тоже остаётся на устройстве; в остальных браузерах на перевод в MyMemory уходит только распознанный текст, не картинка."}},
+{"@type":"Question","name":"Можно перевести рукописный текст?","acceptedAnswer":{"@type":"Answer","text":"Лучше всего читаются печатный текст, скриншоты, вывески и меню. Рукописный текст распознаётся с ошибками в любом OCR: поправьте исходный текст в поле и нажмите «Перевести ещё раз»."}}]}
+</script>
+<meta property="og:title" content="Перевод с картинки онлайн, бесплатно">
+<meta property="og:description" content="Бесплатный перевод с картинки или фото: перетащите изображение, и текст с него распознается и переведётся на русский или ещё 18 языков. Без регистрации, картинка не загружается на сервер.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/ru/perevod-s-kartinki/">
+<link rel="stylesheet" href="/styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.oxt-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.oxt-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.oxt-head h2 { margin: 0; font-size: 22px; }
+.oxt-head label { color: var(--muted); font-size: 15px; }
+.oxt-head select { font: inherit; font-size: 15px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); }
+.oxt-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.oxt-drop:hover, .oxt-drop.over, .oxt-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.oxt-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.oxt-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.oxt-drop .btn { margin-top: 16px; pointer-events: none; }
+.oxt-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.oxt-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.oxt-box h3 { margin: 0 0 6px; font-size: 19px; }
+.oxt-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.oxt-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.oxt-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#oxt-text { width: 100%; min-height: 180px; box-sizing: border-box; margin: 0 0 14px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink); background: var(--bg-soft); resize: vertical; }
+.oxt-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.oxt-ext { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.oxt-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+#trn-text { width: 100%; min-height: 180px; box-sizing: border-box; margin: 0 0 8px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink); background: var(--bg-soft); resize: vertical; }
+#oxt-text { min-height: 120px; }
+.trn-note { font-size: 14px !important; }
+#trn-device[hidden], #trn-online[hidden] { display: none; }
+.trn-src { margin: 22px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.trn-src h3 { font-size: 17px !important; }
+.oxt-box .oxt-head h3 { margin: 0; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="/"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="/">Все инструменты</a>
+      <a href="#how">Как это работает</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Перевод</span> <span class="fx-w" style="--i:1">с</span> <span class="fx-w" style="--i:2">картинки</span></span><span class="fx-line"><span class="fx-w" style="--i:3">бесплатно</span> <span class="fx-w" style="--i:4">и</span> <span class="fx-w arrow" style="--i:5">онлайн</span></span></h1>
+    <p class="sub">Перетащите фото, скриншот или картинку, и текст с неё переведётся на русский, а оригинал будет рядом. Меню, вывески, документы, переписки: ничего не нужно перепечатывать, картинка не уходит с устройства.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="oxt-tool">
+      <div class="oxt-head">
+        <h2>Переводчик по фото</h2>
+        <label>Текст на картинке на языке
+          <select id="oxt-lang" data-fixed="1">
+            <option value="eng" data-nav="en" selected>Английский</option>
+            <option value="rus" data-nav="ru">Русский</option>
+            <option value="ukr" data-nav="uk">Украинский</option>
+            <option value="spa" data-nav="es">Испанский</option>
+            <option value="por" data-nav="pt">Португальский</option>
+            <option value="fra" data-nav="fr">Французский</option>
+            <option value="deu" data-nav="de">Немецкий</option>
+            <option value="ita" data-nav="it">Итальянский</option>
+            <option value="nld" data-nav="nl">Нидерландский</option>
+            <option value="pol" data-nav="pl">Польский</option>
+            <option value="tur" data-nav="tr">Турецкий</option>
+            <option value="ara" data-nav="ar">Арабский</option>
+            <option value="hin" data-nav="hi">Хинди</option>
+            <option value="ind" data-nav="id">Индонезийский</option>
+            <option value="vie" data-nav="vi">Вьетнамский</option>
+            <option value="tha" data-nav="th">Тайский</option>
+            <option value="chi_sim" data-nav="zh">Китайский</option>
+            <option value="jpn" data-nav="ja">Японский</option>
+            <option value="kor" data-nav="ko">Корейский</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="oxt-idle">
+        <label class="oxt-drop" id="oxt-drop" for="oxt-file">
+          <input class="oxt-hide" type="file" id="oxt-file" accept="image/*">
+          <b>Перетащите картинку или фото сюда</b>
+          <span>или вставьте через Ctrl+V &middot; PNG, JPG, WEBP</span><br>
+          <span class="btn">Выбрать картинку</span>
+        </label>
+      </div>
+
+      <div id="oxt-busy" class="oxt-box" hidden>
+        <h3 id="oxt-status">Начинаю&hellip;</h3>
+        <p class="oxt-file" id="oxt-name"></p>
+      </div>
+
+      <div id="oxt-done" class="oxt-box" hidden>
+        <div class="oxt-head">
+          <h3>Перевод</h3>
+          <label>Перевести на <select id="trn-target"><option value="en">Английский</option><option value="ru" selected>Русский</option><option value="uk">Украинский</option><option value="es">Испанский</option><option value="pt">Португальский</option><option value="fr">Французский</option><option value="de">Немецкий</option><option value="it">Итальянский</option><option value="nl">Нидерландский</option><option value="pl">Польский</option><option value="tr">Турецкий</option><option value="ar">Арабский</option><option value="hi">Хинди</option><option value="id">Индонезийский</option><option value="vi">Вьетнамский</option><option value="th">Тайский</option><option value="zh">Китайский</option><option value="ja">Японский</option><option value="ko">Корейский</option></select></label>
+        </div>
+        <textarea id="trn-text" spellcheck="false" aria-label="Перевод"></textarea>
+        <p class="trn-note" id="trn-note" aria-live="polite"></p>
+        <div class="oxt-row">
+          <button type="button" class="btn" id="trn-device" hidden>Скачать пакет и перевести на компьютере</button>
+          <button type="button" class="btn btn-ghost" id="trn-online" hidden>Перевести онлайн</button>
+          <button type="button" class="btn" id="trn-copy">Копировать перевод</button>
+          <button type="button" class="oxt-again">Другая картинка</button>
+        </div>
+        <div class="trn-src">
+          <h3>Текст с картинки</h3>
+          <p id="oxt-summary"></p>
+          <textarea id="oxt-text" spellcheck="false" aria-label="Текст с картинки"></textarea>
+          <div class="oxt-row">
+            <button type="button" class="btn btn-ghost" id="trn-go">Перевести ещё раз</button>
+            <button type="button" class="btn btn-ghost" id="oxt-copy">Копировать всё</button>
+            <button type="button" class="btn btn-ghost" id="oxt-txt">Скачать .txt</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="oxt-empty" class="oxt-box" hidden>
+        <h3>Текст не найден</h3>
+        <p>Проверьте, что выбран язык текста на картинке (смена языка перечитает ту же картинку), или возьмите фото чётче и крупнее.</p>
+        <div class="oxt-row">
+          <button type="button" class="oxt-again">Другая картинка</button>
+        </div>
+      </div>
+
+      <div id="oxt-error" class="oxt-box" hidden>
+        <h3>Не получилось</h3>
+        <p id="oxt-error-text">Распознаватель не загрузился. Проверьте интернет и попробуйте ещё раз.</p>
+        <button type="button" class="oxt-again">Выбрать другую картинку</button>
+      </div>
+
+      <p class="oxt-private">Картинка не покидает устройство: текст распознаётся прямо здесь. В Chrome и Edge на компьютере перевод тоже идёт здесь; в других браузерах на бесплатный сервис перевода MyMemory уходит только текст.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>Как перевести фото с английского на русский</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Язык картинки</h3><p>По умолчанию английский. Для китайского, немецкого или другого текста выберите его над окном.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Перетащите фото</h3><p>Фото, скриншот или скан. На телефоне выберите картинку из галереи.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Читайте перевод</h3><p>Перевод сверху, оригинал под ним. Поправьте неверно распознанное слово и переведите ещё раз.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Вопросы</h2>
+      <div class="faq">
+        <details>
+          <summary>Как перевести текст с картинки?</summary>
+          <p>Выберите язык текста на картинке и перетащите её в окно вверху страницы или вставьте через Ctrl+V. Текст распознается и сразу переведётся на русский. Язык перевода можно сменить в любой момент.</p>
+        </details>
+        <details>
+          <summary>Как перевести фото с английского на русский?</summary>
+          <p>Оставьте «Английский» в поле языка текста (он стоит по умолчанию) и «Русский» в поле перевода, затем перетащите фото. Перевод и исходный текст появятся рядом, оба можно скопировать.</p>
+        </details>
+        <details>
+          <summary>Это бесплатно? Есть ли лимит?</summary>
+          <p>Бесплатно и без регистрации. В Chrome и Edge на компьютере перевод идёт прямо на устройстве и без лимита. В других браузерах работает бесплатный сервис MyMemory, у него около 5000 символов в день на одну сеть.</p>
+        </details>
+        <details>
+          <summary>Фото куда-то загружается?</summary>
+          <p>Нет. Текст распознаётся в вашем браузере. В Chrome и Edge на компьютере перевод тоже остаётся на устройстве; в остальных браузерах на перевод в MyMemory уходит только распознанный текст, не картинка.</p>
+        </details>
+        <details>
+          <summary>Можно перевести рукописный текст?</summary>
+          <p>Лучше всего читаются печатный текст, скриншоты, вывески и меню. Рукописный текст распознаётся с ошибками в любом OCR: поправьте исходный текст в поле и нажмите «Перевести ещё раз».</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Нужен только текст без перевода? <a href="/ru/tekst-iz-foto/">Текст из фото</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="/">Devexthub</a>
+    <a href="/ru/tekst-iz-foto/">Текст из фото</a>
+    <a href="/ru/perevod-s-kartinki/">Перевод с картинки</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Простые инструменты в браузере.</span>
+  </div>
+</footer>
+
+<script type="module" src="/assets/ocr/tool.js"></script>
+<script type="module" src="/assets/translate/tool.js"></script>
+<script>
+(function () {
+  var utm = "utm_source=devexthub_landing&utm_medium=referral&utm_campaign=ru-perevod-s-kartinki";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
