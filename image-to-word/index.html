@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image to Word Converter Free Online, PNG & JPG to .docx | Devexthub</title>
+<meta name="description" content="Convert an image to Word free, right in your browser: drop a PNG, JPG or screenshot and download an editable .docx with the text. Nothing is uploaded, no sign-up, dozens of languages.">
+<link rel="canonical" href="https://www.devexthub.com/image-to-word/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image to Word converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://www.devexthub.com/image-to-word/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I convert an image to Word?","acceptedAnswer":{"@type":"Answer","text":"Drop the picture, screenshot or scan into the converter at the top of this page, or paste it with Ctrl+V. The text is recognized in a few seconds; check it, then press Download Word to get an editable .docx file."}},
+{"@type":"Question","name":"Can I convert a PNG or JPG to Word?","acceptedAnswer":{"@type":"Answer","text":"Yes. PNG, JPG and WEBP all work. Each line of text in the picture becomes a paragraph in the Word document, so you can edit and format it right away."}},
+{"@type":"Question","name":"Is the layout of the picture kept?","acceptedAnswer":{"@type":"Answer","text":"The text is kept line by line; fonts, columns and images from the picture are not recreated. For tables with rows and columns, use our PDF to Excel converter on a PDF instead."}},
+{"@type":"Question","name":"Which languages are supported?","acceptedAnswer":{"@type":"Answer","text":"English, Spanish, Portuguese, French, German, Italian, Russian, Chinese, Japanese, Korean, Arabic, Hindi and more: pick the language above the drop area."}},
+{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The text is recognized and the Word file is built in your browser, on your own device."}}]}
+</script>
+<meta property="og:title" content="Image to Word converter, free and online">
+<meta property="og:description" content="Turn a picture or screenshot into an editable Word document. No upload, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devexthub.com/image-to-word/">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+.hero, #try { padding-left: 22px; padding-right: 22px; }
+.oxt-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.oxt-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.oxt-head h2 { margin: 0; font-size: 22px; }
+.oxt-head label { color: var(--muted); font-size: 15px; }
+.oxt-head select { font: inherit; font-size: 15px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); }
+.oxt-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.oxt-drop:hover, .oxt-drop.over, .oxt-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.oxt-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.oxt-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.oxt-drop .btn { margin-top: 16px; pointer-events: none; }
+.oxt-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.oxt-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.oxt-box h3 { margin: 0 0 6px; font-size: 19px; }
+.oxt-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.oxt-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.oxt-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#oxt-text { width: 100%; min-height: 180px; box-sizing: border-box; margin: 0 0 14px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink); background: var(--bg-soft); resize: vertical; }
+.oxt-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.oxt-ext { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.oxt-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="../"><span class="dot"></span>Devexthub</a>
+    <nav class="nav">
+      <a href="../">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/eeelkokigmnmogpibbdkjdplpfnobpjb" data-umami-event="store-click" data-umami-event-ext="extract-text">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Image</span> <span class="fx-w" style="--i:1">to</span> <span class="fx-w" style="--i:2">Word,</span></span><span class="fx-line"><span class="fx-w" style="--i:3">free</span> <span class="fx-w" style="--i:4">and</span> <span class="fx-w arrow" style="--i:5">online</span></span></h1>
+    <p class="sub">Drop a PNG, JPG or screenshot below and download an editable Word document with its text, line by line. No retyping, no upload: the text is recognized right in your browser.</p>
+   </div>
+  </section>
+
+  <section class="demo wrap" id="try">
+    <div class="oxt-tool">
+      <div class="oxt-head">
+        <h2>Image to Word converter</h2>
+        <label>Language
+          <select id="oxt-lang">
+            <option value="eng" data-nav="en">English</option>
+            <option value="spa" data-nav="es">Spanish</option>
+            <option value="por" data-nav="pt">Portuguese</option>
+            <option value="fra" data-nav="fr">French</option>
+            <option value="deu" data-nav="de">German</option>
+            <option value="ita" data-nav="it">Italian</option>
+            <option value="nld" data-nav="nl">Dutch</option>
+            <option value="pol" data-nav="pl">Polish</option>
+            <option value="tur" data-nav="tr">Turkish</option>
+            <option value="rus" data-nav="ru">Russian</option>
+            <option value="ukr" data-nav="uk">Ukrainian</option>
+            <option value="ara" data-nav="ar">Arabic</option>
+            <option value="hin" data-nav="hi">Hindi</option>
+            <option value="ind" data-nav="id">Indonesian</option>
+            <option value="vie" data-nav="vi">Vietnamese</option>
+            <option value="tha" data-nav="th">Thai</option>
+            <option value="chi_sim" data-nav="zh">Chinese (Simplified)</option>
+            <option value="jpn" data-nav="ja">Japanese</option>
+            <option value="kor" data-nav="ko">Korean</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="oxt-idle">
+        <label class="oxt-drop" id="oxt-drop" for="oxt-file">
+          <input class="oxt-hide" type="file" id="oxt-file" accept="image/*">
+          <b>Drop an image or screenshot here</b>
+          <span>or paste it with Ctrl+V &middot; PNG, JPG, WEBP</span><br>
+          <span class="btn">Choose image</span>
+        </label>
+      </div>
+
+      <div id="oxt-busy" class="oxt-box" hidden>
+        <h3 id="oxt-status">Starting&hellip;</h3>
+        <p class="oxt-file" id="oxt-name"></p>
+      </div>
+
+      <div id="oxt-done" class="oxt-box" hidden>
+        <h3>Your document is ready</h3>
+        <p id="oxt-summary"></p>
+        <textarea id="oxt-text" spellcheck="false" aria-label="Extracted text"></textarea>
+        <div class="oxt-row">
+          <button type="button" class="btn" id="oxt-docx">Download Word (.docx)</button>
+          <button type="button" class="btn btn-ghost" id="oxt-copy">Copy all</button>
+          <button type="button" class="btn btn-ghost" id="oxt-txt">Download .txt</button>
+          <button type="button" class="oxt-again">Read another image</button>
+        </div>
+        <div class="oxt-ext">
+          <p>Text on a web page or a paused video? With the free Chrome extension you draw a box over it on any tab, no screenshot to save.</p>
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/eeelkokigmnmogpibbdkjdplpfnobpjb?utm_content=ocr-widget" data-umami-event="store-click" data-umami-event-ext="extract-text" data-umami-event-place="ocr-widget">Add to Chrome &middot; free</a>
+        </div>
+      </div>
+
+      <div id="oxt-empty" class="oxt-box" hidden>
+        <h3>No text found</h3>
+        <p>Check that the language above matches the image (changing it re-reads the same picture), or try a sharper, larger crop. Handwriting and very stylized fonts are hard for any OCR.</p>
+        <div class="oxt-row">
+          <button type="button" class="oxt-again">Try another image</button>
+        </div>
+      </div>
+
+      <div id="oxt-error" class="oxt-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="oxt-error-text">The text reader didn't load. Check your connection and try again.</p>
+        <button type="button" class="oxt-again">Choose another image</button>
+      </div>
+
+      <p class="oxt-private">Nothing is uploaded: the text is read on your own device.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How to convert an image to a Word document</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3>Drop the picture</h3><p>A photo of a page, a screenshot or a scan. Pick the language of the text first if it's not English.</p></div>
+        <div class="card"><span class="step-num">2</span><h3>Check the text</h3><p>Fix anything the recognition got wrong right in the box, before it goes into the document.</p></div>
+        <div class="card"><span class="step-num">3</span><h3>Download Word</h3><p>An editable .docx with one paragraph per line, ready for Word, Google Docs or LibreOffice.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I convert an image to Word?</summary>
+          <p>Drop the picture, screenshot or scan into the converter at the top of this page, or paste it with Ctrl+V. The text is recognized in a few seconds; check it, then press Download Word to get an editable .docx file.</p>
+        </details>
+        <details>
+          <summary>Can I convert a PNG or JPG to Word?</summary>
+          <p>Yes. PNG, JPG and WEBP all work. Each line of text in the picture becomes a paragraph in the Word document, so you can edit and format it right away.</p>
+        </details>
+        <details>
+          <summary>Is the layout of the picture kept?</summary>
+          <p>The text is kept line by line; fonts, columns and images from the picture are not recreated. For tables with rows and columns, use our PDF to Excel converter on a PDF instead.</p>
+        </details>
+        <details>
+          <summary>Which languages are supported?</summary>
+          <p>English, Spanish, Portuguese, French, German, Italian, Russian, Chinese, Japanese, Korean, Arabic, Hindi and more: pick the language above the drop area.</p>
+        </details>
+        <details>
+          <summary>Is my image uploaded?</summary>
+          <p>No. The text is recognized and the Word file is built in your browser, on your own device.</p>
+        </details>
+      </div>
+      <p style="margin-top:22px">Just need the text? <a href="../extract-text-from-image/">PNG and JPG to text</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a href="../">Devexthub</a>
+    <a class="store-link" href="https://chromewebstore.google.com/detail/eeelkokigmnmogpibbdkjdplpfnobpjb" data-umami-event="store-click" data-umami-event-ext="extract-text">Chrome Web Store</a>
+    <a href="https://welders-don.github.io/extracttext-privacy/">Privacy</a>
+    <span style="display:block;margin-top:12px;">© 2026 Devexthub. Browser tools that do one thing well.</span>
+    <span style="display:block;margin-top:10px;"><a href="https://fazier.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=neutral" width=250 alt="Fazier badge" /></a></span>
+    <span style="display:block;margin-top:10px;"><a href="https://uno.directory" target="_blank" rel="noopener"><img src="https://uno.directory/uno-directory.svg" alt="Listed on Uno Directory" width="120" height="30" /></a></span>
+  </div>
+</footer>
+
+<script src="/assets/pdfx/jszip.min.js"></script>
+<script type="module" src="/assets/ocr/tool.js"></script>
+<script>
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = /\/\/(www\.)?devexthub\.com\/app(\/|\?|#|$)/.test(document.referrer) ? "devexthub_app" : "devexthub_landing";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=image-to-word";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>

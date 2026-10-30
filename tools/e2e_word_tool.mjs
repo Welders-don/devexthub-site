@@ -1,0 +1,33 @@
+// e2e страницы /image-to-word/ (OCR-виджет + .docx). Запуск: BASE=http://localhost:<порт>/image-to-word/ node tools/e2e_word_tool.mjs
+import pw from '/home/client/workspace/tmp/pw/node_modules/playwright-core/index.js';
+import { execSync } from 'child_process';
+import fs from 'fs';
+const { chromium } = pw;
+const BASE = process.env.BASE || 'http://localhost:8085/image-to-word/';
+const TMP = '/tmp/word-e2e'; const SHOTS = new URL('../releases/image-to-word/', import.meta.url).pathname;
+fs.mkdirSync(TMP, { recursive: true }); fs.mkdirSync(SHOTS, { recursive: true });
+let fails = 0; const ok = (c, m) => { console.log(`${c ? 'OK  ' : 'FAIL'} ${m}`); if (!c) fails++; };
+const browser = await chromium.launch({ executablePath: '/home/client/.cache/ms-playwright/chromium_headless_shell-1208/chrome-headless-shell-linux64/chrome-headless-shell' });
+{ const p = await browser.newPage({ viewport: { width: 700, height: 260 } });
+  await p.setContent('<div style="font:28px Arial;padding:24px;line-height:1.5">Quarterly report draft<br>Revenue grew by 12 percent<br>Next review on Friday</div>');
+  await p.screenshot({ path: `${TMP}/page.png` }); await p.close(); }
+const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, acceptDownloads: true });
+const page = await ctx.newPage(); await page.route(/api\.devexthub\.com/, (r) => r.abort());
+await page.addInitScript(() => { window.__ev = []; window.umami = { track: (n, d) => window.__ev.push([n, d]) }; });
+const errors = []; page.on('pageerror', (e) => errors.push(e.message));
+await page.goto(BASE);
+await page.setInputFiles('#oxt-file', `${TMP}/page.png`);
+await page.waitForSelector('#oxt-done:not([hidden])', { timeout: 120000 });
+ok(await page.locator('#oxt-docx').isVisible(), 'кнопка Download Word видна');
+const [d] = await Promise.all([page.waitForEvent('download'), page.click('#oxt-docx')]);
+const out = `${TMP}/out.docx`; await d.saveAs(out);
+const xml = execSync(`python3 -c "import zipfile,sys;print(zipfile.ZipFile('${out}').read('word/document.xml').decode())"`).toString();
+const paras = (xml.match(/<w:p>/g) || []).length;
+ok(d.suggestedFilename() === 'page.docx' && /Quarterly report draft/.test(xml) && /Revenue grew by 12 percent/.test(xml) && paras >= 3, `.docx: ${d.suggestedFilename()}, абзацев ${paras}`);
+const ev = await page.evaluate(() => window.__ev);
+ok(ev.some(([n, x]) => n === 'ocr-download' && x.fmt === 'docx'), 'событие ocr-download docx');
+await page.screenshot({ path: `${SHOTS}/desktop-done.png` });
+ok(errors.length === 0, `без ошибок JS ${errors.join(' | ')}`);
+const m = await browser.newPage({ viewport: { width: 390, height: 844 } }); await m.route(/api\.devexthub\.com/, (r) => r.abort());
+await m.goto(BASE); ok(!(await m.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)), 'мобильный 390: без горизонтальной прокрутки');
+await browser.close(); console.log(fails ? `\n${fails} FAIL` : '\nвсё OK'); process.exit(fails ? 1 : 0);

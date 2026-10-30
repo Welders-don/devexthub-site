@@ -177,6 +177,10 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - События `qr-scan` (result ok/none/error/not-image, kind url/wifi/text), `qr-copy`, `qr-open`. e2e `tools/e2e_qr_tool.mjs` (QR рисует qrcode-generator с jsDelivr: чистый, мелкий в скриншоте, инверсный, повёрнутый+размытый).
 - Грабля: `.btn` перебивает `hidden` → `#qr-open[hidden] { display: none }`.
 
+## Страница картинка → Word /image-to-word/ (30.10.2026, кластер ~3.8k: image to word converter 1.6k/KD 30, png to word 880/KD 17)
+- Тот же OCR-виджет (`assets/ocr/tool.js`, tesseract.js) + главная кнопка «Download Word (.docx)» (`#oxt-docx`, есть только на этой странице) → `assets/ocr/docx.js`: минимальный .docx через JSZip (`/assets/pdfx/jszip.min.js`), строка = абзац. Проверено python-docx (открывается, абзацы верные). Событие `ocr-download` теперь с `fmt` (txt/docx) на обеих страницах.
+- e2e `tools/e2e_word_tool.mjs`, регрессия OCR `tools/e2e_ocr_tool.mjs`. Ссылки OCR ↔ Word.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
