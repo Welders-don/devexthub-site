@@ -6,8 +6,8 @@
 <link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Convert PDF to Excel (and back), free Chrome extension | Devexthub</title>
-<meta name="description" content="Extract tables from any PDF into an editable Excel or CSV sheet in one click. Keeps rows, columns and totals exactly, and converts Excel to PDF too. AI mode reads scanned invoices and bank statements. Runs in your browser, no sign-up.">
+<title>Convert PDF to Excel Free Online, No Upload | Devexthub</title>
+<meta name="description" content="Convert PDF to Excel free, right in your browser: drop a PDF and download its tables as Excel or CSV in seconds. The file is never uploaded. Scanned PDFs work with the AI mode of our Chrome extension.">
 <link rel="canonical" href="https://www.devexthub.com/pdf-to-excel/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF to Excel","applicationCategory":"UtilitiesApplication","operatingSystem":"Chrome","url":"https://www.devexthub.com/pdf-to-excel/","downloadUrl":"https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.devexthub.com/#organization"}}
@@ -18,6 +18,29 @@
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../styles.css">
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="www.devexthub.com,devexthub.com"></script>
+<style>
+/* Виджет конвертера: стили 1:1 со страницы выписок (bank-statement), 30.10 */
+#try { margin-top: 26px; }
+.hero { padding-left: 22px; padding-right: 22px; }
+.bst-tool { max-width: 760px; margin: 0 auto; text-align: left; }
+.bst-drop { display: block; border: 2px dashed #b9dcc8; border-radius: 16px; background: #f4faf6; padding: 38px 22px; text-align: center; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.bst-drop:hover, .bst-drop.over, .bst-drop:focus-within { background: #e9f5ee; border-color: var(--green); }
+.bst-drop b { display: block; font-size: 20px; margin-bottom: 6px; }
+.bst-drop span:not(.btn) { color: var(--muted); font-size: 15px; }
+.bst-drop .btn { margin-top: 16px; pointer-events: none; }
+.bst-hide { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.bst-box { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--bg); box-shadow: var(--shadow-card); }
+.bst-box h3 { margin: 0 0 6px; font-size: 19px; }
+.bst-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.bst-file { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); word-break: break-all; }
+.bst-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.bst-scroll { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--line); border-radius: 10px; }
+#bst-preview { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+#bst-preview td { border-bottom: 1px solid var(--line); padding: 6px 10px; white-space: nowrap; max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+#bst-preview tr:nth-child(odd) td { background: var(--bg-soft); }
+.bst-again { background: none; border: 0; color: var(--green-deep); text-decoration: underline; cursor: pointer; font: inherit; font-size: 15px; padding: 0; }
+.bst-private { margin-top: 12px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
 </head>
 <body>
 <header class="site-head sticky">
@@ -36,47 +59,66 @@
   <section class="hero-band">
    <div class="hero wrap">
     <span class="hero-chip">Free Chrome extension &middot; AI mode reads scanned invoices &amp; bank statements</span>
-    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Stop</span> <span class="fx-w" style="--i:1">retyping</span> <span class="fx-w" style="--i:2">tables</span></span><span class="fx-line"><span class="fx-w" style="--i:3">trapped</span> <span class="fx-w" style="--i:4">in</span> <span class="fx-w" style="--i:5">a</span> <span class="fx-w" style="--i:6">PDF</span></span></h1>
-    <p class="sub">One click pulls any PDF table into a clean Excel or CSV sheet. Rows, columns and totals kept exactly, and numbers stay real numbers you can sum.</p>
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Convert</span> <span class="fx-w" style="--i:1">PDF</span> <span class="fx-w" style="--i:2">to</span> <span class="fx-w" style="--i:3">Excel,</span></span><span class="fx-line"><span class="fx-w" style="--i:4">free</span> <span class="fx-w" style="--i:5">and</span> <span class="fx-w arrow" style="--i:6">online</span></span></h1>
+    <p class="sub">Drop a PDF below and download its tables as a clean Excel or CSV sheet. Rows, columns and totals kept, numbers stay real numbers you can sum, and the file never leaves your computer.</p>
     <div class="cta-row">
       <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel">Add to Chrome &middot; free</a>
     </div>
     <p class="note">No sign-up &middot; runs in your browser &middot; works both ways: PDF &harr; Excel</p>
 
-    <div class="px-demo">
-      <div class="px-card">
-        <span class="px-tag bad">The PDF you have</span>
-        <div class="px-pdf">
-          <span class="px-pdf-badge">PDF</span>
-          <div class="px-pdf-h">INVOICE #10428</div>
-          <div class="px-pdf-sub">Acme Co &middot; Apr 2026</div>
-          <div class="px-pdf-tbl">
-            <div class="r hd"><span>Item</span><span>Qty</span><span>Rate</span><span>Amount</span></div>
-            <div class="r"><span>Steel bracket</span><span>4</span><span>250.00</span><span>1000.00</span></div>
-            <div class="r"><span>Bolt M12</span><span>120</span><span>0.90</span><span>108.00</span></div>
-            <div class="r"><span>Labor</span><span>6</span><span>85.00</span><span>510.00</span></div>
-            <div class="r tot"><span>Total</span><span></span><span></span><span>1618.00</span></div>
-          </div>
-        </div>
-        <span class="px-cap bad">Locked in the document &middot; can't select or sum</span>
+    <div class="bst-tool" id="try" data-kind="table">
+      <div id="bst-idle">
+        <label class="bst-drop" id="bst-drop" for="bst-file">
+          <input class="bst-hide" type="file" id="bst-file" accept="application/pdf,.pdf">
+          <b>Drop a PDF here</b>
+          <span>or click to choose a file &middot; invoices, reports, price lists &middot; free</span><br>
+          <span class="btn">Choose PDF</span>
+        </label>
       </div>
 
-      <div class="px-arrow" aria-hidden="true"><span class="ar">&rarr;</span><span class="lb">1 click</span></div>
-
-      <div class="px-card">
-        <span class="px-tag good">Clean Excel &middot; one click</span>
-        <div class="px-xls">
-          <div class="xls-corner"></div><div class="xls-col">A</div><div class="xls-col">B</div><div class="xls-col">C</div><div class="xls-col">D</div>
-          <div class="xls-rn">1</div><div class="xls-title">INVOICE #10428</div>
-          <div class="xls-rn">2</div><div class="xls-sub">Acme Co &middot; Apr 2026</div>
-          <div class="xls-rn">3</div><div class="xls-hd">Item</div><div class="xls-hd n">Qty</div><div class="xls-hd n">Rate</div><div class="xls-hd n">Amount</div>
-          <div class="xls-rn">4</div><div>Steel bracket</div><div class="n">4</div><div class="n">250.00</div><div class="n">1000.00</div>
-          <div class="xls-rn">5</div><div>Bolt M12</div><div class="n">120</div><div class="n">0.90</div><div class="n">108.00</div>
-          <div class="xls-rn">6</div><div>Labor</div><div class="n">6</div><div class="n">85.00</div><div class="n">510.00</div>
-          <div class="xls-rn">7</div><div class="gt">Total</div><div class="gt n"></div><div class="gt n"></div><div class="gt n">1618.00</div>
-        </div>
-        <span class="px-cap good">Rows, columns &amp; totals &middot; real numbers</span>
+      <div id="bst-busy" class="bst-box" hidden>
+        <h3>Reading the tables&hellip;</h3>
+        <p class="bst-file" id="bst-name"></p>
       </div>
+
+      <div id="bst-done" class="bst-box" hidden>
+        <h3>Your Excel file is ready</h3>
+        <p id="bst-summary"></p>
+        <div class="bst-scroll"><table id="bst-preview"></table></div>
+        <div class="bst-row">
+          <a class="btn" id="bst-xlsx" href="#">Download Excel (.xlsx)</a>
+          <a class="btn btn-ghost" id="bst-csv" href="#">Download .csv</a>
+          <button type="button" class="bst-again">Convert another</button>
+        </div>
+        <p style="margin:16px 0 0">Converting PDFs every day? The free Chrome extension does it from your toolbar, can put each page on its own sheet and reads scans with AI.</p>
+        <a class="btn store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf?utm_content=pdf-widget" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel" data-umami-event-place="pdf-widget">Add to Chrome &middot; free</a>
+      </div>
+
+      <div id="bst-scan" class="bst-box" hidden>
+        <h3>This PDF is a scan</h3>
+        <p>It's a picture of the page, so there is no text for the browser to read. Our free Chrome extension has an AI mode that recognises tables in scanned and photographed documents.</p>
+        <div class="bst-row">
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf?utm_content=pdf-widget-scan" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel" data-umami-event-place="pdf-widget-scan">Get the extension with AI mode</a>
+          <button type="button" class="bst-again">Try another file</button>
+        </div>
+      </div>
+
+      <div id="bst-empty" class="bst-box" hidden>
+        <h3>No table found in this PDF</h3>
+        <p>The file has text, but we couldn't find rows and columns in it. If it's an unusual layout, the AI mode in our Chrome extension may still read it.</p>
+        <div class="bst-row">
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/hboeifcemhbamnoakkbalaemdleehfnf?utm_content=pdf-widget-empty" data-umami-event="store-click" data-umami-event-ext="pdf-to-excel" data-umami-event-place="pdf-widget-empty">Get the extension with AI mode</a>
+          <button type="button" class="bst-again">Try another file</button>
+        </div>
+      </div>
+
+      <div id="bst-error" class="bst-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="bst-error-text"></p>
+        <button type="button" class="bst-again">Choose another file</button>
+      </div>
+
+      <p class="bst-private">Nothing is uploaded: the PDF is read and the Excel file is built on your own computer.</p>
     </div>
    </div>
   </section>
@@ -235,6 +277,8 @@
   </div>
 </footer>
 
+<script type="module" src="/assets/pdfx/tool.js"></script>
+<script src="/assets/pdfx/jszip.min.js"></script>
 <script>
 // Add UTM tags to every Chrome Web Store link so installs show up
 // as "devexthub_landing" in the CWS developer dashboard sources.
