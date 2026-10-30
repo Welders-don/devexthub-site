@@ -198,6 +198,12 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - События `trn-run` (result ok/quota/error/ask-download, engine device|mymemory, src, tgt, chars, secs), `trn-copy`; OCR-события как на /extract-text-from-image/. e2e `tools/e2e_translate_tool.mjs` (Translator подменяется, MyMemory в кейсе 1 настоящий).
 - Критерий: в индексе GSC к ~20.11; `trn-run` ok ≥ 20% визитов после индексации; доля quota < 10% от trn-run. Не должно упасть: `ocr-run` ok на /extract-text-from-image/.
 
+## Страница PDF → CSV /pdf-to-csv/ (30.10.2026, кластер ~5.9k: pdf to csv 4.4k/KD 24, pdf to csv converter free 320/KD 28)
+- Тот же `assets/pdfx/tool.js`, `data-kind="csv"` (события `pcsv-convert`, `pcsv-download` {fmt, sep comma/semicolon/tab}). Отличие от /pdf-to-excel/: CSV главная кнопка + выбор разделителя (`;` для Excel в Европе/Латинской Америке, где CSV через запятую открывается одной колонкой). `csv-writer.js` получил параметр `sep` (по умолчанию ',', в расширении такого нет — копия разошлась). Нужен `<script src="/assets/pdfx/jszip.min.js">` (без него виснет на «Reading»).
+- Статью /blog/how-to-convert-pdf-to-csv/ (выжившая после склейки 20.09) НЕ трогали; ссылку из неё на инструмент — после 03.11 и по слову Дениса. Ссылка на страницу: с /pdf-to-excel/ (экран готово) + sitemap.
+- e2e `tools/e2e_csv_tool.mjs` (выписка-фикстура Pdftoexel: запятая/;/таб, xlsx, события, UTM, не-PDF, мобильный). Регресс: `tools/e2e_bank_tool.mjs` (bst и EV=pdfx; фикстура releases/blog-mac-shots/statement.pdf есть только в основной папке).
+- Критерий: в индексе GSC к ~20.11; `pcsv-convert` ok ≥ 20% визитов после индексации. Не должно упасть: `pdfx-convert` на /pdf-to-excel/.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
