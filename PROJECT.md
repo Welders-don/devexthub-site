@@ -185,6 +185,12 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - `assets/resize/tool.js`: canvas, без сети. Ширина/высота с замком пропорций, проценты, JPG/PNG/WEBP, качество (у PNG скрыто), живой вес файла, превью. JPG заливает прозрачность белым. Ссылки ↔ /image-enhancer/ («больше и чётче = AI»).
 - События `rsz-pick` (mp), `rsz-run` (not-image/bad-image), `rsz-download` (format, w, h). e2e `tools/e2e_resize_tool.mjs`.
 
+## Страница видео → звук /mov-to-mp3/ (30.10.2026, кластер ~41k: mov to mp3 18.1k/KD 29, convert mov to mp3 8.1k/KD 28, mov to wav 2.4k/KD 15)
+- `assets/audio/tool.js`: Mediabunny Conversion (видео discard), выход MP3 (LAME 3.100 wasm = `assets/mov/vendor/mediabunny-mp3-encoder.min.mjs`, @mediabunny/mp3-encoder 1.56.2 MPL, импорт переписан на `./mediabunny.min.mjs`), WAV (pcm-s16), M4A (AAC только если `canEncodeAudio`, на Linux-Chrome выключен с подписью). Качество 128/192/320, 5.1 сводится в стерео, оценка размера до старта, WAV > 1.5 ГБ блокируется. Плеер результата на странице.
+- 🔴 LAME = LGPL: под виджетом строка «made with LAME (LGPL, license and source)» → `assets/mov/vendor/mp3-encoder-LICENSE.txt` (ссылки на исходники LAME и сборку). Не убирать; кодер держать отдельным файлом.
+- События `mp3-pick` (codec, mins, sizeMb), `mp3-run` (result ok/error, path mp3/wav/m4a или noaudio/nodecode/rejected, kbps, codec, secs), `mp3-download-again`. e2e `tools/e2e_mp3_tool.mjs` (MOV→MP3 320 / WAV, MKV 5.1 Opus → стерео, без звука, txt, отмена, мобильный). Ссылки с MOV- и GIF-страниц.
+- Критерий: в индексе GSC к ~20.11; `mp3-run` ok ≥ 20% визитов после индексации. Не должно упасть: `mov-run` на /convert-mov-to-mp4/.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
