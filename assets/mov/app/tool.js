@@ -1,12 +1,17 @@
 // Конвертер MOV ↔ MP4 прямо на странице /convert-mov-to-mp4/. Один файл за раз: пачка (целая
 // папка) остаётся за расширением (решение Дениса 29.10). Движок = копия расширения (convert.js),
 // логика проверок перенесена из его main.js упрощённо. Файл не покидает браузер.
-import { analyze, convert, plannedOutput } from './convert.js';
+import { analyze, convert, plannedOutput, listAudioTracks } from './convert.js';
 
 const $ = (id) => document.getElementById(id);
 const drop = $('mvt-drop');
 const input = $('mvt-file');
-const states = ['mvt-idle', 'mvt-busy', 'mvt-big', 'mvt-done', 'mvt-error'];
+const states = ['mvt-idle', 'mvt-busy', 'mvt-big', 'mvt-opts', 'mvt-done', 'mvt-error'];
+// data-kind="mkv" (страница /mkv-to-mp4/, 30.10): перед конвертацией выбор звуковой дорожки и AAC; события mkv-*.
+const KIND = document.querySelector('.mvt-tool').dataset.kind || 'mov';
+const EASY_AUDIO = /^(aac|mp3|opus)$/;
+let opts = {};
+let tracks = [];
 // Выше этого выход в памяти рискует уронить вкладку (опыт расширения 22.09): пишем сразу на диск.
 const BIG_FILE_BYTES = 150 * 1024 * 1024;
 const VIDEO_EXT = /\.(mov|qt|mp4|m4v)$/i;
@@ -16,7 +21,8 @@ let pending = null;
 let lastUrl = null;
 
 function show(id) {
-  states.forEach((s) => { $(s).hidden = s !== id; });
+  // mvt-opts есть только на странице MKV
+  states.forEach((s) => { const el = $(s); if (el) el.hidden = s !== id; });
 }
 
 function track(name, data) {
@@ -55,15 +61,19 @@ function fail(msg, data) {
   stopClock();
   $('mvt-error-text').textContent = msg;
   show('mvt-error');
-  track('mov-run', { result: 'error', ...data });
+  track(`${KIND}-run`, { result: 'error', ...data });
 }
 
 // Предупреждения как в расширении: звук не доехал / готовый файл короче исходника.
 function warnings(info, res) {
   const out = [];
-  const audioDropped = (res.discardedTracks || []).some((d) => d.track.type === 'audio') || (info.hasAudio && res.hasAudio === false);
+  // Выбранная на странице MKV дорожка: остальные мы выкинули сами, это не потеря.
+  const audioDropped = opts.audioPick ? info.hasAudio && res.hasAudio === false
+    : (res.discardedTracks || []).some((d) => d.track.type === 'audio') || (info.hasAudio && res.hasAudio === false);
   if (audioDropped) out.push("Saved without sound: the browser can't read this file's audio format.");
   else if (info.pcm && !info.audioToAac) out.push('The sound is kept uncompressed (PCM), some players may not play it.');
+  const picked = tracks.find((t) => t.number === opts.audioPick);
+  if (picked && !opts.toAac && !EASY_AUDIO.test(picked.codec)) out.push(`The sound stays ${picked.codec.toUpperCase()}: it plays in VLC and on most TVs, but browsers and some phones may play the video silently.`);
   if (res.outDurationSec >= 0 && info.durationSec > 0
     && info.durationSec - res.outDurationSec > Math.max(1, info.durationSec * 0.02)) {
     out.push(`The saved video is shorter than the original (${Math.round(res.outDurationSec)} s of ${Math.round(info.durationSec)} s). Part of it may be missing.`);
@@ -83,7 +93,7 @@ async function run(file, handle) {
   } catch (err) {
     return fail(VIDEO_EXT.test(file.name || '')
       ? "This file can't be read. It looks damaged or not fully downloaded."
-      : "This isn't a video we can read here. Try a MOV or MP4 file.", { path: 'rejected', sizeMb });
+      : KIND === 'mkv' ? "This isn't a video we can read here. Try an MKV file." : "This isn't a video we can read here. Try a MOV or MP4 file.", { path: 'rejected', sizeMb });
   }
   if (!info.videoCodec && !info.audioCodec && info.unknownCodecs) {
     return fail("This video is in an older format (from an old camera or phone) that browsers can't read, so it can't be converted here.", { path: 'oldcodec', sizeMb });
@@ -97,14 +107,15 @@ async function run(file, handle) {
     transcode: 'converting to H.264 on your computer',
     fallback: "your browser can't re-encode this codec, keeping the original (may not play on Windows)",
   }[path];
-  track('mov-pick', { path, kind: info.kind, sizeMb });
+  track(`${KIND}-pick`, { path, kind: info.kind, sizeMb });
 
   let writable = null;
   let res;
   try {
     if (handle) writable = await handle.createWritable();
     res = await convert(file, {
-      kind: info.kind, transcode: info.transcode, hdr: info.hdr, audioToAac: info.audioToAac,
+      kind: info.kind, transcode: info.transcode, hdr: info.hdr,
+      audioToAac: opts.audioPick ? opts.toAac : info.audioToAac, audioPick: opts.audioPick,
       writable, readBack: handle ? () => handle.getFile() : undefined,
       onProgress: (p) => { $('mvt-bar').value = p; },
     });
@@ -139,7 +150,7 @@ async function run(file, handle) {
     $('mvt-done-title').textContent = `Saved ${res.outName}`;
   }
   show('mvt-done');
-  track('mov-run', { result: notes.length ? 'warn' : 'ok', path, kind: info.kind, sizeMb, secs });
+  track(`${KIND}-run`, { result: notes.length ? 'warn' : 'ok', path, kind: info.kind, sizeMb, secs });
 }
 
 // Диалог сохранения требует свежего жеста; после выбора файла он часто уже истёк,
@@ -159,7 +170,19 @@ async function start(files) {
   busy = true;
   const file = list[0];
   $('mvt-multi').hidden = list.length < 2;
-  if (list.length > 1) track('mov-multi', { n: list.length });
+  opts = {};
+  tracks = [];
+  if (KIND === 'mkv') {
+    try { tracks = await listAudioTracks(file); } catch { /* не прочитался — run() скажет понятно */ }
+    // Выбор показываем, только когда есть что выбирать: несколько дорожек или звук не для телефонов.
+    if (tracks.length > 1 || (tracks.length === 1 && !EASY_AUDIO.test(tracks[0].codec))) {
+      pending = file;
+      showOptions(file);
+      busy = false;
+      return;
+    }
+  }
+  if (list.length > 1) track(`${KIND}-multi`, { n: list.length });
   try {
     if (file.size > BIG_FILE_BYTES && window.showSaveFilePicker) {
       const gesture = !navigator.userActivation || navigator.userActivation.isActive;
@@ -184,6 +207,51 @@ async function start(files) {
   }
 }
 
+const LANG = { eng: 'English', rus: 'Russian', spa: 'Spanish', fre: 'French', fra: 'French', ger: 'German', deu: 'German', ita: 'Italian', por: 'Portuguese', jpn: 'Japanese', kor: 'Korean', chi: 'Chinese', zho: 'Chinese', ukr: 'Ukrainian', pol: 'Polish', tur: 'Turkish', ara: 'Arabic', hin: 'Hindi' };
+function showOptions(file) {
+  $('mvt-opts-name').textContent = `${file.name} · ${humanSize(file.size)}`;
+  const box = $('mvt-tracks');
+  box.textContent = '';
+  tracks.forEach((t, i) => {
+    const label = document.createElement('label');
+    const r = document.createElement('input');
+    r.type = 'radio'; r.name = 'mvt-track'; r.value = t.number; r.checked = i === 0;
+    const lang = LANG[t.lang] || (t.lang && t.lang !== 'und' ? t.lang : `Track ${t.number}`);
+    label.append(r, ` ${lang}${t.name ? ` · ${t.name}` : ''} · ${t.codec.toUpperCase()} · ${t.channels} ch`);
+    box.append(label);
+  });
+  const sync = () => {
+    const t = tracks.find((x) => String(x.number) === box.querySelector('input:checked').value);
+    const aac = $('mvt-aac');
+    aac.disabled = !t.aac || EASY_AUDIO.test(t.codec);
+    aac.checked = t.aac && !EASY_AUDIO.test(t.codec);
+    $('mvt-aac-note').textContent = EASY_AUDIO.test(t.codec) ? 'This track is already in a format every player reads.'
+      : t.aac ? 'Recommended: AC-3, DTS and similar formats play silently in browsers and on some phones.'
+      : `Your browser can't decode ${t.codec.toUpperCase()}, so it will be copied as is (plays in VLC and on most TVs).`;
+  };
+  box.onchange = sync;
+  sync();
+  show('mvt-opts');
+  track('mkv-options', { tracks: tracks.length, codecs: tracks.map((t) => t.codec).join('/').slice(0, 40) });
+}
+
+$('mvt-go')?.addEventListener('click', async () => {
+  const file = pending;
+  if (!file || busy) return;
+  busy = true;
+  opts = { audioPick: Number($('mvt-tracks').querySelector('input:checked').value), toAac: $('mvt-aac').checked };
+  try {
+    let handle = null;
+    // Клик = свежий жест, диалог сохранения большого файла откроется.
+    if (file.size > BIG_FILE_BYTES && window.showSaveFilePicker) {
+      try { handle = await pickTarget(file); } catch (err) { if (err.name === 'AbortError') { show('mvt-opts'); return; } }
+    }
+    await run(file, handle);
+  } finally {
+    busy = false;
+  }
+});
+
 $('mvt-big-go').addEventListener('click', async () => {
   const file = pending;
   if (!file || busy) return;
@@ -207,4 +275,4 @@ input.addEventListener('change', () => { start(input.files); input.value = ''; }
 drop.addEventListener('drop', (e) => start(e.dataTransfer.files));
 document.querySelectorAll('.mvt-again').forEach((b) => b.addEventListener('click', () => { show('mvt-idle'); input.click(); }));
 // Авто-клик после конвертации не считаем, только ручной повтор.
-$('mvt-dl').addEventListener('click', (e) => { if (e.isTrusted) track('mov-download-again'); });
+$('mvt-dl').addEventListener('click', (e) => { if (e.isTrusted) track(`${KIND}-download-again`); });

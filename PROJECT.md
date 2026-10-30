@@ -154,6 +154,12 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - База (визиты/нед): 28.09-26.10 = 9/7/5/5/3, store-click 7 за 4 нед.
 - Критерий: `ie-run` ok ≥ 20% визитов за 2 нед; store-click image-enhancer со страницы не ниже ~2/нед; доля backend=wasm и cancel на wasm смотреть отдельно (если wasm-юзеры массово отменяют → урезать вход на wasm до 1 МП).
 
+## Страница MKV → MP4 /mkv-to-mp4/ (30.10.2026, кластер MKV ~50k: mkv to mp4 22.2k/KD 27, .mkv to mp4 3.6k/KD 18)
+- Тот же виджет и движок, что у MOV (`assets/mov/app/tool.js` + `convert.js`), режим `data-kind="mkv"` на `.mvt-tool`: перед конвертацией шаг «Choose the sound» (свой UI по курсу), если дорожек > 1 или звук не AAC/MP3/Opus. `listAudioTracks()` + `audioPick` (track.number, остальные discard), галка «в AAC» активна, только если браузер декодирует дорожку (AC-3/DTS Chrome обычно нет → копия + предупреждение). Субтитры MKV не переносятся (честно в FAQ).
+- События `mkv-options` (tracks, codecs), `mkv-pick`, `mkv-run`, `mkv-multi`, `mkv-download-again`; store-click place=mkv-widget (расширение то же, convert-mov; MKV оно тоже конвертирует). Ссылка на страницу с MOV-страницы, в sitemap.
+- e2e `tools/e2e_mkv_tool.mjs` (ffmpeg делает dual/aac/ac3 MKV), регрессия MOV `tools/e2e_mov_tool.mjs`.
+- Критерий: страница в индексе GSC к ~20.11; `mkv-run` ok+warn ≥ 20% визитов после индексации.
+
 ## Где деплой / грабли (git push на Pages, почему НЕ IONOS, CNAME)
 - Деплой = `git push origin main` → GitHub Pages пересобирает автоматически (~1-2 мин). Отдельного билд-шага нет.
 - Почему НЕ IONOS: на IONOS-боксе порт 443 занят VPN (xray). nginx туда лендинги не отдаст → сайт вынесен на Pages.
