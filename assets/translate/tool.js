@@ -13,6 +13,29 @@ const LANGS = {
 };
 const MM = { zh: 'zh-CN' };
 let source = 'en';
+// Русская страница /ru/perevod-s-kartinki/ (30.10): тексты по <html lang>, без склонения названий языков.
+const RU = document.documentElement.lang === 'ru';
+const T = RU ? {
+  download: (l, p) => `Скачиваю языковой пакет (${l}), только в первый раз… ${p}%`,
+  same: (l) => `Текст на картинке уже на этом языке (${l}). Выберите другой язык перевода выше.`,
+  translating: 'Перевожу…',
+  ask: (l) => `Chrome может перевести это прямо на компьютере, один раз скачав языковой пакет (${l}).`,
+  quota: 'Бесплатный лимит перевода на сегодня в этой сети исчерпан. Попробуйте завтра или откройте страницу в Chrome на компьютере: там перевод идёт на устройстве и без лимита.',
+  error: 'Перевод не прошёл. Проверьте интернет и нажмите «Перевести ещё раз».',
+  device: (l) => `Переведено (${l}) встроенным переводчиком Chrome прямо на вашем устройстве.`,
+  online: (l) => `Переведено (${l}) бесплатным сервисом MyMemory: туда ушёл только текст, не картинка.`,
+  copied: 'Скопировано', copy: 'Копировать перевод',
+} : {
+  download: (l, p) => `Downloading the ${l} language pack, one time only… ${p}%`,
+  same: (l) => `The picture is already in ${l}. Pick another language above to translate into.`,
+  translating: 'Translating…',
+  ask: (l) => `Chrome can translate this on your computer after a one-time download of the ${l} language pack.`,
+  quota: 'The free translation limit for today is used up on this network. Try again tomorrow, or open this page in Chrome on a computer: it translates on your device with no limit.',
+  error: "The translation didn't go through. Check your connection and press Translate again.",
+  device: (l) => `Translated to ${l} on your device by Chrome's built-in translator.`,
+  online: (l) => `Translated to ${l} by the free MyMemory service: only the text was sent there, not the picture.`,
+  copied: 'Copied', copy: 'Copy translation',
+};
 let job = 0;
 
 const track = (name, data) => { if (window.umami && typeof window.umami.track === 'function') window.umami.track(name, data); };
@@ -27,7 +50,7 @@ async function viaDevice(paras, src, tgt, mine) {
   const t = await window.Translator.create({
     sourceLanguage: src,
     targetLanguage: tgt,
-    monitor(m) { m.addEventListener('downloadprogress', (e) => { if (mine()) note.textContent = `Downloading the ${langName(tgt)} language pack, one time only… ${Math.round(e.loaded * 100)}%`; }); },
+    monitor(m) { m.addEventListener('downloadprogress', (e) => { if (mine()) note.textContent = T.download(langName(tgt), Math.round(e.loaded * 100)); }); },
   });
   const res = [];
   for (const p of paras) res.push(await t.translate(p));
@@ -85,13 +108,13 @@ async function translate(gesture = false, online = false) {
   if (!text) return;
   if (src === tgt) {
     out.value = '';
-    note.textContent = `The picture is already in ${langName(src)}. Pick another language above to translate into.`;
+    note.textContent = T.same(langName(src));
     return;
   }
   const paras = paragraphs(text);
   const started = Date.now();
   out.value = '';
-  note.textContent = 'Translating…';
+  note.textContent = T.translating;
   let engine = 'mymemory';
   if ('Translator' in self && !online) {
     // availability() может не ответить вовсе (headless Chrome 145 висит бесконечно): 4 с и считаем, что API нет.
@@ -104,14 +127,14 @@ async function translate(gesture = false, online = false) {
     if (a === 'available' || ((a === 'downloadable' || a === 'downloading') && active)) engine = 'device';
     else if (a === 'downloadable' || a === 'downloading') {
       // Скачать языковой пакет Chrome даёт только по клику: спрашиваем, а не уходим молча в MyMemory.
-      note.textContent = `Chrome can translate this on your computer after a one-time download of the ${langName(tgt)} language pack.`;
+      note.textContent = T.ask(langName(tgt));
       $('trn-device').hidden = false;
       $('trn-online').hidden = false;
       track('trn-run', { result: 'ask-download', src, tgt });
       return;
     }
   }
-  if (engine === 'mymemory') note.textContent = 'Translating…';
+  if (engine === 'mymemory') note.textContent = T.translating;
   let res;
   try {
     res = engine === 'device' ? await viaDevice(paras, src, tgt, mine) : await viaMyMemory(paras, src, tgt);
@@ -119,16 +142,16 @@ async function translate(gesture = false, online = false) {
     if (!mine()) return;
     const quota = err instanceof Quota;
     note.textContent = quota
-      ? "The free translation limit for today is used up on this network. Try again tomorrow, or open this page in Chrome on a computer: it translates on your device with no limit."
-      : "The translation didn't go through. Check your connection and press Translate again.";
+      ? T.quota
+      : T.error;
     track('trn-run', { result: quota ? 'quota' : 'error', engine, src, tgt, err: String(err?.message || err).slice(0, 40) });
     return;
   }
   if (!mine()) return;
   out.value = res.join('\n\n');
   note.textContent = engine === 'device'
-    ? `Translated to ${langName(tgt)} on your device by Chrome's built-in translator.`
-    : `Translated to ${langName(tgt)} by the free MyMemory service: only the text was sent there, not the picture.`;
+    ? T.device(langName(tgt))
+    : T.online(langName(tgt));
   track('trn-run', { result: 'ok', engine, src, tgt, chars: text.length, secs: Math.round((Date.now() - started) / 1000) });
 }
 
@@ -148,7 +171,7 @@ $('trn-device').addEventListener('click', () => translate(true));
 $('trn-online').addEventListener('click', () => translate(true, true));
 $('trn-copy').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(out.value); } catch { out.select(); document.execCommand('copy'); }
-  $('trn-copy').textContent = 'Copied';
-  setTimeout(() => { $('trn-copy').textContent = 'Copy translation'; }, 1500);
+  $('trn-copy').textContent = T.copied;
+  setTimeout(() => { $('trn-copy').textContent = T.copy; }, 1500);
   track('trn-copy');
 });
