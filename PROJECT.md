@@ -204,6 +204,7 @@ GitHub Pages» НЕВЕРНА. Apex резолвится в 87.106.208.215 (IONO
 - e2e `tools/e2e_csv_tool.mjs` (выписка-фикстура Pdftoexel: запятая/;/таб, xlsx, события, UTM, не-PDF, мобильный). Регресс: `tools/e2e_bank_tool.mjs` (bst и EV=pdfx; фикстура releases/blog-mac-shots/statement.pdf есть только в основной папке).
 - Критерий: в индексе GSC к ~20.11; `pcsv-convert` ok ≥ 20% визитов после индексации. Не должно упасть: `pdfx-convert` на /pdf-to-excel/.
 
+## ⏸ СПРЯТАНЫ 30.10 (Денис: языки делать пачкой и с ключами Semrush на каждый язык): noindex, вне sitemap, hreflang снят с обеих сторон; файлы и RU-словари в tool.js оставлены. Вернуть = откатить коммит «ru-off».
 ## Русские страницы /ru/tekst-iz-foto/ и /ru/perevod-s-kartinki/ (30.10.2026, кластеры OCR рус. 5.8k: текст из фото 1300/KD 29, текст по фото 1300/25; перевод рус. 2.45k: перевод с картинки 720/30)
 - Первые не-английские страницы сайта. Движки общие: `assets/ocr/tool.js` и `assets/translate/tool.js` берут тексты интерфейса по `<html lang>` (ru → словарь T). `data-fixed` на `#oxt-lang` = язык распознавания задан страницей, язык браузера его не перебивает (текст из фото: rus; перевод: eng → ru).
 - hreflang ru/en/x-default в обе стороны с /extract-text-from-image/ и /translate-picture/. Шапка/подвал русские, без ссылок в стор в шапке; в виджете «текст из фото» блок расширения по-русски (utm_content ocr-widget-ru, utm_campaign ru-tekst-iz-foto).
