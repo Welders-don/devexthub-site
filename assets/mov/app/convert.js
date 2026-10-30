@@ -1,5 +1,6 @@
 // Копия движка расширения Convert MOV to MP4 1.0.6 (Convertmovtomp4, ветка agent/unknown-codec, 29.10),
-// единственная правка: без chrome.i18n. Правка движка в расширении сама сюда НЕ приедет.
+// правки: без chrome.i18n; 30.10 для страницы MKV — listAudioTracks() и выбор одной звуковой дорожки (audioPick).
+// Правка движка в расширении сама сюда НЕ приедет.
 // Conversion engine — thin wrapper over Mediabunny (bundled locally, MPL-2.0).
 // Mediabunny copies compatible streams (instant remux) and only transcodes when
 // the codec can't live in the target container, so path routing is automatic.
@@ -185,7 +186,7 @@ export async function analyze(file) {
 // `writable` streams straight to disk for big files; otherwise buffer → { blob }.
 // `readBack` (with `writable`) returns the saved File once the stream is closed.
 // Returns { blob?, outName, discardedTracks, hasVideo?, hasAudio?, outDurationSec? }.
-export async function convert(file, { kind, onProgress, writable, readBack, transcode, hdr, audioToAac } = {}) {
+export async function convert(file, { kind, onProgress, writable, readBack, transcode, hdr, audioToAac, audioPick } = {}) {
   const outKind = kind || targetFor(file);
   const streaming = !!writable;
   const input = new Input({ source: new BlobSource(file), formats: ALL_FORMATS });
@@ -197,6 +198,11 @@ export async function convert(file, { kind, onProgress, writable, readBack, tran
   const options = { input, output };
   if (transcode) options.video = { codec: "avc", ...(hdr && { process: toneMapToSdr() }) }; // re-encode to H.264
   if (audioToAac) options.audio = { codec: "aac", bitrate: 192000 };
+  // Страница MKV: оставить одну выбранную дорожку (track.number, 1-based), остальные выкинуть.
+  if (audioPick) {
+    options.audio = (track) => track.number !== audioPick ? { discard: true }
+      : audioToAac ? { codec: "aac", bitrate: 192000 } : {};
+  }
   const conversion = await Conversion.init(options);
   if (!conversion.isValid) {
     throw new Error("This file can't be converted — no usable video or audio track.");
@@ -212,4 +218,19 @@ export async function convert(file, { kind, onProgress, writable, readBack, tran
   const mime = outKind === "mov" ? "video/quicktime" : "video/mp4";
   const blob = new Blob([output.target.buffer], { type: mime });
   return { blob, outName, discardedTracks: conversion.discardedTracks, ...await inspectOutput(() => blob) };
+}
+
+// Звуковые дорожки файла для выбора на странице MKV (30.10): номер, язык, имя, кодек, каналы,
+// можно ли перекодировать в AAC в этом браузере (AC-3/DTS Chrome обычно не декодирует).
+export async function listAudioTracks(file) {
+  const input = new Input({ source: new BlobSource(file), formats: ALL_FORMATS });
+  const tracks = await input.getAudioTracks();
+  const out = [];
+  for (const t of tracks) {
+    const codec = await t.getCodec();
+    const decodable = codec ? await t.canDecode() : false;
+    const aac = decodable && await canEncodeAudio("aac", { numberOfChannels: Math.min(t.numberOfChannels, 2), sampleRate: t.sampleRate, bitrate: 192000 });
+    out.push({ number: t.number, lang: await t.getLanguageCode(), name: await t.getName(), codec: codec || String(await t.getInternalCodecId() ?? "?"), channels: t.numberOfChannels, aac });
+  }
+  return out;
 }
