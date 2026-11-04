@@ -44,3 +44,10 @@ releases/**/frames/*.jpg
 .media/**/*.pcm
 .media/**/*.zip
 .media/_vid/
+
+# Внутренние заметки не публикуем: репо публичный и раздаётся как сайт (04.11 нашли
+# /_handoff.md, /PROJECT.md, /offpage/, /knowledge/ открытыми по URL). Файлы живут на диске.
+/_handoff.md
+/PROJECT.md
+/knowledge/
+/offpage/
