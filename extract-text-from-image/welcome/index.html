@@ -104,6 +104,12 @@
       .step-block { margin-bottom: 0; }
       .browser-wrap { zoom: .87; }
       .cta { padding-top: 18px; }
+      /* Денис 05.11: под кнопкой оставалась пустая полоса. Страница = колонка на всю высоту
+         окна: шапка сверху, шаги по центру свободного места, кнопка у низа. */
+      body { display: flex; flex-direction: column; }
+      .header { padding-top: 3vh; }
+      .steps { flex: 1 0 auto; width: 100%; align-content: center; }
+      .cta { padding-bottom: 4vh; }
     }
   </style>
 </head>

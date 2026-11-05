@@ -6,7 +6,23 @@
 // Umami здесь нет: страница открывается сама после установки, события шлёт расширение.
 const EXT = new URLSearchParams(location.search).get('x') || 'eeelkokigmnmogpibbdkjdplpfnobpjb';
 
-function show() { document.documentElement.classList.remove('wait'); }
+function show() { document.documentElement.classList.remove('wait'); fit(); }
+
+// На широком окне (шаги рядом) увеличиваем страницу целиком (шапка, шаги, кнопка одним
+// масштабом), пока она влезает по высоте и шаги по ширине: на больших мониторах иначе
+// остаются пустые полосы (Денис 05.11 «растянуть до низу»). Остаток делит flex из CSS.
+const steps = document.querySelector('.steps');
+const parts = [document.querySelector('.header'), steps, document.querySelector('.cta')];
+function fit() {
+  parts.forEach(el => { el.style.zoom = ''; });
+  if (innerWidth < 1000) return;
+  steps.style.flex = 'none'; // естественная высота, а не растянутая flex'ом (body min-height 100vh)
+  const h = parts.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
+  steps.style.flex = '';
+  const z = Math.min(innerHeight * 0.96 / h, innerWidth / steps.offsetWidth, 1.6);
+  if (z > 1.02) parts.forEach(el => { el.style.zoom = z.toFixed(3); });
+}
+addEventListener('resize', fit);
 setTimeout(show, 1500); // молчащее расширение не должно оставить пустую страницу
 
 function ask(msg) {
