@@ -93,6 +93,18 @@
       box-shadow: 0 4px 18px rgba(0,121,107,0.28);
     }
     .cta-hint { margin-top: 8px; font-size: 12px; color: #9ca3af; }
+
+    /* Компактнее (05.11, как mkvtomp4): на 1280×600 шапка съедала экран, шаг 2 и кнопка
+       уходили ниже первого экрана. Шапка ниже, на широком экране шаги рядом; макеты
+       уменьшены zoom'ом так, что их внутренняя ширина остаётся прежней (стрелки на месте). */
+    .header { padding: 16px 24px 8px; }
+    .app-name { font-size: 30px; margin-bottom: 4px; }
+    @media (min-width: 1000px) {
+      .steps { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; padding-top: 6px; }
+      .step-block { margin-bottom: 0; }
+      .browser-wrap { zoom: .87; }
+      .cta { padding-top: 18px; }
+    }
   </style>
 </head>
 <body>
