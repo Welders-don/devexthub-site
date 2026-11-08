@@ -1,4 +1,4 @@
-// Онбординг Image Enhancer на сайте (с 1.1.4, A/B с прежней страницей внутри расширения).
+// Онбординг Image Enhancer на сайте (с 1.1.4, всем установившим).
 // Зачем на сайте: 30 дней до 21.10 онбординг открыли 91% установивших, редактор только 56%,
 // главный обрыв на этой странице, а правка внутри расширения ждёт ревью CWS.
 //
@@ -8,7 +8,23 @@
 // Расширение не ответило (зашли не из него, другой браузер): английский + кнопка в стор.
 const EXT = new URLSearchParams(location.search).get('x') || 'pkkccllbjokjgkffmjcjigfajhojjlmi';
 
-function show() { document.documentElement.classList.remove('wait'); }
+function show() { document.documentElement.classList.remove('wait'); fit(); }
+
+// Шаги рядом (≥1000 px): масштабируем шапку, шаги и кнопку одним zoom так, чтобы всё влезло
+// в окно по высоте (кнопка открытия редактора на первом экране, Денис 08.11) и шаги по ширине.
+// В отличие от ET здесь и уменьшаем: макет редактора в шаге 2 высокий, на 1366×680 не влезал.
+const steps = document.querySelector('.steps');
+const parts = [document.querySelector('.header'), steps, document.querySelector('.cta')];
+function fit() {
+  parts.forEach(el => { el.style.zoom = ''; });
+  if (innerWidth < 1000) return;
+  steps.style.flex = 'none'; // естественная высота, а не растянутая flex'ом
+  const h = parts.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
+  steps.style.flex = '';
+  const z = Math.max(0.6, Math.min(innerHeight * 0.96 / h, innerWidth / steps.offsetWidth, 1.6));
+  if (Math.abs(z - 1) > 0.02) parts.forEach(el => { el.style.zoom = z.toFixed(3); });
+}
+addEventListener('resize', fit);
 setTimeout(show, 1500); // молчащее расширение не должно оставить пустую страницу
 
 function ask(msg) {
