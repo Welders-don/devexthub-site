@@ -1,8 +1,47 @@
 /*!
- * HEVC decoder core from @hevcjs/core v1.4.5 (MIT), https://github.com/lid-labs/hevc.js
- * Vendored: only the HEVCDecoder class + copyPlane helper; the package's demuxer/MSE parts
- * (which pull in mp4box) are not used here. Full licence in hevcjs-LICENSE.txt.
+ * HEVC decoder core from @hevcjs/core v1.7.0 (MIT), https://github.com/lid-labs/hevc.js
+ * Vendored: dist/chunk behind the "@hevcjs/core/decoder" entry (HEVCDecoder + copyPlane only);
+ * the package's demuxer/MSE parts (which pull in mp4box) are not used here. Full licence in hevcjs-LICENSE.txt.
  */
+// src/frame-layout.ts
+var FIELDS = [
+  "y",
+  "cb",
+  "cr",
+  "width",
+  "height",
+  "stride_y",
+  "stride_c",
+  "chroma_width",
+  "chroma_height",
+  "bit_depth",
+  "poc",
+  "cvs_id",
+  "bytes_per_sample"
+];
+function parseFrameLayout(spec) {
+  const parsed = /* @__PURE__ */ new Map();
+  for (const field of spec.split(",")) {
+    const sep = field.indexOf(":");
+    if (sep < 0) throw new Error(`HEVCFrame layout: malformed field ${JSON.stringify(field)}`);
+    const name = field.slice(0, sep);
+    const value = Number(field.slice(sep + 1));
+    if (!Number.isInteger(value) || value < 0) {
+      throw new Error(`HEVCFrame layout: ${name} is not a byte offset (${field})`);
+    }
+    parsed.set(name, value);
+  }
+  const offset = {};
+  for (const name of FIELDS) {
+    const value = parsed.get(name);
+    if (value === void 0) throw new Error(`HEVCFrame layout: missing ${name}`);
+    offset[name] = value;
+  }
+  const size = parsed.get("_size");
+  if (size === void 0) throw new Error("HEVCFrame layout: missing _size");
+  return { offset, size };
+}
+
 // src/decoder.ts
 var HEVCDecoder = class _HEVCDecoder {
   constructor(module) {
@@ -17,8 +56,12 @@ var HEVCDecoder = class _HEVCDecoder {
       feed: module.cwrap("hevc_decoder_feed", "number", ["number", "number", "number"]),
       drain: module.cwrap("hevc_decoder_drain", "number", ["number", "number"]),
       getDrainedFrame: module.cwrap("hevc_decoder_get_drained_frame", "number", ["number", "number", "number"]),
-      flush: module.cwrap("hevc_decoder_flush", "number", ["number"])
+      flush: module.cwrap("hevc_decoder_flush", "number", ["number"]),
+      getSuppressedPictureCount: module.cwrap("hevc_decoder_get_suppressed_picture_count", "number", ["number"]),
+      takeSuppressedPictures: module.cwrap("hevc_decoder_take_suppressed_pictures", "number", ["number", "number", "number"]),
+      frameLayout: module.cwrap("hevc_frame_layout", "string", [])
     };
+    this._layout = parseFrameLayout(this._api.frameLayout());
     this._dec = this._api.create();
     if (!this._dec) throw new Error("Failed to create HEVC decoder");
   }
@@ -77,7 +120,7 @@ var HEVCDecoder = class _HEVCDecoder {
   }
   _extractFrame(index) {
     const m = this._m;
-    const framePtr = m._malloc(48);
+    const framePtr = m._malloc(this._layout.size);
     try {
       const ret = this._api.getFrame(this._dec, index, framePtr);
       if (ret !== 0) return null;
@@ -88,7 +131,7 @@ var HEVCDecoder = class _HEVCDecoder {
   }
   _extractDrainedFrame(index) {
     const m = this._m;
-    const framePtr = m._malloc(48);
+    const framePtr = m._malloc(this._layout.size);
     try {
       const ret = this._api.getDrainedFrame(this._dec, index, framePtr);
       if (ret !== 0) return null;
@@ -99,21 +142,24 @@ var HEVCDecoder = class _HEVCDecoder {
   }
   _readFrameFromPtr(framePtr) {
     const m = this._m;
-    const yPtr = m.getValue(framePtr, "*");
-    const cbPtr = m.getValue(framePtr + 4, "*");
-    const crPtr = m.getValue(framePtr + 8, "*");
-    const width = m.getValue(framePtr + 12, "i32");
-    const height = m.getValue(framePtr + 16, "i32");
-    const strideY = m.getValue(framePtr + 20, "i32");
-    const strideC = m.getValue(framePtr + 24, "i32");
-    const cw = m.getValue(framePtr + 28, "i32");
-    const ch = m.getValue(framePtr + 32, "i32");
-    const bd = m.getValue(framePtr + 36, "i32");
-    const poc = m.getValue(framePtr + 40, "i32");
-    const y = copyPlane(m, yPtr, width, height, strideY);
-    const cb = copyPlane(m, cbPtr, cw, ch, strideC);
-    const cr = copyPlane(m, crPtr, cw, ch, strideC);
-    return { y, cb, cr, width, height, chromaWidth: cw, chromaHeight: ch, bitDepth: bd, poc };
+    const at = this._layout.offset;
+    const yPtr = m.getValue(framePtr + at.y, "*");
+    const cbPtr = m.getValue(framePtr + at.cb, "*");
+    const crPtr = m.getValue(framePtr + at.cr, "*");
+    const width = m.getValue(framePtr + at.width, "i32");
+    const height = m.getValue(framePtr + at.height, "i32");
+    const strideY = m.getValue(framePtr + at.stride_y, "i32");
+    const strideC = m.getValue(framePtr + at.stride_c, "i32");
+    const cw = m.getValue(framePtr + at.chroma_width, "i32");
+    const ch = m.getValue(framePtr + at.chroma_height, "i32");
+    const bd = m.getValue(framePtr + at.bit_depth, "i32");
+    const poc = m.getValue(framePtr + at.poc, "i32");
+    const cvsId = m.getValue(framePtr + at.cvs_id, "i32");
+    const bps = m.getValue(framePtr + at.bytes_per_sample, "i32");
+    const y = copyPlane(m, yPtr, width, height, strideY, bps);
+    const cb = copyPlane(m, cbPtr, cw, ch, strideC, bps);
+    const cr = copyPlane(m, crPtr, cw, ch, strideC, bps);
+    return { y, cb, cr, width, height, chromaWidth: cw, chromaHeight: ch, bitDepth: bd, poc, cvsId };
   }
   _extractInfo() {
     const m = this._m;
@@ -187,7 +233,7 @@ var HEVCDecoder = class _HEVCDecoder {
     const countPtr = m._malloc(4);
     try {
       const frames = [];
-      const framePtr = m._malloc(48);
+      const framePtr = m._malloc(this._layout.size);
       try {
         for (let i = 0; ; i++) {
           const r = this._api.getDrainedFrame(this._dec, i, framePtr);
@@ -202,6 +248,37 @@ var HEVCDecoder = class _HEVCDecoder {
       m._free(countPtr);
     }
   }
+  /**
+   * The pictures decoded since the last call that will never be output:
+   * PicOutputFlag was 0 (§C.3.1, §8.1), or a new sequence emptied them from
+   * the DPB without output (§C.5.2.2). Empties the list.
+   *
+   * A caller that maps output frames onto per-sample timestamps needs these:
+   * the sample that carried such a picture produces no frame, and without
+   * knowing which one it was, every later frame of the segment takes the
+   * timestamp of its predecessor. Each one comes with its CVS, since POC
+   * restarts at every IRAP and alone cannot order pictures across one.
+   */
+  takeSuppressedPictures() {
+    const m = this._m;
+    const count = this._api.getSuppressedPictureCount(this._dec);
+    if (count <= 0) return [];
+    const ptr = m._malloc(count * 8);
+    try {
+      const written = this._api.takeSuppressedPictures(this._dec, ptr, count);
+      if (written < 0) return [];
+      const out = [];
+      for (let i = 0; i < written; i++) {
+        out.push({
+          cvsId: m.getValue(ptr + i * 8, "i32"),
+          poc: m.getValue(ptr + i * 8 + 4, "i32")
+        });
+      }
+      return out;
+    } finally {
+      m._free(ptr);
+    }
+  }
   /** Release decoder resources */
   destroy() {
     if (this._dec) {
@@ -210,13 +287,17 @@ var HEVCDecoder = class _HEVCDecoder {
     }
   }
 };
-function copyPlane(m, ptr, width, height, stride) {
+function copyPlane(m, ptr, width, height, stride, bytesPerSample) {
   const out = new Uint16Array(width * height);
-  const base = ptr >> 1;
+  const heap = bytesPerSample === 1 ? m.HEAPU8 : m.HEAPU16;
+  const base = bytesPerSample === 1 ? ptr : ptr >> 1;
   for (let y = 0; y < height; y++) {
-    out.set(m.HEAPU16.subarray(base + y * stride, base + y * stride + width), y * width);
+    out.set(heap.subarray(base + y * stride, base + y * stride + width), y * width);
   }
   return out;
 }
 
-export { HEVCDecoder };
+export {
+  HEVCDecoder
+};
+//# sourceMappingURL=chunk-M6WO4WIK.js.map

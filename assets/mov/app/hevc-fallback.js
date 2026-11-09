@@ -13,6 +13,7 @@ import { HEVCDecoder } from "../vendor/hevc-decoder.mjs";
 
 const GLUE_URL = "../vendor/hevc-decode.js";
 const START_CODE = new Uint8Array([0, 0, 0, 1]);
+const MAX_LIVE = 6;
 
 let gluePromise = null;
 let registered = false;
@@ -119,6 +120,8 @@ class HevcFallbackDecoder extends CustomVideoDecoder {
     // Frames come out in display order, so the presentation timestamps of the packets
     // fed in — sorted ascending — line up with them one by one.
     this.timestamps = [];
+    this.live = 0; // кадры, отданные Mediabunny и ещё не закрытые
+    this.onFreed = null;
     if (this.config?.description) {
       const { nalLengthSize, parameterSets } = parseHvcC(this.config.description);
       this.nalLengthSize = nalLengthSize;
@@ -126,7 +129,13 @@ class HevcFallbackDecoder extends CustomVideoDecoder {
     }
   }
 
-  decode(packet) {
+  // Mediabunny держит до 40 пакетов в очереди декодера, пока выход пуст, а наш декодер
+  // отдаёт кадр сразу: на старте в памяти висело ~38 готовых кадров. 4K 10 бит = ~25 МБ
+  // кадр, ~1 ГБ разом, и вкладка падала «Out of Memory» (09.11, ролик Дениса 4K60 335 МБ).
+  // Пока кадров на руках MAX_LIVE, decode() не возвращается: очередь Mediabunny стоит,
+  // новые пакеты не идут, а кадры освобождаются по мере кодирования.
+  async decode(packet) {
+    while (this.live >= MAX_LIVE) await new Promise((resolve) => (this.onFreed = resolve));
     this.timestamps.push({ timestamp: packet.timestamp, duration: packet.duration });
     this.decoder.feed(sampleToAnnexB(packet.data, this.nalLengthSize));
     this.emit(this.decoder.drain());
@@ -146,7 +155,19 @@ class HevcFallbackDecoder extends CustomVideoDecoder {
     this.timestamps.sort((a, b) => a.timestamp - b.timestamp);
     for (const frame of frames) {
       const { timestamp, duration } = this.timestamps.shift() ?? { timestamp: 0, duration: 0 };
-      this.onSample(toVideoSample(frame, timestamp, duration, this.config?.colorSpace));
+      const sample = toVideoSample(frame, timestamp, duration, this.config?.colorSpace);
+      const close = sample.close.bind(sample);
+      let closed = false;
+      sample.close = () => {
+        if (!closed) {
+          closed = true;
+          this.live--;
+          this.onFreed?.();
+        }
+        close();
+      };
+      this.live++;
+      this.onSample(sample);
     }
   }
 }
